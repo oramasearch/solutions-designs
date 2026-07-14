@@ -23,6 +23,21 @@ All evidence lives under [`docs/evidence/`](docs/evidence/), one subfolder per
 source/topic. See [`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md) for the exact
 capture + naming convention.
 
+**Collected so far — 9 items** (authoritative live index:
+[`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md)):
+
+- `01`–`03` — three Deep Research reports on the most valuable enterprise AI pipeline
+  use cases (rankings, scoring model, closed-loop framing, raw research artifacts).
+- `04`–`05` — competitor solution catalogs: Databricks Solution Accelerators (93),
+  Snowflake Solutions by Industry (9).
+- `06`–`08` — Orama Zetta itself: the product website ("what we promise users"), the
+  "One Orama" v3 product-suite context (⚠️ internal-confidential), and the Orama
+  Platform 2 / Zetta project folder.
+- `09` — the retired amaro-desktop's 400 example-data-app use-case catalog (17
+  categories).
+
+Keep this snapshot and the `docs/evidence/` index in sync as items are added.
+
 ## Navigation (progressive disclosure)
 
 Every directory with subfolders carries **both** a `CLAUDE.md` (this agent-facing

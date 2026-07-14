@@ -26,6 +26,23 @@ don't conclude:** no analysis, ranking, or design yet.
 
 Later phases (analysis, design) get their own homes under `docs/` when we reach them.
 
+### Evidence collected so far
+
+**9 items** (the full, always-current index is
+[`docs/evidence/README.md`](docs/evidence/README.md) — that's authoritative; this is a
+snapshot):
+
+- **What's most valuable (external / analyst):** three Deep Research reports on the most
+  valuable enterprise AI pipeline use cases — rankings, a scoring model, closed-loop
+  framing, and the raw research artifacts (`01`–`03`).
+- **Competitor / market solution catalogs:** Databricks Solution Accelerators (93) and
+  Snowflake Solutions by Industry (9) (`04`, `05`).
+- **Orama Zetta itself:** our product website / "what we promise users" (`06`), the
+  "One Orama" v3 product-suite context (`07`, ⚠️ internal-confidential), and the Orama
+  Platform 2 / Zetta project folder — vision, personas, roadmap, briefs, research (`08`).
+- **Prior-art use-case catalog:** the retired amaro-desktop's 400 example data apps
+  across 17 categories (`09`).
+
 ## Navigation (progressive disclosure)
 
 Every directory that has subfolders carries both a `CLAUDE.md` (agent jump-table) and
