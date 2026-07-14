@@ -63,3 +63,15 @@ for the capture convention — read it before adding any evidence.**
   `SHA256SUMS.txt`) at commit `ed17e32`, plus `promises.md` — a full readable
   transcription of the copy across all 7 pages. See its
   [`README.md`](06-orama-zetta-website/README.md).
+- [`07-one-orama-product-suite/`](07-one-orama-product-suite/) — the **"One Orama" v3
+  convergence** plan of record (the broader **product-suite context** — 4 products
+  anchored by Zetta, the v1→k8s migration, the operator↔Zetta symbiosis). ⚠️
+  **internal-confidential** (pricing/acquisition/partner names). 7 docs verbatim under
+  `source/` @ commit `ca42a85`. User framing: context only; the exercise focuses on
+  Zetta. See its [`README.md`](07-one-orama-product-suite/README.md).
+- [`08-orama-platform-2-zetta/`](08-orama-platform-2-zetta/) — the **Orama Platform 2 /
+  Orama Zetta** project folder: the canonical Zetta product + strategy framing (vision &
+  strategy, personas, user stories, roadmap, success metrics, design-partner research,
+  personalization thesis, one-pager, 17 audience briefs, video scripts). 33 docs verbatim
+  under `source/` @ commit `ca42a85`. See its
+  [`README.md`](08-orama-platform-2-zetta/README.md).
