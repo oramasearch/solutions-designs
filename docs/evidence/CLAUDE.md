@@ -46,3 +46,14 @@ for the capture convention — read it before adding any evidence.**
   top-pipeline ranking, and the prediction→remediation generalization table. Verbatim
   report `.md` + the pasted chat summary. See its
   [`README.md`](03-enterprise-ai-pipelines-closed-loop/README.md).
+- [`04-databricks-solution-accelerators/`](04-databricks-solution-accelerators/) — the
+  complete list of **93 Databricks Solution Accelerators** (title + description each) +
+  the page's industry filter categories. The grid is JS-only, so compiled from
+  Databricks' sitemap (URLs) + each page's `og:title`/meta `description`; `.tsv` (data)
+  + `.md` (readable) + URL list + the literal landing-page shell. See its
+  [`README.md`](04-databricks-solution-accelerators/README.md).
+- [`05-snowflake-industry-solutions/`](05-snowflake-industry-solutions/) — the **9
+  Snowflake industry solutions** + sub-industries + descriptions. Page is
+  server-rendered, so the raw `landing-page.html` is the verbatim source; readable
+  extraction + industry URL list alongside. See its
+  [`README.md`](05-snowflake-industry-solutions/README.md).
