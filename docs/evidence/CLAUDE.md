@@ -34,3 +34,9 @@ for the capture convention — read it before adding any evidence.**
   value score (+ ranking chart). Verbatim report `.md`, chart `.png`, a searchable
   chart transcription, and the pasted chat summary. See its
   [`README.md`](01-enterprise-ai-pipeline-use-cases/README.md).
+- [`02-enterprise-ai-pipelines-ranked/`](02-enterprise-ai-pipelines-ranked/) — 2nd
+  Deep Research run (9 steps) on the same question: closed-loop framing, highest-value
+  use cases + KPIs, shared primitives, 3-wave build order. Ships the ranked report
+  `.md`, a scoring model (`.csv` + `.json`), the raw search/fetch `.jsonl` research
+  artifacts + compact notes, and the pasted chat summary. See its
+  [`README.md`](02-enterprise-ai-pipelines-ranked/README.md).

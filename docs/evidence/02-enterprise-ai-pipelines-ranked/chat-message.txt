@@ -1,0 +1,116 @@
+Deep Research
+ If I had a machine or technology that could build me the most valuable enterprise AI pipelines, which use cases would it cover? Explain your reasoning. Eg. churn prediction and remediation
+Completed 9 steps
+The Most Valuable Enterprise AI Pipelines
+The core opportunity is not building better prediction models. It is building closed-loop systems that detect an opportunity or risk, choose an intervention, execute it, measure incremental results, and learn from the outcome. Although AI adoption is widespread, only 39% of surveyed organizations report any EBIT impact, suggesting execution and workflow integration are the main bottlenecks (McKinsey State of AI 2025).
+
+Highest-value use cases
+Customer service resolution and proactive care
+
+Triage requests, retrieve policy-grounded answers, execute refunds or resolutions, escalate exceptions, and identify customers needing proactive attention.
+
+Valuable because it combines enormous transaction volume, immediate actions, labeled outcomes, and rapid feedback.
+
+KPIs: first-contact resolution, cost per contact, CSAT, escalation rate, repeat contacts, post-contact churn.
+
+Churn prediction, remediation, and expansion
+
+Predict churn, diagnose drivers, estimate which intervention will change the outcome, execute the save motion, and measure incremental retention.
+
+It should combine churn propensity with customer lifetime value, intervention cost, and causal uplift. Otherwise, the company may simply discount customers who would have remained anyway.
+
+Actions include onboarding assistance, product nudges, CSM outreach, training, plan changes, service recovery, pricing adjustments, and renewal playbooks.
+
+McKinsey describes implementations producing up to 20% lower annual attrition in one payments example (McKinsey next-best experience).
+
+Sales and revenue operations
+
+Lead and opportunity scoring, next-best action, account research, buying-committee mapping, RFP generation, forecast risk, and pricing guardrails.
+
+Valuable because decisions happen frequently and can be tied directly to conversion, ACV, discount leakage, and sales-cycle duration.
+
+The main constraint is usually poor CRM data and seller distrust, not model capability.
+
+Software delivery and IT operations
+
+Translate requirements into code and tests, review pull requests, predict release risk, prioritize incidents, recommend remediation, and learn from production failures.
+
+The real prize is not faster code generation. It is improved system throughput, reliability, security, and recovery.
+
+DORA has found productivity benefits alongside potential deterioration in delivery stability, demonstrating why the complete measurement loop matters (DORA).
+
+Cybersecurity and fraud operations
+
+Detect anomalies, enrich and prioritize alerts, correlate events, recommend containment, execute approved playbooks, and collect investigation outcomes.
+
+High value comes from loss avoidance and faster response, but false positives and unsafe automated containment create substantial risk.
+
+This requires shadow mode, simulation, risk-tiered automation, immutable audit logs, and human approval.
+
+Finance operations
+
+Continuous close, journal anomaly detection, forecasting, AP/AR exception handling, collections prioritization, and cash optimization.
+
+Finance provides measurable results and mature systems, but demands audit trails, explanations, approvals, and segregation of duties.
+
+KPIs: close duration, forecast accuracy, DSO, working capital, touchless invoice rate, and audit adjustments.
+
+Supply-chain orchestration
+
+Connect demand sensing to inventory, procurement, production, logistics, and fulfillment decisions.
+
+Economic leverage is exceptionally high, but implementation is harder because actions interact across multiple constrained systems.
+
+McKinsey reports potential improvements including up to 4% higher revenue, 20% lower inventory, and 10% lower supply-chain costs in CPG examples (McKinsey).
+
+Procurement and supplier orchestration
+
+Detect sourcing opportunities, consolidate spend, evaluate suppliers, assist negotiations, monitor contract compliance, and intercept invoice leakage.
+
+Best suited to spend-heavy enterprises where small percentage improvements produce significant absolute savings.
+
+Healthcare revenue cycle
+
+Prior authorization, documentation, coding, claims submission, denial prevention, appeals, and receivables follow-up.
+
+This is probably the strongest first vertical template because it combines repetitive exception work with measurable financial outcomes.
+
+McKinsey estimates agentic workflows could reduce revenue-cycle cost to collect by 30% to 60% (McKinsey).
+
+Asset reliability and predictive maintenance
+
+Predict failures, verify operational context, prioritize interventions, generate work orders, coordinate technicians and parts, and learn from maintenance outcomes.
+
+Highly defensible because it uses proprietary sensor, asset, and failure data, but every plant and asset class introduces additional integration work.
+
+Additional vertical templates include payments fraud and financial crime, insurance claims, and workforce planning. These should come later because regulatory, fairness, evidence-integrity, and explainability requirements are substantially higher.
+
+What the machine must actually provide
+The reusable product is a collection of shared primitives:
+
+Enterprise-system connectors and reliable action execution
+
+Customer, account, asset, supplier, and transaction entity resolution
+
+Historical and streaming event processing
+
+Predictions, causal uplift models, optimization, rules, and constraints
+
+Human approval for uncertain or irreversible decisions
+
+Experimentation, holdouts, attribution, and ROI measurement
+
+Outcome feedback, drift monitoring, retraining, and rollback
+
+Data lineage, permissions, consent, audit logs, and policy-as-code
+
+Reusable schemas, labels, actions, controls, and KPIs for each template
+
+Recommended build order
+First: customer service, churn/remediation, sales operations, software delivery, and finance exceptions. These offer broad applicability, abundant digital data, existing systems of action, and relatively fast measurement.
+
+Second: cybersecurity, supply chain, procurement, and working-capital optimization. Their value pools are large, but they require deeper integrations and constraint-aware decisioning.
+
+Third: healthcare revenue cycle, financial crime, insurance claims, predictive maintenance, and workforce planning. Build these after governance, evidence handling, human approval, and auditability are mature.
+
+The full ranked report, heatmap, CSV scoring model, JSON data, and research evidence are attached. Would you like me to turn this into a product strategy or MVP specification for the proposed “pipeline-building machine”? /Users/stevesperandeo/Downloads/05_compact_notes.txt /Users/stevesperandeo/Downloads/04_more_fetch_extract.jsonl /Users/stevesperandeo/Downloads/03_more_search_results.jsonl /Users/stevesperandeo/Downloads/02_fetch_extract.jsonl /Users/stevesperandeo/Downloads/01_search_results.jsonl /Users/stevesperandeo/Downloads/enterprise_ai_pipeline_scores.json /Users/stevesperandeo/Downloads/enterprise_ai_pipeline_scores.csv /Users/stevesperandeo/Downloads/rank-enterprise-ai-pipelines.md

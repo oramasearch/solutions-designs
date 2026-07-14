@@ -1,0 +1,14 @@
+Rank,Use case,Scope,Economic value,Cross-industry applicability,Decision frequency,Data readiness,Closed-loop actionability,Defensibility,Time-to-value,Implementation simplicity,Regulatory risk advantage,Weighted score
+1,"Customer operations: service resolution, triage, QA, self-service, proactive care",Horizontal,5,5,5,5,5,3,5,4,3,4.620000000000001
+2,"Customer lifecycle: churn prediction, next-best-experience, retention/expansion",Horizontal,5,5,5,4,5,4,4,3,3,4.44
+3,"Sales/revenue operations: lead scoring, next-best-action, RFP/proposal, pricing guardrails",Horizontal,5,4,5,4,4,4,4,4,3,4.25
+4,Software delivery and IT operations: code/test/review/release/incident remediation,Horizontal,5,5,5,4,4,3,4,3,4,4.24
+5,"Cybersecurity and fraud/risk operations: detect, prioritize, contain, recover",Horizontal + regulated sector variants,5,4,5,4,5,4,4,2,2,4.1899999999999995
+6,"Finance operations: close, forecast, AP/AR, cash collection, anomaly management",Horizontal,4,5,4,4,4,3,4,3,4,3.9399999999999995
+7,"Supply chain planning: demand, inventory, fulfillment, replenishment orchestration",Horizontal for physical-goods firms,5,3,4,3,5,4,3,2,4,3.87
+8,"Healthcare revenue cycle: prior auth, coding, denials, AR follow-up",Sector-specific: healthcare,5,1,5,3,5,5,4,2,2,3.83
+9,"Financial crime/payments fraud: real-time scoring, investigation, interdiction",Sector-specific: financial services,5,1,5,4,5,5,3,2,1,3.7800000000000002
+10,"Procurement/spend and supplier orchestration: sourcing, negotiation, contract compliance",Horizontal for spend-heavy firms,4,4,3,3,4,4,4,3,4,3.7199999999999998
+11,Industrial asset reliability: predictive maintenance to work-order execution,"Sector-specific: manufacturing, energy, transport",4,2,4,3,5,5,3,2,4,3.6500000000000004
+12,"Insurance claims: adjudication, fraud detection, subrogation, repair orchestration",Sector-specific: insurance,4,1,4,3,5,5,3,2,2,3.43
+13,Workforce planning and talent attrition/intervention,Horizontal but HR-regulated,3,5,3,3,3,3,3,3,1,3.1399999999999997
