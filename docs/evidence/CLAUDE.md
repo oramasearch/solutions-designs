@@ -40,3 +40,9 @@ for the capture convention — read it before adding any evidence.**
   `.md`, a scoring model (`.csv` + `.json`), the raw search/fetch `.jsonl` research
   artifacts + compact notes, and the pasted chat summary. See its
   [`README.md`](02-enterprise-ai-pipelines-ranked/README.md).
+- [`03-enterprise-ai-pipelines-closed-loop/`](03-enterprise-ai-pipelines-closed-loop/)
+  — 3rd Deep Research run (8 steps) on the same question: the closed-loop pipeline
+  shape, a 6-dimension scoring rubric, Tier 1/2/3 use cases, a per-industry
+  top-pipeline ranking, and the prediction→remediation generalization table. Verbatim
+  report `.md` + the pasted chat summary. See its
+  [`README.md`](03-enterprise-ai-pipelines-closed-loop/README.md).

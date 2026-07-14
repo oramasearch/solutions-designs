@@ -20,3 +20,4 @@ exactly as given, nothing summarised or dropped, and no analysis.**
 |---|---|---|---|
 | [01](01-enterprise-ai-pipeline-use-cases/) | Enterprise AI pipeline use cases — Deep Research report ranking ~16 use cases into 3 tiers, + ranking chart | Deep Research report (Steve Sperandeo) | 2026-07-14 |
 | [02](02-enterprise-ai-pipelines-ranked/) | Enterprise AI pipelines, ranked — 2nd Deep Research run (9 steps): closed-loop framing, ranked report, scoring model (CSV+JSON), raw search/fetch artifacts | Deep Research report (Steve Sperandeo) | 2026-07-14 |
+| [03](03-enterprise-ai-pipelines-closed-loop/) | Enterprise AI pipelines, closed-loop framing — 3rd Deep Research run (8 steps): 6-dimension scoring, Tier 1/2/3, per-industry top-pipeline ranking, prediction→remediation table | Deep Research report (Steve Sperandeo) | 2026-07-14 |
