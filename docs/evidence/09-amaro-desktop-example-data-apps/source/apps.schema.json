@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/oramasearch/example-data-apps/blob/main/apps.schema.json",
+  "title": "example-data-apps index",
+  "description": "Schema for apps.json — the flat machine-readable index of every synthetic data app in this repo. Produced by scripts/build_index.py from each app's spec.json + meta.json. See README.md for the layout reference and the regen workflow.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generated_at", "total", "categories", "apps"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional — points readers + IDE validators at this schema. Set by build_index.py to the absolute schema URL on GitHub."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 UTC timestamp of when scripts/build_index.py last wrote the file."
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Length of the apps array. Must equal sum(categories[].count)."
+    },
+    "categories": {
+      "type": "array",
+      "description": "One entry per distinct category, sorted by count descending.",
+      "items": { "$ref": "#/$defs/category" }
+    },
+    "apps": {
+      "type": "array",
+      "description": "Flat list of every app. Sorted by (category, slug).",
+      "items": { "$ref": "#/$defs/app" }
+    }
+  },
+  "$defs": {
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "slug", "count"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Human-facing category name (e.g. 'Operations / Logistics'). Author-stamped in each app's meta.json events[].detail."
+        },
+        "slug": {
+          "$ref": "#/$defs/kebabSlug",
+          "description": "Directory name for this category under apps/."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of apps in this category. Must equal len([a for a in apps if a.category_slug == this.slug])."
+        }
+      }
+    },
+    "app": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "name",
+        "description",
+        "category",
+        "category_slug",
+        "path",
+        "ir_version",
+        "data_sources"
+      ],
+      "properties": {
+        "slug": {
+          "$ref": "#/$defs/kebabSlug",
+          "description": "App directory name. Unique across the repo."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-facing display name (from spec.json.name). The questions/*.tsv benchmark references apps by this field."
+        },
+        "description": {
+          "type": "string",
+          "description": "One-paragraph description (from spec.json.description). May be empty if the source spec has no description."
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical category label. Variant labels are normalized via LABEL_ALIASES in build_index.py."
+        },
+        "category_slug": {
+          "$ref": "#/$defs/kebabSlug",
+          "description": "Directory name of the category under apps/. Cross-references categories[].slug."
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^apps/[a-z0-9-]+/[a-z0-9-]+/$",
+          "description": "Repo-relative path to the app directory. Always ends in a trailing slash. Format: apps/<category_slug>/<slug>/."
+        },
+        "ir_version": {
+          "type": "string",
+          "description": "spec.json.irVersion — currently '3.0' for the corpus. Empty string if missing."
+        },
+        "data_sources": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "spec.json.dataSources — list of source identifiers the app reads from. Empty array if missing."
+        }
+      }
+    },
+    "kebabSlug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "lowercase-kebab identifier. No leading/trailing hyphens, no consecutive hyphens, no uppercase or punctuation."
+    }
+  }
+}

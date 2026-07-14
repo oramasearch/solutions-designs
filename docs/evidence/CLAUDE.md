@@ -75,3 +75,10 @@ for the capture convention — read it before adding any evidence.**
   personalization thesis, one-pager, 17 audience briefs, video scripts). 33 docs verbatim
   under `source/` @ commit `ca42a85`. See its
   [`README.md`](08-orama-platform-2-zetta/README.md).
+- [`09-amaro-desktop-example-data-apps/`](09-amaro-desktop-example-data-apps/) — the
+  **use-case catalog of 400 example data apps** (17 categories) from the **retired
+  amaro-desktop**, kept as solutions evidence. The catalog (`source/apps.json` + schema +
+  READMEs + seed sheet) is captured verbatim; the ~724 MB of generated demo build-output
+  is **not** (preserved at commit `2622133` in `oramasearch/example-data-apps`). Plus
+  `use-cases.md` — all 400 grouped by category. See its
+  [`README.md`](09-amaro-desktop-example-data-apps/README.md).
