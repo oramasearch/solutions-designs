@@ -57,3 +57,9 @@ for the capture convention — read it before adding any evidence.**
   server-rendered, so the raw `landing-page.html` is the verbatim source; readable
   extraction + industry URL list alongside. See its
   [`README.md`](05-snowflake-industry-solutions/README.md).
+- [`06-orama-zetta-website/`](06-orama-zetta-website/) — **our own Orama Zetta product
+  website** ("what we promise users"). A point-in-time snapshot of the content-bearing
+  source (`source/` = index.html + App.tsx + 8 pages + 12 zetta/ sections, verified by
+  `SHA256SUMS.txt`) at commit `ed17e32`, plus `promises.md` — a full readable
+  transcription of the copy across all 7 pages. See its
+  [`README.md`](06-orama-zetta-website/README.md).
