@@ -1,13 +1,13 @@
 # Solutions Designs
 
-**Enterprise AI solution designs for Orama Zetta.** This repo is where we take a
-real-world enterprise AI problem and work it end-to-end into a Zetta solution
-design: first collecting the raw evidence and ideas, then analysing, then designing
-the concrete architecture on [Orama Zetta](https://github.com/oramasearch/zetta).
+**Enterprise AI solution designs for Orama Zetta.** This repo takes real-world
+enterprise AI problems and works them end-to-end into Zetta solution designs —
+first collecting the raw evidence, then (later) analysing, then designing the
+concrete architecture on [Orama Zetta](https://github.com/oramasearch/zetta).
 
 It is a module of the [zetta-bridge](https://github.com/oramasearch/zetta-bridge)
 (`modules/solutions-designs`). It holds **no application code** — it's a working
-space of evidence, ideas, and design docs. The product itself lives in
+space of evidence and design docs. The product itself lives in
 [`oramasearch/zetta`](https://github.com/oramasearch/zetta).
 
 > **What is Orama Zetta?** It turns a question into running, deployed intelligence —
@@ -17,34 +17,24 @@ space of evidence, ideas, and design docs. The product itself lives in
 > and learns from your data. *Intelligence Velocity for Big Thinkers.* Full framing
 > in the [zetta-bridge `CLAUDE.md`](https://github.com/oramasearch/zetta-bridge/blob/main/CLAUDE.md).
 
-## The staged workflow
+## Current phase — evidence collection
 
-Each solution moves through stages, in order. **We do not jump ahead** — evidence
-and ideas are collected *before* any analysis, and analysis *before* any design.
+We are in the **evidence-collection phase** and stay here until told otherwise. All
+evidence is captured **verbatim** — nothing is summarised, paraphrased, or dropped —
+under [`docs/evidence/`](docs/evidence/), one subfolder per source/topic. **Collect,
+don't conclude:** no analysis, ranking, or design yet.
 
-| Stage | Folder | What goes here |
-|---|---|---|
-| **1 — Evidence & ideas** *(current stage)* | `evidence/`, `ideas/` | Raw, un-analysed input. Source material, transcripts, links, data points, screenshots, quotes, requirements, and loose ideas / hypotheses / analogies. **Collect, don't conclude.** |
-| 2 — Analysis | `analysis/` *(added when we reach it)* | Reading the evidence: the problem framing, the entity/label/horizon, features, constraints, options. |
-| 3 — Design | `design/` *(added when we reach it)* | The concrete Zetta solution architecture, data flow, and delivery plan. |
+Later phases (analysis, design) get their own homes under `docs/` when we reach them.
 
-Stage folders beyond the current one are intentionally **not created yet** — they
-appear when a solution reaches that stage. Right now every solution is in stage 1.
+## Navigation (progressive disclosure)
 
-## Layout
+Every directory that has subfolders carries both a `CLAUDE.md` (agent jump-table) and
+a `README.md` (human index) that point down into it, so any level can be understood
+without reading everything above or below it.
 
-- `solutions/` — one folder per enterprise AI solution (`solutions/<slug>/`). See
-  [`solutions/README.md`](solutions/README.md) for the index.
-- `templates/solution/` — the scaffold copied to start a new solution folder.
-
-## Starting a new solution
-
-```sh
-cp -r templates/solution solutions/<slug>
-```
-
-Then fill in `solutions/<slug>/README.md` and start dropping raw material into
-`evidence/` and `ideas/`. Add a row to [`solutions/README.md`](solutions/README.md).
+- [`docs/`](docs/) — all working docs. → [`docs/README.md`](docs/README.md)
+  - [`docs/evidence/`](docs/evidence/) — the verbatim evidence, one subfolder per
+    source/topic. → [`docs/evidence/README.md`](docs/evidence/README.md)
 
 ## Conventions
 
@@ -53,4 +43,5 @@ rules:
 
 - **No AI attribution** in commits, PRs, or tags.
 - **Full cross-repo URLs** — never bare `#N` across repos; no `fixes #N` / no auto-close.
-- **Update the folder `README.md` when you touch a folder** — documentation discipline.
+- **Update the folder `README.md` (and `CLAUDE.md`) when you touch a folder** —
+  documentation discipline + progressive disclosure.
