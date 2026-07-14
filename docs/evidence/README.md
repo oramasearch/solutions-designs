@@ -18,4 +18,4 @@ exactly as given, nothing summarised or dropped, and no analysis.**
 
 | # | Evidence | Source | Captured |
 |---|---|---|---|
-| _(none captured yet)_ | | | |
+| [01](01-enterprise-ai-pipeline-use-cases/) | Enterprise AI pipeline use cases — Deep Research report ranking ~16 use cases into 3 tiers, + ranking chart | Deep Research report (Steve Sperandeo) | 2026-07-14 |

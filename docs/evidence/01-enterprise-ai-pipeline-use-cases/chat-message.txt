@@ -1,0 +1,26 @@
+Deep Research
+ If I had a machine or technology that could build me the most valuable enterprise AI pipelines, which use cases would it cover? Explain your reasoning. Eg. churn prediction and remediation
+Completed 7 steps
+The research is done — I've shared the full report and a ranking chart above. Here's the short version.
+
+The answer in one line
+The most valuable pipelines sit on high-frequency business decisions with a closed loop from prediction → action → measured outcome. That's why McKinsey finds ~75% of generative AI's $2.6–4.4T annual value potential concentrated in customer operations, marketing/sales, software engineering, and R&D (McKinsey).
+
+Tier 1 — build these first
+Personalization / next-best action — 5–8% revenue lift, 20–30% lower cost to serve (McKinsey); Netflix values recommendations at $1B+/year in avoided churn (Yahoo Finance)
+
+Demand forecasting & supply-chain optimization — 20–50% forecast-error reduction, up to 65% fewer lost sales (McKinsey)
+
+Customer support automation — worth 30–45% of function cost; Klarna's assistant did the work of 700 agents with a $40M profit impact (Klarna)
+
+Software engineering copilots/agents — 20–45% of engineering spend; 55.8% faster task completion in controlled trials (Microsoft Research)
+
+Fraud, risk & anomaly detection — Mastercard detected 3x more fraud with 10x fewer false positives (AWS)
+
+Tier 2 covers pricing, document intelligence, predictive maintenance, churn prediction (rank 9), and sales opportunity mining; Tier 3 covers R&D acceleration, cybersecurity, procurement leakage, manufacturing yield, finance close, and workforce planning.
+
+Where churn fits
+Your example is a strong Tier 2 case — a 5% retention gain can lift profits 25–95% (HBR), and one industrial supplier saved $200M/year with churn prediction (dotData). But it's best built as one branch of a broader next-best-action platform: predict who's worth saving, why they're at risk, which intervention works, and avoid discounting customers who'd stay anyway.
+
+What makes a use case maximally valuable
+Seven traits: large economic pool, high decision frequency, closed feedback loop, an action layer (not just predictions), reliable data exhaust from core systems, measurable ROI via A/B tests or hard operating metrics, and reusability as a platform across use cases. The full report has the deep-dive rationale, scoring method, and a cross-industry mapping if you want to go deeper.  /Users/stevesperandeo/Downloads/enterprise-ai-pipeline-use-cases-research.md  [Image #2] [Image: source: /Users/stevesperandeo/Downloads/generated-image.png]

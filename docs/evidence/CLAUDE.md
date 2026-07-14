@@ -29,4 +29,8 @@ for the capture convention — read it before adding any evidence.**
 
 ## Subfolders
 
-_(none captured yet)_
+- [`01-enterprise-ai-pipeline-use-cases/`](01-enterprise-ai-pipeline-use-cases/) —
+  Deep Research report ranking ~16 enterprise AI use cases into 3 tiers by a composite
+  value score (+ ranking chart). Verbatim report `.md`, chart `.png`, a searchable
+  chart transcription, and the pasted chat summary. See its
+  [`README.md`](01-enterprise-ai-pipeline-use-cases/README.md).

@@ -1,0 +1,35 @@
+Faithful transcription of the text visible in ranking-chart.png (2008x1279 PNG).
+The PNG is the authoritative artifact; this transcription exists so the chart's
+data is searchable in text. Nothing here is interpretation.
+
+TITLE:    Most valuable enterprise AI pipeline use cases
+SUBTITLE: Ranked by economic magnitude, breadth, feasibility, maturity, measurability, and urgency
+
+Horizontal bar chart, X-axis: "Composite value score (0-100)". Bars top to bottom:
+
+  Personalization, recommendations & next-best action ............... 92
+  Demand forecasting, inventory & supply-chain optimization ......... 91
+  Customer support automation & service agents ..................... 90
+  Software engineering copilots & SDLC agents ...................... 89
+  Fraud, risk & anomaly detection .................................. 87
+  Dynamic pricing & revenue management ............................. 84
+  Document intelligence & back-office workflow automation .......... 82
+  Predictive maintenance & asset optimization ...................... 80
+  Churn prediction & retention remediation ......................... 78
+  Sales pipeline optimization & opportunity mining ................. 76
+  R&D/product design and scientific discovery acceleration ......... 74
+  Cybersecurity detection, response & AI governance ................ 73
+  Procurement spend analytics & contract leakage control ........... 70
+  Manufacturing quality, yield & process optimization .............. 68
+  Finance forecasting, close, reconciliation & anomaly detection ... 65
+  Workforce planning and talent optimization ....................... 60
+
+LEGEND (bar colors):
+  Tier 1: broad, immediate cash-flow impact                 -> the 92, 91, 90, 89, 87 bars
+  Tier 2: high value, conditional deployment                -> the 84, 82, 80, 78, 76 bars
+  Tier 3: high leverage but narrower or slower payback       -> the 74, 73, 70, 68, 65, 60 bars
+
+SOURCE LINE:
+  Source: synthesized from McKinsey, BCG, Deloitte, Stanford HAI, IDC, IBM, and
+  case-study evidence cited in report. Scores are analyst judgments, not
+  source-published rankings.
