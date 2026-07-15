@@ -30,17 +30,24 @@ fewer methodologies** (their components are reused across use cases): *many use 
 many solutions ≫ few methodologies*. The tabular methodology above is the most common,
 because tabular data is the majority of business data.
 
-## Current phase — evidence collection
+## Current phase — planning (evidence collection stays open)
 
-We are collecting evidence and stay in this phase **until explicitly told otherwise.**
-Two rules govern it:
+**As of 2026-07-15 the planning phase is active** (at Steve's direction): the portfolio
+plan & strategy lives in [`docs/plan/`](docs/plan/) — read
+[`docs/plan/CLAUDE.md`](docs/plan/CLAUDE.md) and treat the **strategy kernel**
+(`docs/plan/00-strategy-kernel.md`) as binding for all plan work. ⚠️ The plan is
+internal-confidential.
+
+**Evidence collection continues in parallel.** Two rules still govern
+[`docs/evidence/`](docs/evidence/):
 
 1. **Capture verbatim — nothing is lost.** Store every piece of evidence exactly as
    given: no summarising, paraphrasing, truncating, re-formatting, or "cleaning up".
    The repository is the durable record; the raw material must survive intact. Note
    its source/attribution alongside it, but never *in place of* the original text.
-2. **Collect, don't conclude.** Do **not** analyse, rank, recommend, architect, or
-   draw conclusions. When in doubt, capture the material and stop.
+2. **Evidence folders stay analysis-free.** Analysis, ranking, and recommendations
+   belong in `docs/plan/` — never inside an evidence folder. When in doubt, capture
+   the material verbatim and take the conclusions to the plan.
 
 All evidence lives under [`docs/evidence/`](docs/evidence/), one subfolder per
 source/topic. See [`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md) for the exact

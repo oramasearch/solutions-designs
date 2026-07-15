@@ -36,14 +36,18 @@ methodologies** (their components are reused across many use cases) — *many us
 many solutions ≫ few methodologies*. The tabular methodology above is the most common,
 since tabular data is the majority of business data.
 
-## Current phase — evidence collection
+## Current phase — planning (evidence collection stays open)
 
-We are in the **evidence-collection phase** and stay here until told otherwise. All
-evidence is captured **verbatim** — nothing is summarised, paraphrased, or dropped —
-under [`docs/evidence/`](docs/evidence/), one subfolder per source/topic. **Collect,
-don't conclude:** no analysis, ranking, or design yet.
+**As of 2026-07-15 the planning phase is active:** the comprehensive portfolio plan &
+strategy (use cases · solutions · methodologies · industries) lives in
+[`docs/plan/`](docs/plan/), authored by the combined executive team and grounded in the
+evidence. The strategy kernel ([`docs/plan/00-strategy-kernel.md`](docs/plan/00-strategy-kernel.md))
+is binding for all plan docs. ⚠️ The plan is internal-confidential.
 
-Later phases (analysis, design) get their own homes under `docs/` when we reach them.
+**Evidence collection continues** under [`docs/evidence/`](docs/evidence/): new evidence
+is still captured **verbatim** — nothing summarised, paraphrased, or dropped — one
+subfolder per source/topic, and evidence folders stay analysis-free (conclusions belong
+in `docs/plan/`). The design phase (per-solution architecture on Zetta) comes later.
 
 ### Evidence collected so far
 
@@ -78,6 +82,10 @@ without reading everything above or below it.
 - [`docs/`](docs/) — all working docs. → [`docs/README.md`](docs/README.md)
   - [`docs/evidence/`](docs/evidence/) — the verbatim evidence, one subfolder per
     source/topic. → [`docs/evidence/README.md`](docs/evidence/README.md)
+  - [`docs/plan/`](docs/plan/) — the portfolio plan & strategy (kernel + 7 executive
+    docs). → [`docs/plan/README.md`](docs/plan/README.md)
+  - [`docs/prompts/`](docs/prompts/) — the Deep Research prompts feeding evidence.
+    → [`docs/prompts/README.md`](docs/prompts/README.md)
 
 ## Conventions
 
