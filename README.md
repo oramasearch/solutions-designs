@@ -47,7 +47,7 @@ Later phases (analysis, design) get their own homes under `docs/` when we reach 
 
 ### Evidence collected so far
 
-**12 items** (the full, always-current index is
+**15 items** (the full, always-current index is
 [`docs/evidence/README.md`](docs/evidence/README.md) — that's authoritative; this is a
 snapshot):
 
@@ -65,6 +65,9 @@ snapshot):
   [`docs/prompts/`](docs/prompts/) research prompts, authored before the external Deep
   Research results for later comparison: methodologies (35 dossiers, `10`), use cases
   (124 entries, `11`), solutions (34 dossiers, `12`).
+- **External Deep Research compendia** — the external answers to the same three
+  prompts: methodologies (~26 dossiers, `13`), use cases (~140 dossiers, `14`),
+  solutions (43 dossiers, `15`). Each pairs with its internal counterpart above.
 
 ## Navigation (progressive disclosure)
 

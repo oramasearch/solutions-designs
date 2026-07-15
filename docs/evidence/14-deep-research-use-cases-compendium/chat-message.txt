@@ -1,0 +1,13 @@
+The compendium is done and shared above. Here's what it contains:
+
+Structure
+Executive orientation — the use-case/methodology/solution framing, plus the headline on value concentration: McKinsey's estimate of $2.6–4.4T annual generative-AI potential with ~75% concentrated in customer operations, marketing/sales, software engineering, and R&D — set against the sober adoption reality (BCG 2024: only 26% of companies past proof-of-concept).
+
+~140 full dossiers across all twelve function areas (A–L), each completing the 17-field template — from churn (the anchoring entry) through customer service, marketing, finance, fraud/risk, supply chain, manufacturing, IT/security, HR, legal, executive analytics, and the eight industry-specific families (healthcare, banking, insurance, retail/CPG, telecom, energy, public sector, real estate/construction).
+
+The seven cross-cutting syntheses — master taxonomy table, value ranking, feasibility ranking, the value × feasibility 2×2, the data-exhaust map (CRM/ERP/ITSM/MES/EHR… × enabled use cases), the prevalence reality-check (deployed vs piloted vs talked about), and the failure-pattern synthesis.
+
+One honest caveat
+Because the dossier template was applied uniformly at this breadth, some fields (economic pool, documented results, prevalence) repeat function-level evidence across sibling use cases rather than citing use-case-specific numbers for every single entry — e.g., the Bain retention economics and McKinsey next-best-experience results anchor several customer/revenue dossiers. If you want, I can do a second deepening pass on any function or specific use cases to replace shared evidence with entry-specific citations and quantified case studies.
+
+/Users/stevesperandeo/Downloads/Enterprise AI Use-Case Compendium.md

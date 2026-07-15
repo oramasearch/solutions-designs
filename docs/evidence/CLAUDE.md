@@ -100,3 +100,20 @@ for the capture convention — read it before adding any evidence.**
   syntheses (anatomy, adaptation catalog, methodology→solutions fan-out,
   action-integration, measurement loops, why-solutions-fail, maturity). See its
   [`README.md`](12-claude-solutions-compendium/README.md).
+- [`13-deep-research-methodologies-compendium/`](13-deep-research-methodologies-compendium/)
+  — the **external Deep Research answer** to the methodologies prompt: ~26 dossiers
+  (A–V, 18-field template, tabular anchor) + the 5 syntheses. 123KB, verbatim +
+  pasted summary. Counterpart of item 10. See its
+  [`README.md`](13-deep-research-methodologies-compendium/README.md).
+- [`14-deep-research-use-cases-compendium/`](14-deep-research-use-cases-compendium/) —
+  the **external Deep Research answer** to the use-cases prompt: ~140 full dossiers
+  (A–L, 17-field template, churn anchor) + the 7 syntheses. 852KB, verbatim + pasted
+  summary (which states a caveat: some function-level evidence shared across sibling
+  entries). Counterpart of item 11. See its
+  [`README.md`](14-deep-research-use-cases-compendium/README.md).
+- [`15-deep-research-solutions-compendium/`](15-deep-research-solutions-compendium/) —
+  the **external Deep Research answer** to the solutions prompt: 43 dossiers (A–J,
+  18-field template, churn-retention anchor, domain governance detail) + the 7
+  syntheses. 366KB, verbatim + pasted summary (which notes two redraft rounds before
+  fields were unique per dossier). Counterpart of item 12. See its
+  [`README.md`](15-deep-research-solutions-compendium/README.md).

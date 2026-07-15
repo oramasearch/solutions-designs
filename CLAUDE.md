@@ -46,7 +46,7 @@ All evidence lives under [`docs/evidence/`](docs/evidence/), one subfolder per
 source/topic. See [`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md) for the exact
 capture + naming convention.
 
-**Collected so far — 12 items** (authoritative live index:
+**Collected so far — 15 items** (authoritative live index:
 [`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md)):
 
 - `01`–`03` — three Deep Research reports on the most valuable enterprise AI pipeline
@@ -62,6 +62,10 @@ capture + naming convention.
   `docs/prompts/` research prompts (methodologies 35 dossiers · use cases 124 entries ·
   solutions 34 dossiers), authored 2026-07-14 before the external Deep Research results,
   Perplexity-assisted, for later comparison. Generated evidence — citations are leads.
+- `13`–`15` — **External Deep Research compendia**: the external answers to the same
+  three prompts (methodologies ~26 dossiers · use cases ~140 dossiers · solutions 43
+  dossiers), captured verbatim. Each pairs with its internal counterpart (10↔13,
+  11↔14, 12↔15).
 
 Keep this snapshot and the `docs/evidence/` index in sync as items are added.
 

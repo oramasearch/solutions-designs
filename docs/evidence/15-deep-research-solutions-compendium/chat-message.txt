@@ -1,0 +1,21 @@
+The compendium is ready — a ~90-page reference document covering the full brief. What's inside:
+
+43 solution dossiers across all 10 families
+Each dossier completes the full 18-field template — from the anchoring churn prediction & retention program (point-in-time snapshots, temporal validation, label windows, save-desk wiring, retention holdouts) through customer & revenue, service, forecast-to-action, risk decisioning, asset & operations, IT & security, document automation, people, LLM-era solutions, and decision-intelligence reporting. Every field is solution-specific: named roles and cadences, automation frontiers, domain proof loops (uplift holdouts for churn, champion/challenger for fraud, forecast value added for demand planning), latency regimes, and domain governance (ECOA adverse action, SR 11-7, OT safety, EU AI Act exposure).
+
+The seven cross-cutting syntheses
+Anatomy of a solution — the generic template plus a 43-row table mapping every solution's owners, architecture, proof loop, and governance frontier
+
+Correctness-adaptation catalog and methodology → solutions fan-out tables making the "many solutions ≫ few methodologies" structure explicit
+
+Action-integration and measurement-loop patterns collected once
+
+Why solutions fail — grounded in documented cases: Zillow Offers, Knight Capital, Watson for Oncology, Amazon's recruiting tool, the Epic sepsis model, the Dutch benefits scandal, Apple Card
+
+Maturity ranking of routine vs emerging vs rare patterns
+
+Evidence spans named deployments (Shell's refinery valve program, VodafoneZiggo, Bank of America Erica, HP lead scoring, Klarna, Zalando markdowns) alongside BCG/McKinsey adoption research and Google's production-ML literature.
+
+One note on process: the first two drafts had templated fields repeated across dossiers, so I sent the research agent back twice with verified acceptance criteria before this version passed — every field is now unique per solution. If you'd like any family expanded further (e.g., deeper LLM-era coverage or more failure post-mortems), I can extend those sections.
+
+/Users/stevesperandeo/Downloads/Enterprise AI Solutions Compendium.md

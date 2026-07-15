@@ -1,0 +1,12 @@
+The compendium is complete and shared above. It covers the full brief:
+
+What's inside
+Executive orientation — the methodology-vs-use-case-vs-solution framing, the component-reuse thesis, and the evidenced prevalence headline that tabular supervised learning dominates enterprise ML because most business data is tabular.
+
+~26 methodology dossiers spanning all 22 checklist families (A–V), each following your 18-field template — pipeline stages, canonical algorithms per stage, feature engineering, leakage pitfalls and safeguards, evaluation, explainability, data/compute requirements, maturity, reusable components, failure modes, tooling, and key references. It opens with the anchoring tabular supervised learning entry (extract → feature engineering → GBT training → SHAP → report), and splits families where pipelines genuinely differ (e.g. fraud-specific detection, embedding-based clustering, entity resolution vs graph ML).
+
+Five cross-cutting syntheses — the component reuse matrix, the modality × problem-class selection guide, the evidence-backed prevalence ranking, the maturity spectrum, and the shared correctness-discipline summary.
+
+If you'd like any dossier expanded further (say, deeper treatment of causal inference variants or the foundation-model adaptation decision space), a PDF/Word version, or a companion selection flowchart, just say the word.
+
+/Users/stevesperandeo/Downloads/Enterprise AI Methodologies Compendium.md
