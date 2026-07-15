@@ -7,6 +7,24 @@ design docs only. Read the zetta-bridge
 [`CLAUDE.md`](https://github.com/oramasearch/zetta-bridge/blob/main/CLAUDE.md) for the
 product framing and the blueprint/sync model.
 
+## Core vocabulary — use case · solution · methodology
+
+Three distinct terms govern this exercise. Keep them distinct in every doc. Full detail
++ worked example in [`docs/vocabulary.md`](docs/vocabulary.md).
+
+- **Use case** — *the problem we're solving* (e.g. churn).
+- **Methodology** — *the AI methods we arrange to formulate into a solution to a use
+  case* — the composable sequence of methods (extract → feature-engineer → train →
+  explain → report), described apart from any one deployment.
+- **Solution** — *how we solve that problem*: a methodology **applied** correctly for the
+  real conditions (e.g. timeseries-appropriate, leakage-free) and **wired to the business
+  action** that realizes the value.
+
+A **use case** is answered by a **solution**, which is a **methodology** arranged and
+correctly applied. Example: churn (use case); extract → features → XGBoost → SHAP →
+report (methodology); that pipeline made leakage-free on time-ordered data + using the
+report to change the business to reduce churn (solution).
+
 ## Current phase — evidence collection
 
 We are collecting evidence and stay in this phase **until explicitly told otherwise.**

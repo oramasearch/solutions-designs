@@ -3,8 +3,11 @@
 All working documentation for the enterprise AI solution designs. Navigate down via
 each subfolder's own `README.md` (progressive disclosure).
 
-## Subfolders
+## Contents
 
+- [`vocabulary.md`](vocabulary.md) — the governing terms **use case · solution ·
+  methodology** (definitions, their relationship, and a worked churn example). Read this
+  first; it's the vocabulary every other doc uses.
 - [`evidence/`](evidence/) — the **verbatim** evidence, one subfolder per source/topic.
   This is the active area during the evidence-collection phase.
   → [`evidence/README.md`](evidence/README.md)

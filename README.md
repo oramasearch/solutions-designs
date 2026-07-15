@@ -17,6 +17,22 @@ space of evidence and design docs. The product itself lives in
 > and learns from your data. *Intelligence Velocity for Big Thinkers.* Full framing
 > in the [zetta-bridge `CLAUDE.md`](https://github.com/oramasearch/zetta-bridge/blob/main/CLAUDE.md).
 
+## Core vocabulary — use case · solution · methodology
+
+Three distinct terms govern this exercise (full detail + worked example in
+[`docs/vocabulary.md`](docs/vocabulary.md)):
+
+- **Use case** — *the problem we're solving* (e.g. churn).
+- **Methodology** — *the AI methods we arrange to formulate into a solution to a use
+  case* (e.g. extract tabular data → feature-engineer → train XGBoost → SHAP feature
+  importance → report).
+- **Solution** — *how we solve that problem*: that methodology **applied** in a correct
+  real-world setup (e.g. timeseries-appropriate, leakage-free) and **connected to the
+  business action** that realizes the value (e.g. use the report to reduce churn).
+
+A use case is answered by a solution, which is a methodology arranged and correctly
+applied.
+
 ## Current phase — evidence collection
 
 We are in the **evidence-collection phase** and stay here until told otherwise. All
