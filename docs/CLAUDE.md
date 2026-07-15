@@ -17,11 +17,12 @@ substance is one level down.
   three vocabulary layers are covered: **methodologies**, **use-cases**, and
   **solutions** compendium prompts.
 - [`plan/`](plan/) → [`plan/CLAUDE.md`](plan/CLAUDE.md) — **the portfolio plan &
-  strategy** (started 2026-07-15; ⚠️ internal-confidential). The strategy kernel
+  strategy** (v2, 2026-07-15; ⚠️ internal-confidential). **Future-state only · no
+  sequencing · ROI-central · Auto-RL-central.** The strategy kernel
   (`plan/00-strategy-kernel.md`) is **binding** — read it before editing any plan doc;
   the numbered docs (01 CEO · 02 CPO use cases · 03 CTO methodologies · 04 solutions
-  catalog · 05 CMO/CRO industries+GTM · 06 CFO financials · 07 COO roadmap+risks)
-  elaborate it.
+  catalog · 05 CMO/CRO customers+GTM · 06 CFO ROI pricing · 07 COO ROI-risk+operating
+  model · 08 CDO data strategy) elaborate it.
 
 _The design phase (per-solution architecture on Zetta) gets its own subfolder when we
 reach it; add it to this list and to [`README.md`](README.md) when created._

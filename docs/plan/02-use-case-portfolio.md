@@ -1,1570 +1,1751 @@
-# Use-case portfolio — the demand map (D3 elaborated)
+# Use-case portfolio — the scored demand map (D4 elaborated)
 
-> **Status:** Draft v1 — 2026-07-15 · **Author:** CPO (combined executive team) ·
-> **⚠️ Internal-confidential** — inherits pricing and partner detail from evidence 07/08.
+> **Status:** v2 — 2026-07-15 · **Author:** CPO (combined executive team) ·
+> **⚠️ Internal-confidential** · Elaborates kernel v2 (future state · no sequencing ·
+> ROI-central · Auto-RL-central)
 >
 > **Kernel-binding.** This document elaborates the [strategy kernel](00-strategy-kernel.md)
-> **D3 (use-case tiers)** and the use-case catalog leg of **D1 (portfolio architecture)**.
-> The kernel's Tier-1 table (UC-1…UC-9), its T2/T3 lists, its anti-portfolio, and its
-> selection criteria are **authoritative**; nothing below overrides them. Where the
-> evidence surfaced a genuine tension with a kernel decision, it is recorded in
-> [Appendix A — Tensions for kernel review](#appendix-a--tensions-for-kernel-review)
-> and is resolved in the kernel first. All claims cite evidence as **(evidence NN)**,
-> referring to [`../evidence/`](../evidence/). Evidence-quality flags follow the item-11
-> convention: **[M]** measured/audited · **[C]** company/consultant-reported ·
-> **[V]** vendor claims · **[T]** thin/qualitative.
+> **D4 (the use-case portfolio)** through the lens of **D1 (risk-adjusted customer ROI)**,
+> with **D2 (Auto-RL at the center)** and **D7 (the data supply chain)** carried into every
+> entry. v2 supersedes the v1 catalog entirely. There is **no time dimension anywhere in
+> this document**: no sequencing, no readiness assessments, no dependency ordering.
+> Feasibility here means exactly one thing — *"will this be a good business?"* — with the
+> product assumed complete as promised (evidence 06). Every entry is scored by
+> **E[ROI] × p(success)**; every entry names what its **customer agent** does; every entry
+> defines its **data supply chain** (detail → [`08-data-strategy.md`](08-data-strategy.md)).
+> Genuine tensions with the kernel go to [Appendix A](#appendix-a--tensions-for-kernel-review)
+> and resolve in the kernel first. Citations are **(evidence NN)** →
+> [`../evidence/`](../evidence/). Evidence-quality flags follow the item-11 convention:
+> **[M]** measured/audited · **[C]** company/consultant-reported · **[V]** vendor claims ·
+> **[T]** thin/qualitative.
 
 ---
 
-## 1. Portfolio overview
+## 1. The scored catalog frame — D1 operationalized
 
 ### 1.1 What this catalog is
 
-Per [`../vocabulary.md`](../vocabulary.md), a **use case is the problem** — a generic,
-recurring enterprise decision problem stated independently of any way of solving it.
-This catalog is the **demand map** of the solution factory (kernel §1): the tiered set
-of problems Orama Zetta pursues, the explicit list of problems it refuses, and the
-process by which new problems enter. Each Tier-1 use case pairs ~1:1 with a solution
-(`S-n`, specified in [`04-solutions-catalog.md`](04-solutions-catalog.md)) built from
-the methodology waves (`M-n`, [`03-methodology-portfolio.md`](03-methodology-portfolio.md)).
+Per [`../vocabulary.md`](../vocabulary.md), a **use case is the problem** — a recurring
+enterprise decision problem stated independently of any way of solving it. This catalog
+is the **complete demand map of the solution factory** (kernel §1): every enterprise
+problem where risk-adjusted customer ROI is strong, organized into **ROI bands** (kernel
+D4), plus the problems we refuse and the argument for each refusal. Each use case pairs
+~1:1 with a solution module (`S-n`, [`04-solutions-catalog.md`](04-solutions-catalog.md))
+composed from the methodology toolbox (`M-n`,
+[`03-methodology-portfolio.md`](03-methodology-portfolio.md)) — and in the future state
+**the composer is the customer's agent** (kernel D2): the Auto-RL-trained operator that
+builds, runs, monitors, explains, and improves the solution inside the customer's
+environment, learning on the ROI signal itself (kernel D7.2).
 
-The structural fact the whole plan rests on shows up immediately in this catalog:
-**124 use cases in our internal compendium (evidence 11), ~140 in the external one
-(evidence 14), 400 prior-art demand instances (evidence 09) — and nearly all of them
-reduce to one skeleton**: an *entity*, a repeated *decision* about it, a *label* that
-defines the right answer, and a *horizon* over which the decision matters (evidence 11,
-executive orientation). That is why nine launch use cases and eleven methodologies can
-credibly address a demand space this wide.
+The structural fact the catalog rests on: **124 use cases in the internal compendium
+(evidence 11), ~140 in the external one (evidence 14), 400 prior-art demand instances
+(evidence 09), 93 competitor accelerators (evidence 04) — and nearly all reduce to one
+skeleton**: an *entity*, a repeated *decision* about it, a *label* that defines the right
+answer, and a *horizon* over which the decision matters. That is why a compact methodology
+toolbox, composed by agents, credibly addresses a demand space this wide (kernel §1;
+evidence 10/13).
 
-### 1.2 The tier structure (kernel D3, restated)
+### 1.2 Band structure (kernel D4, restated)
 
-| Tier | Meaning | Contents | Commercial posture |
+| Band | Meaning | Contents | Commercial posture |
 |---|---|---|---|
-| **Tier 1** | Launch portfolio — pursue now | **UC-1…UC-9** (kernel table, fixed) | Priced modules on Enterprise (kernel D6); design-partner scope |
-| **Tier 2** | Year 1–2, each behind an explicit **gate** (governance/engine maturity) | 8 use cases (§3) | Roadmap commitments only after the gate is credibly scheduled |
-| **Tier 3** | Later; each behind a **qualifying condition** | 6 use cases (§4) | Not roadmapped; tracked in the catalog for intake re-scoring |
-| **Anti-portfolio** | Explicitly refused | 5 exclusions (§5) | Disqualifiers in sales and intake; revisited only by kernel edit |
+| **Band A** | Highest risk-adjusted ROI — the portfolio core | 12 use cases, full ROI dossiers (§3) | Priced modules with ROI contracts (D6/D8); premium, evidence-backed pricing |
+| **Band B** | Strong ROI, higher variance | 12 use cases, structured dossiers (§4) | Priced modules with success-linked components (D8); each carries its **A-condition** — the ROI/risk change that would re-band it |
+| **Band C** | Real but selective ROI | 10 entries (§5) | Pursued account-by-account; each carries the **account-level D1 condition** that admits it |
+| **Anti-portfolio** | Refused on ROI/risk/measurability/governance grounds | 8 exclusions (§6) | Disqualifiers in sales and intake; revisited only by kernel edit |
 
-**ID scheme.** `UC-n` IDs are fixed and aligned with the wtm ORAMA-ZETTA blueprint,
-where **UC-1 = churn** already exists as the built exemplar (kernel §2). UC-2…UC-9 are
-assigned by the kernel D3 table and are reserved. **Tier-2 and Tier-3 entries do not
-carry UC-n IDs yet**; they carry provisional catalog slugs (`T2-n`, `T3-n`) and receive
-the next free `UC-n` only at admission through the intake process (§6) — this keeps the
-blueprint, the GitHub issue keys, and this catalog from churning on speculative entries.
+**Bands are scores, not schedules.** A band says how good the business is at the median
+target account, risk-adjusted — never when anything happens. Entries move between bands
+when their **scores** move (new evidence, new measured outcomes, a changed governance
+posture), never because time passed. **IDs are stable; bands float.** `UC-n` IDs are
+fixed and aligned with the wtm ORAMA-ZETTA blueprint (UC-1 = churn, kernel §2); v1's
+UC-1…UC-9 assignments are preserved, UC-10+ extend the registry. A use case's ID never
+changes when its band does.
 
-### 1.3 Selection criteria (kernel D3, restated as the working rubric)
+### 1.3 The D1 scoring rubric, operationalized
 
-Every tiering decision below scores the same seven criteria; §6.3 turns them into the
-reusable intake scorecard.
+Kernel D1 fixes the calculus: `score = E[ROI] × p(success)`. This section turns it into
+a concrete scoring method — and proposes the p(success) rubric + calibration mechanism
+that kernel open question 3 asks for.
 
-1. **Economic pool** — the dollars the decision governs (revenue, margin, losses,
-   working capital, labor), evidence-cited with quality flags.
-2. **Decision frequency** — how often the decision repeats; value compounds with
-   frequency (evidence 01/02/03, unanimous).
-3. **Closed-loop actionability** — a real system of action exists to execute the
-   decision; "a score nobody acts on" is the #1 failure pattern (evidence 11 §S7;
-   evidence 03).
-4. **Data availability, tabular-first** — the data exhaust already exists in systems
-   of record, with labels generated as a by-product of operations (evidence 11 §S5).
-5. **Measurability** — a hard operating KPI already tracks the outcome; impact provable
-   by holdout/A-B or clean before/after (evidence 02's scoring model; evidence 12 §S6).
-6. **Governance fit — low-liability first** — assistive before automated, shadow
-   production before action, regulated-decision use cases only behind gates
-   (evidence 08 design-partner research; kernel D7.5, D9.3).
-7. **Engine feasibility today** — runnable on the current wave's engine capability
-   (kernel D2/D7.3 co-sequencing).
+#### 1.3.1 E[ROI] — expected customer return ÷ customer investment
 
-The three external tierings converge on the same shape: item 01's seven traits (pool,
-frequency, closed loop, action layer, data exhaust, measurable ROI, platform
-reusability), item 02's shared-primitives framing, and item 03's six-dimension rubric
-(pool, frequency/scale, actionability, data availability, incrementality, feasibility)
-are all restatements of this list (evidence 01, 02, 03). Item 14 weights its value score
-35% pool / 25% frequency / 20% actionability-data / 20% measurability (evidence 14) —
-again the same criteria. The kernel adds the two Zetta-specific criteria (6, 7) that no
-external ranking carries: **governance fit** and **engine co-sequencing**. Those two are
-why our tiering is *not* simply the external value ranking replayed — see §8 and
-Appendix A for every place we deviate and why.
+Every entry carries an **ROI model**: named value levers (revenue lift, cost reduction,
+loss avoidance, working-capital release, risk reduction), each anchored to evidence-11/14
+pool numbers with quality flags, divided by the four customer-investment components the
+kernel names (module price + integration effort + data work + change cost). Four screen
+scores (0–5) make entries comparable before the arithmetic:
 
-### 1.4 Portfolio at a glance
+| Component | 0 | 1–2 | 3–4 | 5 |
+|---|---|---|---|---|
+| **V1 · Pool intensity** — annual addressable return at the median target account, as % of revenue (or the account's relevant base: loss pool, working capital, labor pool) | <0.01% | 0.01–0.2% | 0.2–1% | >1% |
+| **V2 · Decision frequency** — how often the decision repeats (value compounds with frequency; evidence 01/02/03, unanimous) | one-off study | quarterly–monthly | weekly–daily queues | continuous / per-event |
+| **V3 · Lever hardness** — evidence quality behind the return claim | asserted [T] | vendor-claimed [V] | company/consultant [C] with arithmetic | measured/audited [M], replicated |
+| **V4 · Investment lightness** — inverse of module price + integration + data work + change cost | enterprise-program-scale change | multi-system integration + org redesign | few systems of record, one owning team | data exhaust in 1–2 systems, single-team adoption, existing action path |
 
-| UC | Use case | Methodology (D2) | Wave | 11 value tier | 14 value rank | Primary evidence anchor |
-|---|---|---|---|---|---|---|
-| UC-1 | Churn prediction & retention *(anchor — Motive)* | M-1 (+M-6, +M-7 later) | W1 | T1 (#6) | #13 (4.8) | 5-pt retention → +25–95% profit [M] (Bain/HBR; evidence 11 §A1, 14) |
-| UC-2 | Lead & opportunity scoring | M-1 | W1 | T3 [C] | #51 (4.45) | +4–8 pts return-on-sales vs control [M/C] (McKinsey; evidence 11 §A4) |
-| UC-3 | Customer lifetime value | M-1 | W1 | T4 | #19 (4.75) | Composition layer for UC-1/UC-2 (kernel D3); LTV:CAC discipline (evidence 11 §A5) |
-| UC-4 | Collections prioritization | M-1 | W1 | T2 (#20) [T/V] | **#2 (5.0)** | $2.7M cash per DSO day per $1B revenue (arithmetic; evidence 11 §D2); €1.56T excess working capital [C] (PwC via evidence 14) |
-| UC-5 | Demand forecasting | M-4 | W2 | T1 (#3) | #4 (5.0) | $1.77T inventory-distortion pool [M-survey] (IHL 2023; evidence 11 §F1, 14) |
-| UC-6 | Inventory / replenishment support (assistive) | M-4 (+M-11 later) | W2 | T1 (#3, joint) | #5 (5.0) | Inventory −20–35% in adopter cohorts [C] (McKinsey; evidence 11 §F2) |
-| UC-7 | KPI anomaly detection & driver analysis | M-1/M-5 | W1–W2 | T3 [T] | grid: prioritize-now | Mechanism-strong, evidence-thin — flagged honestly (evidence 11 §K1/K2) |
-| UC-8 | Predictive maintenance (assistive) | M-1/M-5 (+M-6) | W1–W2 | T1 (#8) | #7 (5.0) | ~$864B–$1.4T FG500 downtime pool [C-modeled] (Siemens/Senseye; evidence 11 §G1, 14) |
-| UC-9 | Automated email outbound | M-1+M-3 | W1 | components T4 | components mid | One Orama catalog **#2** (evidence 07) — internal priority, not external ranking |
+The screen is a comparator; the **binding number is the ROI math sketch** each Band-A/B
+dossier carries: an explicit, illustrative `return ÷ investment` computation at a stated
+median account, producing an **E[ROI] multiple** (e.g. "≈5× at a $500M-revenue account").
+Sketches are deliberately conservative: mid-range pool numbers, full-cost investment
+(including the customer's own change cost), first-year return only — no compounding
+credit, even though the agent's whole design compounds it (D2/D7).
 
-Reading note on the two ranking columns: they measure *standalone expected value for a
-typical enterprise*, not fit-to-Zetta. UC-2, UC-3, UC-7 and UC-9 rank modestly there
-and are in our Tier 1 anyway — in every case because of a criterion the external
-rankings don't score: pipeline reuse with UC-1 (UC-2, UC-3), the exec surface + Zetta's
-own semantic-layer remedy (UC-7), or an internal One Orama commitment (UC-9). Each of
-those judgments is examined in its brief and, where genuinely tense, sent to Appendix A.
+#### 1.3.2 p(success) — the proposed rubric (answers kernel open question 3)
+
+p(success) is the probability the solution actually delivers the modeled return in
+production. The failure evidence is unambiguous that enterprise AI fails at the
+problem-and-plumbing layer, rarely the model layer (evidence 03; 11 §S7; 12 §S6; 14; 15)
+— so the rubric scores the five kernel D1 drivers, **multiplicatively**, because any
+single broken driver kills the return regardless of the others:
+
+| Driver | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| **P1 · Data & label supply** — decision-grade data + labels as an operational by-product | data must be acquired/instrumented; labels don't exist | fragmented; labels derivable with heavy work | in systems of record; labels derivable; point-in-time reconstructible | labels generated free by operations; action+outcome capture already natural |
+| **P2 · Actionability** — a real action path with a named owner | insight only; no owner | owner exists, workflow doesn't | named system of action, human-mediated | the decision writes into the system of action under governance |
+| **P3 · Measurability** — the return is provable | no KPI; impact unattributable | KPI exists, no baseline | clean before/after credible | holdout/uplift natural and cheap |
+| **P4 · Organizational adoption** — someone acts on the output, keeps acting | no budget-adjacent owner anywhere | champion but no operating cadence | owner + cadence; adoption effort real but bounded | output lands inside an existing operating ritual (queue, planning cycle, close) |
+| **P5 · Governance fit** — the decision class survives scrutiny | autonomous high-stakes adverse decision (uninsurable exposure) | regulated decision; heavy assurance burden | sensitive but assistive-safe; governance maps to our primitives | low-liability by nature; governance is a selling point, not a cost |
+
+**Score → probability mapping (the f-table, initial priors):** 3 → 0.95 · 2 → 0.80 ·
+1 → 0.60 · 0 → 0.30, and `p(success) = f(P1)·f(P2)·f(P3)·f(P4)·f(P5)`. An all-3 use case
+scores 0.77 — deliberately: even perfect problems fail sometimes, and the evidence-base
+failure rates (evidence 11 §S6/S7, 14, 15) do not support ex-ante probabilities above
+~0.8 for anything. One weak driver (a single 1) drags a perfect entry to ~0.49 — matching
+the observed pattern that one broken driver, not average quality, predicts failure.
+**p(failure) = 1 − p(success) is quoted per entry with its dominant driver named** —
+first-class, priced (D8), and managed at portfolio level (D9).
+
+**The band assignment rule:**
+
+- **Band A** — risk-adjusted multiple `E[ROI] × p(success)` **≥ 3×** at the median
+  target account **and** no P-driver scored ≤1 without a designed remedy written into
+  the dossier.
+- **Band B** — risk-adjusted multiple **≥ 1.5×**, or ≥3× carried by a single fragile
+  driver (higher variance). Every Band-B entry names its **A-condition**: the specific
+  ROI or risk quantity whose change re-bands it — never a time condition.
+- **Band C** — crosses 1.5× only under a named **account-level condition** (a customer
+  property that changes V1–V4 or a P-driver). Scored per account at intake, not
+  portfolio-wide.
+- **Anti-portfolio** — the return is structurally unmeasurable (P3→0 by construction),
+  no action path can exist (P2→0), or governance exposure caps p(success) below
+  viability regardless of pool size (P5→0).
+
+#### 1.3.3 Calibration — how p(success) gets honest (proposal for kernel Q3)
+
+The rubric above is a prior. It becomes a calibrated instrument through the same
+measurement loop that proves ROI (D6/D8 — the loop is simultaneously the proof, the
+billing instrument, and the calibration feed):
+
+1. **Scorecard of record.** Every deployment freezes its five P-scores, the f-table
+   version, and the agreed ROI model at contract signature. No retro-editing.
+2. **Realized outcome.** The solution's measurement loop (holdout / uplift / hard
+   operating KPI — per-entry design in §3/§4) yields realized ROI. **Success** = realized
+   return ≥ 80% of the modeled return over the agreed measurement window; graded
+   shortfalls recorded, not rounded.
+3. **Reliability tracking.** Quarterly: predicted p(success) vs realized success
+   frequency by decile (reliability curve) + Brier score, portfolio-wide and per driver.
+   Every failure is attributed to the driver that actually broke (post-mortem taxonomy
+   from evidence 11 §S7 / 15 failure patterns), so the **f-table updates at the driver
+   level**, not just in aggregate.
+4. **Ownership.** The CDO owns the outcomes ledger (it is a data-supply-chain asset —
+   [`08-data-strategy.md`](08-data-strategy.md)); the CPO owns the f-table and band
+   assignments; f-table changes are kernel-visible edits. Pricing (D8) consumes the same
+   calibrated p — a use case whose realized success beats its prior earns premium
+   pricing; one that underperforms gets success-linked structure, automatically.
+5. **Cold-start priors.** Until realized data accumulates, the f-table is seeded from
+   the evidence base's failure statistics (evidence 11 §S6/S7 · 14 · 12 §S6 · 15) — and
+   the generalized cross-customer patterns the agents accumulate (kernel D7.3) become
+   the compounding calibration asset: every deployment sharpens every future prior.
+
+### 1.4 What every entry carries (the dossier contract)
+
+**Band A** (full dossiers): problem + decision skeleton (entity · decision · label ·
+horizon) → ROI model (levers with pool numbers + flags · investment shape · math sketch)
+→ p(success) scoring with p(failure) drivers named → measurement design (the pricing
+instrument, D8) → **what the customer's agent does** (operate / monitor / improve, with
+autonomy classes per the kernel-Q5 proposal below) → data supply chain (→ doc 08) →
+industry resonance (D3 pools) → evidence cross-refs (11/14 dossiers · 04 accelerators ·
+09 categories · 01–03 tierings). **Band B**: same fields, tighter, plus the A-condition.
+**Band C**: one paragraph + the admitting account condition.
+
+**Autonomy classes (working proposal for kernel open question 5, used throughout):**
+
+- **AUT-1 · Observe & explain** — read, score, decompose, report. Autonomous, audited.
+- **AUT-2 · Reversible, capped actions** — queue ordering, task creation, draft
+  documents, send-time/sequencing within policy envelopes, suppression. Autonomous
+  under audit, with blast-radius caps and automatic rollback.
+- **AUT-3 · Committing actions** — actions that move money, inventory, or customer-visible
+  state (PO release, dunning execution, offer grants, credit holds). Approval-gated by
+  default; graduate to AUT-2 per action class when the account's measured
+  override/parity record supports it — an evidence condition, never a time condition.
+- **AUT-4 · Regulated adverse decisions** — credit denial, claim denial, employment
+  action, benefits. **Never autonomous** (anti-portfolio boundary AP-3); the agent
+  prepares, documents, and monitors; a human decides.
 
 ---
 
-## 2. Tier 1 — full product briefs (UC-1…UC-9)
-
-Format per brief: problem → decision framing → frequency & pool → data exhaust &
-connectors → actions & systems of action → KPIs & proof → industry variants across the
-kernel's Tier-1a (FS/banking), 1b (insurance), 1c (operational account) beachheads →
-methodology mapping and module staging → evidence cross-references → open product
-questions. The correctness adaptations and business wiring that turn each of these into
-its S-n module live in [`04-solutions-catalog.md`](04-solutions-catalog.md); this
-document stays at the problem layer plus what the module must contain.
-
-### UC-1 — Churn prediction & retention *(anchor — Motive)*
-
-**Problem statement.** Customers leave, downgrade, or go dormant, destroying recurring
-revenue and wasting sunk acquisition cost. The business wants to know **which customers
-will leave, when, and why**, early enough that a targeted, owned intervention keeps
-them — and wants the program's impact provable against a holdout (evidence 11 §A1).
-Churn is the anchoring use case of the entire factory: the kernel calls it "the
-archetype of the whole factory" (kernel D3), evidence 03 ranks it **Tier-1 #1** and
-calls the churn pipeline "exactly the right pattern," and it is the built exemplar
-(UC-1 in the wtm blueprint; the Motive design-partner wedge is live).
-
-**Decision framing.** *Entity:* the account / subscriber / policyholder / merchant.
-*Decision:* intervene or not, and with what treatment. *Label:* churned within the
-horizon — cancellation, non-renewal, or an inactivity definition; **the label
-definition is itself a design decision** (contractual vs behavioral churn). *Horizon:*
-30–90 days (consumer/telco), one renewal cycle (B2B SaaS/insurance, 3–12 months);
-scored weekly or monthly (evidence 11 §A1.5; evidence 14 churn dossier: horizon 7
-days–12 months).
-
-**Decision frequency & economic pool.** Every active customer is re-scored each cycle:
-a mid-size telco scores millions of subscribers monthly; a B2B SaaS scores thousands of
-accounts weekly. Value concentrates in the high-CLV top decile — intervention budgets
-cover only a fraction of the base, so **ranking quality at the top matters more than
-global accuracy** (evidence 11 §A1.6). Pool anchors: acquiring a customer costs
-**5–25×** retaining one [M] (HBR/Bain); a **5-point retention increase raises profits
-25–95%** [M] (Reichheld & Sasser via Bain — cited identically by evidence 11 and 14);
-typical annual churn runs ~5–7% (B2B SaaS) to 15–25% (telecom) [C]. Program-level
-results: telecom churn −15% with ~10% ARPU uplift within a year [C]; Vodafone churn −8%
-from personalized plan recommendations [C]; a McKinsey payments example: merchant
-attrition −20%/yr [C] (evidence 11 §A1.14; evidence 14 §14; evidence 02). Honest flag:
-rigorously audited third-party churn RCTs are rare; most program evidence is
-company-reported (evidence 11 §A1.14) — which is exactly why S-1's definition of done
-includes the holdout (kernel D4).
-
-**Data exhaust & required connectors.** Product usage/telemetry, billing & payments,
-support tickets, CRM health data, NPS/CSAT, contract/renewal dates, marketing
-engagement. Systems of record → launch connector set: **CRM (Salesforce/HubSpot),
-billing (Stripe/Zuora), product analytics (Amplitude/Segment/warehouse events), support
-(Zendesk)** (evidence 11 §A1.7). The exhaust almost always exists; **the gap is joining
-it at the account level** — which is why M-2 (entity resolution, thin v1) ships in Wave
-1 as the correctness gate's dependency (kernel D2). Prerequisites: 12–24 months of
-history with churn events; point-in-time feature discipline (leakage is the classic
-failure — post-cancellation signals); an owner with an intervention budget
-(evidence 11 §A1.10).
-
-**Actions enabled & systems of action.** Ranked risk list **with drivers** → CSM
-outreach task (CRM queue), save-desk routing, targeted offer, service-recovery play,
-renewal escalation, win-back sequencing — through CRM tasks, marketing automation, and
-save-desk workflows. A bare score without reasons routinely goes unused (evidence 11
-§A1.8); the SHAP driver layer is not a nice-to-have, it is the actionability mechanism.
-Evidence 03's generalization table states the pattern: *churn → "who will leave" →
-offer / outreach / service recovery.*
-
-**KPIs & how impact is proven.** Gross/net churn, NRR, renewal rate, save rate, CLV.
-Proof: **holdout/A-B on the intervention** (treat half the flagged accounts) or
-before/after on cohort churn; the clean design — uplift among treated-vs-control
-at-risk accounts — is well understood, making churn one of the most provable use cases
-in the catalog (evidence 11 §A1.9). This maps 1:1 onto the kernel D4 measurement-loop
-requirement and the shadow-production gate (D7.5).
-
-**Industry variants (kernel D5 beachheads).**
-- **Tier 1a — FS/banking:** *deposit/customer attrition* — silent churn: balances
-  drift to zero without closure, so the label is behavioral, not an event; regulation
-  constrains differential offers (evidence 11 §A1.11). Named beachhead solution in the
-  kernel D5 table.
-- **Tier 1b — insurance (specialty/MGA):** *lapse/persistency* — price-driven at
-  renewal, agent-mediated; renewal-cycle horizon; NAIC AI bulletin applies to the
-  treatment layer (evidence 11 §A1.11; evidence 08).
-- **Tier 1c — operational account:** Motive **is** this account (kernel D5): B2B
-  fleet-SaaS churn — few, large accounts (small-N discipline), champion-departure as a
-  top driver, usage-telemetry-rich exhaust.
-- Elsewhere: SaaS revenue-vs-logo churn with expansion offsets; telco contract-end
-  cliffs and network-quality drivers; gaming/media engagement-decay churn.
-
-**Methodology mapping & module staging (kernel D2).**
-- **At launch (W1):** M-1 tabular supervised — extract → point-in-time features → GBM →
-  SHAP → ranked report; M-2 entity resolution (thin) for the account join; M-3
-  segmentation for treatment differentiation. This *is* the existing UC-1 pipeline.
-- **Upgrade 1 (W2): M-6 survival/time-to-event** — "when", not just "whether": hazard
-  curves per account replace the binary label, enabling renewal-window timing
-  (evidence 11 §A1.16 names survival as the canonical refinement).
-- **Upgrade 2 (W3): M-7 causal/uplift** — from "who will leave" to "whom does treatment
-  save", eliminating the classic offer-cannibalization failure (discounting customers
-  who would have stayed — evidence 11 §A1.15; evidence 01 makes the same point). Kernel
-  open question 3 (uplift timing) governs when this ships.
-- Module boundary: the recommended-action layer and the LLM retention playbook are
-  optional, user-managed components (add-use-case runbook principles).
-
-**Evidence cross-references.** Evidence 11 §A1 (full dossier, anchor) · evidence 14
-churn dossier (rank #13, value 4.8; grid "prioritize now") · evidence 01 Tier 2 rank 9
-with the explicit note that churn is best built as one branch of a broader
-next-best-action platform — our M-7/M-8 staging answers exactly that · evidence 02
-build-order wave 1 ("churn/remediation") · evidence 03 **Tier-1 rank 1** ·
-evidence 04: Databricks accelerators #60 *Predict Customer Churn*, #88 *Analyzing
-Customer Attrition in Subscription Models*, #87 *Survival Analysis for Churn and
-Lifetime Value*, #33 *Graph Analytics for Telco Customer Churn Prediction*, #77
-*Profit-driven retention management* — five accelerators on one use case is the densest
-competitor packaging in their catalog, confirming demand · evidence 09: Customer
-Success / Account Management (26 apps) and Sales categories carry the prior-art demand.
-
-**Open product questions.**
-1. Non-contractual churn (retail/usage businesses): do we ship a label-definition
-   assistant (inactivity-window search) in S-1 v1 or defer to a variant?
-2. Small-N B2B mode: below what account count does the module switch from statistical
-   scoring to a drivers-and-watchlist presentation (Motive-relevant)?
-3. Is the save-desk write-back (CRM task creation) in the launch module or is v1
-   report+queue only? (Shadow-production gate D7.5 says queue first.)
-4. Kernel open question 1: is Motive formally design partner #1, and does S-1's
-   reference implementation therefore target the fleet-SaaS variant first?
-
-### UC-2 — Lead & opportunity scoring
-
-**Problem statement.** Sales capacity is scarce; leads and open opportunities vastly
-outnumber the attention available, so reps work them in the wrong order — chasing
-unwinnable deals while hot prospects go cold. The business wants inbound leads and open
-opportunities ranked by likelihood (and size) of conversion so effort lands where it
-pays (evidence 11 §A4). Kernel rationale for T1: **same pipeline shape as churn** —
-same M-1 spine, same CRM systems of action, high decision frequency — making it the
-cheapest second module in the factory (kernel D3).
-
-**Decision framing.** *Entity:* the lead / opportunity / account. *Decision:* work it
-now, nurture, or discard; who works it. *Label:* converted (MQL→SQL→closed-won) within
-the horizon. *Horizon:* days–weeks (inbound) to quarters (enterprise opportunities);
-scored on arrival, re-scored on activity (evidence 11 §A4.5).
-
-**Decision frequency & economic pool.** Hundreds to tens of thousands of leads/day
-depending on motion; every open opportunity re-ranked weekly; speed-to-lead on inbound
-is minutes-sensitive. Pool = sales productivity + conversion uplift on existing demand.
-Credible anchors: McKinsey tech-B2B deal scoring **+4–8 points return-on-sales vs
-control** [M/C]; Qymatix B2B study **+10% profit vs control** [M, small sample]
-(evidence 11 §A4.4). Honest flag: vendor lead-scoring lifts of 10–30% are common but
-rarely controlled [V]; item 11 places the use case in value Tier 3 on that evidence
-thinness, and item 14 ranks it #51 — the kernel elevates it on **reuse economics**, not
-on standalone pool (see Appendix A, T-2).
-
-**Data exhaust & required connectors.** CRM history (stages, outcomes, activities),
-marketing-automation engagement, firmographic enrichment, product usage (PQL motions).
-Connectors: **CRM (Salesforce/HubSpot) — shared with UC-1 —, marketing automation
-(Marketo/HubSpot), enrichment (ZoomInfo/Clearbit), product analytics** (evidence 11
-§A4.7). CRM hygiene is the universal weak point; the intake prerequisite is 1–2 years
-of closed-loop CRM outcomes with consistent stage definitions.
-
-**Actions enabled & systems of action.** Score + reason codes → routing/queue order in
-CRM, SLA triggers on hot leads, nurture-track assignment, territory/capacity
-allocation, discard automation — through CRM workflow rules and SDR cadences. Rep trust
-is the adoption battleground: **a score reps ignore is worthless**, and reason codes
-(SHAP) are the trust mechanism (evidence 11 §A4.8, §A4.15).
-
-**KPIs & how impact is proven.** Lead→opportunity conversion, win rate, sales-cycle
-length, pipeline coverage, revenue per rep. The gold-standard proof is **randomized
-routing (scored order vs FIFO)** — cheap to run and rarely actually run (evidence 11
-§A4.9); S-2 makes it the default measurement design, which is a differentiator in a
-category where "more deployed than validated" is the norm (evidence 11 §A4.13).
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** compliance constraints on differential treatment of applicants;
-  scoring must avoid prohibited-basis proxies even in marketing contexts
-  (evidence 11 §A4.11).
-- **1b insurance:** agent-channel lead scoring (agency-distributed carriers/MGAs);
-  speed-to-lead and agent trust dominate.
-- **1c operational:** B2B account-based motions — small-N; deal/opportunity scoring
-  (the A7 sibling) matters more than volume lead scoring; construction/logistics analog
-  is bid/no-bid optimization (evidence 11 §L25 explicitly parallels A4).
-- Elsewhere: B2B SaaS PQL-vs-MQL split; real estate/education where speed-to-lead
-  dominates everything.
-
-**Methodology mapping & module staging.** **At launch (W1):** M-1 GBM on CRM +
-engagement features with SHAP reason codes feeding CRM routing; M-3 segments for
-routing policy. **Later:** M-7 uplift where treatment capacity is scarce (whom does a
-call *change*), and composition into UC-9 (outbound audiences) and the T3
-next-best-action engine. Leakage discipline is the named craft: no post-qualification
-fields in features; self-fulfilling-label monitoring (reps only work high scores →
-only high scores convert) ships in the module's evaluation harness (evidence 11
-§A4.15).
-
-**Evidence cross-references.** Evidence 11 §A4 (full dossier; feasibility Tier F1 —
-"one of the most attackable use cases for a mid-market company") · evidence 14 lead
-scoring rank #51 but grid "prioritize now"; opportunity/win prediction in its
-explore-selectively quadrant · evidence 01 Tier 2 ("sales opportunity mining") ·
-evidence 02 build-order wave 1 ("sales operations", with the sharp caveat that the
-constraint is CRM data and seller distrust, not model capability) · evidence 04: #66
-*Propensity Scoring* is the nearest accelerator; **no dedicated lead-scoring
-accelerator exists in the Databricks 93** — whitespace · evidence 09: Sales (30 apps),
-one of the two largest business categories in the prior-art catalog.
-
-**Open product questions.**
-1. One module or two? Lead scoring (volume, pre-funnel) and opportunity/win prediction
-   (small-N, in-funnel) share the spine but differ in presentation — S-2 scope decision.
-2. Does the launch module include enrichment-vendor connectors, or is v1
-   CRM-only-features (cheaper intake, weaker cold-start)?
-3. Native-scoring incumbency: Salesforce Einstein/HubSpot ship scoring as a feature —
-   the S-2 positioning must lead with correctness (leakage-free, holdout-proven) and
-   own-environment training vs their black-box convenience. Where's the line in the
-   demo?
-
-### UC-3 — Customer lifetime value
-
-**Problem statement.** Investment decisions about customers — acquisition-spend
-ceilings, service tiers, retention budgets, save-offer depth — are made without knowing
-what each customer relationship is actually worth; CAC is managed to averages and
-retention spend is spread evenly across unequal accounts. The business wants a
-defensible, refreshed estimate of discounted future margin per customer/segment to set
-those ceilings and allocations (evidence 11 §A5). Kernel rationale for T1: CLV
-**composes with UC-1/UC-2 into revenue intelligence** (kernel D3) — churn probability ×
-value-at-risk × conversion propensity is the shared arithmetic of a retention or
-acquisition budget.
-
-**Decision framing.** *Entity:* the customer/account (and cohort/segment). *Decision:*
-how much to invest in acquiring/serving/saving; tier assignment; CAC ceiling by
-segment. *Label:* realized discounted margin over the horizon (a delayed, partially
-censored regression target — active customers are censored, which is where M-6
-survival machinery enters). *Horizon:* 1–5 years, refreshed quarterly (evidence 11
-§A5 compact row; evidence 14 CLV dossier: acquire/invest/tier/suppress/prioritize).
-
-**Decision frequency & economic pool.** Lower decision frequency than UC-1/UC-2 —
-quarterly budget and tiering decisions rather than daily queues — but each decision
-moves acquisition and retention budgets measured in % of revenue. Anchors: LTV:CAC and
-payback-period discipline is standard at digital-native firms [C]; Carrefour +21% ROAS
-on newly-acquired customers using an LTV model [C] (evidence 14 churn/CLV dossier);
-item 14 ranks CLV **#19 (4.75)** and places it in the prioritize-now quadrant. Honest
-flag, stated plainly because it drives the module design: item 11 places CLV in value
-**Tier 4** and its prevalence check says *"computed often, decisioned on rarely"*
-(evidence 11 §S6) — the failure mode is a CLV number that decorates dashboards. This is
-recorded as tension **T-3** (Appendix A) with a recommended resolution: **S-3 ships as
-the composition layer of S-1/S-2** (value-weighted churn queues, CAC ceilings wired to
-acquisition tools), not as a standalone score.
-
-**Data exhaust & required connectors.** Transactions, billing, margin/cost data,
-engagement; connectors: **billing (Stripe/Zuora), CRM, warehouse, e-commerce/POS where
-relevant** — a strict subset of the UC-1/UC-2 connector set plus margin data from ERP
-(evidence 11 §A5, §S5). Margin data quality (cost-to-serve) is the recurring gap.
-
-**Actions enabled & systems of action.** CAC ceilings by segment → ad-platform budget
-rules and bid caps; tiered service assignment → CS platform; retention-budget
-allocation → the UC-1 treatment layer (value-weighted intervention); payback reporting
-→ finance. The actionability rule from the evidence: CLV creates value only when a
-budget rule consumes it (evidence 11 §S6, §S7 pattern 1).
-
-**KPIs & how impact is proven.** LTV:CAC by segment, payback period, cohort margin
-curves vs prediction (calibration is the model KPI), retention-spend ROI on
-value-weighted vs unweighted targeting (A/B at the UC-1 treatment layer). Proof
-strategy: because CLV's standalone impact is hard to isolate, S-3's measurement rides
-on S-1/S-2 experiments with value-weighting as the treatment arm.
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** customer/household profitability — deposit margin, product
-  holdings, regulation constrains differential *pricing* but not service prioritization;
-  the "silent churn" behavioral label feeds the value-at-risk term (evidence 11 §A1.11).
-- **1b insurance:** policyholder lifetime value = renewal persistency × premium margin −
-  expected losses; actuarial cousins make the finance team a natural reviewer.
-- **1c operational:** account-level revenue expansion for fleet SaaS (Motive-shaped):
-  seats/vehicles growth vs churn risk; small-N favors segment-level CLV.
-- Elsewhere: BTYD probabilistic models in non-contractual retail; media/streaming
-  engagement-value models.
-
-**Methodology mapping & module staging.** **At launch (W1):** M-1 tabular regression on
-the UC-1 feature store (shared features are the point), segment-level reporting; M-3
-value-based segmentation. **Upgrade (W2): M-6** — survival-adjusted expected lifetime
-(censoring done correctly is the correctness differentiator; naive CLV on censored data
-systematically underestimates active customers). **Later (W3):** M-7 uplift for
-retention-budget allocation. BTYD-style probabilistic variants are a documented
-alternative (evidence 11 §A5) — a methodology-portfolio decision for M-1's model menu,
-not a new wave.
-
-**Evidence cross-references.** Evidence 11 §A5 (compact dossier; value T4; prevalence
-"more talked about than rigorously deployed") · evidence 14 CLV dossier (rank #19,
-prioritize-now) · evidence 01/02/03: none tier CLV standalone; 03 embeds it in the
-churn archetype ("predict risk, LTV, reason codes, uplift") — consistent with the
-composition framing · evidence 04: #17 *Calculate Customer Lifetime Value*, #87
-*Survival Analysis for Churn and Lifetime Value*, #78 *RFM Segmentation* — Databricks
-packages it exactly as we stage it (CLV + survival + segmentation) · evidence 09:
-Customer Success / Account Management (26), Executive / Leadership (22).
-
-**Open product questions.**
-1. Does S-3 exist as a separately priced module at all, or as the "revenue
-   intelligence" upgrade SKU on S-1+S-2? (CFO doc / kernel Q4 pricing mechanics.)
-2. Margin data: require ERP cost feeds at intake, or ship revenue-proxy CLV v1 with a
-   labeled caveat? (Correctness-brand risk either way — needs a kernel-consistent call.)
-3. Which BTYD variant, if any, enters M-1's model menu for non-contractual businesses?
-
-### UC-4 — Collections prioritization
-
-**Problem statement.** Receivables age because collectors work accounts by size or age
-rather than by likelihood and influenceability of payment; cash sits trapped in working
-capital, bad debt accrues, and collector capacity is wasted on accounts that would pay
-anyway. The business wants each collector-hour aimed at the invoice/customer where it
-moves cash most (evidence 11 §D2). Kernel rationale for T1: **the finance-family
-beachhead** — hard balance-sheet KPI (DSO), banking-relevant vocabulary, and the most
-under-attacked feasibility-Tier-F1 use case in the catalog (kernel D3; evidence 11 §S3:
-"under-attacked relative to its feasibility in mid-market").
-
-**Decision framing.** *Entity:* the open invoice / customer account. *Decision:* whom
-to contact, when, through which channel, with what treatment (reminder, call, hold,
-payment plan). *Label:* paid within X days / promise kept / went delinquent — natural
-labels from the AR ledger. *Horizon:* days–weeks; work queues rebuilt daily
-(evidence 11 §D2.5).
-
-**Decision frequency & economic pool.** Hundreds to hundreds of thousands of open
-invoices at any time; daily queue construction per collector. Pool anchors: each day of
-DSO on $1B revenue ≈ **$2.7M cash** (arithmetic; evidence 11 §D2.4); post-2022 interest
-rates sharply raised the value of each DSO day; PwC estimates **€1.56T of global excess
-working capital in 2024/25** [C] (evidence 14). External ranking: item 14 puts
-collections at **value rank #2 (5.0) and feasibility 5.0 (rank #5)** — its single
-highest-conviction non-fraud entry. Honest flag: item 11 ranks it value Tier 2 (#20)
-with **[T/V]** — vendor-claimed 10–20% DSO-day reductions and 20–30% collector
-productivity gains are not independently audited, and published RCTs are scarce
-(evidence 11 §D2.14). The two compendia agree completely on feasibility and mechanism
-and differ only on published-proof density; S-4 therefore leads with the built-in
-holdout (queue-order A/B) so each deployment generates its own audited evidence.
-
-**Data exhaust & required connectors.** AR ledger (invoices, terms, payments,
-disputes), dunning/contact history, promises-to-pay, credit ratings, order history,
-dispute codes. Connectors: **ERP AR module (SAP/Oracle/NetSuite), collections platforms
-(HighRadius/Billtrust) where present, credit bureaus (D&B)** (evidence 11 §D2.7). The
-exhaust is complete and labeled; dispute-reason data quality is the variable to check
-at intake. This is the first UC whose primary connector is the ERP, extending the
-factory's connector portfolio beyond the CRM/billing cluster (evidence 11 §S5).
-
-**Actions enabled & systems of action.** Ranked daily work queues + recommended
-treatments → collector CRM/dialer; automated dunning sequences execute directly; credit
-holds trigger in ERP; SHAP reason codes give collectors call context (evidence 11
-§D2.8, §D2.16). The uplift-shaped subtlety is designed in from v1 as a *presentation*
-rule even before M-7 ships: value concentrates in accounts that are high-balance *and
-influenceable* — the queue must not celebrate collecting cash that would have arrived
-anyway (evidence 11 §D2.6, §D2.15).
-
-**KPIs & how impact is proven.** DSO, % AR current, bad-debt write-offs, cash collected
-per collector-FTE, promise-kept rate. Proof: A/B on queue ordering or matched-portfolio
-comparison; DSO is a hard balance-sheet metric the CFO already watches (evidence 11
-§D2.9) — the shortest path from module to CFO-visible impact anywhere in Tier 1.
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** named beachhead solution (kernel D5 table). Two distinct shapes:
-  the bank's *own* commercial/trade AR, and **lending collections** (post-delinquency
-  treatment) — the latter is regulated (FDCPA/CFPB, complaint-rate KPI) and mature at
-  card issuers (evidence 11 §L7); S-4 targets the AR shape first, the lending shape is
-  a T2-gated variant (§3, T2-2 credit-risk-adjacent).
-- **1b insurance:** premium receivables and agent-balance collections; MGA carrier
-  remittances; lower volume, relationship-mediated treatments.
-- **1c operational:** freight/fleet B2B trade credit — dispute-heavy (delivery
-  disputes), where the root-cause loop (billing-error detection) matters as much as
-  the queue (evidence 11 §D2.15).
-- Elsewhere: utilities/telco consumer collections under hardship rules; healthcare
-  patient-responsibility AR with charity-care screening sensitivities (evidence 11
-  §D2.11) — deferred to the T2 healthcare entry.
-
-**Methodology mapping & module staging.** **At launch (W1):** M-1 payment-date /
-delinquency GBM + SHAP reason codes → daily queues + automated dunning tiers; M-2 for
-customer-account resolution across ERP entities. **Upgrade (W2):** M-4/M-6 — payment-
-date distributions feed cash-flow forecasting (the D4 adjacency; a natural cross-sell),
-survival framing for time-to-pay. **Upgrade (W3): M-7 uplift** — treatment-level
-influenceability ranking, the explicitly uplift-shaped end-state (evidence 11 §D2.16).
-
-**Evidence cross-references.** Evidence 11 §D2 (full dossier; feasibility Tier F1) ·
-evidence 14 collections dossier (value #2, feasibility #5 — both 5.0) · evidence 01:
-inside Tier 3 "finance close" family framing · evidence 02 build-order wave 1
-("finance exceptions", collections named explicitly; KPI list includes DSO) ·
-evidence 03: banking industry top-pipelines row names collections · evidence 04:
-**no collections accelerator exists among the Databricks 93** — the clearest
-competitive whitespace in Tier 1 · evidence 09: Finance (30 apps, joint-2nd-largest
-category) — strong prior-art demand.
-
-**Open product questions.**
-1. Dunning execution: does S-4 v1 write back into email/ERP dunning (an *action*,
-   gated by D7.5 shadow production) or produce queues only?
-2. Dispute root-cause reporting (billing-error clustering): in-module at launch or an
-   S-4.1 add-on? It's the anti-symptom-optimization guard (evidence 11 §S7 pattern 12).
-3. Mid-market ERP long tail (NetSuite/Dynamics vs SAP): which two ERP connectors gate
-   the first two deployments?
-
-### UC-5 — Demand forecasting
-
-**Problem statement.** Every ordering, production, staffing, and budgeting decision
-embeds a guess about future demand; when the guess is wrong the business either loses
-sales (stockout) or eats cost (overstock, markdown, waste). The business wants demand
-predicted per item/location/period accurately enough to plan against — **with known
-uncertainty**, because the downstream inventory decision consumes the distribution, not
-the point estimate (evidence 11 §F1). Kernel rationale for T1: **Tier-1 in all three
-external DR reports** and the opener of the supply-chain family (kernel D3).
-
-**Decision framing.** *Entity:* SKU × location × period (the forecast cell).
-*Decision:* the number handed to ordering/production/staffing, with uncertainty bands.
-*Label:* actual demand — abundant but **censored by stockouts** (sales ≠ demand when
-shelves were empty; the classic correctness adaptation). *Horizon:* days (demand
-sensing) to 18+ months (capacity); re-forecast weekly or daily (evidence 11 §F1.5).
-
-**Decision frequency & economic pool.** Among the largest-scale prediction problems in
-industry: a grocery chain forecasts millions of SKU-store-day cells daily. Pool
-anchors: retail inventory distortion cost **$1.77T globally in 2023 — $1.2T
-out-of-stocks + $562B overstocks** [M-survey] (IHL 2023; cited by both evidence 11 §F1
-and evidence 14). Program results: AI forecasting cuts forecast error **20–50%** and
-lost sales **up to 65%** [C] (McKinsey); Danone **−30% lost sales** [C]; early-adopter
-cohort: logistics −15%, inventory −35%, service +65% [C] (evidence 11 §F1.4, §F1.14).
-Rankings agree everywhere: item 11 value T1 (#3, jointly with inventory), item 14 #4
-(5.0) with feasibility 5.0 (#8), item 01 Tier-1 #2, item 03 Tier-1 #4 — the least
-contested Tier-1 admission in the portfolio.
-
-**Data exhaust & required connectors.** POS/sales history, orders/shipments, promotion
-& pricing calendars, seasonality/holidays, weather, distribution status, new-item
-attributes. Connectors: **ERP, planning systems (Blue Yonder/o9/Kinaxis/SAP IBP where
-present), POS / e-commerce platform, warehouse event feeds** (evidence 11 §F1.7).
-Classic gaps to test at intake: promo-flag hygiene and stockout censoring; 2–3 years of
-clean history with promo/price flags is the prerequisite (evidence 11 §F1.10).
-
-**Actions enabled & systems of action.** The forecast feeds replenishment, production
-scheduling, procurement, logistics capacity, and financial planning **by system
-design** — planning platforms consume it automatically; item 11 calls this the highest
-*structural* actionability of any prediction (the forecast is the input contract to
-half the supply-chain family) (evidence 11 §F1.8). Where no planning platform exists
-(mid-market), UC-6 is the action surface.
-
-**KPIs & how impact is proven.** Forecast error (MAPE/WMAPE **and bias** — systematic
-over-forecast hides in MAPE), service level/fill rate, lost sales, inventory turns,
-waste/markdown. Impact attribution is unusually clean: forecast error is a standing
-metric with the prior method as the baseline; **forecast-value-added (FVA) tracking**
-against planner overrides is the adoption guard (evidence 11 §F1.9, §F1.15).
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** not a natural fit as *product* demand; the family analog is
-  cash-demand/branch-volume forecasting and treasury flows (D4-adjacent) — supporting,
-  not beachhead.
-- **1b insurance:** claims-volume and call-volume forecasting for staffing (operational
-  planning variant).
-- **1c operational — the beachhead (kernel D5: UC-5/6 named for the operational
-  account):** manufacturing/B2B lumpy demand (intermittent-demand methods),
-  fleet/logistics volume forecasting; grocery/fresh (daily, weather, waste) and
-  fashion (attribute-based cold-start) as the retail variants when Tier-3 industries
-  open (evidence 11 §F1.11).
-- Elsewhere: CPG promo-driven, retailer-mediated; pharma tender events; utilities load
-  forecasting is the L18 sibling (T2/industry-gated).
-
-**Methodology mapping & module staging.** **At launch (W2 — M-4):** classical +
-GBM-global hierarchical time-series (lag/calendar/promo features) per the kernel's
-"classical + GBM-global first; deep later" decision; probabilistic outputs (quantiles)
-from day one because UC-6 consumes them; FVA governance in the module. **Depends on
-engine R3/R4-lite** (one-button deploy + materialization) — UC-5 is the first Tier-1
-use case gated on Wave-2 engine capability (kernel D2/D7.3). **Later:** deep-learning
-global models at scale (explicitly deferred); M-5 anomaly overlay for demand-shock
-detection; M-11 predict-then-optimize composition via UC-6.
-
-**Evidence cross-references.** Evidence 11 §F1 (full dossier) · evidence 14 demand
-forecasting (value #4, feasibility #8) · evidence 01 **Tier-1 #2** ("demand forecasting
-& supply-chain optimization") · evidence 02 wave 2 (supply chain — "economic leverage
-exceptionally high, but actions interact across multiple constrained systems") ·
-evidence 03 **Tier-1 #4** ("demand → replenish, produce, expedite") · evidence 04: #21
-*Demand Forecasting at Scale*, #93 *Demand Forecasting with Causals*, #91 *Time series
-forecasting with generative AI* — three accelerators, a heavily packaged category ·
-evidence 09: Operations / Logistics is the **largest** prior-art category (40 apps),
-plus Procurement / Supply Chain (22).
-
-**Open product questions.**
-1. Forecast-cell scale ceiling for v1: what SKU×location cardinality does the first
-   reference architecture support (ties to R4-lite materialization sizing)?
-2. Weather/holiday external data: bundled connector or customer-supplied?
-3. New-item cold start (attribute-based analogs): launch scope or first upgrade?
-4. Mid-market without a planning platform: does S-5 ship its own planner-facing
-   review UI, or is UC-6 mandatory in that segment?
-
-### UC-6 — Inventory / replenishment support (assistive)
-
-**Problem statement.** Given uncertain demand and supply lead times, how much of each
-item should sit at each node — and when and how much to reorder? Too much ties up cash
-and creates waste/markdowns; too little loses sales and service. Most firms answer with
-static rules that are wrong item-by-item (evidence 11 §F2). Kernel rationale for T1:
-**forecast-to-action** — the human-reviewed action layer that converts UC-5's
-distribution into decisions, deliberately assistive first (kernel D3; D9.3).
-
-**Decision framing.** *Entity:* SKU × node (store/DC/plant). *Decision:* reorder
-point/quantity, safety stock, allocation/rebalancing — **recommended, human-reviewed**
-at launch (assistive posture). *Label:* realized service level + carrying cost — the
-objective is a cost trade-off, not a single label. *Horizon:* daily–weekly
-replenishment; seasonal builds; continuous review (evidence 11 §F2.5).
-
-**Decision frequency & economic pool.** Millions of SKU-node reorder decisions weekly
-at large retailers; in our mid-market ICP, thousands–hundreds of thousands. Pool: the
-same $1.77T distortion pool as UC-5 plus carrying cost (typically 15–30% of inventory
-value/year [T — rule of thumb]); freeing 20% of a $2B inventory = $400M cash
-(arithmetic). Adopter ranges: **inventory −20–35% with service maintained** [C]
-(McKinsey; evidence 11 §F2.4, §F2.14). Item 14: value #5 (5.0), feasibility #9 (5.0).
-Honest flag: named single-company audited results are scarce; the aggregate consultant
-evidence is stronger than the named-case evidence (evidence 11 §F2.14).
-
-**Data exhaust & required connectors.** On-hand/on-order inventory, sales/consumption,
-lead-time history (POs vs receipts), supplier fill rates, costs, shelf-life. Connectors:
-**ERP (shared with UC-4), WMS, planning system where present** (evidence 11 §F2.7).
-**Inventory-record accuracy is the notorious gap** — system stock ≠ physical stock;
-cycle-count discipline is an intake prerequisite, and phantom-inventory detection is a
-correctness adaptation in S-6 (evidence 11 §F2.7, §F2.15).
-
-**Actions enabled & systems of action.** Reorder recommendations → PO/transfer-order
-drafts in ERP, **human-approved at launch** (kernel D7.5 shadow production; the
-"assistive" in the kernel's name for this UC); exception queues for large commitments;
-rebalancing suggestions. The industry end-state is auto-replenishment (evidence 11
-§F2.8) — that is exactly the T2 "forecast-to-action automation upgrade" entry (§3,
-T2-8), gated on shadow-production graduation.
-
-**KPIs & how impact is proven.** Inventory turns, days of supply, service level/fill
-rate, stockout rate, obsolescence/waste, GMROI. Proof: side-by-side category pilots
-(module-recommended vs incumbent-policy categories) — standard, credible, and
-CFO-legible via working capital (evidence 11 §F2.9).
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** cash/ATM inventory replenishment (niche but real); not beachhead.
-- **1b insurance:** n/a as inventory; the family analog is adjuster/capacity planning —
-  supporting only.
-- **1c operational — the beachhead:** manufacturing raw/WIP/finished + **MRO spares**
-  (intermittent demand, criticality-weighted — downtime cost ≫ holding cost, which
-  couples S-6 to UC-8's asset criticality data); distribution/fleet parts stocking
-  (evidence 11 §F2.11).
-- Elsewhere: retail presentation-stock minimums; fresh/pharma expiry-aware (FEFO);
-  aftermarket last-time-buy decisions.
-
-**Methodology mapping & module staging.** **At launch (W2 — M-4):** probabilistic
-forecast (S-5 output) → newsvendor/service-level safety-stock policy → recommended
-POs with reasons; M-1 lead-time prediction as input. **Later (W4 — M-11):** true
-multi-echelon optimization (MEIO) and constrained predict-then-optimize (the kernel's
-"+M-11 later"); auto-execution graduates via T2-8. S-6 is deliberately a *decision
-support* module before it is an *automation* module — the assistive posture is the
-product, not a limitation (kernel D9.3; evidence 08 shadow-production doctrine).
-
-**Evidence cross-references.** Evidence 11 §F2 (full dossier) · evidence 14 inventory
-optimization (value #5, feasibility #9) · evidence 01 Tier-1 #2 (bundled with
-forecasting) · evidence 02 wave 2 · evidence 03 Tier-1 #4 (replenish/produce/expedite
-as demand's action) · evidence 04: #79 *Safety stock*, #56 *Improve On-Shelf
-Availability*, #86 *Supply Chain Distribution Optimization*, #57 *Order Picking
-Optimization* (adjacent) · evidence 09: Warehouse / Distribution (24), Operations /
-Logistics (40), Procurement / Supply Chain (22).
-
-**Open product questions.**
-1. v1 scope line: safety-stock + reorder recommendations only, or also allocation/
-   rebalancing across nodes (MEIO-lite)?
-2. MRO/spares variant (couples to UC-8): same module with an intermittent-demand mode,
-   or a separate S-6.1?
-3. What cycle-count / inventory-accuracy evidence do we require at intake before
-   trusting on-hand data (correctness-gate policy)?
-
-### UC-7 — KPI anomaly detection & driver analysis
-
-**Problem statement.** Business metrics break silently — a payment integration fails in
-one country, a pricing error halves margin on a category, a funnel step collapses after
-a release — and are discovered weeks later in a monthly review, after the damage has
-compounded; and when a KPI moves, analyst teams burn weeks answering *why*, returning
-contradictory answers. The business wants material metric movements **detected within
-hours, routed to a named owner, and explained** — decomposed into quantified,
-actionable drivers (evidence 11 §K1, §K2). Kernel rationale for T1: **"the report
-solution generalized"** — the executive surface of the whole factory, applicable in
-every vertical, and the natural habitat of the tabular methodology's explanation stage
-(kernel D3; evidence 11 §K2.10).
-
-**Decision framing.** *Entity:* the metric × dimension slice × time window (detection);
-the metric movement (attribution). *Decision:* alert or not, whom to route to, severity;
-which drivers explain the movement and what corrective action follows. *Label:*
-confirmed incidents / validated decompositions from responder feedback — **labels
-accumulate only if the alert workflow captures dispositions**, so disposition capture
-is designed into the module from day one (evidence 11 §K1.5, §K1.15). *Horizon:*
-hourly–daily detection, continuous; per-reporting-cycle attribution.
-
-**Decision frequency & economic pool.** Thousands to millions of metric-slice
-combinations evaluated continuously against a human attention budget of a handful of
-alerts per owner per day — **precision is the entire game** (the SOC alert-fatigue
-problem transplanted to business data; evidence 11 §K1.6). The pool is incident-shaped:
-each undetected business incident costs duration × run-rate impact (a broken checkout
-flow in one market can silently cost $100k+/day — illustrative arithmetic), and the
-diagnostic half consumes the plurality of BI-team workload [T — practitioner consensus]
-(evidence 11 §K1.4, §K2.4). Honest flag, carried prominently: **both halves are
-mechanism-strong, evidence-thin [T]** — no consolidated analyst sizing exists, and item
-11 places K1/K2 in value Tier 3 with the "wait until the semantic layer exists" gate
-(evidence 11 §S2, §S4). Item 14, by contrast, puts KPI anomaly detection in its
-**prioritize-now** quadrant. Our resolution — and the reason this is T1 and not T2 —
-is that item 11's gate is conditional and self-liftable: *"with a trustworthy semantic
-layer they jump to the top-left"* (evidence 11 §S4 reading note), **and the Zetta
-deployment itself materializes the governed metric layer** as part of S-7 delivery.
-This reasoning is recorded as tension T-4 for kernel confirmation.
-
-**Data exhaust & required connectors.** The metrics warehouse itself: **data warehouse
-/ lakehouse (Snowflake/Databricks/BigQuery), BI semantic layers, plus calendar/promo
-context and alert-disposition capture (Slack/Jira)** (evidence 11 §K1.7). Where a
-governed semantic layer is missing, S-7 delivery *starts* with metric-definition
-codification onto Zetta-materialized views — the prerequisite becomes the first
-deliverable (see above).
-
-**Actions enabled & systems of action.** Alert → routed notification to the metric
-owner with the offending slice + suspected timing/change correlation → owner
-investigates/fixes (pricing rollback, integration fix, campaign stop); attribution
-report ("−4% revenue = −2.5pp Germany payment-failure + −1.2pp category mix + …") →
-corrective decision + board-pack narrative. **An alert without an owner is noise** —
-the ownership registry is part of the module, not an assumption (evidence 11 §K1.8,
-§K2.8). Wired together, K1+K2 become detect → diagnose → act.
-
-**KPIs & how impact is proven.** Detection lead time vs previous discovery (typically
-weeks → hours), alert precision (% actioned), incident-duration reduction,
-recovered-loss estimate per catch, time-to-diagnosis and analyst hours per request.
-Each caught incident is a self-documenting value story (evidence 11 §K1.9) — S-7's
-proof design is an incident log comparison plus a running recovered-loss ledger.
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** named beachhead solution (kernel D5 table: "UC-7 KPI drivers").
-  Branch/product P&L drivers, fee-income anomalies, deposit-flow monitoring;
-  telecom-style revenue assurance is the ancestor discipline (evidence 11 §K1.12).
-- **1b insurance:** loss-ratio and quote-to-bind funnel monitoring by line/geo/agent;
-  claims-cycle-time drivers.
-- **1c operational:** fleet utilization/fuel/OEE anomalies; SaaS-side ARR-bridge
-  decomposition (new/expansion/contraction/churn) — already a standard artifact, ripe
-  for automation (evidence 11 §K2.11) and directly composable with UC-1.
-- Elsewhere: e-commerce funnel/payment slices (highest natural fit); retail comp-sales
-  decomposition (traffic × conversion × basket); FP&A rate/volume/mix variance — the
-  formalized methodology template (evidence 11 §K2.11).
-
-**Methodology mapping & module staging.** **At launch (W1 — M-1):** driver analysis on
-business aggregates — contribution decomposition (mix/rate/volume), GBM+SHAP driver
-models on metric movements, change-calendar correlation, grounded narrative generation
-with arithmetic checks (the "parts must sum" credibility rule; evidence 11 §K2.15).
-**Upgrade (W2 — M-5):** hierarchical time-series baselines + multi-dimensional
-contribution scanning for continuous anomaly detection at slice scale. Disposition
-feedback loop from day one (the label factory). Spurious-attribution guards (correlated
-dimensions credited causally) are the named correctness adaptation (evidence 11
-§K2.15); true causal questions stay explicitly out of scope — scope honesty is part of
-the module copy.
-
-**Evidence cross-references.** Evidence 11 §K1 + §K2 (full dossiers; value T3 [T];
-feasibility F3-conditional) · evidence 14: KPI anomaly in prioritize-now; driver
-analysis in explore-selectively (mirroring the same split confidence) · evidence
-01/02/03: not tiered standalone — 03's Tier-3 warning ("dashboards … unless embedded
-in high-value workflows with outcome measurement") is precisely the failure mode S-7
-is designed against · evidence 04: no direct business-KPI-anomaly accelerator exists
-(#58 *OEE and KPI Monitoring* is the manufacturing-specific cousin; #71 *Real-Time
-Point-of-Sale Analytics* adjacent) — whitespace · evidence 09: Executive / Leadership
-(22 apps) and Data and Analytics (15) are exactly this shape — prior-art demand for
-exec-surface reporting apps was broad.
-
-**Open product questions.**
-1. Packaging: one module (detect+diagnose) or S-7a/S-7b? The evidence says detection
-   without diagnosis under-delivers and diagnosis without detection is episodic.
-2. Minimum semantic-layer bar at intake: how many governed metrics (with owners)
-   before we switch on alerting? (Precision economics depend on it.)
-3. Do we ship the FP&A variance template (rate/volume/mix) as the first vertical skin,
-   given finance-audience alignment with UC-4?
-4. LLM narrative layer: grounded-generation guardrails are W3 (M-9) — is v1 narrative
-   template-based only?
-
-### UC-8 — Predictive maintenance (assistive)
-
-**Problem statement.** Equipment fails unexpectedly, stopping production at enormous
-cost — while scheduled preventive maintenance replaces healthy parts and still misses
-failures. The business wants to know which asset will fail, when, and from what cause,
-so maintenance happens exactly when needed (evidence 11 §G1). Kernel rationale for T1:
-**the low-liability operational proof the design-partner research prescribes** — the
-council's resolution was to lead positioning with governance and choose a low-liability
-use case (human-reviewed prediction/triage/forecasting) for the first technical proof;
-PdM is its named example (evidence 08; kernel D3, D5 Tier-1c).
-
-**Decision framing.** *Entity:* the asset/component (pump, motor, spindle, vehicle
-subsystem). *Decision:* intervene now / schedule at next window / keep running —
-**assistive: recommendations into the maintenance-planning process, never autonomous
-shutdowns** (kernel posture). *Label:* failure events + failure mode from CMMS work
-orders — **scarce by nature** (good plants have few failures) and noisily coded; the
-defining constraint of the domain. *Horizon:* days–weeks of warning (useful lead
-time), monitored continuously (evidence 11 §G1.5).
-
-**Decision frequency & economic pool.** Thousands of monitored assets per site; daily
-health assessment, weekly planning cycles. Value concentrates in the small set of
-**critical-path assets** whose failure stops the line — criticality analysis matters
-more than model coverage (evidence 11 §G1.6). Pool anchors: unplanned downtime averages
-**~$532k/hour** in large plants, **$2.3M/hour automotive** [C]; Fortune Global 500
-industrials lose **~$864B/year** to unplanned downtime [C-modeled survey] (Siemens/
-Senseye; evidence 11 §G1.4 — evidence 14 cites the same Siemens TCOD series). Benefit
-ranges: breakdowns −70%, maintenance cost −5–10% [C] (Deloitte); a Deloitte extruder
-pilot: −80% unplanned downtime, ~$300k/asset [C] (evidence 11 §G1.14). Rankings: item
-11 value T1 (#8) **but feasibility Tier F3**; item 14 value #7 (5.0) and prioritize-now;
-items 01/02/03 put PdM Tier 2 / wave 3 / Tier 2 respectively. The kernel elevates it
-anyway on partner-strategy grounds — that decision and its evidence tension are
-recorded as T-5 (Appendix A), with the mitigations below.
-
-**Data exhaust & required connectors.** Sensor telemetry (vibration, temperature,
-current — historian data), CMMS work orders/failure codes, operating context,
-inspection notes. Connectors: **historians (PI/OSIsoft), CMMS/EAM (Maximo/SAP PM),
-condition-monitoring feeds; for the fleet variant, telematics platforms** (evidence 11
-§G1.7). Telemetry exhaust is strong on instrumented assets; **the failure-label side is
-the chronic weakness** — 12+ months of telemetry + work-order history is the intake
-floor (evidence 11 §G1.10).
-
-**Actions enabled & systems of action.** Alert → work order in CMMS with suspected
-failure mode + parts list; scheduling into planned windows; spare-parts pre-positioning
-(the UC-6 MRO coupling); operating-parameter derating to survive to the window. The
-action path runs through existing maintenance planning — mature, human-owned,
-low-liability (evidence 11 §G1.8).
-
-**KPIs & how impact is proven.** Unplanned downtime hours, OEE availability,
-maintenance cost per asset, MTBF/MTTR, **catch rate (failures with prior warning) and
-false-alert rate** — the alert-precision pair that decides adoption. Proof:
-before/after on downtime and cost against per-asset CMMS baselines; attribution needs
-care because other reliability work confounds (evidence 11 §G1.9).
-
-**Industry variants (kernel D5).**
-- **1c operational — the beachhead (kernel D5: "UC-8 PdM" is the named 1c solution).**
-  Two sub-variants matter: **fleet** (Motive-adjacent: high asset counts, standardized
-  failure modes — *the best label situation in the domain*, evidence 11 §G1.11) and
-  **discrete manufacturing** (rotating equipment; pilot-to-fleet heterogeneity is the
-  scaling risk). The fleet variant is the recommended first instance precisely because
-  it dodges the label-scarcity constraint.
-- **1a FS/banking:** n/a physically; nearest analogs (ATM/branch equipment, data-center
-  facilities) are supporting at best — UC-8 is not a banking-beachhead module.
-- **1b insurance:** indirect — IoT/telematics-driven loss prevention in commercial
-  property/fleet books; a distribution partnership angle rather than a carrier-internal
-  module.
-- Elsewhere: process industries (safety-critical, alarm-flood context); utilities
-  transformer/line asset care (L20 sibling — T2/industry-gated); rail/aviation
-  regulated maintenance regimes.
-
-**Methodology mapping & module staging.** **At launch (W1–W2):** M-1 on
-failure/work-order history where labels exist (fleet variant) + **M-5 anomaly
-detection** on telemetry where they don't — with the honest constraint from the
-evidence that anomaly detection without failure attribution produces alert noise
-(evidence 11 §G1.15), so v1 scopes to instrumented critical assets with label history.
-**Upgrade (W2 — M-6):** survival/RUL per failure mode. **Later:** work-order NLP
-(M-9, W3) to mine failure codes from text; alarm-management discipline throughout.
-Alert-fatigue economics (S7 pattern 7) drive the precision-first tuning default.
-
-**Evidence cross-references.** Evidence 11 §G1 (full dossier; value T1 #8; feasibility
-F3) · evidence 14 predictive maintenance (value #7; prioritize-now; Siemens TCOD 2024 +
-BlueScope case as anchors) · evidence 01 Tier 2 · evidence 02 wave 3 ("highly
-defensible … but every plant and asset class introduces additional integration work" —
-the caution we absorb via the fleet-first variant) · evidence 03 Tier 2
-(failure risk → work order, parts, downtime window) · evidence 04: **no dedicated PdM
-accelerator among the Databricks 93** (#58 *OEE and KPI Monitoring* and #23 *Digital
-Twins* are the nearest) — whitespace in the most-cited industrial AI category ·
-evidence 09: Fleet Management (23 apps — a whole prior-art category), Operations /
-Logistics (40), Quality Assurance (21).
-
-**Open product questions.**
-1. Fleet-first confirmation: does S-8's reference implementation target vehicle/fleet
-   assets (Motive-adjacent data) rather than plant assets? (Recommended; needs kernel
-   D5-1c alignment with the actual first operational partner.)
-2. Sensor-gap policy: do we ever recommend instrumenting (capex advice), or is
-   "already-instrumented critical assets only" an intake hard line?
-3. Criticality analysis: in-module (asset-criticality ranking from downtime cost) or a
-   delivery-time consulting artifact?
-4. False-alert budget: what precision floor gates alert volume at launch (alert-fatigue
-   guard, evidence 11 §S7.7)?
-
-### UC-9 — Automated email outbound
-
-**Problem statement.** Outbound revenue motions (prospecting, nurture, win-back,
-expansion) are throttled by manual list-building, generic messaging, and unmeasured
-sends: teams either blast untargeted volume (burning deliverability and brand) or
-hand-pick tiny lists (leaving pipeline unbuilt). The business wants outbound email
-that is **targeted by model (who), timed and sequenced by policy (when), personalized
-within guardrails (what), and measured against holdouts (did it work)** — an
-intelligence problem first, a sending problem second. Kernel rationale for T1: **One
-Orama catalog #2** (evidence 07) — a committed product-suite priority where UC-2
-scoring + M-3 segmentation power the outbound layer (kernel D3).
-
-**Decision framing.** *Entity:* the recipient × campaign/sequence × send. *Decision:*
-include/exclude (scoring), which segment/message variant, when to send, when to stop
-(fatigue/suppression). *Label:* response within window (reply, click, meeting,
-conversion) + negative labels (unsubscribe, complaint, bounce). *Horizon:* per send,
-continuous; campaign cycles of days–weeks (composition of evidence 11 §C4 campaign
-response + §C7 send-time + §C3 segmentation + §A4 scoring).
-
-**Decision frequency & economic pool.** Every send is a decision — thousands to
-millions per month even mid-market. The economic pool is pipeline creation efficiency:
-campaign-response modeling and audience selection are the mature direct-response
-disciplines (evidence 11 §C4 — "mature in finserv/telco/retail; uplift still rare in
-practice"); send-time/frequency optimization is commodity alone but real inside an
-orchestrated program (evidence 11 §C7). Honest flag: **no external evidence source
-ranks "automated email outbound" as a top standalone use case** — its components sit
-in item 11's Tier 4 / compact tables and mid-pack in item 14 (campaign response and
-send-time both in the prioritize-now grid quadrant, ranks below the top 50). The
-admission is an internal One Orama commitment (evidence 07), not an external-demand
-conclusion — recorded as tension T-6 with the kernel's own open question 2.
-
-**Data exhaust & required connectors.** CRM (shared with UC-2), marketing
-automation/ESP engagement logs (opens/clicks/replies/unsubs), enrichment data, product
-usage (for expansion motions), suppression/consent registries. Connectors: **CRM,
-ESP/marketing automation (HubSpot/Marketo/Braze-class), enrichment** (evidence 11 §C4,
-§C7 systems of record). Consent/CAN-SPAM/CASL/GDPR state is part of the data contract —
-governance surface from day one.
-
-**Actions enabled & systems of action.** Scored + segmented audiences → sequence
-enrollment in the ESP; send-time/frequency policies → scheduling and fatigue caps;
-suppression automation (do-not-contact, deliverability protection); performance
-feedback → audience refresh. The **generation** of message copy is deliberately
-out-of-scope at launch (that is LLM content generation — anti-portfolio-adjacent;
-see §5): v1 personalizes by *selection* (segment/variant/merge-field), not by
-free-form LLM drafting. Kernel Q2 (internal-first vs customer-facing) governs the
-first deployment: the recommended reading is **internal-first — Orama automating
-Orama's own outbound** — producing our own measured case study before the module is
-customer-facing (see T-6).
-
-**KPIs & how impact is proven.** Reply/meeting rate, opportunity creation per 1,000
-sends, incremental pipeline vs **holdout audiences** (the uplift design from day one —
-suppressed control groups are cheap in email), unsubscribe/complaint rates and
-deliverability health as guardrail KPIs. Measurement is native: the ESP logs every
-outcome (evidence 11 §C4/§C7 KPIs).
-
-**Industry variants (kernel D5).**
-- **1a FS/banking:** consent and suitability constraints on offers; compliance review
-  of sequences; segment-of-one restrictions — the variant exists but is
-  governance-heavier (evidence 11 §A3.11 banking analog).
-- **1b insurance:** agent-mediated books — outbound supports agents (renewal/lapse
-  outreach lists feeding UC-1's insurance variant) more than direct-to-policyholder.
-- **1c operational / B2B SaaS (the natural first market):** classic B2B outbound —
-  UC-2-scored accounts, PQL expansion motions; this is also the *internal* variant
-  (Orama's own GTM).
-- Elsewhere: retail/e-commerce lifecycle email (win-back, replenishment reminders) —
-  couples to UC-1 and UC-3 value-weighting.
-
-**Methodology mapping & module staging.** **At launch (W1 — M-1 + M-3):** response/
-propensity GBM (M-1, shared spine with UC-2) + behavioral segmentation (M-3) +
-policy-based send orchestration with holdout discipline. **Later:** M-7 uplift
-(incremental-response targeting — the real prize per evidence 11 §C4's "uplift vs
-propensity still rare"); M-8 composition (offer/variant arbitration); M-9-gated LLM
-personalization only behind W3 governance and brand/claims guardrails (evidence 11
-§C2's failure modes are the cautionary list).
-
-**Evidence cross-references.** Evidence 07 (One Orama catalog **#2** — the admission
-ticket) · evidence 11 §C3/§C4/§C7 + §A4 (component dossiers) · evidence 14 campaign
-response + send-time (prioritize-now quadrant) · evidence 01/02/03: present only as
-components of personalization/NBA tiers · evidence 04: #66 *Propensity Scoring*, #78
-*RFM Segmentation*, #18/#19 *Customer segmentation* — components packaged, composite
-absent · evidence 09: Marketing (20 apps), Sales (30).
-
-**Open product questions.**
-1. **Kernel open question 2 (verbatim):** internal-first (Orama automating Orama) or
-   customer-facing module first? CPO recommendation: internal-first for one full
-   measured cycle (see T-6).
-2. Deliverability liability: sending through customer ESP accounts only (recommended),
-   or ever through Orama-managed infrastructure?
-3. Where is the consent-management boundary — do we require the customer's ESP/CRM to
-   be the consent source of truth (recommended) or hold suppression state in-module?
-4. When M-9 lands, what is the approval workflow for LLM-personalized copy (human
-   review per variant? per sequence?) under the correctness-gate brand promise?
-
----
-
-## 3. Tier 2 — structured briefs (year 1–2, gated)
-
-Kernel D3 lists eight Tier-2 use cases. Each brief states the problem, the decision
-skeleton, why it earns Tier 2 (not 1, not 3), its methodology mapping, its evidence,
-and — the defining field — its **gate**: the specific governance and/or engine maturity
-that admits it to active development. A Tier-2 entry does not get roadmap dates until
-its gate is credibly scheduled (kernel D7.3 discipline applied to demand).
-
-### T2-1 · Fraud & AML **triage** (assistive — not real-time decisioning)
-
-- **Problem.** Rule-based AML monitoring buries compliance teams in alerts that are
-  >90–95% false positives while sophisticated laundering passes; fraud queues have the
-  same triage shape. The business wants analyst hours ranked onto the alerts that
-  deserve them (evidence 11 §E2).
-- **Skeleton.** Entity: the alert / customer / account network. Decision: investigation
-  priority, auto-close of validated low-risk classes, case packaging. Label:
-  alert-disposition history — excellent for triage (the sub-problem we scope to), weak
-  for true crime. Horizon: daily batch + investigation cycles.
-- **Why T2.** Enormous pool — ~$206B/yr global financial-crime compliance cost [M]
-  (LexisNexis 2023), $4.6B AML fines in 2024 [M] (Fenergo) — and ML triage overlays
-  show 30–60% false-positive reduction at equal-or-better detection [C] (evidence 11
-  §E2.14). But every action must be audit-defensible under direct regulatory
-  supervision, and item 11 puts AML-beyond-triage in feasibility F3 on
-  governance friction. Items 01/02/03 all defer it past their first wave (02: wave 3
-  "financial crime … after governance, evidence handling, human approval, and
-  auditability are mature"). Item 14 places AML in its explore-selectively quadrant —
-  aligned.
-- **Methodology.** M-1 triage GBM on alert/customer features (W1-capable) + **M-2
-  entity resolution at production grade** (network fragmentation is the classic
-  failure) + graph analytics (W3-adjacent); SAR-narrative drafting only after M-9.
-- **GATE.** *Governance:* R6 (identity-scoped access, audit trails, approval gates)
-  live in a regulated reference deployment + zero-governance-violation track record
-  from ≥2 Tier-1 FS deployments (kernel D8 guardrail as an admission credential);
-  regulator-grade model documentation capability. *Engine:* M-2 v2 (entity resolution
-  beyond thin), R4 (indexing for network queries). *Posture:* assistive triage only;
-  auto-closure classes require regulator-accepted validation evidence.
-- **Evidence refs.** 11 §E2 (full dossier) · 14 AML dossier (explore-selectively) · 04:
-  #3 *Compliance: AML and KYC*, #30 *rule-based financial fraud*, #38 *fraud with
-  geospatial analytics* · 09: Compliance / Regulatory (28 apps).
-
-### T2-2 · Credit-risk-adjacent scoring (SR 11-7 discipline required)
-
-- **Problem.** Credit extension decisions (B2B trade-credit limits, deposit gating,
-  lending adjacent) misjudge counterparties: too conservative loses revenue, too
-  permissive produces defaults (evidence 11 §D3).
-- **Skeleton.** Entity: application/account/counterparty. Decision: approve/decline,
-  limit, price. Label: default/delinquency within the performance window — slow,
-  censored (reject inference), unambiguous. Horizon: seconds–days decision; labels
-  mature over years.
-- **Why T2.** The best-documented ML delta in the entire evidence base — Upstart/CFPB:
-  **+27% approvals at equal loss rates, −16% APR** [M — regulator-summarized]
-  (evidence 11 §D3.14) — and item 14 ranks credit risk #14 (4.8). But the binding
-  constraint is validation/governance, not modeling: SR 11-7 model risk management,
-  ECOA/fair-lending disparate-impact testing, adverse-action reason codes, EU AI Act
-  high-risk class (evidence 11 §D3.10). The kernel's own D5-1a targeting note (OCC
-  model-risk guidance bites at banks >$30B assets — evidence 08) makes this the module
-  our governance primitives are *for* — once they're proven.
-- **Methodology.** M-1 in its regulated form: constrained/explainable GBM or scorecard
-  structure + SHAP-adjacent reason codes + champion/challenger harness. The **B2B
-  trade-credit limit variant is the recommended first instance** — same skeleton,
-  lighter regulatory surface (evidence 11 §D3.11), natural upsell from UC-4 (credit
-  decides terms; collections recovers them — §D3.12).
-- **GATE.** *Governance:* champion/challenger + model-inventory + validation-doc
-  tooling shipped (E7-adjacent capability); fair-lending testing harness; a bank
-  design-partner whose model-risk team co-signs the validation plan. *Engine:* R6.
-  *Sequencing:* after S-4 is live in ≥1 FS account (vocabulary + trust path).
-- **Evidence refs.** 11 §D3 (full dossier) · 14 credit risk (#14; prioritize-now) · 02
-  wave 1 names credit within "fraud/credit decisioning" but with governance caveats ·
-  04: #14 *Credit Card Transactions Analytics*, #52 *Model Risk Management With EY* ·
-  09: Finance (30), Risk and Insurance (12).
-
-### T2-3 · Insurance claims triage & lapse/retention
-
-- **Problem.** Incoming claims are routed by rote: simple claims crawl through manual
-  handling (cycle-time cost, CX damage) while complex/severity-creeping claims reach
-  senior adjusters late (leakage); separately, policyholders lapse at renewal without
-  targeted retention (evidence 11 §L10, §A1 insurance variant).
-- **Skeleton.** Claims triage — entity: the FNOL claim; decision: fast-track /
-  standard / complex / SIU-referral routing + reserve flag; label: cycle time, ultimate
-  incurred cost, routing accuracy; horizon: minutes at FNOL. Lapse — UC-1's insurance
-  variant (renewal-cycle horizon, agent-mediated treatments).
-- **Why T2.** Strong external support — item 14 ranks insurance claims triage **#11
-  (5.0)**; STP on standardized lines is industry-proven (Lemonade-class insurtechs;
-  30–60% STP ranges industry-cited [C/V], evidence 11 §L10) — and the kernel D5 makes
-  insurance Tier-1b with "claims triage (T2)" named in its beachhead row. It is T2
-  rather than T1 because FNOL intake is document/photo-heavy (M-9/document AI is W3)
-  and the NAIC AI Model Bulletin compliance surface needs the governance kit.
-  **Lapse/retention needs no gate beyond an insurance partner** — it ships as the S-1
-  insurance variant (already covered under UC-1), which is exactly how the kernel D5
-  row reads ("UC-1 lapse/retention").
-- **Methodology.** M-1 severity/complexity GBM on FNOL + policy features (W1-capable
-  for structured-data triage) + M-9 document/photo intake (W3) for full FNOL
-  automation; M-6 for claim-development/severity trajectories.
-- **GATE.** *Governance:* NAIC AI bulletin compliance mapping + carrier model-governance
-  sign-off pattern. *Engine:* M-9 (W3) for document-grade intake; structured-data-only
-  triage may pilot earlier with an insurance design partner. *Sequencing:* after the
-  1b beachhead partner is signed; UC-1-lapse first, triage second.
-- **Evidence refs.** 11 §L10/§L11 (+§E3 fraud-referral boundary) · 14 claims triage
-  (#11) · 04: #84 *Smart Claims for Insurance*, #11 *Claims Management Automation* ·
-  09: Risk and Insurance (12), Compliance / Regulatory (28).
-
-### T2-4 · Employee attrition (heightened HR governance)
-
-- **Problem.** Valuable employees quit with little warning; each departure costs
-  50–200% of salary [C-modeled] (Gallup/SHRM), and US voluntary turnover runs ~$1T/yr
-  [C-modeled] (evidence 11 §I1.4). The business wants segment-level flight-risk and
-  drivers early enough for policy and manager interventions.
-- **Skeleton.** Entity: the employee — **scoped to role × site segment by default**
-  (the ethical-hazard reducer, evidence 11 §I1.5). Decision: manager check-in,
-  comp/plan adjustment, workload/rotation change, systemic policy fix. Label: voluntary
-  exit within 3–12 months (regrettable vs non-regrettable). Horizon: quarterly scoring.
-- **Why T2.** Technically it is UC-1's twin (tabular churn on HRIS data — M-1+M-6,
-  W1-capable); item 11 says so explicitly ("classic tabular churn") but places it
-  feasibility F3 because **organizational/ethical feasibility is the binding
-  constraint**: EU AI Act treats employment AI as high-risk, works-council/GDPR
-  clearance, score-leakage into performance decisions is the trust-collapse failure
-  (evidence 11 §I1.10, §I1.15). Item 14 places attrition in explore-selectively.
-  Weakest actionability in the catalog relative to model quality (§I1.8) — segment
-  policy, not individual saves, is where value lives.
-- **Methodology.** M-1 + M-6 survival at segment level; SHAP driver reporting;
-  engagement-text NLP features later (M-9).
-- **GATE.** *Governance:* HR-grade access controls (who may see scores — R6
-  identity-scoping), documented no-adverse-use policy pattern, EU-AI-Act-high-risk
-  compliance artifacts, works-council playbook. *Posture:* segment-level reporting
-  default; individual-level only under an explicit governance addendum. *Sequencing:*
-  never the first module in an account.
-- **Evidence refs.** 11 §I1 (full dossier) · 14 attrition (explore-selectively) · 02
-  wave 3 ("workforce planning") · 04: none directly (whitespace, but for governance
-  reasons rather than demand) · 09: HR / People (28 apps — demand exists).
-
-### T2-5 · Customer-service ticket triage
-
-- **Problem.** Inbound support volume must be understood, prioritized, and routed
-  before anyone can help; manual triage is slow and inconsistent, and misroutes
-  multiply handle time (evidence 11 §B1).
-- **Skeleton.** Entity: the ticket. Decision: category, priority, queue/agent
-  assignment. Label: final resolved category/team — free from history. Horizon:
-  seconds–minutes at arrival.
-- **Why T2.** Both compendia rate it among the most feasible use cases anywhere (11:
-  feasibility F1, "labels free, platform-native action"; 14: feasibility 5.0 rank #3,
-  value #21) — on pure demand evidence it would be T1. It is T2 for two portfolio
-  reasons: (a) the core is **text classification**, which sits in M-9's wave (W3) —
-  admitting it early would break the D2 wave discipline for one use case; (b) it is
-  the **most commoditized** use case in the catalog (native features in
-  Zendesk/ServiceNow — evidence 11 §B1.13), so differentiation-per-effort is the
-  lowest in Tier 1's candidate set. Recorded as tension **T-7** (Appendix A): if an
-  M-9-lite (LLM-API classification without the full retrieval stack) is admitted to an
-  earlier wave, ticket triage is the first beneficiary.
-- **Methodology.** LLM/transformer classification + rules for compliance categories →
-  platform routing API (evidence 11 §B1.16); M-1 on ticket metadata is a weak interim.
-- **GATE.** *Engine:* M-9 (or an explicitly kernel-approved M-9-lite) — W3. *Demand
-  trigger:* ≥1 Tier-1 account requesting it as module attach (the kernel D6 expansion
-  motion).
-- **Evidence refs.** 11 §B1 (full dossier) · 14 (#21; feasibility #3) · 01 Tier-1 #3
-  (customer support automation family) · 02 wave 1 (customer service) · 03 embedded in
-  service family · 04: #44 *LLMs for Customer Service Analytics*, #46 *LLMs for
-  Customer Service and Support*, #47 *Optimize Customer Email Support* · 09: Customer
-  Success (26), Cross-Functional (17).
-
-### T2-6 · Supplier risk
-
-- **Problem.** Supply disruptions arrive unannounced from supplier failures (financial,
-  operational, geopolitical); post-COVID, monitoring became a board topic. The business
-  wants suppliers risk-tiered and monitored so dual-sourcing/buffer decisions happen
-  before the disruption (evidence 11 §F6 compact row).
-- **Skeleton.** Entity: the supplier. Decision: qualify / monitor intensity / diversify
-  / buffer. Label: disruption/failure events — **rare events, weak labels** (the
-  defining constraint). Horizon: continuous monitoring + sourcing events.
-- **Why T2.** Real demand (boomed 2020–2023; monitoring vendors mainstream in large
-  manufacturers) but item 11's verdict is sober: "predictive power modest, monitoring
-  value real" and it sits in feasibility F3 (rare events, weak labels). Item 14 places
-  it explore-selectively. The near-term value is **monitoring + scoring composition**
-  (financial signals + delivery-performance from ERP + news/adverse-media), not
-  disruption prediction — scope honesty prevents an overpromise failure.
-- **Methodology.** M-1 risk scoring on performance/financial features + M-5 anomaly on
-  delivery patterns (W2) + NLP event monitoring (M-9, W3) for the news layer.
-- **GATE.** *Engine:* M-5 (W2) for the useful core; M-9 for the differentiated news
-  layer. *Demand trigger:* an operational-account (1c) design partner with a sourcing
-  organization; pairs naturally as module attach after S-5/S-6.
-- **Evidence refs.** 11 §F6 · 14 supplier risk (explore-selectively) · 02 wave 2
-  (procurement/supplier orchestration) · 04: none direct (adjacent: #27 *ESG
-  Performance Analytics*) · 09: Procurement / Supply Chain (22).
-
-### T2-7 · Healthcare ops — no-show & denials (partner-led)
-
-- **Problem.** (a) Patient no-shows (commonly 10–30% by setting) waste clinical
-  capacity; (b) payers initially deny ~12% of hospital claims for predictable,
-  preventable reasons — hospitals spent **$19.7B in 2022** fighting denials [M]
-  (AHA; evidence 11 §L1.4, §L4).
-- **Skeleton.** No-show — entity: the appointment; decision: remind/overbook/
-  reschedule/transport-assist; label: attended vs no-show; horizon: days ahead.
-  Denials — entity: the claim (pre-submission) / the denial (post); decision:
-  fix-before-submit, appeal vs write-off, root-cause programs; label: payer
-  adjudication outcomes (CARC/RARC codes — exceptional label quality); horizon:
-  days + appeal windows.
-- **Why T2.** Denials is item 11's healthcare-most-tractable verdict ("the best-labeled
-  problem in healthcare", feasibility F1-listed; value T2 #11) and item 14 ranks
-  healthcare claims/denials **#9 (5.0)**; no-show is a simple M-1 tabular problem. The
-  gate is not modeling — it is the **healthcare environment class**: HIPAA/BAA
-  posture, EHR/clearinghouse (835/837) connectors, and kernel D5 places
-  healthcare in industry Tier 2 ("close #3, longer cycles" — evidence 08). Partner-led
-  means: admitted when a health-system/RCM design partner brings the environment.
-- **Methodology.** No-show: M-1 (W1-capable). Denials: M-1 denial-risk GBM +
-  denial-code root-cause analytics (K2-shaped) + LLM appeal drafting only after M-9
-  with grounding guardrails (hallucination in a regulated document is the named risk —
-  evidence 11 §L1.15).
-- **GATE.** *Governance:* HIPAA/BAA operating pattern + healthcare reference
-  architecture (one per environment class — kernel D7.4). *Demand trigger:* signed
-  healthcare partner (industry Tier-2 wave, warmest-intro rule — kernel D5). *Engine:*
-  M-9 for appeal drafting; prediction layers are W1/W2-capable.
-- **Evidence refs.** 11 §L1 (full dossier), §L4 · 14 healthcare claims/denials (#9),
-  patient no-show (#33) · 02 wave 3 but "probably the strongest first vertical
-  template" for agentic-era work (noted, not adopted — our industry order comes from
-  evidence 08) · 04: #35 *Healthcare X12 Claims*, #51 *Medicare Risk Adjustment*, #36
-  *HEDIS Engine* · 09: Clinical and Lab Services (16 apps).
-
-### T2-8 · Forecast-to-action automation (upgrades of UC-5/6)
-
-- **Problem.** UC-6 ships assistive: recommended POs reviewed by humans. The mature
-  end-state in the industry is auto-replenishment — recommendations that execute
-  (evidence 11 §F2.8). The upgrade converts S-5/S-6 from decision support into a
-  closed loop, which is where the external evidence says the compounding value lives
-  (evidence 02/03's closed-loop thesis).
-- **Skeleton.** Same entities as UC-5/6; the decision changes from "recommend" to
-  "execute within policy envelope" (order-size caps, exception thresholds,
-  human-review classes).
-- **Why T2.** Not a new demand — a **graduation**. The kernel names it explicitly in
-  the T2 list, and D7.5 defines the path: shadow production first, automation only
-  after human-reviewed parity is demonstrated. This entry exists in the catalog so the
-  graduation is a *decision with evidence*, not a drift.
-- **Methodology.** M-4 outputs + M-11 constrained optimization (W4) for the full
-  version; policy-envelope automation of simple reorder classes may precede M-11 under
-  the same gate.
-- **GATE.** *The kernel D7.5 gate verbatim:* every solution runs human-reviewed
-  alongside the existing process before any automated action. Quantified: ≥1 full
-  seasonal cycle of S-6 shadow/assistive operation in the account, recommendation-
-  acceptance and override-quality data reviewed, exception taxonomy stable; engine R4
-  + (for MEIO-grade) M-11/W4.
-- **Evidence refs.** 11 §F2 (auto-replenishment as standard practice at scale) ·
-  02/03 closed-loop framing (the thesis source) · 04: #79 *Safety stock*, #86
-  *Supply Chain Distribution Optimization* · 09: Operations / Logistics, Warehouse /
-  Distribution.
-
----
-
-## 4. Tier 3 — later (each with its qualifying condition)
-
-One paragraph each (kernel D3 T3 list). These are tracked, re-scored at intake reviews,
-and **not roadmapped**. The pattern they share: each demands W3/W4 methodologies plus
-governance maturity, and each has a "talked-about > deployed" gap in the prevalence
-evidence (evidence 11 §S6) that makes early entry a credibility risk for a
-correctness-branded product.
-
-**T3-1 · Next-best-action / personalization engines.** The treatment-choice layer above
-UC-1/UC-2/UC-9: which action (offer/message/service/nothing) per customer × moment,
-arbitrated across channels under contact-fatigue budgets. Item 11: "mature in
-telco/banking decisioning suites; aspirational elsewhere — the brain is often rules in
-practice" (§A6), value T3 [V], feasibility F3 at full scope ("a program, not a
-project"); item 14 ranks NBA #36. Items 01/03 rank the *family* Tier-1 — but as the
-composite end-state, which is exactly what M-7+M-8 build toward. **Qualifying
-condition:** M-7 uplift + M-8 arbitration shipped (W3) *and* ≥2 live solutions in the
-account already producing the propensity/value inputs (NBA composes existing modules;
-it is an attach SKU, never a first sale).
-
-**T3-2 · Real-time fraud decisioning.** In-line approve/challenge/decline at
-authorization time (<100ms). The single highest-value use case in both compendia
-(11 §E1 value #1; 14 #3) — and deliberately not ours yet: it demands streaming
-infrastructure and millisecond serving (engine capability beyond R4), an adversarial
-red-queen maintenance posture, and consortium/network data that advantages incumbents
-(Stripe Radar-class network effects — evidence 11 §E1.10 "the build/buy answer is
-usually buy"). The kernel's anti-portfolio already excludes *autonomous high-stakes
-decisioning*; real-time fraud is its nearest admissible cousin. **Qualifying
-condition:** engine R5 (compute-near-data) + proven streaming-serving reference
-architecture + a partner whose fraud economics justify build-over-buy (e.g.,
-processor/PSP scale) + the T2-1 triage module live as the assistive precursor.
-
-**T3-3 · Pricing optimization.** Item 11 value #2, item 03 Tier-1 #3 — a top-3 pool by
-every external measure (1% price ≈ +8% operating profit [M]). Deferred because: causal
-validity is genuinely hard (elasticity from confounded observational data is failure
-pattern #5 — evidence 11 §S7), B2C dynamic pricing carries PR/regulatory tail risk,
-and B2B pricing's binding constraint is sales-force adoption, not modeling
-(evidence 11 §A2.10). **Qualifying condition:** M-7 causal machinery (W3) + a
-constrained first shape — **B2B deal/discount guidance with SHAP deal drivers**
-(the A4-adjacent variant, evidence 11 §A2.16) — in an account where S-2 is already
-trusted; never visible-consumer dynamic pricing as an early deal.
-
-**T3-4 · RAG knowledge assistants.** Knowledge-base retrieval / document Q&A / "chat
-with your data." Explicitly the anti-ICP disqualifier as an *engagement shape*
-(evidence 08: "wants an LLM copilot / RAG search, not a trained model" = pass), and
-item 03's Tier-3 warning ("enterprise search … unless embedded in high-value
-workflows"). Yet M-9 (W3) makes retrieval a *component* — B8-shaped grounding inside
-T2-5, appeal drafting in T2-7, playbooks in S-1. **Qualifying condition:** kernel open
-question 5's answer — re-admitted as a standalone module only when it ships *inside* a
-measured decision workflow with the correctness gate extended to grounded-generation
-faithfulness (M-9 + R6), and never sold to a RAG-only buyer (the anti-ICP filter
-stays).
-
-**T3-5 · Agentic workflow automation.** Tool-calling agents executing multi-step
-business processes. The widest rhetoric-reality gap in the current evidence: 62% of
-orgs experimenting, ≤10% scaled in any function [M-survey] (McKinsey 2025), >40% of
-agentic projects predicted canceled by end-2027 [projection] (Gartner 2025)
-(evidence 11 §S6). The kernel places M-10 in W4 with the Auto-RL base model — the
-compounding moat, entered deliberately late. **Qualifying condition:** W4 (M-10)
-+ R8 learning loop + governance maturity (R6 operating history), and first instances
-scoped to *assistive* agents inside existing modules (e.g., S-4 dunning-sequence
-drafting) under D7.5 shadow discipline.
-
-**T3-6 · AIOps.** Incident prediction/triage on IT telemetry. Item 14 ranks it #16;
-item 11 notes correlation/noise-reduction is mature vendor territory (BigPanda-class)
-and "prediction proper is oversold" (§H2). It is the same M-5 anomaly + M-1 triage
-machinery as UC-7/UC-8 pointed at IT — methodology reuse is free — but the buyer
-(VP infra/SRE) is outside our beachhead champion map and the vendor field is dense.
-**Qualifying condition:** an existing Enterprise account pulls it (module attach to a
-platform team we already serve) — demand-led admission only; no standalone GTM.
-
----
-
-## 5. Anti-portfolio — what we refuse, and the argument
-
-Kernel D3's anti-portfolio, elaborated. These are not "later"; they are **filters** —
-each with the argument recorded so sales, intake, and partners apply them consistently.
-Source discipline: the anti-ICP hard filters come from the 3-model design-partner
-council (evidence 08, unanimous section) and the Tier-3/failure-mode evidence of
-items 01–03 and 11.
-
-| # | Excluded | The argument |
-|---|---|---|
-| AP-1 | **Generic chatbots / copilots** | Item 03 Tier-3 verbatim: "generic chatbots … valuable only when wired to decisions." Klarna's own 2025 moderation of its AI-first support stance (evidence 11 §B2.14) is the cautionary arc: deflection theater (containment up, CSAT/churn worse) is failure pattern #3 (evidence 11 §S7). Zetta sells *trained-on-your-data decision intelligence* (evidence 06); a chatbot is neither the wedge nor the brand. Service automation re-enters, if ever, only as T2-5's routing layer — a decision problem with hard KPIs. |
-| AP-2 | **LLM-copilot / RAG-only engagements** | The anti-ICP names this a **disqualifier, not a wedge** (evidence 08 scorecard: "Wants an LLM copilot / RAG search, not a trained model" = pass on the account). Strategic reason: it selects buyers who want inference over a rented model — the exact opposite of the own-data-training moat (kernel D9.6; evidence 06 "learning, not inference"). Economic reason: RAG-only value evidence is the thinnest in the catalog (MIT NANDA's 95%-no-P&L-impact pattern concentrates here — evidence 11 §S7 backdrop). T3-4 defines the only re-entry path. |
-| AP-3 | **Autonomous high-stakes decisioning** (credit denial, claims denial, benefits, hiring, real-time blocking without human path) | Kernel D9.3 (assistive before automated) + D7.5 (shadow production) make this structural, not tactical. The evidence's disaster file is unambiguous: Robodebt royal commission (2023), Dutch Toeslagenaffaire (government resignation, 2021), MA algorithmic-denial litigation (2023), Air Canada chatbot liability (2024) (evidence 11 §S6, §S7 pattern 9). The council's wedge resolution says the same: "never autonomous high-stakes decisions" for partner proofs (evidence 08). Correct-by-construction is the brand — one governance scandal ends it (kernel D8: governance violations = 0). |
-| AP-4 | **Vision-first industrial inspection (initially)** | Real value (BMW 95→99% accuracy [C] — evidence 11 §G2) but wrong for us now: half the project is camera/lighting *hardware* engineering (§G2.10), defect libraries are the asset (physical-world data acquisition, not data exhaust), and vision sits outside the W1–W3 methodology waves (kernel D2 lists vision as "opportunistic/partner-led" in W4). It violates criterion 4 (data exhaust already exists) — the only Tier-1-value use case that does. Revisit as partner-led W4 work only. |
-| AP-5 | **Federal / classified as early deals** | Anti-ICP hard filter (evidence 08: "direct federal/classified deals as a first cohort" = disqualifier): procurement cycles outlast a pre-PMF product, compliance regimes (FedRAMP+) are a company-scale investment, and the public-sector cautionary tales carry the highest governance stakes in the compendium (evidence 11 §L21). Kernel D5 defers the vertical entirely. Not a judgment on the long-term market — a sequencing refusal. |
-
-Two adjacent **deal-level** filters from the anti-ICP travel with this list though they
-are account filters rather than use-case exclusions: prospects demanding we take raw
-data into *our* cloud (violates the in-your-environment thesis — evidence 06/08), and
-AI-tourist innovation labs with no production owner (no prototype-to-production
-champion = no deployment — evidence 08). Intake (§6) screens both.
-
----
-
-## 6. The intake process — how a use case enters the catalog
-
-Kernel D9.5 (operating principle): *"Evidence-based catalog growth — new use cases
-enter via the `add-use-case` research runbook and this kernel's criteria; the catalogs
-and the wtm blueprint stay in sync."* This section is that principle made operational:
-the pipeline, the scorecard, and the sync obligations.
-
-### 6.1 The pipeline (who does what)
-
-| Step | Action | Owner | Artifact |
-|---|---|---|---|
-| 1 | **Frame the problem in one sentence** — pin entity, label (+definition, horizon, censoring), point-in-time knowability/leakage traps, and the decision the output drives. *"If you can't say it in a sentence, stop — there's no ROI yet"* (add-use-case runbook, step 1). | Proposer (anyone) + CPO | One-sentence framing + skeleton |
-| 2 | **Deep research** — run the `add-use-case` skill to generate the tailored Perplexity Deep Research prompt; run it; capture the dossier **verbatim** as a new evidence item (evidence capture rules apply — analysis stays out of the evidence folder). | Proposer | Evidence NN (new dossier) |
-| 3 | **Score against the selection scorecard** (§6.3) using the dossier + cross-checks against evidence 11/14 (does it appear? what tier/rank? what flags?), 04/05 (is it packaged by competitors?), 09 (prior-art demand). | CPO | Completed scorecard |
-| 4 | **Tier decision** — admit to T3/T2/T1 (or anti-portfolio) per §6.4 thresholds. T1/T2 admissions and any anti-portfolio change are **kernel edits** (D3 owns the tier lists) — proposed as small PR-style kernel changes with the scorecard attached. T3 entries and re-scorings live in this doc only. | CPO → kernel review (exec team) | Kernel PR + this doc updated |
-| 5 | **Assign the ID** — next free `UC-n` at T2-admission or above (T3 entries keep slugs; see §1.2); check the wave implication (does it demand a new methodology? apply the **reuse rule**: a new `M-n` is admitted only when ≥3 tiered use cases demand it — kernel D1). | CPO + CTO | ID reservation |
-| 6 | **Land it in the blueprint** — wtm ORAMA-ZETTA `use_case` artifact `UC-N` mirroring UC-1's generic body + dependency closure; then `zetta-sync` (docs site + keyed GitHub issues); write `docs/ucN.md` mirroring the UC-1 exemplar. | CTO/eng | Blueprint artifact + synced surfaces |
-| 7 | **Build via worktree plan** when roadmapped (T1 or gate-cleared T2). | Eng | wtm worktree plan |
-
-Steps 6–7 follow the add-use-case runbook (`docs/runbooks/adding-a-use-case.md` in the
-umbrella bridge) verbatim — this catalog adds the tiering layer (steps 3–5) in front of
-it. The runbook's anti-patterns are adopted as intake rejections in their own right:
-backward start ("we have data, what can we do?"), leakage-prone framing, overpromise
-("automates everything"), bespoke creep (one customer's exact tables), model-in-the-
-hot-path without a correctness gate.
-
-### 6.2 Standing intake triggers
-
-New candidates arrive from four standing sources, reviewed quarterly:
-1. **Module-attach pull** — an Enterprise account asks for an adjacent problem (the
-   kernel D6 expansion motion). Strongest signal; T2 gates still apply.
-2. **Evidence refresh** — new compendium items or re-runs shift a ranking (e.g., a T3
-   entry's qualifying condition is met by a wave landing).
-3. **Design-partner discovery bench** — the 20–40-account bench (evidence 08) surfaces
-   named, urgent, dollar-attached problems.
-4. **Internal dogfood** — Orama operating Orama (UC-9's internal-first pattern).
-
-### 6.3 The selection scorecard (reusable rubric)
-
-Score 0–3 per dimension against the research dossier. The dimensions are the kernel D3
-criteria (§1.3) plus the two deal-reality dimensions the design-partner scorecard
-proved out (evidence 08). **Gate rule (adopted from the council's scorecard mechanics):
-weighting is cosmetic; admission gates on "no disqualifier + a named, budget-adjacent
-owner"** (evidence 08).
-
-| # | Dimension | 0 | 1 | 2 | 3 |
-|---|---|---|---|---|---|
-| 1 | **Economic pool** | No credible pool | Pool asserted, [T] only | Pool cited [C/V] with arithmetic | Pool measured [M] or regulator/benchmark-grade |
-| 2 | **Decision frequency** | Annual/one-off | Quarterly | Weekly–daily queues | Continuous / per-event |
-| 3 | **Closed-loop actionability** | Insight only; no owner | Owner exists, workflow doesn't | Named system of action, human-mediated | Prediction writes into the system of action (gated) |
-| 4 | **Data availability (tabular-first)** | Data must be acquired/instrumented | Exists but fragmented; heavy joins | In systems of record; labels derivable | Labels generated free by operations; point-in-time reconstructible |
-| 5 | **Measurability** | No KPI; impact unattributable | KPI exists, no baseline | Before/after credible | Holdout/A-B natural and cheap |
-| 6 | **Governance fit (low-liability first)** | Autonomous high-stakes decision | Regulated decision, human-in-loop viable | Sensitive but assistive-safe | Low-liability, assistive by nature |
-| 7 | **Engine feasibility today** | Needs W4/unbuilt engine (R5/R8) | Needs W3 (R4/R6) | Needs W2 (R3/R4-lite) | Runs on W1 (R1/R2) |
-| 8 | **Methodology reuse** | New methodology for this alone | Stretches an existing M-n | Recombines existing M-n | Pure reuse of shipped M-n components |
-| 9 | **Demand evidence breadth** | Absent from 11/14/09/04 | In one source | In 11+14 (agreeing) or strong single [M] | Tiered by external DRs + packaged by competitors + prior-art demand |
-
-**Disqualifiers (any = anti-portfolio or refuse-at-intake, regardless of score):**
-matches an AP-1…AP-5 exclusion · requires raw data in our cloud · no
-prototype-to-production owner anywhere in the target segment · label cannot be defined
-point-in-time (structurally leaky) · the buyer's real ask is a RAG copilot (AP-2).
-
-**Flag, don't score:** evidence-quality flags ([M]/[C]/[V]/[T]) travel with the pool
-claim into the catalog entry, per the item-11 convention — thin evidence lowers
-confidence, not necessarily tier (see UC-4, UC-7 precedents), but it must be visible.
-
-### 6.4 Thresholds (calibrated so today's catalog reproduces itself)
-
-- **Tier 1:** total ≥ 22/27 · no dimension ≤ 1 except at most one 1 with a written
-  mitigation (precedents: UC-8 scores 1 on data availability, mitigated fleet-first;
-  UC-7 scores 1 on demand-evidence, mitigated by the semantic-layer self-remedy) ·
-  engine feasibility ≥ 2 · plus a kernel edit.
-- **Tier 2:** total ≥ 17 · a **named gate** written in the T2 format (§3) — a T2 entry
-  without an articulable gate is a T3 entry.
-- **Tier 3:** total ≥ 12 · a **qualifying condition** naming the wave/governance event
-  that triggers re-scoring.
-- **Below 12** or any disqualifier: recorded in the intake log with the argument (the
-  anti-portfolio grows by kernel edit only).
-
-### 6.5 Sync obligations
-
-An admission is not done until: the kernel D3 list reflects it (T1/T2) · this document
-carries the brief · the wtm blueprint carries `UC-N` + dependency closure ·
-`zetta-sync` has regenerated the docs site + issues · the evidence dossier is captured
-under `../evidence/` per the capture rules. (Single-writer discipline: the wtm
-blueprint is the source of truth for the artifact; this catalog is the source of truth
-for the tiering rationale.)
-
----
-
-## 7. Coverage analysis — the portfolio against the demand space
-
-Two maps: the portfolio against item 11's twelve function families (the problem-space
-axis), and against item 09's seventeen prior-art categories (the demand-breadth axis).
-The purpose is honesty about shape: where we are deep by design, where we are absent by
-design, and where absence is unexamined (none, after this pass — every family below
-carries a rationale).
-
-### 7.1 Against item 11's twelve function families
-
-| Family (item 11) | Use cases there | Our coverage | Depth & rationale |
-|---|---|---|---|
-| **A. Customer / revenue** (12) | churn, pricing, recsys, lead scoring, CLV, NBA, win prediction, sales forecasting, promo, basket, sentiment, VoC | **Deepest: UC-1, UC-2, UC-3, UC-9** + T3-1 (NBA), T3-3 (pricing) | The factory's home family: highest M-1 reuse density, CRM/billing connector cluster, our anchor partner lives here. Deliberately absent: recsys (A3) — digital-native infrastructure play, buy-dominated, outside ICP; sentiment/VoC — LLM-commoditized (evidence 11 §A11/12). |
-| **B. Service & support** (8) | triage, resolution automation, agent assist, intent, proactive care, CC analytics, CSAT, KB retrieval | **T2-5 only** (ticket triage) | Highest-feasibility family in both compendia but the most gen-AI-commoditized (platform-native features; Klarna arc). We enter with the *decision* problem (routing), not the *conversation* problem (AP-1/AP-2 exclusions). M-9-gated. |
-| **C. Marketing** (7) | MMM, content gen, segmentation, response modeling, SEO, creative testing, send-time | **UC-9** (composite of C3/C4/C7 + A4) | Present exactly once, as the One Orama commitment. Deliberately absent: MMM (causal-validity F3 — failure pattern #5), content generation (AP-1-adjacent; measured-P&L evidence thinnest — NANDA pattern, evidence 11 §C2.14). |
-| **D. Finance & accounting** (10) | invoice/AP, collections, credit risk, cash forecasting, exceptions, expense fraud, JE anomaly, close, working capital, FP&A | **UC-4** + T2-2 (credit-adjacent); UC-7's FP&A variance skin | The beachhead family for industry 1a. Collections chosen over touchless-AP (D1) although D1 ranks higher on feasibility — because AP automation is document-AI-first (M-9/W3, IDP vendor-saturated) while collections is tabular-first (W1) with the CFO-legible KPI. Cash forecasting (D4) is a natural S-4 adjacency noted in UC-4's staging, not a separate module. |
-| **E. Fraud, risk & compliance** (10) | transaction fraud, AML, claims fraud, ATO, KYC, underwriting, model risk, sanctions, comms surveillance, clause risk | **T2-1** (fraud/AML triage) + T3-2 (real-time fraud); underwriting inside T2-3's carrier context | Enormous pools, but the family is governance-gated by construction and buy-gravity is strongest here (consortium data). Assistive triage is our admissible shape; autonomous decisioning is AP-3. Deliberately absent: KYC/sanctions (mandated, vendor-saturated, list-matching not learning). |
-| **F. Supply chain & logistics** (12) | demand forecasting, inventory, routing, supply planning, spend analytics, supplier risk, leakage, ETA, fleet, slotting, order promise, S&OP | **UC-5, UC-6** + T2-6 (supplier risk) + T2-8 (automation upgrade) | The 1c-operational family; second-deepest by design. Deliberately absent: route optimization (F3) — the best-audited case in the space (ORION [M]) but OR-solver territory, mature buy market (evidence 11 §F3.16: "OR with ML inputs"); enters only if M-11/W4 makes it cheap and an account pulls it. |
-| **G. Manufacturing & industrial** (8) | PdM, quality inspection, yield, fleet failure, scrap, energy, scheduling, digital twin | **UC-8** (assistive PdM) | One deliberate entry: the low-liability operational proof. Deliberately absent: visual inspection (AP-4), yield optimization (F3: observational causality + change control — a W3/W4 causal problem), digital twins ("mostly talked about" — evidence 11 §S6). |
-| **H. IT, engineering & security** (12) | threat detection, AIOps, code gen, RCA, alert correlation, capacity, test gen, release risk, log anomaly, phishing, vuln, UEBA | **T3-6 (AIOps) only** | Methodology-adjacent (M-5 reuse) but buyer-adjacent-not-ours and the most vendor-dense family (SIEM/EDR/observability incumbents; code assistants are a buy category). Absence is a GTM decision, not a capability one. |
-| **I. HR / people** (8) | attrition, recruiting, workforce planning, matching, skills, scheduling, engagement, mobility | **T2-4** (attrition, heightened governance) | One gated entry. Recruiting/screening is EU-AI-Act/LL144 compliance-gated with bias-absorption as the defining risk (Amazon 2018 — evidence 11 §I2) — outside low-liability-first. Scheduling optimization is real but WFM-vendor-mature. |
-| **J. Legal & document** (6) | contract review, doc classification, e-discovery, obligations, reg-change, summarization | **None until W3 (M-9)** | The whole family is document-AI-first. Deliberate wave discipline: J-family problems (contract leakage F7, doc routing J2) become attach candidates the day M-9 ships — several score F1 feasibility (evidence 11 §S3) and will likely be the first W3 intake batch. |
-| **K. Executive / cross-functional** (6) | KPI anomaly, driver analysis, scenario planning, reporting automation, M&A screening, research synthesis | **UC-7** (K1+K2 as one module) | The exec surface — ours by product identity ("the report solution generalized"). Deliberately absent: scenario planning/M&A/research synthesis (all "talked-about" tier, evidence 11 §S6); reporting automation rides inside UC-7's narrative layer rather than standalone. |
-| **L. Industry-specific** (25) | healthcare (6), banking (3), insurance (3), retail/CPG (3), telecom (2), energy (3), public (3), RE/construction (2) | **T2-3** (insurance claims+lapse), **T2-7** (healthcare no-show+denials); banking L7/L8 inside T2-2's scope; UC-1/4/7 industry variants cover the 1a/1b beachhead rows | Industry entries enter with industry beachheads (kernel D5 owns the order), not ahead of them. Deliberately absent: public sector (AP-5 + highest governance stakes — Robodebt/Toeslagenaffaire), energy/utilities (industry Tier 3), retail/CPG specifics (industry Tier 3). |
-
-**Shape summary.** Deep in A/D/F (customer-revenue, finance, supply chain) — the three
-families where tabular-first + natural labels + native action paths coincide (item 11's
-own conclusion: "the tabular-with-natural-labels + native-action-path quadrant is
-systematically the most attackable" — §S3). Present-with-gates in E/G/I/L. Absent by
-explicit decision in B-conversation, C-content, H, J-until-M-9, K-speculative, and the
-governance-extreme corners. Every absence traces to a kernel decision (waves D2,
-industries D5, anti-portfolio D3, or gates D7) rather than to oversight.
-
-### 7.2 Against item 09's seventeen prior-art categories (demand breadth)
-
-Item 09 is the retired amaro-desktop's 400-example-app catalog — a *demand-breadth*
-signal (what business users asked analytics apps for), not a value ranking. Mapping
-the portfolio onto its category weights:
-
-| Item 09 category (apps) | Portfolio coverage | Note |
-|---|---|---|
-| Operations / Logistics (40) | UC-5, UC-6, T2-8, T2-6 | Largest prior-art category → second-deepest portfolio family. Aligned. |
-| Finance (30) | UC-4, T2-2, UC-7 (FP&A skin) | Aligned; joint-2nd demand → beachhead family. |
-| Sales (30) | UC-2, UC-9, UC-3 | Aligned; joint-2nd demand → three T1 modules touch it. |
-| Compliance / Regulatory (28) | T2-1, T2-2 (governance artifacts) | Gated presence — consistent with low-liability-first; demand exists and waits on R6. |
-| HR / People (28) | T2-4 only | **Deliberate under-coverage** vs demand weight: governance risk (EU AI Act high-risk) outweighs breadth signal. |
-| Customer Success / Acct Mgmt (26) | UC-1, UC-3 | Aligned — the anchor lives here. |
-| IT / Engineering (26) | T3-6 only | Deliberate under-coverage: buyer map + vendor density (§7.1 H). |
-| Warehouse / Distribution (24) | UC-6 | Aligned. |
-| Fleet Management (23) | UC-8 (fleet-first variant), UC-5/6 | Aligned — and validates the fleet-first S-8 recommendation (prior-art demand had a whole fleet category). |
-| Executive / Leadership (22) | UC-7 | Aligned — the exec surface. |
-| Procurement / Supply Chain (22) | T2-6; F5/F7 as W3 intake candidates | Partial; leakage detection (F7) flagged for the first M-9 intake batch. |
-| Quality Assurance (21) | UC-8 boundary only | Deliberate: G2 vision is AP-4; QA-as-tabular (scrap drivers, G5) is a UC-7/UC-8 skin candidate. |
-| Marketing (20) | UC-9 | Aligned at one module; MMM/content absences argued in §7.1 C. |
-| Cross-Functional / Special (17) | UC-7 | The anomaly/driver surface is the cross-functional app. |
-| Clinical and Lab Services (16) | T2-7 | Gated on the healthcare environment class — matches industry Tier 2. |
-| Data and Analytics (15) | UC-7 + the platform itself | Zetta *is* this category's product. |
-| Risk and Insurance (12) | T2-3, T2-1 | Aligned with industry 1b gating. |
-
-Breadth check: the nine T1 modules + eight T2 entries touch 15 of 17 prior-art
-categories; the two under-covered relative to demand weight (HR, IT/Engineering) are
-under-covered **on purpose** with recorded arguments. Demand breadth is not the
-constraint on this portfolio; governance and wave sequencing are — which is the
-intended shape for a correctness-branded factory.
-
----
-
-## 8. Demand evidence summary table
-
-Tier-1 portfolio × the five external evidence sources. Columns: item 01 (DR #1 tier;
-16 use cases, 3 tiers), item 02 (DR #2 build-order wave; closed-loop framing), item 03
-(DR #3 tier; 6-dimension rubric), item 04 (Databricks accelerator presence among the
-93), item 14 (external compendium value rank of ~140, with score). Item 11 (internal
-compendium) column included as the internal cross-check. "—" = not tiered/ranked as a
-standalone entry in that source.
-
-| UC | 01 tier | 02 wave | 03 tier | 04 presence (accelerators) | 14 value rank | 11 value tier | Convergence read |
+## 2. The scored portfolio at a glance
+
+The full catalog, scored by §1.3. `E[ROI]×` is the math-sketch multiple at the stated
+median account (conservative, first-year, no compounding credit); `p` is the rubric
+p(success); **RA×** = risk-adjusted multiple = E[ROI] × p; Band per §1.3.2. V-scores
+and P-scores are quoted so the arithmetic is auditable; each Band-A/B dossier carries
+the full derivation.
+
+| UC | Use case | V1·V2·V3·V4 | E[ROI]× | P1·P2·P3·P4·P5 | p | RA× | Band |
 |---|---|---|---|---|---|---|---|
-| UC-1 churn | T2 (#9; "build as NBA branch") | **1st** | **T1 #1** ("the archetype") | **5** (#33, #60, #77, #87, #88) | #13 (4.8) | T1 #6 | Unanimous top-tier across 5 of 6; 01's demotion is a composition argument our M-7/M-8 staging absorbs. |
-| UC-2 lead/opp scoring | T2 ("sales opportunity mining") | **1st** ("sales ops") | — (SaaS/banking industry rows) | 1 adjacent (#66 propensity) | #51 (4.45) | T3 [C] | Mid-tier externally; T1 on reuse economics (Appendix T-2). |
-| UC-3 CLV | — | — | inside churn archetype | **3** (#17, #78, #87) | #19 (4.75) | T4 | Split verdict (14 high / 11 low); resolved as composition layer (T-3). |
-| UC-4 collections | T3 (finance family) | **1st** ("finance exceptions") | banking industry row | **0** — whitespace | **#2 (5.0)** | T2 #20 [T/V] | Strong on mechanism+feasibility everywhere; published-proof density is the only dissent → holdout-first delivery. |
-| UC-5 demand forecasting | **T1 #2** | 2nd | **T1 #4** | **3** (#21, #91, #93) | #4 (5.0) | T1 #3 | Fully unanimous — least contested admission. |
-| UC-6 inventory/replenishment | **T1 #2** (bundled) | 2nd | **T1 #4** (action half) | **4** (#56, #57, #79, #86) | #5 (5.0) | T1 #3 (joint) | Unanimous as forecasting's action layer. |
-| UC-7 KPI anomaly + drivers | — | — | T3 warning (dashboards) unless wired | 0 direct (#58 mfg cousin) | grid: prioritize-now (K1) | T3 [T] | Weakest external demand signal in T1 — admitted on product-identity + self-liftable gate (T-4). |
-| UC-8 PdM (assistive) | T2 | 3rd | T2 | **0** direct — whitespace (#23, #58 adjacent) | #7 (5.0) | T1 #8 (feas. F3) | Value unanimous, feasibility contested; partner-strategy admission with fleet-first mitigation (T-5). |
-| UC-9 email outbound | — (components in T1 personalization) | — | — | components (#18, #19, #66, #78) | components mid-pack | components T4 | Internal (evidence 07) admission — no external source ranks the composite (T-6). |
+| UC-1 | Churn & retention | 5·4·4·4 | ≈6× | 3·3·3·2·3 | 0.65 | ≈3.9 | **A** |
+| UC-2 | Lead & opportunity scoring | 3·5·3·4 | ≈5× | 3·3·3·2·3 | 0.65 | ≈3.3 | **A** |
+| UC-4 | Collections & receivables | 4·5·3·5 | ≈4× | 3·3·3·3·3 | 0.77 | ≈3.1 | **A** |
+| UC-5 | Demand forecasting | 5·5·4·3 | ≈6× | 3·3·3·2·2 | 0.55 | ≈3.3 | **A** |
+| UC-6 | Inventory & replenishment optimization | 5·4·4·3 | ≈6× | 2·3·3·2·3 | 0.55 | ≈3.3 | **A** |
+| UC-7 | KPI anomaly & driver analysis | 3·5·1·5 | ≈8× [T] | 2·2·2·2·3 | 0.39 | ≈3.1 | **A** (high variance) |
+| UC-8 | Predictive maintenance (fleet-shaped first) | 4·4·3·2 | ≈5× | 2·3·3·3·3 | 0.65 | ≈3.3 | **A** |
+| UC-9 | Automated outbound | 2·5·2·4 | ≈4× | 3·3·3·2·2 | 0.55 | ≈2.2 | **A** per kernel (→ T-5) |
+| UC-10 | Fraud & financial-crime decisioning | 5·5·4·2 | ≈6× | 2·3·3·3·2 | 0.55 | ≈3.3 | **A** |
+| UC-11 | Next-best-action | 4·5·3·1 | ≈8× [C] | 2·2·3·2·2 | 0.39 | ≈3.1 | **A** (attach-only) |
+| UC-12 | Claims triage | 4·4·3·3 | ≈6× | 3·3·3·3·2 | 0.65 | ≈3.9 | **A** |
+| UC-13 | Credit-risk decisioning | 4·4·5·3 | ≈5× | 3·3·3·3·2 | 0.65 | ≈3.3 | **A** (argued addition → T-2) |
+| UC-3 | Customer lifetime value | 3·2·3·4 | ≈4× | 3·1·1·2·3 | 0.26 | ≈1.0 standalone / ≈2.2 as composition layer | **B** (→ T-3) |
+| UC-14 | Pricing & discount optimization | 5·4·4·2 | ≈8× | 2·2·2·2·2 | 0.33 | ≈2.6 | **B** |
+| UC-15 | Employee attrition | 3·3·3·3 | ≈5× | 3·2·2·2·1 | 0.29 | ≈1.5 | **B** |
+| UC-16 | Service ticket triage & routing | 2·5·4·4 | ≈3× | 3·3·3·3·3 | 0.77 | ≈2.3 | **B** |
+| UC-17 | Document intelligence & touchless AP | 3·5·4·3 | ≈3× | 3·3·3·3·3 | 0.77 | ≈2.3 | **B** |
+| UC-18 | Supplier risk & monitoring | 2·3·1·3 | ≈4× | 2·2·2·2·3 | 0.39 | ≈1.6 | **B** |
+| UC-19 | Healthcare ops — denials & no-show | 4·4·4·2 | ≈5× | 3·3·3·2·2 | 0.55 | ≈2.7 | **B** |
+| UC-20 | Cash-flow & working-capital forecasting | 3·4·2·4 | ≈4× | 3·2·2·2·3 | 0.46 | ≈1.8 | **B** |
+| UC-21 | AIOps & incident intelligence | 3·5·3·2 | ≈4× | 2·3·2·2·2 | 0.39 | ≈1.6 | **B** |
+| UC-22 | Quality, scrap & yield drivers | 4·4·3·2 | ≈5× | 2·2·2·3·3 | 0.46 | ≈2.3 | **B** |
+| UC-23 | Campaign response & marketing optimization | 3·5·2·4 | ≈4× | 3·3·2·2·2 | 0.46 | ≈1.8 | **B** |
+| UC-24 | Contract intelligence & obligation risk | 3·3·3·3 | ≈4× | 2·2·2·2·3 | 0.39 | ≈1.6 | **B** |
 
-Reading: three admissions are externally unanimous (UC-1, UC-5, UC-6); two are
-external-mid/internal-strategic (UC-2, UC-4); three are strategic admissions with
-recorded tensions (UC-7, UC-8, UC-9); UC-3 is a split verdict resolved by scoping. The
-portfolio is therefore **evidence-led at its core and strategy-led at its edges, with
-every strategic override written down** — which is what D9.5 requires.
+Reading notes. (1) The two argued adjustments to the kernel's named Band-A set —
+**UC-6 inventory optimization in** (the only entry unanimous across every external
+source; it is demand forecasting's action half and shares its ROI pool — evidence
+01/02/03/04/11/14) and **UC-13 credit-risk decisioning in** (the best-measured ML
+return delta in the entire evidence base [M] and the most measurement-mature use case
+anywhere, evidence 11 §D3) — are recorded as tensions T-1/T-2 for kernel ratification.
+(2) **UC-9 scores below the Band-A line on today's evidence** (its components rank
+mid-pack everywhere; the composite is ranked by no external source) and is held in
+Band A by kernel D4's naming; tension T-5 proposes the evidence condition that
+resolves this honestly. (3) **UC-3 (CLV) is demoted from v1's top tier** on the
+prevalence evidence ("computed often, decisioned on rarely" — evidence 11 §S6);
+standalone it scores below every band; as the value-weighting composition layer of
+UC-1/UC-2 it earns Band B (T-3). (4) UC-7 and UC-11 carry the widest error bars in
+Band A — both lean on illustrative arithmetic ([T]/[C] flags) rather than audited
+pools; their dossiers say so and their pricing defaults to success-linked structure
+(D8).
 
-Competitive-packaging note (evidence 04): Databricks packages five accelerators against
-UC-1 and multiple against UC-5/UC-6 — validating demand where we are strongest — while
-**UC-4 (collections), UC-7 (business-KPI anomaly), and UC-8 (PdM proper) have no
-dedicated accelerator among the 93**: the three whitespace slots where a deployed,
-correct, governed module (kernel §1: "we sell the deployed solution, not the notebook")
-faces the least packaged competition. Snowflake's nine industry solutions (evidence 05)
-frame verticals, not use-case modules — orthogonal, not competing, packaging.
+---
+
+## 3. Band A — full ROI dossiers
+
+Twelve dossiers. Format per §1.4: skeleton → ROI model (levers · investment · sketch)
+→ p(success)/p(failure) → measurement design (the pricing instrument) → the customer's
+agent → data supply chain (→ [`08-data-strategy.md`](08-data-strategy.md)) → industry
+resonance (D3) → evidence cross-refs.
+
+### UC-1 · Churn & retention — the anchor
+
+**Problem.** Customers leave, downgrade, or go silent, destroying recurring revenue and
+sunk acquisition cost. The business wants to know **who will leave, when, why, and which
+intervention changes the outcome** — provably. *Entity:* account / subscriber /
+policyholder / merchant. *Decision:* intervene or not, with which treatment, at what
+spend. *Label:* churned within horizon (contractual event or behavioral inactivity —
+the label definition is itself a design decision). *Horizon:* 30–90 days (consumer/
+telco) to one renewal cycle (B2B/insurance); re-scored continuously.
+
+**ROI model.** *Levers:* revenue preservation (primary), retention-spend efficiency
+(uplift targeting stops discounting customers who would stay — evidence 01/03),
+expansion adjacency. *Pool anchors:* acquiring costs **5–25×** retaining [M]
+(HBR/Bain); **5-pt retention ≈ +25–95% profit** [M] (Reichheld & Sasser via Bain —
+cited identically by evidence 11 §A1 and 14); churn baselines ~5–7% B2B SaaS, 15–25%
+telecom, 10–15% retail banking [C]; program results: telecom **−15% churn, ~+10%
+ARPU** in ~1 yr [C]; Vodafone **−8%** [C]; merchant attrition **−20%/yr** in a
+McKinsey payments case [C] (evidence 11 §A1.14; 14; 02). Honest flag: audited churn
+RCTs are rare; most program evidence is company-reported — which is exactly why the
+module's measurement loop is the product. *Investment shape:* module + CRM/billing/
+product-analytics integration + label/feature data work + a retention team operating
+the queue (change cost is real but bounded — the team usually exists).
+*Sketch:* $1B-revenue subscription business, 15% churn; agent-run, uplift-targeted
+program achieves a 10% relative reduction = 1.5 pts ≈ **$15M/yr revenue preserved**;
+all-in customer investment ≈ $2.5M/yr → **E[ROI] ≈ 6×**.
+
+**p(success) = 0.65** (P1 3 · P2 3 · P3 3 · P4 2 · P5 3). *p(failure) ≈ 0.35, dominant
+driver: adoption* — the classic failure is a score nobody acts on (evidence 11 §S7
+pattern 1) and offer cannibalization when propensity is used where uplift is needed
+(§S7 pattern 2/5; evidence 01). Both are designed against: drivers ship with every
+score (actionability mechanism), and the treatment layer is uplift-framed from the
+start.
+
+**Measurement design (= pricing instrument).** Holdout on the intervention: treat a
+randomized share of flagged accounts, measure incremental retention among
+treated-vs-control at-risk cohorts — the cleanest experimental design in the catalog
+(evidence 11 §A1.9). The readout (saved revenue vs holdout) is the D8 billing basis;
+gross/net churn, NRR, save rate corroborate.
+
+**The customer's agent.** *Operates:* re-scores the base continuously, builds the
+ranked treatment queue with drivers, drafts save-plays, enrolls treatments through CRM
+and marketing automation (AUT-2; save-desk offer grants AUT-3, approval-gated until the
+account's override record supports graduation). *Monitors:* leakage sentinels
+(post-cancellation signals in features), label drift, holdout integrity, driver
+stability. *Improves:* learns treatment-assignment policy on the measured save-rate —
+the RL reward is the holdout-verified incremental retention itself (kernel D7.2).
+
+**Data supply chain (→ doc 08).** Sources: CRM, billing/payments, product telemetry,
+support tickets, NPS, contract dates. Entities: account-level identity resolution
+across systems (the join is the historical failure point, not the model). Labels:
+churn events + treatment-applied + outcome-observed (the action→result pair is the RL
+signal). Refinement: point-in-time feature discipline; label-definition assistant for
+behavioral churn; disposition capture in the save-desk workflow.
+
+**Industry resonance (D3).** Telecom (largest per-account pools), B2B SaaS/tech
+(native), banking (silent-churn deposit attrition — behavioral label), insurance
+(lapse/persistency at renewal), media/streaming; fleet-SaaS (few, large accounts —
+small-N drivers-and-watchlist mode).
+
+**Evidence.** 11 §A1 (anchor dossier; value T1 #6) · 14 churn dossier (rank #13, 4.8;
+grid prioritize-now) · 01 T2 #9 (with the NBA-composition note our UC-11 answers) ·
+02 rank #2 (4.44, customer lifecycle) · 03 **T1 #1** ("the archetype") · 04: five
+accelerators (#33/#60/#77/#87/#88 — densest competitor packaging in their catalog) ·
+09: Customer Success (26 apps — Churn Risk Monitor, Account Health Scorecard,
+Risk-Adjusted Revenue Forecast).
+
+### UC-2 · Lead & opportunity scoring
+
+**Problem.** Sales attention is scarce; leads and opportunities vastly outnumber it,
+so effort lands in the wrong order. *Entity:* lead / opportunity / account.
+*Decision:* work now, nurture, discard; who works it. *Label:* converted within
+horizon (stage progression → closed-won). *Horizon:* days–weeks (inbound; speed-to-lead
+is minutes-sensitive) to quarters (enterprise deals); scored on arrival, re-scored on
+activity.
+
+**ROI model.** *Levers:* conversion uplift on existing demand, sales-productivity
+release, cycle-time compression. *Pool anchors:* McKinsey tech-B2B deal scoring
+**+4–8 pts return-on-sales vs control** [M/C]; Qymatix B2B **+10% profit vs control**
+[M, small sample] (evidence 11 §A4). Honest flag: vendor lifts of 10–30% are common
+but rarely controlled [V] — the category is "more deployed than validated" (11
+§A4.13), which is the opening for a holdout-native product. *Investment shape:*
+module + CRM/marketing-automation integration + CRM-hygiene data work + rep-trust
+change cost (the real cost center). *Sketch:* $500M-revenue B2B seller; scored
+routing + SLA triggers lift lead→opportunity conversion enough for **+1–2% revenue
+(+$5–10M)**; investment ≈ $1.5M/yr → **E[ROI] ≈ 5×**.
+
+**p(success) = 0.65** (3·3·3·2·3). *p(failure) drivers:* rep adoption (a score reps
+ignore is worthless — reason codes are the trust mechanism, 11 §A4.8) and
+self-fulfilling labels (reps only work high scores → only high scores convert; the
+evaluation harness monitors for it, §A4.15).
+
+**Measurement design.** **Randomized routing** (scored order vs FIFO) — cheap, clean,
+and rarely actually run in the wild (11 §A4.9); it is this module's default and its
+pricing readout: incremental conversion × deal economics. Win rate, cycle length,
+revenue-per-rep corroborate.
+
+**The customer's agent.** *Operates:* scores arrivals in minutes, orders queues, fires
+SLA triggers, assigns nurture tracks, drafts rep-facing reason codes (AUT-2; discard
+automation AUT-3 until graduation). *Monitors:* leakage (post-qualification fields),
+label hygiene, score-distribution drift, the self-fulfilling-label sentinel.
+*Improves:* learns routing policy on measured incremental conversion from the
+randomized-routing readout.
+
+**Data supply chain (→ doc 08).** CRM history (stages, outcomes, activities),
+marketing engagement, enrichment, product usage (PQL). Labels: stage outcomes are
+free; the agent's reward joins routing decision → worked-by-whom → outcome. Refinement:
+stage-definition consistency; 1–2 yrs closed-loop outcomes at intake; suppression of
+leaky fields.
+
+**Industry resonance.** B2B SaaS/tech (native; PQL motions), financial services
+(prohibited-basis proxy discipline in scoring), insurance distribution (agent-channel
+speed-to-lead), manufacturing/industrial B2B (bid/no-bid sibling — 11 §L25).
+
+**Evidence.** 11 §A4 (feasibility F1 — "one of the most attackable"; value T3 [C]) ·
+14 #51 (4.45) but grid prioritize-now · 01 T2 (sales opportunity mining) · 02 rank #3
+(4.25, sales/revenue ops; constraint is CRM data + seller distrust, not models) · 04:
+#66 *Propensity Scoring* only — **no dedicated lead-scoring accelerator: whitespace** ·
+09: Sales (30 apps — Prospect Engagement Score; Account Expansion Readiness).
+
+### UC-4 · Collections & receivables intelligence
+
+**Problem.** Receivables age because collectors work by size or age, not by likelihood
+and **influenceability** of payment; cash sits in working capital, bad debt accrues.
+*Entity:* open invoice / customer account. *Decision:* whom to contact, when, channel,
+treatment (reminder, call, hold, plan). *Label:* paid-within-X / promise-kept /
+delinquent — free from the AR ledger. *Horizon:* days–weeks; queues rebuilt daily.
+
+**ROI model.** *Levers:* working-capital release (primary — a D1-named return class),
+bad-debt reduction, collector productivity, dispute root-cause elimination. *Pool
+anchors:* each DSO day on $1B revenue ≈ **$2.7M cash** (arithmetic; 11 §D2); PwC:
+**€1.56T global excess working capital** [C] (via 14); vendor-claimed 10–20% DSO-day
+and 20–30% productivity gains [V — flagged unaudited, 11 §D2.14]; 14 ranks collections
+**value #2 (5.0), feasibility 5.0** — its highest-conviction non-fraud entry.
+*Investment shape:* module + ERP-AR integration + dispute-code data work + collector
+workflow change (small — queues replace queues). *Sketch:* $1B-revenue mid-market,
+DSO 55: −5 days = **$13.5M one-time cash release** + recurring ≈ $1.5–2.5M/yr
+(carry cost on the release + bad debt −10–15% + productivity); investment ≈ $0.7M/yr →
+**E[ROI] ≈ 4× recurring, with a first-year working-capital headline several times
+that** (D8 prices the blend; the release is one-time and priced as such).
+
+**p(success) = 0.77** (3·3·3·3·3 — the only all-3 entry; the AR ledger labels
+everything, the queue is the native workflow, DSO is a standing CFO metric).
+*p(failure) ≈ 0.23, dominant driver:* value-attribution subtlety — celebrating cash
+that would have arrived anyway; the queue is influenceability-framed from the start
+(11 §D2.15/16).
+
+**Measurement design.** A/B on queue ordering (agent-ordered vs incumbent) or matched
+portfolios; DSO/%-current/bad-debt are hard balance-sheet metrics. Shortest path from
+module to CFO-visible ROI in the catalog — and the cleanest D8 pricing instrument:
+share of measured cash released.
+
+**The customer's agent.** *Operates:* builds daily influenceability-ranked queues with
+reason codes, drafts and sends dunning sequences within policy envelopes (AUT-2),
+proposes credit holds and payment plans (AUT-3, approval-gated), routes disputes with
+root-cause codes. *Monitors:* promise-kept rates, dispute-cluster drift (billing-error
+detection — the anti-symptom guard, 11 §S7 pattern 12), treatment fatigue.
+*Improves:* learns contact-policy (who/when/channel/treatment) on measured incremental
+cash — the reward is the A/B cash delta.
+
+**Data supply chain (→ doc 08).** ERP AR ledger (invoices, terms, payments, disputes),
+dunning/contact history, promises, credit ratings, order history. Labels free;
+action→result capture native (contact → payment event). Refinement: dispute-reason
+hygiene; customer-entity resolution across ERP entities; hardship/compliance flags.
+
+**Industry resonance.** Universal B2B; deepest pools in manufacturing/distribution
+trade credit, banking (own commercial AR; regulated lending collections is the
+UC-13-adjacent variant), healthcare patient-responsibility AR, utilities/telco
+(hardship rules), insurance premium receivables.
+
+**Evidence.** 11 §D2 (feasibility F1; value T2 #20 [T/V] — the mechanism/proof gap our
+holdout-first delivery closes) · 14 collections (**#2 value, #5 feasibility, both
+5.0**) · 01 T3 (finance family) · 02 rank #6 (3.94, finance ops — collections named)
+· 03 banking top-pipelines row · 04: **zero collections accelerators — the clearest
+whitespace among the 93** · 09: Finance (30 apps — AR Aging, DSO Trend by Client
+Tier, Bad Debt Provision).
+
+### UC-5 · Demand forecasting
+
+**Problem.** Every ordering, production, staffing, and budgeting decision embeds a
+demand guess; wrong guesses cost stockouts or overstock/markdown/waste. The business
+wants demand per item×location×period **with known uncertainty** — the downstream
+decision consumes the distribution, not the point. *Entity:* SKU × location × period.
+*Decision:* the number handed to ordering/production/staffing, with bands. *Label:*
+actual demand — abundant but **censored by stockouts** (sales ≠ demand at empty
+shelves; the canonical correctness adaptation). *Horizon:* days to 18+ months;
+re-forecast daily/weekly.
+
+**ROI model.** *Levers:* lost-sales recovery, inventory/working-capital release,
+waste/markdown reduction, logistics efficiency. *Pool anchors:* retail inventory
+distortion **$1.77T globally 2023 = $1.2T out-of-stocks + $562B overstocks**
+[M-survey] (IHL; cited by 11 §F1 and 14); AI forecasting cuts error **20–50%** and
+lost sales **up to 65%** [C] (McKinsey); Danone **−30% lost sales** [C]; adopter
+cohorts: logistics −15%, inventory −35%, service +65% [C]. *Investment shape:* module
++ ERP/POS/planning integration + promo/stockout data hygiene + planner adoption
+(forecast-value-added discipline). *Sketch:* $2B-revenue retailer/manufacturer:
+error −25% → lost-sales margin +$2.5M/yr + waste/markdown −$3M/yr + inventory −15% on
+$300M = **$45M one-time release** (≈$3M/yr carry); recurring ≈ $8.5M ÷ $1.4M →
+**E[ROI] ≈ 6×**.
+
+**p(success) = 0.55** (3·3·3·2·2). *p(failure) drivers:* planner-override adoption
+(the forecast that gets "corrected" back to the old numbers — FVA tracking is the
+guard, 11 §F1.15) and promo/stockout data hygiene (P1 risk absorbed at intake);
+P5 reflects nothing regulatory — it prices multi-party planning-process change.
+
+**Measurement design.** Forecast error (WMAPE **and bias**) against the incumbent
+method as a standing baseline — attribution is unusually clean because error is
+already a tracked metric; FVA against planner overrides; service level and turns
+corroborate. The error-delta × decision-value model is the pricing readout.
+
+**The customer's agent.** *Operates:* generates probabilistic forecasts per cell,
+publishes to planning systems, annotates drivers (promo, weather, cannibalization),
+runs FVA accounting (AUT-1/2). *Monitors:* demand-shock detection, censoring drift,
+new-item cold starts, bias creep. *Improves:* learns per-hierarchy model selection and
+feature policy on realized error/bias — reward = measured error reduction weighted by
+decision value.
+
+**Data supply chain (→ doc 08).** POS/sales, orders/shipments, promo & price
+calendars, seasonality/weather, stock status (for censoring correction), new-item
+attributes. Labels arrive daily and free. Refinement: stockout-censoring
+reconstruction; promo-flag hygiene; hierarchy master data.
+
+**Industry resonance.** Retail/CPG (largest pools), manufacturing (lumpy/intermittent
+B2B demand), logistics/fleet (volume forecasting), pharma (tenders), energy/utilities
+(the load-forecasting sibling), insurance/banking ops (volume forecasting for
+staffing — supporting).
+
+**Evidence.** 11 §F1 (value T1 #3 joint) · 14 (#4, 5.0; feasibility 5.0) · 01 **T1
+#2** · 02 rank #7 (3.87, supply chain) · 03 **T1 #4** · 04: #21/#91/#93 (three
+accelerators — heavily packaged) · 09: Operations/Logistics is the **largest**
+prior-art category (40 apps — Corridor Capacity vs Demand Forecast, Delivery Volume
+Forecast).
+
+### UC-6 · Inventory & replenishment optimization *(argued addition → T-1)*
+
+**Problem.** Given uncertain demand and lead times, how much of each item at each
+node, and when/how much to reorder — answered today by static rules that are wrong
+item-by-item. *Entity:* SKU × node. *Decision:* reorder point/quantity, safety stock,
+allocation/rebalancing — recommendations that execute within policy envelopes.
+*Label:* realized service level + carrying cost (a cost trade-off, not a single
+label). *Horizon:* continuous review; daily–weekly replenishment.
+
+**ROI model.** *Levers:* working-capital release (primary), stockout/lost-sales
+reduction, waste/obsolescence, expedite-cost avoidance. *Pool anchors:* the same
+$1.77T distortion pool as UC-5 + carrying cost 15–30% of inventory value/yr [T — rule
+of thumb]; adopters: **inventory −20–35% with service maintained** [C] (McKinsey; 11
+§F2); freeing 20% of a $2B inventory = $400M cash (arithmetic). 14: value #5 (5.0),
+feasibility #9 (5.0). Honest flag: named audited single-company results are scarce;
+aggregate consultant evidence carries the claim [C]. *Investment shape:* module +
+ERP/WMS integration + **inventory-record-accuracy data work (the notorious gap —
+system stock ≠ physical stock)** + planning-process change. *Sketch:* $1.5B-revenue
+distributor, $250M inventory: −20% = **$50M release** (≈$4M/yr carry at 8% blended) +
+service +2pts lost-sales margin ≈ $2M/yr + waste −$1M/yr; recurring ≈ $7M ÷ $1.2M →
+**E[ROI] ≈ 6×**.
+
+**p(success) = 0.55** (2·3·3·2·3). *p(failure) drivers:* phantom inventory (P1 = 2 —
+record accuracy is the intake screen and an in-module detection function) and
+planner/buyer adoption of recommendations.
+
+**Measurement design.** Side-by-side category pilots (agent-recommended vs
+incumbent-policy categories) — standard, credible, CFO-legible via turns/days-of-supply
+/GMROI; the working-capital delta is the pricing readout.
+
+**The customer's agent.** *Operates:* converts UC-5's distributions into
+newsvendor/service-level policies, drafts POs and transfer orders (AUT-3,
+approval-gated; graduates to AUT-2 per reorder class on measured parity — an evidence
+condition), maintains exception queues. *Monitors:* record-accuracy sentinels
+(phantom-inventory detection), lead-time drift, supplier fill-rate change, policy
+violations. *Improves:* learns policy parameters (service targets, order cadence) on
+the measured cost/service frontier — reward = pilot-verified working-capital + service
+delta.
+
+**Data supply chain (→ doc 08).** On-hand/on-order, sales/consumption, lead-time
+history (PO vs receipt), supplier fill rates, costs, shelf-life. Action→result capture
+native (order → arrival → service). Refinement: cycle-count discipline; MRO/spares
+intermittent-demand handling; criticality weights (couples to UC-8).
+
+**Industry resonance.** Retail/CPG, distribution/logistics, manufacturing
+(raw/WIP/finished + MRO spares where downtime cost ≫ holding cost), pharma/fresh
+(expiry-aware FEFO), aftermarket.
+
+**Evidence.** 11 §F2 (value T1 #3 joint) · 14 (#5, 5.0) · 01 T1 #2 (bundled with
+forecasting) · 02 rank #7 · 03 T1 #4 (the action half: "replenish, produce,
+expedite") · 04: #56/#57/#79/#86 (four accelerators) · 09: Warehouse/Distribution
+(24), Operations/Logistics (40), Procurement (Packaging & Supplies Reorder Forecast).
+
+### UC-7 · KPI anomaly detection & driver analysis
+
+**Problem.** Business metrics break silently — a payment integration fails in one
+country, a pricing error halves a category's margin — and are found weeks later in a
+monthly review; and when a KPI moves, analyst teams burn weeks answering *why*. The
+business wants material movements **detected in hours, routed to a named owner, and
+decomposed into quantified drivers**. *Entity:* metric × dimension slice × window
+(detection); the metric movement (attribution). *Decision:* alert/route/severity;
+which drivers explain the move and what corrective action follows. *Label:* confirmed
+incidents + validated decompositions from responder feedback — the module manufactures
+its own labels via disposition capture. *Horizon:* hourly–daily, continuous.
+
+**ROI model.** *Levers:* loss avoidance via detection lead time (weeks → hours on
+incidents costing duration × run-rate), analyst-hours release on the diagnostic half
+(the plurality of BI workload [T — practitioner consensus]), decision quality in every
+review that consumes the driver narratives. *Pool anchors:* incident-shaped — a broken
+checkout in one market can silently cost $100k+/day (illustrative arithmetic, 11 §K1);
+**both halves are mechanism-strong, evidence-thin [T]** — no consolidated analyst
+sizing exists (11 §S2; flagged prominently, and V3 = 1 accordingly). 14 places KPI
+anomaly detection in prioritize-now; driver analysis in explore-selectively — the same
+split confidence. *Investment shape:* the lightest in Band A — the warehouse is the
+only integration; the data work is metric-definition codification (which the
+deployment itself materializes as a governed semantic layer); change cost is an
+ownership registry. *Sketch:* $600M-GMV digital business, 6 material incidents/yr,
+mean $80k/day, detection 9 days earlier ≈ **$4.3M/yr avoided** + ~$0.5M analyst
+release ÷ $0.6M → **E[ROI] ≈ 8× [T — illustrative]**.
+
+**p(success) = 0.39** (2·2·2·2·3) — **the highest-variance Band-A entry, held by the
+kernel's naming and by product identity** (the explanation surface of the whole
+factory — every other module's driver layer is this machinery). *p(failure) drivers:*
+alert precision below the attention budget (the SOC-fatigue problem transplanted —
+11 §S7 pattern 7; precision is the entire game), semantic-layer quality (metric
+definitions are the join debt — §S7 pattern 4), and disposition capture actually
+happening (no dispositions → no labels → no learning).
+
+**Measurement design.** Running recovered-loss ledger per caught incident (each catch
+is a self-documenting value story) + incident-log before/after (detection lead time,
+% alerts actioned, time-to-diagnosis). Because the pool is [T], **pricing defaults to
+success-linked structure on the ledger itself** (D8) — the readout and the invoice are
+the same artifact.
+
+**The customer's agent.** *Operates:* scans metric × slice space continuously against
+learned baselines, routes alerts to registered owners with the offending slice +
+change-correlation, produces decompositions ("−4% revenue = −2.5pp DE payment failure
++ −1.2pp mix + …") with arithmetic that provably sums (AUT-1 — this is the purest
+observe-and-explain module). *Monitors:* its own precision against the attention
+budget; mutes itself below threshold. *Improves:* learns alert policy on disposition
+feedback — reward = precision-weighted recovered-loss, penalized by ignored alerts.
+
+**Data supply chain (→ doc 08).** The warehouse/lakehouse + BI semantic layer +
+calendar/change context + **alert-disposition capture (Slack/Jira)** — dispositions
+are the label factory and a first-class D7 asset. Refinement: metric-definition
+codification with owners; correlated-dimension guards (spurious attribution is the
+named correctness adaptation, 11 §K2.15).
+
+**Industry resonance.** Universal — most acute in multi-dimensional digital businesses
+(e-commerce, marketplaces, fintech, telco — 11 §K); banking P&L/fee-income/deposit-flow
+monitoring; insurance loss-ratio and quote-to-bind funnels; SaaS ARR-bridge
+decomposition; FP&A rate/volume/mix as the formalized template.
+
+**Evidence.** 11 §K1/§K2 (value T3 [T]; the "semantic layer" condition — which the
+deployment itself satisfies — §S4: *"with a trustworthy semantic layer they jump to
+the top-left"*) · 14 K-family split (prioritize-now / explore-selectively) · 01/02/03
+not tiered standalone; 03's T3 warning ("dashboards … unless embedded in high-value
+workflows") is precisely the failure this design prevents — 14 ranks the halves #55 (4.45,
+prioritize-now) and #112 (3.55, explore-selectively) · 04: no direct accelerator
+(#58 OEE is the manufacturing cousin) — whitespace · 09: Executive/Leadership (22 —
+Executive KPI Summary), Data & Analytics (15), Finance (Client Profitability
+Waterfall).
+
+### UC-8 · Predictive maintenance
+
+**Problem.** Equipment fails unexpectedly at enormous cost while scheduled maintenance
+replaces healthy parts and still misses failures. The business wants to know which
+asset will fail, when, from what cause — so maintenance happens exactly when needed.
+*Entity:* asset/component (vehicle subsystem, pump, motor). *Decision:* intervene now
+/ schedule at next window / keep running — recommendations into maintenance planning.
+*Label:* failure events + mode from CMMS/telematics work orders — **scarce by nature**
+(good operations have few failures) and noisily coded; the domain's defining
+constraint. *Horizon:* days–weeks of useful warning; monitored continuously.
+
+**ROI model.** *Levers:* unplanned-downtime avoidance (primary), maintenance-cost
+reduction, asset-life extension, spares efficiency (couples to UC-6 MRO). *Pool
+anchors:* downtime **~$532k/hr** avg large plant, **$2.3M/hr automotive** [C]; Fortune
+Global 500 industrials lose **~$864B/yr** [C-modeled] (Siemens/Senseye — cited by 11
+§G1 and 14); Deloitte: breakdowns **−70%**, maintenance cost **−5–10%**, uptime
++10–20% [C]; extruder pilot −80% downtime, ~$300k/asset [C]. *Investment shape:*
+module + historian/CMMS/telematics integration + label-history data work + maintenance
+-planning change; **the ROI-risk-optimal shape is fleet-like asset populations**
+(high asset counts, standardized failure modes — the best label supply in the domain,
+11 §G1.11); bespoke plant-floor instrumentation inflates the denominator and lowers
+P1. *Sketch:* fleet/industrial operator with a $50M/yr unplanned-downtime pool:
+−20% = **$10M/yr** + maintenance −5% ≈ $1M ÷ $2.2M → **E[ROI] ≈ 5×**.
+
+**p(success) = 0.65 fleet-shaped** (2·3·3·3·3); plant-asset populations with thin
+label history score P1 = 1 → p ≈ 0.49 and drop below the Band-A line — **the band
+holds portfolio-wide only with the fleet-shaped scope; heterogeneous plant PdM is
+scored per account** (an ROI-risk scoping, not a scheduling one). *p(failure)
+drivers:* label scarcity, alert-fatigue economics (precision floor gates alert
+volume), pilot-shaped success across heterogeneous fleets (11 §S7 patterns 7/11).
+
+**Measurement design.** Catch rate (failures with prior warning) + false-alert rate
+as the adoption pair; downtime hours and cost per asset before/after against CMMS
+baselines, confound-audited (other reliability work). Downtime-avoided × cost-per-hour
+is the pricing readout.
+
+**The customer's agent.** *Operates:* continuous asset-health assessment, drafts work
+orders with suspected failure mode + parts list into CMMS (AUT-2 as drafts; schedule
+commitment AUT-3), pre-positions spares via UC-6 coupling, proposes derating to
+survive to the window. *Monitors:* alert precision vs the maintenance team's attention
+budget; sensor-health/drift; criticality coverage (value concentrates in critical-path
+assets — criticality analysis over model coverage, 11 §G1.6). *Improves:* learns
+warning thresholds and lead-time policy per failure mode on verified catches vs false
+alerts — reward = downtime-avoided net of intervention cost.
+
+**Data supply chain (→ doc 08).** Telemetry (vibration/temperature/current;
+telematics), CMMS/EAM work orders + failure codes, operating context, inspection
+notes. Labels: the work order is the label — and its *result* (fixed? failed anyway?)
+is the RL reward pair. Refinement: failure-code hygiene (work-order NLP mining),
+12+ months telemetry+label intake floor, criticality weighting.
+
+**Industry resonance.** Manufacturing/industrial + logistics/fleet (D3 core:
+asset-and-operations ROI, sensor exhaust), energy/utilities (grid asset care —
+the L20 sibling), rail/aviation (regulated regimes), oil & gas/mining, data centers.
+
+**Evidence.** 11 §G1 (value T1 #8; the label-scarcity feasibility caution priced into
+the scoping above) · 14 PdM (#7, 5.0; prioritize-now; Siemens TCOD series) · 01 T2 ·
+02 rank #11 (3.65 — "every plant and asset class introduces additional integration
+work": the caution the fleet-shaped scope absorbs) · 03 T2 (failure risk → work
+order/parts/window) · 04: **no dedicated PdM accelerator among the 93** (#23/#58
+nearest) — whitespace in the most-cited industrial category · 09: Fleet Management is
+a whole category (23 apps — Preventive Maintenance Schedule, Tire Wear Forecast,
+Vehicle Downtime Root Cause), plus Warehouse (Forklift Utilization & Maintenance).
+
+### UC-9 · Automated outbound *(kernel-named; scores below the A-line → T-5)*
+
+**Problem.** Outbound revenue motions (prospecting, nurture, win-back, expansion) are
+throttled by manual list-building, generic messaging, unmeasured sends: untargeted
+volume burns deliverability and brand; hand-picked lists leave pipeline unbuilt. The
+business wants outbound **targeted by model (who), sequenced by policy (when),
+personalized within guardrails (what), and holdout-measured (did it work)**. *Entity:*
+recipient × sequence × send. *Decision:* include/exclude, variant, timing, stop/
+suppress. *Label:* response within window (reply/click/meeting/conversion) + negative
+labels (unsubscribe, complaint, bounce). *Horizon:* per send, continuous.
+
+**ROI model.** *Levers:* pipeline-creation efficiency, rep-hours release,
+deliverability/brand protection (a guardrail lever). *Pool anchors:* campaign-response
+modeling and audience selection are mature direct-response disciplines [C] (11 §C4);
+send-time/frequency alone is commodity but real inside an orchestrated program (§C7).
+**Honest flag: no external source ranks the composite** — components sit in 11's
+T4/compact tables and mid-pack in 14; the admission ticket is internal (One Orama
+catalog #2, evidence 07). V3 = 2 accordingly. *Investment shape:* light — CRM/ESP
+integration, shared spine with UC-2; consent/suppression data work; minimal change
+cost (the sequences already exist, badly). *Sketch:* B2B seller sending 2M
+targeted sends/yr: reply→meeting→pipeline conversion uplift worth **+$1.5–2.5M
+incremental ARR** (holdout-measured) ÷ $0.5M → **E[ROI] ≈ 4×**.
+
+**p(success) = 0.55** (3·3·3·2·2 — P5 prices consent/deliverability liability;
+CAN-SPAM/CASL/GDPR state is part of the data contract). Risk-adjusted **≈2.2× — below
+the 3× Band-A line**; held in Band A by kernel D4's naming. Tension **T-5** proposes
+the resolution: one full internally-measured cycle (Orama operating Orama's own
+outbound with suppressed-control holdouts) becomes the evidence item that either
+raises V3/E[ROI] to the line or re-bands the entry — an evidence condition, not a
+time condition. *p(failure) drivers:* deliverability/brand damage from volume
+temptation, consent-state hygiene, and treatment fatigue.
+
+**Measurement design.** Native and cheap: **suppressed-control holdouts per campaign**
+(the ESP logs every outcome); incremental pipeline per 1,000 sends; guardrail KPIs
+(unsub/complaint/deliverability health) with hard floors. Success-linked pricing by
+default (D8) given the [C/T] pool evidence.
+
+**The customer's agent.** *Operates:* scores and segments audiences (UC-2 spine +
+M-3), enrolls sequences, times/paces sends within fatigue caps, maintains suppression
+(AUT-2; free-form LLM copy personalization is AUT-3 behind brand/claims guardrails —
+selection-based personalization is the default). *Monitors:* deliverability signals,
+complaint spikes, consent drift, holdout integrity. *Improves:* learns
+audience/variant/timing policy on holdout-verified incremental pipeline — the reward
+is the uplift readout itself.
+
+**Data supply chain (→ doc 08).** CRM, ESP engagement logs, enrichment, product usage
+(expansion motions), consent/suppression registries as the governed source of truth.
+Labels free and instant; action→result pairs are native RL food. Refinement:
+identity/consent resolution, negative-label weighting, fatigue-state features.
+
+**Industry resonance.** B2B SaaS/tech (native; also the internal variant),
+retail/e-commerce lifecycle motions (win-back/replenishment — couples to UC-1/UC-3),
+insurance distribution (agent-support outreach), banking (consent/suitability-heavier
+variant).
+
+**Evidence.** 07 (One Orama catalog #2 — the admission ticket, internal) · 11
+§C3/C4/C7 + §A4 (component dossiers) · 14 campaign-response + send-time
+(prioritize-now quadrant, mid-pack ranks) · 01/02/03: components only, inside
+personalization/NBA tiers · 04: #66/#78/#18/#19 (components packaged; composite
+absent) · 09: Marketing (20), Sales (30 — Inbound vs Outbound Pipeline Split).
+
+### UC-10 · Fraud & financial-crime decisioning
+
+**Problem.** Transaction fraud, account takeover, and laundering flow through
+payment and banking rails while rule engines bury analysts in >90–95%-false-positive
+alert queues and false declines insult good customers. The business wants **fraud and
+financial-crime decisions — score, triage, investigate, interdict — made accurately at
+volume, under governance an examiner will sign**. *Entity:* transaction / alert /
+account / counterparty network. *Decision:* approve/challenge/queue/interdict;
+investigation priority; case packaging; SAR filing support. *Label:* confirmed fraud
+(chargebacks, matured 30–90 days), alert dispositions, case outcomes — excellent for
+triage; true-crime recall is the domain's permanent epistemic hole (11 §E2).
+*Horizon:* milliseconds (authorization) to daily batch (AML) + investigation cycles.
+
+**ROI model.** *Levers:* loss avoidance (fraud), false-decline revenue recovery
+(often larger than fraud losses themselves), investigation-cost release (the
+compliance-labor pool), fine avoidance. *Pool anchors:* global card fraud **$33.4B
+(2024)**, 6.43¢ per $100 on $51.9T volume [M] (Nilson); financial-crime compliance
+**~$206B/yr** [M] (LexisNexis); AML fines **$4.6B (2024)** [M] (Fenergo); ML triage:
+**30–60% false-positive reduction at equal-or-better detection** [C]; Mastercard **3×
+detection at 10× fewer false positives** [V] (via 01); banks detect ~2% of
+financial-crime flows [C] (McKinsey via 02). *Investment shape:* the heaviest in Band
+A — core-banking/payments integration, entity resolution at production grade, model
+governance; V4 = 2. *Sketch:* regional issuer/PSP: fraud loss pool $13M/yr, −20% =
+$2.6M + false-decline recovery ≈ $1.5M + AML investigation release (30–40% of a
+$10M ops line) ≈ $3.5M + fine-risk reduction (unpriced) ≈ **$7.5M/yr ÷ $1.3M →
+E[ROI] ≈ 6×**.
+
+**p(success) = 0.55** (2·3·3·3·2). *p(failure) drivers:* adversarial drift (the world
+updates against the model — a permanent operating cost, priced in), entity-resolution
+quality (network fragmentation is the classic AML failure), and governance burden
+(P5 = 2, not 1: in the future state the audit trail, approval gates, and
+identity-scoping the examiner demands **are the product** — D3's "governance maps 1:1
+to our primitives"). Consortium-data incumbents (Stripe-Radar-class) set a real
+buy-benchmark: our wedge is **own-data training in the customer's environment** —
+the issuer's own portfolio idiosyncrasies, not rented network priors (evidence 06/08).
+
+**Measurement design.** Champion/challenger is native to the domain (the most
+measurement-mature family in the catalog): loss rate at fixed false-positive rate
+against matured chargeback labels; alert-to-SAR conversion and investigation hours
+for AML; false-decline rate on control slices. The challenger delta is the pricing
+readout.
+
+**The customer's agent.** *Operates:* scores in-line within policy envelopes
+(approve/challenge autonomous as AUT-2 under caps — money-movement interdiction and
+account blocking are AUT-3; **adverse decisions with no human path are AP-3,
+excluded**), ranks investigation queues, assembles case files with network context,
+drafts SAR narratives for human filing. *Monitors:* drift sentinels (fraud-pattern
+regime change), FP-rate vs analyst attention budget, fairness/disparate-impact
+telemetry. *Improves:* learns triage and challenge policy on disposition outcomes —
+reward = matured-loss avoided + analyst-hours released, penalized by false declines.
+
+**Data supply chain (→ doc 08).** Transactions/authorizations, device/session
+signals, KYC/account data, alert + case dispositions (the label factory), chargeback
+feeds, network/graph features via entity resolution. Refinement: label maturation
+handling (30–90-day delay), disposition-taxonomy hygiene, adversarial-drift
+monitoring as a standing function.
+
+**Industry resonance.** Financial services/banking and payments (D3's first-named
+industry: regulated, data-rich, loss-avoidance pools), insurance (claims-fraud
+sibling → UC-12 boundary), e-commerce/marketplaces, crypto/MSBs.
+
+**Evidence.** 11 §E1/§E2 (value **#1** transaction fraud; E2 pool [M]) · 14:
+transaction fraud **#3 (5.0)**, feasibility #21 (4.7); AML #82 (4.15),
+explore-selectively (triage-first is the admissible shape) · 01 T1 #5 (fraud/risk/anomaly) · 02 ranks #5 (4.19) and #9 (3.78) · 03 T1 #5
+("fraud/credit decisioning") · 04: #30 rule-based fraud, #38 geospatial fraud, #3
+AML/KYC · 09: Compliance/Regulatory (28), Fleet (Fuel Card Transaction Audit),
+Finance (Revenue Leakage Detection).
+
+### UC-11 · Next-best-action
+
+**Problem.** Above every propensity model sits the treatment choice: **which action
+(offer / message / service / outreach / nothing) for which customer at which moment**,
+arbitrated across channels under budget and contact-fatigue constraints. Run
+separately, each motion optimizes locally and collides globally. *Entity:* customer ×
+decision moment. *Decision:* the action, from a governed action library, or
+deliberately none. *Label:* response/outcome per action — with uplift (did the action
+*change* the outcome) as the honest target. *Horizon:* continuous, per interaction.
+
+**ROI model.** *Levers:* revenue lift from arbitration (the same contacts, better
+spent), contact-cost and fatigue reduction, retention/expansion compounding across
+UC-1/UC-2/UC-9. *Pool anchors:* next-best-experience programs **+5–8% revenue, −20–30%
+cost-to-serve** [C] (McKinsey via 01/03); personalization pools **5–15% revenue lift**
+[C — estimates] (11 §A3); Netflix's recommender valued **>$1B/yr** in avoided churn
+[C — company estimate]. Flag: the composite's own evidence is consultant-grade [C];
+11 rates full-scope NBA "a program, not a project" (§A6). *Investment shape:* the
+critical fact — **as a first purchase it is heavy (V4 = 1); as an attach on live
+UC-1/UC-2/UC-9 modules the marginal investment collapses** while the return holds —
+the D8 portfolio-pricing effect in its purest form. NBA is **attach-only by design**:
+it composes propensity/value/uplift signals the sibling modules already produce.
+*Sketch:* $1B-revenue B2C on live UC-1+UC-9: arbitration lifts treated-segment revenue
++0.5–1% ≈ **$5–10M/yr**; marginal investment ≈ $1M → **E[ROI] ≈ 8× [C]**.
+
+**p(success) = 0.39** (2·2·3·2·2) — composite fragility priced: identity/experiment
+infrastructure (P1), action-library governance across owners (P2/P4), offer-liability
+in regulated verticals (P5). *p(failure) dominant driver:* organizational — NBA
+crosses marketing/CS/sales ownership boundaries; "the brain is often rules in
+practice" (11 §A6).
+
+**Measurement design.** Always-on experimentation is the operating mode: every action
+assignment carries a control cell; incremental margin per contact and fatigue-adjusted
+CLV movement are the readouts. Attribution across constituent modules is a real
+pricing question — sent to kernel as **T-6**.
+
+**The customer's agent.** The most agentic entry in the catalog — arbitration *is*
+agency. *Operates:* selects actions under budget/fatigue/eligibility policy from the
+governed library (AUT-2 within envelopes; new action classes and offer-cost changes
+AUT-3). *Monitors:* cannibalization across motions, fatigue budgets, per-segment
+uplift decay, fairness constraints on differential treatment. *Improves:* learns the
+treatment policy directly — this is the textbook RL surface, and the reward is the
+control-cell-verified incremental margin (kernel D7.2 verbatim).
+
+**Data supply chain (→ doc 08).** Everything the sibling modules already refine —
+propensities (UC-1/UC-2), value (UC-3), response labels (UC-9) — plus the action
+library with costs/eligibility and the assignment→outcome log (the richest RL corpus
+in the portfolio). Refinement: identity resolution at experimentation grade;
+action-outcome attribution windows.
+
+**Industry resonance.** Telecom and banking (the decisioning-suite natives), B2C
+retail/e-commerce, insurance (renewal/coverage actions under suitability rules),
+B2B SaaS (PLG lifecycle motions).
+
+**Evidence.** 11 §A6 (value T3 [V] standalone; the composition framing is ours) · 14
+NBA #36 · 01 **T1 #1** (personalization/NBA — the family's top slot) · 02 rank #2
+(4.44 — "churn, next-best-experience" one row) · 03 **T1 #1–#2** (churn+NBE;
+personalization/NBO) · 04: #55 Next Best Action (healthcare) — one direct accelerator
+· 09: Customer Success (Proactive Outreach Log, Service Adoption Matrix).
+
+### UC-12 · Claims triage
+
+**Problem.** Incoming claims are routed by rote: simple claims crawl through manual
+handling (cycle-time cost, CX damage, LAE) while complex or severity-creeping claims
+reach senior adjusters late (leakage); fraud referrals fire late or never. The
+business wants **every claim routed right at first notice**: fast-track / standard /
+complex / SIU, with severity and reserve flags. *Entity:* the claim at FNOL (and
+open claims re-scored as they develop). *Decision:* route, reserve flag, STP
+eligibility, SIU referral. *Label:* cycle time, ultimate incurred cost vs initial
+estimate, routing corrections, SIU outcomes — rich, natural, fast-arriving. *Horizon:*
+minutes at FNOL; continuous over claim life.
+
+**ROI model.** *Levers:* loss-adjustment-expense reduction (STP on simple claims),
+leakage reduction (early severity detection), fraud-referral quality (couples to
+UC-10), CX/retention via cycle time. *Pool anchors:* 14 ranks claims triage **#11
+(5.0)**; STP on standardized lines 30–60% industry-cited [C/V] (11 §L10); US insurance
+fraud **~$308B/yr all lines** [C — widely attributed] (11 §E3) with SIU hit-rate
+improvements 2–3× [V]; claims severity/reserving accuracy is a named carrier
+discipline (09: Claims Reserving Accuracy). *Investment shape:* claims-core
+integration + FNOL document/photo intake (document intelligence is part of the
+methodology toolbox, D5) + adjuster-workflow change; moderate. *Sketch:* mid-size P&C
+carrier, $1B incurred losses, $100M LAE: LAE −8% = $8M + leakage −1% of incurred =
+$10M ÷ $2.5M → **E[ROI] ≈ 6×** (using the conservative halves of both ranges).
+
+**p(success) = 0.65** (3·3·3·3·2 — P5 prices NAIC-model-bulletin-class conduct
+scrutiny on routing/reserving; triage is assistive-safe by construction, and
+**adverse claim decisions are AP-3-excluded** — the agent routes and flags, humans
+deny). *p(failure) drivers:* document-intake quality at FNOL, adjuster trust
+(overridden routing decays into the old queues), investigation-biased labels for the
+SIU leg (11 §S7 pattern 2).
+
+**Measurement design.** Cycle time by route class, LAE per claim, leakage audits on
+closed files (actual vs expected severity), STP rate with quality floors
+(re-open/complaint rates as guards), SIU hit rate — against matched pre-period
+portfolios or A/B by intake stream. LAE + leakage deltas are the pricing readout.
+
+**The customer's agent.** *Operates:* classifies at FNOL from structured + document/
+photo intake, routes (AUT-2), fast-tracks STP-eligible claims through payment
+recommendation (payment release AUT-3, approval-gated; graduates per line on measured
+parity), flags severity creep and reserve adequacy, packages SIU referrals.
+*Monitors:* routing-override rates by adjuster, severity-drift by line/geo/season,
+document-extraction confidence, fairness telemetry on referral patterns. *Improves:*
+learns routing policy on realized cycle-time/severity outcomes — reward = LAE +
+leakage delta at fixed quality floors.
+
+**Data supply chain (→ doc 08).** FNOL forms/photos/documents, policy & coverage
+data, adjuster notes, payment history, SIU outcomes, re-open events. Labels: every
+closed claim is a completed episode — outcome-rich RL food. Refinement:
+document-extraction verification loops, severity-development curves, referral-bias
+audits.
+
+**Industry resonance.** Insurance (D3-named: regulated, data-rich, loss-avoidance;
+P&C auto/property first, workers' comp, specialty/MGA), healthcare payers (the claims
+sibling is UC-19's denials leg), TPAs; self-insured fleets (couples to UC-8's
+operational base).
+
+**Evidence.** 11 §L10/§L11 (+§E3 fraud boundary) · 14 claims triage **#11 (5.0)** ·
+01 (insurance family, later-tier note on regulatory height — priced in P5) · 02 rank
+#12 (3.43) · 03 industry row: insurance = "underwriting, claims triage, fraud,
+retention, pricing" · 04: #11 Claims Management Automation, #84 Smart Claims, #35
+Healthcare X12 Claims · 09: Risk & Insurance (12 — Cargo Loss & Damage Claim Trend,
+Claims Reserving Accuracy), HR (Workers' Comp Claims Tracker).
+
+### UC-13 · Credit-risk decisioning *(argued addition → T-2)*
+
+**Problem.** Credit extension — B2B trade-credit limits, consumer/SMB lending
+adjacency, deposit gating — misjudges counterparties in both directions: too
+conservative refuses good revenue, too permissive books defaults. *Entity:*
+application / account / counterparty. *Decision:* approve/decline recommendation,
+limit, terms, price. *Label:* default/delinquency within the performance window —
+slow, censored (reject inference), unambiguous. *Horizon:* seconds–days to decide;
+labels mature over months–years.
+
+**ROI model.** *Levers:* approval-volume growth at constant loss (the measured
+headline), loss-rate reduction at constant volume, pricing precision, analyst
+productivity. *Pool anchors:* **the best-documented ML delta in the evidence base**:
+Upstart/CFPB **+27% approvals at equal loss rates, −16% average APR** [M —
+regulator-summarized] (11 §D3); ~2× approvals in the 620–660 band [M]; 14 ranks
+credit risk **#14 (4.8), prioritize-now**. *Investment shape:* origination-system
+integration + model-governance artifacts (SR 11-7-class documentation, fair-lending
+testing) — the governance work **is** the product here; change cost low (credit teams
+already run models). *Sketch:* mid-market lender, $2B originations, 4% net margin:
++5% approval volume at equal loss = **$4M/yr** + loss −25bps on the book ≈ $2.5M ÷
+$1.6M (module + validation apparatus) → **E[ROI] ≈ 5×** — with V3 = 5, the only
+maximum-hardness lever in the catalog.
+
+**p(success) = 0.65** (3·3·3·3·2). P5 = 2, deliberately: for a product whose
+governance primitives are native (D3: "governance maps 1:1"), regulated credit is
+**assistive-safe** — the agent recommends and documents; adverse-action decisions and
+notices remain human-owned (AUT-4, AP-3 boundary). *p(failure) drivers:* fair-lending
+disparate-impact exposure (tested, not assumed away), macro-vintage drift (labels
+learned in one rate regime mislead in another), reject-inference bias.
+
+**Measurement design.** **Champion/challenger is the domain standard** — the most
+measurement-mature use case in the catalog (11 §D3): approval rate and matured loss
+rate vs the incumbent scorecard on randomized or interleaved flow. The challenger
+delta at matched loss is simultaneously the regulator artifact and the D8 pricing
+readout. The **B2B trade-credit variant** (same skeleton, lighter regulatory surface,
+natural companion to UC-4 — credit decides terms, collections recovers them) is the
+portfolio-median instance; regulated consumer lending scores account-by-account.
+
+**The customer's agent.** *Operates:* scores applications with reason codes
+(adverse-action-grade explanations), recommends limits/terms (AUT-2 as
+recommendations; automated approvals within pre-approved policy envelopes AUT-3;
+**declines are AUT-4 — never autonomous**), drafts validation documentation and
+monitoring reports. *Monitors:* population-stability and vintage drift,
+disparate-impact metrics continuously, override patterns, reject-inference
+assumptions. *Improves:* learns within the governed champion/challenger harness —
+candidate policies are promoted only through the measured challenger protocol; reward
+= approval-volume × margin at fixed loss, subject to fairness constraints.
+
+**Data supply chain (→ doc 08).** Application data, bureau/alternative data (consented),
+performance histories (the vintage archive is the asset), payment behavior from UC-4's
+ledger where attached. Labels: slow but unambiguous — the data plan's job is vintage
+curation and censoring handling. Refinement: fair-lending feature screens, reject-
+inference design, macro-regime tags.
+
+**Industry resonance.** Banking/fintech (D3 first-named), B2B trade credit across
+manufacturing/distribution (the widest, lightest-touch pool), BNPL/auto/mortgage,
+insurance premium financing.
+
+**Evidence.** 11 §D3 (value T1 #5; "modeling easy, governance heavy" — the governance
+is our product) · 14 credit risk #14 (4.8, prioritize-now) · 01 T1 #5 boundary
+(fraud/risk family) · 02 rank #5 credit leg · 03 T1 #5
+("fraud/credit decisioning") · 04: #14 Credit Card
+Transactions, #52 Model Risk Management With EY · 09: Finance (30), Risk & Insurance (12).
+
+---
+
+## 4. Band B — structured dossiers
+
+Twelve entries. Same fields as Band A, compressed; the defining extra field is the
+**A-condition** — the ROI/risk quantity whose change re-bands the entry into Band A.
+A-conditions are never time conditions.
+
+### UC-3 · Customer lifetime value *(demoted from v1 → T-3)*
+
+**Skeleton.** Investment decisions about customers (CAC ceilings, service tiers,
+retention budgets, save-offer depth) are made against averages. *Entity:*
+customer/segment. *Decision:* how much to invest in acquiring/serving/saving.
+*Label:* realized discounted margin — delayed, censored (active customers). *Horizon:*
+1–5 yrs, refreshed quarterly.
+
+**ROI model.** Levers: acquisition efficiency (LTV:CAC ceilings by segment),
+value-weighted retention allocation, tier assignment. Anchors: Carrefour **+21% ROAS**
+on new customers via LTV model [C] (14); 14 rank **#19 (4.75, prioritize-now)**; but
+11 places CLV **value T4** with the killing prevalence verdict: *"computed often,
+decisioned on rarely"* (§S6) — a CLV number that decorates dashboards is failure
+pattern 1. Sketch: standalone, E[ROI] ≈ 4× *if* a budget rule consumes it; as the
+value-weighting layer inside UC-1/UC-2 queues and UC-11 arbitration, the lever is real
+and measured through those modules' holdouts.
+
+**p(success).** Standalone **0.26** (3·1·1·2·3 — no native action path, no clean
+standalone measurement); as composition layer **≈0.55** (P2/P3 inherited from the
+host module). RA×: ≈1.0 standalone (below every band) / **≈2.2 composed → Band B**.
+*p(failure) driver:* actionability — value exists only when a budget rule consumes
+the number.
+
+**Measurement & agent.** Measured through host-module experiments with value-weighting
+as the treatment arm (calibration of predicted-vs-realized cohort margin is the model
+KPI). Agent: maintains survival-adjusted (censoring-correct) value estimates per
+account/segment (AUT-1), feeds CAC ceilings to ad platforms and value weights to
+UC-1/UC-11 policies (AUT-2 via host modules). Data chain: billing, transactions,
+margin/cost-to-serve from ERP (the recurring gap), UC-1's feature store.
+
+**Industries.** Banking household profitability, insurance policyholder value
+(persistency × premium − expected loss), B2B SaaS expansion-weighted accounts,
+retail/e-commerce (BTYD variants).
+
+**A-condition.** Measured evidence (any account) that value-weighting moves a host
+module's holdout readout by ≥20% relative — i.e., the composition lever proves its own
+increment. Evidence: 11 §A5 · 14 CLV #19 · 04 #17/#78/#87 · 09 CS (26).
+
+### UC-14 · Pricing & discount optimization
+
+**Skeleton.** Price and discount decisions leak margin: list prices set by cost-plus,
+discounts by rep discretion. *Entity:* product×segment×channel (B2C) / deal (B2B).
+*Decision:* price corridor, discount approval, promo depth. *Label:* win/loss ×
+realized margin; elasticity from (scarce) price variation. *Horizon:* per deal /
+per revision cycle.
+
+**ROI model.** Levers: margin lift at held volume, discount-leakage recovery, promo
+efficiency. Anchors: **1% price ≈ +8% operating profit** [M] (McKinsey, S&P 1500);
+B2B initiatives **+2–7 pts return-on-sales** [C]; building-materials case margin
+**+3–8 pts** [M/C]; retail AI pricing **+5–10% gross profit** [C] (BCG via 03, which
+ranks pricing **T1 #3**); 11 value **#2**. Sketch: $800M B2B seller, +50bps realized
+margin = $4M ÷ $0.5M → **E[ROI] ≈ 8×**.
+
+**p(success) = 0.33** (2·2·2·2·2 — every driver mid). *p(failure) drivers:* **causal
+validity** (elasticity from confounded flat-price history — failure pattern 5, 11
+§S7), sales-force adoption in B2B (reps route around corridors), PR/regulatory tail
+on visible B2C dynamic pricing. RA× ≈ 2.6.
+
+**Measurement & agent.** A/B by region/category or matched deal cohorts; realized
+margin vs control is readout and price. Agent: proposes corridors and deal guidance
+with win-probability trade-offs (AUT-2 as guidance; price changes AUT-3), runs
+designed price experiments where policy allows, monitors elasticity drift and
+competitor response. Data chain: transactions with true realized price (rebates
+included — the data work), win/loss, cost; designed variation as an asset the agent
+actively builds.
+
+**Industries.** B2B manufacturing/distribution (deal-desk shape — the
+lowest-governance entry point), retail/e-commerce, insurance (regulated rate-filing
+variant scores separately), travel/hospitality (mature incumbents).
+
+**A-condition.** An account-class where designed price experiments are operationally
+acceptable (P3→3) **and** measured elasticity validity replicated across ≥2 reference
+deployments (V3→4, p→0.46+, RA×→3+). Evidence: 11 §A2 (#2) · 03 T1 #3 · 14 #58
+(4.35) — grid: strategic-bet ("requires prerequisites", agreeing with our P-scores) ·
+04 #73 · 09 Sales (Pricing Sensitivity Analysis).
+
+### UC-15 · Employee attrition & workforce retention
+
+**Skeleton.** Valuable employees quit with little warning. *Entity:* employee —
+**scored at role×site segment by default** (the ethical-hazard reducer). *Decision:*
+manager check-in, comp/workload/rotation adjustment, systemic policy fix. *Label:*
+voluntary exit (regrettable flag) within 3–12 months. *Horizon:* quarterly.
+
+**ROI model.** Levers: replacement-cost avoidance (**50–200% of salary** [C-modeled],
+Gallup/SHRM; US voluntary turnover **~$1T/yr** [C-modeled], 11 §I1), ramp-time
+productivity, knowledge retention. Sketch: 5,000-employee firm, 18% turnover, −2pts
+on targeted segments ≈ 100 exits avoided × $40k ≈ **$4M/yr** ÷ $0.8M → **E[ROI] ≈
+5×**.
+
+**p(success) = 0.29** (3·2·2·2·1). *p(failure) drivers:* **governance** (EU AI Act
+high-risk class for employment; works councils; score leakage into performance
+decisions is the trust-collapse failure — 11 §I1), actionability (weakest
+action-per-model-quality in the catalog: segment policy, not individual saves, is
+where value lives), small-N statistics. RA× ≈ 1.5.
+
+**Measurement & agent.** Segment-level before/after on targeted populations
+(individual-level A/B is ethically constrained — 11 §I1); retention delta × replacement
+cost is the readout. Agent: segment-level flight-risk and driver reporting to HR
+leadership (AUT-1 only; **no individual adverse use — AUT-4/AP-3 boundary**; access
+identity-scoped to a named HR circle). Data chain: HRIS, comp, engagement surveys,
+scheduling/overtime exhaust; strict access partitioning is part of the data plan.
+
+**Industries.** High-turnover operations (logistics, contact centers, retail,
+healthcare nursing), scarce-skill tech.
+
+**A-condition.** A governance pattern (works-council-cleared, no-adverse-use
+attested, EU-AI-Act-conformant) that measurably holds P5 ≥ 2 across ≥2 deployments,
+plus segment-program evidence hardening the lever to [M] (p→0.46, RA×→2.3; still a
+judgment call — revisit). Evidence: 11 §I1 · 14 #103 (3.8),
+explore-selectively · 02 rank #13 (3.14 — last) · 03 T2 · 09 HR (28 — Driver Turnover
+Rate, 90-Day Retention).
+
+### UC-16 · Service ticket triage & routing
+
+**Skeleton.** Inbound support volume must be understood, prioritized, routed before
+anyone can help; manual triage is slow, inconsistent, and misroutes multiply handle
+time. *Entity:* ticket. *Decision:* category, priority, queue/agent. *Label:* final
+resolved category/team — free from history. *Horizon:* seconds at arrival.
+
+**ROI model.** Levers: handle-time reduction via correct first routing, SLA
+protection, deflection-quality (not deflection-theater). Anchors: contact costs
+**$3–8/interaction** vs automated $0.20–1.50 [C]; both compendia rate it among the
+most feasible anywhere (11 F1 "labels free, action native"; 14 feasibility **#3**,
+value #21). Sketch: 2M-ticket operation: −8% handle time + misroute elimination ≈
+**$1.8M/yr** ÷ $0.6M → **E[ROI] ≈ 3×**.
+
+**p(success) = 0.77** (3·3·3·3·3 — tied-highest with UC-4). *p(failure) driver:*
+almost none intrinsic; the risk is commercial, not delivery. RA× ≈ 2.3 — **Band B
+because V1 is small and the category is the most commoditized in the catalog**
+(platform-native features in Zendesk/ServiceNow-class suites — 11 §B1.13):
+differentiation-per-dollar, not feasibility, caps the score.
+
+**Measurement & agent.** A/B routing (model vs incumbent) on handle time, reassignment
+rate, SLA breaches. Agent: classifies and routes (AUT-2), drafts responses for agent
+review (AUT-3 for autonomous send), escalates compliance categories by rule, monitors
+taxonomy drift and retrains its own label maps. Data chain: helpdesk history (labels
+free), macros/resolutions, CSAT; disposition capture native.
+
+**Industries.** Universal; most acute in high-volume B2C (fintech, e-commerce, telco)
+and as the module-attach in accounts where UC-1 reads support signals anyway.
+
+**A-condition.** Account-level pool depth: service labor ≥ $20M/yr (V1→4, sketch →
+5×+, RA× ≥ 3) — the mid-market median keeps it B; large contact-center accounts score
+A at intake. Evidence: 11 §B1 · 14 #21/feas #3 · 01 T1 #3 (family) · 02 rank #1's
+triage leg · 04 #44/#46/#47 · 09 CS + IT (ticket apps in both).
+
+### UC-17 · Document intelligence & touchless AP
+
+**Skeleton.** High-volume operational documents (invoices, POs, claims forms, KYC
+docs) are keyed and routed by hand. *Entity:* document/invoice. *Decision:* extract →
+validate → match → route → post (touchless where confident). *Label:* human
+corrections + posting outcomes — free. *Horizon:* minutes–days per document,
+continuous flow.
+
+**ROI model.** Levers: processing-cost collapse (**$10.18/invoice avg vs $2.36
+best-in-class** [M] — Ardent/APQC, a 4–5× gap; 11 §D1), cycle time (2.8 vs 17.4
+days), early-payment-discount capture, error/fraud reduction. Sketch: 1M invoices/yr
+at $8 → 70% touchless ≈ **$4M/yr** ÷ $1.2M → **E[ROI] ≈ 3×** (mid-market volumes
+scale this down; see A-condition).
+
+**p(success) = 0.77** (3·3·3·3·3). *p(failure) driver:* long-tail document formats
+inverting unit economics (11 §S7 pattern 10) — scoped by confidence-routing (the
+tail stays human). RA× ≈ 2.3 — Band B on V1 at the mid-market median and IDP vendor
+saturation (differentiation risk), not on feasibility.
+
+**Measurement & agent.** Touchless rate at fixed error rate + cost/document
+before/after — clean and standing. Agent: extracts, validates against PO/receipt,
+posts within confidence envelopes (AUT-2; payment release AUT-3), routes exceptions
+with reasons, monitors format drift, actively solicits corrections as labels. Data
+chain: document streams + ERP masters + correction telemetry (the label factory).
+
+**Industries.** Universal back office; deepest in manufacturing/retail AP, insurance
+FNOL intake (feeds UC-12), banking KYC refresh, healthcare (the "fax problem").
+
+**A-condition.** Account volume ≥ 1M documents/yr **or** attach to UC-12/UC-19 where
+the document leg unlocks a Band-A pool (then priced inside that module's ROI
+contract). Evidence: 11 §D1/§J2 (both F1) · 14 document-processing family
+prioritize-now · 01 T2 (document intelligence) · 02 rank #6 leg · 04 #47 + LLM-doc
+accelerators · 09 Compliance (28) + Cross-Functional packs.
+
+### UC-18 · Supplier risk & monitoring
+
+**Skeleton.** Supply disruptions arrive unannounced from supplier failure (financial,
+operational, geopolitical). *Entity:* supplier. *Decision:* qualify / monitor
+intensity / dual-source / buffer. *Label:* disruption events — **rare, weak labels**
+(the defining constraint). *Horizon:* continuous monitoring + sourcing events.
+
+**ROI model.** Levers: disruption-cost avoidance (expedites, line stops, lost sales),
+concentration-risk reduction, negotiation posture. Anchors: 11 verdict is sober —
+"predictive power modest, monitoring value real" (§F6); 14 explore-selectively.
+Honest V3 = 1. Sketch: $2B manufacturer: one avoided medium disruption/yr (~$3M
+expedite+downtime) + buffer optimization ≈ **$4M** ÷ $1M → **E[ROI] ≈ 4× [T]**.
+
+**p(success) = 0.39** (2·2·2·2·3). *p(failure) driver:* rare-event prediction
+overpromise — the scope discipline is **monitoring + scoring composition** (financial
+signals + ERP delivery performance + adverse-media NLP), not disruption prophecy.
+RA× ≈ 1.6.
+
+**Measurement & agent.** Detection lead time on realized supplier events +
+buffer/expedite cost deltas; honest attribution requires an event ledger. Agent:
+maintains risk tiers, watches delivery-performance anomalies (M-5 machinery), reads
+news/adverse media, raises sourcing recommendations (AUT-1/2; sourcing changes are
+human). Data chain: ERP PO/receipt history, supplier financials, news feeds, event
+dispositions.
+
+**Industries.** Manufacturing/industrial (post-2020 board topic), automotive
+(deepest tiers), pharma (single-source APIs), retail private label.
+
+**A-condition.** Either the lever hardens (measured avoided-disruption evidence [M/C]
+across deployments, V3→3) or the account condition: supplier-concentration exposure
+≥ $50M single-source spend, where one avoided event pays 10× (account-scored A).
+Evidence: 11 §F6 · 14 #98 (3.9), explore-selectively · 02 rank #10 (procurement
+leg) · 04 none direct (#27 ESG adjacent) · 09 Procurement (22 — Supplier Risk Scoring, Sole Source
+Dependency).
+
+### UC-19 · Healthcare ops — denials & no-show
+
+**Skeleton.** (a) Payers initially deny **~12%** of hospital claims for predictable
+reasons; (b) no-shows (10–30% by setting) waste clinical capacity. *Entity:* claim
+pre-submission / denial / appointment. *Decision:* fix-before-submit, appeal vs
+write-off, root-cause programs; remind/overbook/reschedule. *Label:* payer
+adjudication (CARC/RARC codes — exceptional label quality); attended/no-show.
+*Horizon:* days + appeal windows.
+
+**ROI model.** Levers: denial prevention (rework **$25–118/claim**; hospitals spent
+**$19.7B in 2022** fighting denials [M] — AHA via 11 §L1), appeal-recovery lift,
+capacity utilization (no-show). 14 ranks healthcare claims/denials **#9 (5.0)**; 11
+calls denials "the best-labeled problem in healthcare" (value T2 #11). Sketch: $2B
+health system: denial rate −15% relative on a $240M initial-denial pool ≈ recovery +
+rework savings ≈ **$8M/yr** ÷ $1.6M → **E[ROI] ≈ 5×**.
+
+**p(success) = 0.55** (3·3·3·2·2 — P5 prices HIPAA/BAA posture, which the
+in-your-environment thesis natively fits; P4 prices revenue-cycle-team adoption).
+*p(failure) drivers:* payer-rule drift (adversarial regime — the rules update against
+you, 11 §S7 pattern 6), root-cause neglect (appealing symptoms instead of fixing
+registration/coding upstream — pattern 12). RA× ≈ 2.7 — **the strongest Band-B score;
+B rather than A only because the pool is industry-concentrated** (portfolio-median
+account isn't a health system; account-level it scores A).
+
+**Measurement & agent.** Denial rate by root-cause class before/after; appeal win
+rate × recovered dollars; utilization for no-show — all standing RCM metrics. Agent:
+scores claims pre-submission and routes fixes (AUT-2), drafts appeals with grounded
+citations (AUT-3, human files), runs root-cause decomposition (UC-7 machinery on
+CARC codes), predicts no-shows and executes reminder/overbook policy (AUT-2).
+Data chain: 835/837 streams, denial codes, registration/coding events, scheduling
+history; adjudication outcomes are free labels.
+
+**Industries.** Health systems/provider groups, RCM service providers, payers
+(mirror-image variant), dental/veterinary chains (lighter governance).
+
+**A-condition.** Account-level (health-system) scoring is already A-grade; the
+portfolio-band lifts if the D3 industry mix shifts toward healthcare such that the
+median target account carries the pool (a CMO/CRO portfolio decision, priced by D1 —
+not a time condition). Evidence: 11 §L1/§L4 (+L2 prior-auth sibling) · 14 #9 · 02
+rank #8 (3.83) · 03 T2 (healthcare family; "strongest first vertical template" note)
+· 04: #35 X12 Claims, #51 Medicare Risk Adjustment, #36 HEDIS + the 23-item HLS block
+· 09 Clinical & Lab Services (16).
+
+### UC-20 · Cash-flow & working-capital forecasting
+
+**Skeleton.** Treasury and FP&A steer liquidity on spreadsheets: cash positioning,
+borrowing timing, covenant headroom. *Entity:* entity×currency×horizon bucket.
+*Decision:* borrow/invest/hedge timing, working-capital levers. *Label:* realized
+cash flows — free, daily. *Horizon:* 13-week rolling + annual planning.
+
+**ROI model.** Levers: borrowing-cost avoidance (precision → lower buffers), idle-cash
+yield, covenant-breach avoidance, FP&A hours. Anchors: composition of UC-4's
+payment-date distributions + UC-5's demand curves — its data is largely already
+refined by siblings; pool anchored to rate environment (post-2022 each idle $100M ≈
+$4–5M/yr opportunity). Sketch: $1.5B company: buffer −$30M at 5% ≈ $1.5M + FP&A
+release ≈ **$2M/yr** ÷ $0.5M (attach economics) → **E[ROI] ≈ 4×**.
+
+**p(success) = 0.46** (3·2·2·2·3). *p(failure) drivers:* actionability (treasury must
+actually resize buffers — policy change), attribution of avoided borrowing to the
+forecast. RA× ≈ 1.8.
+
+**Measurement & agent.** Forecast error vs incumbent (standing metric) + realized
+buffer reduction × rate. Agent: maintains rolling cash forecasts with drivers,
+proposes buffer/borrowing actions (AUT-1/2; money movement is human), stress-tests
+covenant scenarios. Data chain: AR/AP ledgers (UC-4 shared), bank feeds, FX,
+demand forecasts (UC-5 shared).
+
+**Industries.** Universal mid-market+; deepest in thin-margin distribution,
+PE-owned leverage cases, multinational FX exposure.
+
+**A-condition.** Attach-priced on UC-4/UC-5 foundations where marginal investment
+≈ $0.3M (V4→5, E[ROI]→6×+, RA×→2.8–3) plus one [M]-grade treasury case hardening V3.
+Evidence: 11 §D4/§D9 (T3/T4 rows) · 14 cash-flow forecasting #41 (4.55) +
+working-capital optimization #42 (4.55), both prioritize-now · 02 rank #6 (finance
+ops — forecasting named) · 09 Finance (13-week Cash Flow Forecast — verbatim
+prior-art app) · 04 none direct.
+
+### UC-21 · AIOps & incident intelligence
+
+**Skeleton.** IT incidents interrupt revenue systems; alert floods bury operators.
+*Entity:* alert/incident/service. *Decision:* correlate, prioritize, route,
+recommended remediation. *Label:* incident dispositions, MTTR, postmortems — free.
+*Horizon:* real-time + retro.
+
+**ROI model.** Levers: downtime cost (**~$5,600/min** Gartner-attributed [C, dated
+but canonical]; modern syntheses $140k–300k+/hr), alert-noise release (90%+
+compression [V]), toil reduction. AT&T: >95% diagnostics automated, downtime −50%
+[C]. Sketch: digital business with $15M/yr incident cost: MTTR −25% ≈ **$3.5M** ÷
+$0.9M → **E[ROI] ≈ 4×**.
+
+**p(success) = 0.39** (2·3·2·2·2). *p(failure) drivers:* CMDB/topology data debt
+(11 §S7 pattern 4), vendor density (observability incumbents own the buyer), and
+"prediction proper is oversold" (11 §H2 — correlation/noise-reduction is the honest
+scope). RA× ≈ 1.6.
+
+**Measurement & agent.** MTTR/MTTD before/after, alert-compression at fixed recall,
+incident-cost ledger. Agent: correlates alert storms into incidents, routes with
+suspected root cause, executes pre-approved runbook actions (restart/scale/rollback
+= AUT-2 within envelopes; novel actions AUT-3), files postmortem drafts. Data chain:
+telemetry/logs/traces, topology, incident dispositions (label factory), runbook
+outcomes.
+
+**Industries.** SaaS/digital natives, banks/telcos (largest estates), retailers
+(peak-season exposure).
+
+**A-condition.** Demand-led: an existing account pulls it (attach economics drop V4
+cost, and the buyer problem disappears — P4→3, RA×→2.5+); or the incident-cost pool
+at the account ≥ $20M/yr (account-scored A). Evidence: 11 §H2 · 14 AIOps #16 ·
+01 T3 (cybersecurity family adjacency) · 02 rank #4 leg · 03 T1 #6 (their read is
+more bullish than ours — noted) · 04 none direct · 09 IT/Engineering (26).
+
+### UC-22 · Quality, scrap & yield drivers
+
+**Skeleton.** Scrap, rework, and yield loss accumulate from multivariate process
+causes nobody can see across shifts/lines/lots. *Entity:* unit/lot × process step.
+*Decision:* parameter adjustment, inspection targeting, root-cause programs.
+*Label:* defect/scrap events + dispositions from MES/QMS — natural. *Horizon:*
+per lot/shift, continuous.
+
+**ROI model.** Levers: cost-of-quality reduction (5–15% of revenue [T — rule of
+thumb]), yield points (a semiconductor yield point ≈ tens of $M/yr), warranty
+avoidance. DeepMind cooling **−40% energy** [M-adjacent, company-measured] is the
+family's canonical composition case (11 §G3). Sketch: $1B manufacturer, CoQ 8% =
+$80M: −5% relative ≈ **$4M/yr** ÷ $0.9M → **E[ROI] ≈ 5×**.
+
+**p(success) = 0.46** (2·2·2·3·3). *p(failure) drivers:* observational-causality traps
+(process data is confounded by operator interventions — 11 §S7 pattern 5), data
+contextualization (joining process params to outcomes across systems), change-control
+friction on acting. RA× ≈ 2.3. **Scope note:** this is the *tabular* drivers/
+prediction shape — vision-first inspection is excluded (AP-8) on investment-shape
+grounds.
+
+**Measurement & agent.** A/B by line/campaign with baseline discipline (mix shifts
+confound); scrap/yield/first-pass-yield are standing metrics. Agent: monitors
+process-parameter drift vs quality outcomes (UC-7 machinery pointed at MES), ranks
+suspected drivers per excursion, proposes parameter windows (AUT-1/2; parameter
+changes go through change control = AUT-3). Data chain: MES/QMS/SCADA history, lot
+genealogy, disposition codes.
+
+**Industries.** Discrete manufacturing, semiconductor/electronics (deepest pools),
+chemicals/process, food (waste framing).
+
+**A-condition.** Lever hardening: ≥2 deployments with [M]-grade yield/scrap deltas
+attributable through change-controlled experiments (V3→4, RA×→3+). Evidence: 11
+§G3/§G5 · 14 yield #60 (4.35, strategic-bet quadrant) + scrap & rework #28 (4.65,
+prioritize-now) · 01 T3 (manufacturing yield) · 03 industry row (quality/yield) · 04 #58 OEE, #65 (vision-excluded) · 09 QA (21 — Root Cause
+Analysis Summary, First Pass Yield).
+
+### UC-23 · Campaign response & marketing optimization
+
+**Skeleton.** Marketing allocates spend and contacts on last-touch guesses. *Entity:*
+customer × campaign × channel. *Decision:* audience inclusion, budget split, send
+policy. *Label:* response/conversion within window — fast, free. *Horizon:* per
+campaign, continuous.
+
+**ROI model.** Levers: response-rate lift on existing spend, waste reduction
+(**~40% of spend wasted** [C/T — directional, 11 §C1]), fatigue cost avoidance.
+Sketch: $30M marketing budget: +10% response efficiency ≈ **$1.5–3M/yr** ÷ $0.6M →
+**E[ROI] ≈ 4×**.
+
+**p(success) = 0.46** (3·3·2·2·2). *p(failure) drivers:* measurement discipline
+(last-touch mirages; the fix is geo-holdouts/incrementality tests — which the module
+makes default), channel-team adoption. RA× ≈ 1.8. **Scope boundary:** response
+modeling and budget allocation on measured incrementality — full MMM-as-oracle is
+anti-portfolio AP-5 (circular measurement), and content generation is AP-4.
+
+**Measurement & agent.** Geo/audience holdouts per campaign; incremental
+conversion × margin is readout and price. Agent: builds audiences (shared UC-9
+spine), splits budgets against measured response curves, enforces fatigue budgets,
+runs the holdout book (AUT-2; budget moves above envelope AUT-3). Data chain:
+campaign logs, conversion events, spend feeds, holdout assignments (a designed
+data asset, D7).
+
+**Industries.** B2C retail/e-commerce, banking/insurance marketing under consent
+constraints, CPG (retailer-mediated — harder attribution), B2B demand gen (couples
+to UC-9).
+
+**A-condition.** Account with experimentation infrastructure and spend ≥ $50M (V1→4,
+P3→3, RA× ≥ 3 — account-scored A); portfolio-median stays B. Evidence: 11 §C4/§C1 ·
+14 campaign response #76 (4.2), grid prioritize-now · 01 T1 #1 (personalization
+family leg) · 04 MMM/MTA/RTB accelerators · 09 Marketing (20).
+
+### UC-24 · Contract intelligence & obligation risk
+
+**Skeleton.** Contract terms leak value silently: unenforced escalation clauses,
+missed renewal windows, unbilled entitlements, obligation breaches. *Entity:*
+contract/clause/obligation. *Decision:* enforce, renegotiate, remediate, alert.
+*Label:* realized leakage findings + remediation outcomes. *Horizon:* contract
+lifecycle events, continuous monitoring.
+
+**ROI model.** Levers: leakage recovery (poor contract management costs **up to ~9%
+of annual revenue** [C-survey — WorldCC/IACCM, 11 §J1]), review-cost collapse
+(LawGeex: AI 94% vs lawyers 85% accuracy, 26s vs 92min [M]), obligation-breach
+avoidance. Sketch: $1B services firm: recover 0.3% revenue of the leakage pool ≈
+**$3M/yr** ÷ $0.8M → **E[ROI] ≈ 4×**.
+
+**p(success) = 0.39** (2·2·2·2·3). *p(failure) drivers:* repository chaos (the
+contracts aren't findable — data debt), actionability (a leakage finding needs a
+commercial owner willing to enforce), long-tail clause formats. RA× ≈ 1.6.
+
+**Measurement & agent.** Recovered-leakage ledger (each finding is a self-documenting
+value story — the UC-7 pattern applied to contracts) + review-hours release. Agent:
+extracts terms/obligations to structured registers, cross-checks billing vs
+entitlements (couples to UC-4), watches renewal/escalation windows, drafts
+enforcement notices (AUT-2 drafts; enforcement is human). Data chain: contract
+repository, billing/ERP for entitlement checks, finding dispositions.
+
+**Industries.** B2B services, healthcare payer/provider contracts, real estate/
+construction (L24 adjacency), procurement-heavy manufacturers (buy-side mirror).
+
+**A-condition.** Measured recovered-leakage [M/C] ≥ 3× at two reference accounts
+(V3→3, RA×→2.5) plus entitlement-billing coupling with UC-4 (attach economics,
+V4→4). Evidence: 11 §J1/§J4 (leakage pool; F2 feasibility) · 14 contract review &
+extraction **#18 (4.8), grid prioritize-now** (obligation tracking #80 — 14 is more
+bullish than our P-scores; the repository-chaos driver is why we hold B) · 01 T2
+(document intelligence family) · 04 #52 (EY model-risk
+doc automation adjacent) · 09 Finance (Contract Escalation Clause Monitor — verbatim
+prior-art app), Compliance (28).
+
+---
+
+## 5. Band C — selective entries
+
+Ten entries, one paragraph each. Band C is not "worse" — it is **account-conditional**:
+each entry's risk-adjusted multiple crosses the line only when a named customer
+property changes the arithmetic (a V-score or P-driver). Entries carry `C-n` slugs; a
+`UC-n` ID is minted the first time an account-level D1 score admits one to delivery.
+Band C is scored at intake, per account, against the same rubric.
+
+**C-1 · Personalization & product recommendations.** The external evidence's top slot —
+14 ranks it **#1 in both value and feasibility (5.0/5.0)**; ~35% of Amazon revenue
+attributed to recs [C — analyst estimate]; Netflix >$1B/yr [C] (11 §A3). Portfolio-
+median it still fails D1: the pool concentrates in digital-native funnel owners
+(outside the D3 systems-of-record profile), the buy market is mature and good
+(build-vs-buy usually resolves buy — 11 §A3), and identity/experimentation
+infrastructure dominates the investment denominator. **Admitting condition:** account
+with ≥$100M owned digital revenue, first-party identity + experimentation
+infrastructure in place (V4→4, P1→3), and no incumbent recsys performing — then
+account-scored A and delivered as a UC-11 sibling. (Evidence 11 §A3 · 14 #1 · 04
+#61/#18 · 09 Marketing/Sales.)
+
+**C-2 · Market-basket & cross-sell optimization.** 14 ranks it #20 value /
+**#2 feasibility**; basket-level POS exhaust makes labels free. Standalone it is a
+thin slice of UC-11's action library. **Admitting condition:** retail/CPG account with
+basket-grade POS history where cross-sell margin per transaction × volume clears the
+Band-A arithmetic — then shipped as a UC-11 action class, not a standalone module.
+(Evidence 14 #20 · 11 §A10 · 04 #18/#78.)
+
+**C-3 · Route & delivery optimization.** The best-audited single case in the entire
+evidence base — UPS ORION **$300–400M/yr, ~100M miles/yr** [M — INFORMS-audited]
+(11 §F3); 14 ranks it **#6 (5.0)**. Refused portfolio-wide because it is OR-solver
+territory with a mature buy market (TMS/routing vendors) and the audited economics
+require fleet scale ("1 mile/driver/day ≈ $50M/yr" is a UPS-sized fact). **Admitting
+condition:** owned fleet large enough that a 1–3% mileage delta clears Band-A
+economics **and** no incumbent optimizer — then delivered as an optimization
+composition (M-11-class toolbox) with UC-5/UC-8 data already in place. (Evidence 11
+§F3 · 14 #6, feasibility #22 · 04 #75 Scalable Route Generation · 09 Ops/Logistics.)
+
+**C-4 · Energy load & generation forecasting.** 14 ranks load forecasting **#12
+(5.0)**; the machinery is UC-5's sibling pointed at meters and weather. The pool
+exists only inside the energy/utilities vertical (D3 lists it; the portfolio-median
+account has no load to forecast). **Admitting condition:** utility/energy account —
+where it immediately scores A (labels free, forecasting is the operating system of
+the business, governance assistive). (Evidence 14 #12 · 11 §L18 · 09 Ops.)
+
+**C-5 · Telecom network optimization.** Vodafone: outages −26–42%, MTTR −40%, energy
+−17% [C]; AT&T >95% diagnostics automated [C] (11 §L16). Operator-scale
+infrastructure exhaust; no pool below operator scale. **Admitting condition:** network
+operator account (telecom D3 row) — UC-21 machinery at infrastructure scale, scored A
+at intake. (Evidence 11 §L16 · 14 #66 · 03 telecom row.)
+
+**C-6 · Clinical documentation (ambient).** The rare gen-AI category with strong
+published measurement: 20–50% documentation-burden reductions in peer-reviewed
+health-system evaluations [M-heterogeneous]; physicians spend ~2 EHR-hours per care
+hour [M] (Sinsky; 11 §L3). The pool is physician time — real only inside a health
+system, and the buy market (scribe vendors) is sprinting. **Admitting condition:**
+health-system account where UC-19 is already deployed (shared environment and BAA
+economics — V4 collapses) and the physician-time pool ≥ $10M/yr. (Evidence 11 §L3 ·
+14 #83 · 04 #42.)
+
+**C-7 · Cybersecurity threat detection & triage.** Big pool (breach cost $4.44M avg
+[M — IBM]; 14 #17), but the buy market is the densest in enterprise software
+(SIEM/EDR/XDR incumbents) and the buyer sits outside our champion map; consortium
+threat intel advantages incumbents the way payment-network data does in fraud.
+**Admitting condition:** account pull from a platform team we already serve, scoped
+to the own-data shapes where incumbents are weak (insider risk / UEBA on the
+customer's own behavioral exhaust — the own-data-training thesis applied to
+security). (Evidence 11 §H1 · 14 #17 · 01 T3 · 02 rank #5 leg.)
+
+**C-8 · Workforce scheduling optimization.** 14 ranks scheduling #31 (4.65,
+feasibility 4.7): demand-driven shift optimization is governance-light compared to
+UC-15 (it allocates hours, not judgments about people) and composes UC-5's forecast
+with an optimization layer. The pool is real only at hourly-workforce scale.
+**Admitting condition:** ≥5,000 hourly workers with WFM system-of-record data; then
+account-scored A on labor-cost × service-level arithmetic. (Evidence 11 §I6 · 14 #31
+· 09 HR/Ops.)
+
+**C-9 · Code & SDLC intelligence.** Externally top-tier (01 T1 #4; 02 rank #4; 03 T1
+#8; 11 #10) — and refused portfolio-wide anyway: the copilot market is
+hyper-commoditized on rented models, seat economics invert easily (11 §S7 pattern
+10), and the measured evidence conflicts (Copilot RCT −55.8% task time vs **METR 2025
+RCT −19% for experts** — "the spread is the honest headline", 11 §H3). **Admitting
+condition:** the own-environment wedge — an account whose code cannot leave its walls
+(regulated/defense-adjacent estates barred from cloud copilots), where own-data
+training on the customer's codebase is the product only we ship; priced on measured
+throughput/stability (DORA-class), not seats. (Evidence 11 §H3 · 01/02/03 top tiers ·
+14 #39.)
+
+**C-10 · Care-gap & readmission risk.** 14 ranks care-gap #34 (4.65) and readmission
+#64; CMS HRRP penalties cap at 3% of payments [M]. The models are easy; the value
+exists only where an intervention capacity is funded (P2/P4 are the whole game —
+readmission programs fail on nurse capacity, not AUC; 11 §L5). **Admitting
+condition:** value-based-care contract holder (payer or capitated provider) with a
+funded care-management team — then attached to UC-19's environment and scored A.
+(Evidence 11 §L5/§L6 · 14 #34/#64 · 04 #55/#67.)
+
+---
+
+## 6. Anti-portfolio — what we refuse, and the argument
+
+Refusals, not deferrals. Every argument below is an ROI/risk/measurability/governance
+argument — if the argument changes (new evidence, a changed governance posture, a
+different investment shape), the entry is re-scored through §1.3; nothing here is
+waiting for anything. Filters travel into sales and intake verbatim.
+
+| # | Excluded | The argument (D1 terms) |
+|---|---|---|
+| AP-1 | **Generic chatbots / conversational copilots** | P3 → 0 by construction: containment and deflection metrics are activity, not value — "deflection theater" (containment up, resolution and churn worse) is a named failure pattern (11 §S7 #3; Klarna's own 2025 moderation of its AI-first stance is the cautionary arc, 11 §B2). 03's verdict verbatim: "generic chatbots … valuable only when wired to decisions." The routing *decision* problem (UC-16) is in-portfolio; the conversation product is not. |
+| AP-2 | **RAG-only / copilot-only engagements** | Selects the anti-customer (D3): a buyer who wants inference over a rented model rejects the own-data-training premise the entire product monetizes (evidence 06 "learning, not inference"; 08 anti-ICP: "wants an LLM copilot / RAG search" = disqualifier). Economically the thinnest measured-P&L category in the evidence (the MIT-NANDA 95%-no-impact pattern concentrates here — 11 §S7 backdrop). Retrieval as a **component** inside measured decision workflows (UC-16 grounding, UC-19 appeals, UC-24 extraction) is in-portfolio; retrieval as the product is not. |
+| AP-3 | **Autonomous adverse decisioning** — credit denial, claim denial, benefits determination, employment action, un-gated real-time blocking | P5 → 0: liability and governance blowback cap p(success) regardless of pool. The disaster file is unambiguous and recent: Robodebt royal commission (2023), Dutch Toeslagenaffaire (government fell, 2021), MA algorithmic-denial litigation (2023), Air Canada chatbot liability (2024) (11 §S6/S7 #9); 14's failure synthesis names "over-automation of regulated decisions" as an operating-model risk. This is the AUT-4 boundary as a portfolio filter: agents prepare, document, monitor — humans make adverse decisions. One governance scandal prices at −∞ against a correct-by-construction brand (D9 guardrail: violations = 0). Public-benefits fraud scoring and public case prioritization (14 #118/#105) are the highest-exposure instances and are refused with it. |
+| AP-4 | **Content generation as a standalone offer** | P3 ≈ 0 in practice: the prevalence leader with the thinnest measured-outcome base (11 §C2 — "measurement never designed" is this pattern's home; 14 ranks it #73 grid-mid). Brand/claims tail risk adds governance exposure. In-portfolio only as a governed *component* (UC-9 variant drafting behind guardrails, AUT-3). |
+| AP-5 | **Attribution / MMM as the oracle product** | Structural measurability failure: "the use case *is* measurement — which is circular" (11 §C1); elasticity and mix conclusions from confounded observational data are failure pattern #5, and 14 agrees (MMM #97, explore-selectively). The *incrementality* discipline (geo-holdouts, designed experiments) ships inside UC-23 — the honest subset — while the MMM-as-truth product is refused. |
+| AP-6 | **Digital twins, scenario-simulation platforms, M&A screening, strategy-synthesis engines** | The "talked-about > deployed" tier in both compendia (11 §S6; 14 prevalence check: "still mostly piloted … require governance, trust, and senior workflow redesign"; ranks #117/#121/#122). No repeated decision, no natural label, no measurement loop — vanity analytics in D1 terms: V2 low, P3 ≈ 0, unbounded investment. |
+| AP-7 | **Hiring / employment screening decisioning** | Bias absorption into the label is intrinsic (Amazon 2018 is the canonical case — 11 §I2); EU AI Act high-risk class + NYC LL144 audit regime put P5 at 0–1 for *decisioning* shapes; quality-of-hire labels take years and are rarely joined (P3 ≤ 1). Distinct from UC-15's segment-level retention analytics, which stays inside the AUT-1 boundary. |
+| AP-8 | **Vision-first industrial inspection** | Real value (BMW 95→99% accuracy, >$1M/plant/yr [C] — 11 §G2) but the wrong investment shape for D1: half the customer investment is camera/lighting/hardware engineering, and defect libraries must be *acquired*, not exhausted from systems of record — V4 → 0, P1 → 0/1 for the D3 customer profile. The denominator, not the value, disqualifies it. The tabular quality shape (UC-22) captures the family's exhaust-native ROI; accounts with vision infrastructure already installed re-score through intake. |
+
+Two **account-level filters** from the anti-ICP travel with this list (deal filters,
+not use-case exclusions): prospects requiring raw data in our cloud (violates the
+in-your-environment thesis — evidence 06/08), and AI-tourist innovation labs with no
+outcome owner (P4 = 0 ⇒ p(success) → 0 — evidence 08; kernel D3 anti-customer).
+
+---
+
+## 7. Coverage analysis — the scored catalog against the demand space
+
+Two maps: the banded catalog against evidence 11's twelve function families (the
+problem-space axis) and against evidence 09's seventeen prior-art categories (the
+demand-breadth axis). The goal is honesty about shape: where the portfolio is deep by
+scoring, where it is absent by argument, and confirmation that no absence is
+unexamined. In v2 every placement traces to D1 arithmetic — never to sequencing.
+
+### 7.1 Against evidence 11's twelve function families
+
+| Family (evidence 11) | Family contents | Portfolio coverage | ROI-grounded rationale |
+|---|---|---|---|
+| **A. Customer / revenue** (12) | churn, pricing, recsys, lead scoring, CLV, NBA, win prediction, sales forecasting, promo, basket, sentiment, VoC | **Deepest: UC-1, UC-2, UC-9, UC-11 (A) · UC-3, UC-14 (B) · C-1, C-2** | The factory's home family: the largest per-account pools with CRM/billing exhaust. Absent by argument: sentiment/VoC standalone (measurability — activity metrics; 14 #84/#108, "efficiency plays" at best), promo effectiveness (causal confusion, 14 #110), win prediction (inside UC-2's scope), sales forecasting (a UC-5 methodology skin on pipeline data — attach, not module). |
+| **B. Service & support** (8) | triage, resolution automation, agent assist, intent, proactive care, CC analytics, CSAT, KB retrieval | **UC-16 (B)** | Highest feasibility anywhere (14 gives triage/intent 5.0) but the smallest pool intensity at the D3 median and the most platform-commoditized family. We own the *decision* (routing under measurement); the conversation products are AP-1/AP-2. Resolution drafting lives inside UC-16 as an AUT-3 action, priced on measured handle-time, not deflection. |
+| **C. Marketing** (7) | MMM, content gen, segmentation, response, SEO, creative, send-time | **UC-9 (A) · UC-23 (B)** | Present exactly where measurement is designable (holdouts native to email/campaigns). MMM-as-oracle is AP-5 (circular measurement); content generation standalone is AP-4 (thinnest P&L evidence); segmentation/send-time are components inside UC-9/UC-23, not modules. |
+| **D. Finance & accounting** (10) | invoice/AP, collections, credit, cash forecasting, exceptions, expense fraud, JE anomaly, close, working capital, FP&A | **UC-4, UC-13 (A) · UC-17, UC-20 (B)** | The highest score-density family after A: labels free from ledgers, CFO-legible measurement, working-capital returns the kernel D1 names explicitly. Absent: close automation and JE anomaly (14 #89/#106 — efficiency plays with thin pools; JE anomaly rides UC-7's machinery if an account pulls it), FP&A scenario modeling (AP-6-adjacent, no label). |
+| **E. Fraud, risk & compliance** (10) | transaction fraud, AML, claims fraud, ATO, KYC, underwriting, model risk, sanctions, comms surveillance, clause risk | **UC-10 (A); UC-12's SIU leg; UC-13 (A)** | The biggest single pools in the evidence (fraud #1 in 11; #3 in 14) — engaged in the decisioning-under-governance shape, with AUT-4/AP-3 as the hard boundary. Absent: KYC/sanctions screening (mandated list-matching, vendor-saturated, no learning edge on customer data — 14 #90/#91 explore-selectively), comms surveillance (governance exposure vs thin measurable return), underwriting risk (a UC-12/UC-13 composition for insurance accounts at intake). |
+| **F. Supply chain & logistics** (12) | demand forecasting, inventory, routing, supply planning, spend analytics, supplier risk, leakage, ETA, fleet, slotting, order promise, S&OP | **UC-5, UC-6 (A) · UC-18 (B) · C-3** | Second-deepest by scoring: the $1.77T distortion pool with daily labels. Absent: ETA/slotting/order-promise (components inside UC-5/UC-6 delivery, 14 #26/#27/#44), spend analytics (a reporting shape whose action path is procurement negotiation — folds into UC-18/UC-24), S&OP support (meeting software, no label — 14 #102). |
+| **G. Manufacturing & industrial** (8) | PdM, quality inspection, yield, fleet failure, scrap, energy, scheduling, digital twin | **UC-8 (A) · UC-22 (B)** | Engaged where exhaust is tabular (sensors + work orders + MES). Vision-first inspection is AP-8 (investment shape); digital twins AP-6 (no measurement loop); energy optimization and production scheduling are UC-22/C-8-adjacent compositions available at intake (14 #46/#61). |
+| **H. IT, engineering & security** (12) | threat detection, AIOps, code gen, RCA, alert correlation, capacity, test gen, release risk, log anomaly, phishing, vuln, UEBA | **UC-21 (B) · C-7, C-9** | Real pools, wrong buyer at the portfolio median (VP-infra/SRE/CISO sit outside the D3 champion map) and the densest vendor fields in software. Presence is demand-led (attach) or wedge-shaped (own-environment code estates, own-data UEBA). Everything else in the family reuses UC-7/UC-21 machinery when pulled. |
+| **I. HR / people** (8) | attrition, recruiting, workforce planning, matching, skills, scheduling, engagement, mobility | **UC-15 (B) · C-8** | Deliberately light against demand breadth (09 shows 28 HR apps): employment decisions carry the catalog's worst governance exposure per dollar (EU AI Act high-risk; LL144). Scheduling (allocative, not judgmental) is the C-8 exception; recruiting/matching decisioning is AP-7. |
+| **J. Legal & document-heavy** (6) | contract review, doc classification, e-discovery, obligations, reg-change, summarization | **UC-17, UC-24 (B)** | Engaged where extraction feeds a measured commercial action (touchless rate; recovered leakage). Absent: e-discovery (mature TAR vendor market, matter-episodic — no compounding agent), reg-change monitoring (14 #120 — no owned action path at the median account). |
+| **K. Executive / cross-functional** (6) | KPI anomaly, driver analysis, scenario planning, reporting automation, M&A screening, research synthesis | **UC-7 (A)** | The explanation surface is product identity — and the only family member with a designable measurement loop (the recovered-loss ledger). Scenario/M&A/synthesis are AP-6 (no repeated decision, no label); reporting automation rides inside UC-7's narrative layer. |
+| **L. Industry-specific** (25) | healthcare (6), banking (3), insurance (3), retail/CPG (3), telecom (2), energy (3), public (3), RE/construction (2) | **UC-19 (B) · UC-12 (A) · banking collections inside UC-4 · C-4, C-5, C-6, C-10** | Industry entries score through the same rubric with industry-conditional pools — most live in Band C by construction (the pool exists only inside the vertical). Public sector is refused with AP-3 (the highest governance stakes in the evidence — Robodebt/Toeslagenaffaire); RE/construction scores below the line on data fragmentation (14 #100/#113). |
+
+**Shape summary.** The scored catalog is deep exactly where the three D1 factors
+coincide — pools measured in % of revenue (V1), labels free from operations (P1), and
+native systems of action (P2): families A, D, F. It is present-with-boundaries in
+E/G/L (the governance and investment-shape edges are priced, not feared), thin by
+argument in B/C/H/I/J/K, and every absence above carries its D1 reason inline. The
+structural echo from the evidence: "the tabular-with-natural-labels + native-action-
+path quadrant is systematically the most attackable" (11 §S3) — that quadrant is
+this portfolio's center of mass, with the customer's agent as the operator that keeps
+each entry's measurement loop (and therefore its ROI claim) alive.
+
+### 7.2 Against evidence 09's seventeen prior-art categories
+
+Evidence 09 (the 400-app prior-art catalog) is a *demand-breadth* signal — what
+business users actually asked analytics surfaces for — not a value ranking. Mapping
+the banded portfolio onto its category weights:
+
+| 09 category (apps) | Portfolio touch | Note |
+|---|---|---|
+| Operations / Logistics (40) | UC-5, UC-6, UC-18, C-3 | Largest demand category → second-deepest scored family. Aligned. |
+| Finance (30) | UC-4, UC-13, UC-17, UC-20, UC-24 | Aligned — five modules touch the joint-2nd demand category; the prior-art apps (AR Aging, DSO Trend, 13-week Cash Flow, Contract Escalation Monitor) are verbatim previews of the module surfaces. |
+| Sales (30) | UC-2, UC-9, UC-3, UC-14 | Aligned. |
+| Compliance / Regulatory (28) | UC-10, UC-13 artifacts, UC-19 | Demand exists and is served through the governed-decisioning modules — governance surfaces are product, not overhead. |
+| HR / People (28) | UC-15, C-8 | **Deliberate under-coverage** vs demand weight: governance exposure per dollar (AP-7 argument), not lack of demand. |
+| Customer Success / Acct Mgmt (26) | UC-1, UC-3, UC-11 | Aligned — the anchor lives here (Churn Risk Monitor is prior-art app #1 of this shape). |
+| IT / Engineering (26) | UC-21, C-7, C-9 | Deliberate under-coverage: buyer map + vendor density (§7.1 H). |
+| Warehouse / Distribution (24) | UC-6 | Aligned. |
+| Fleet Management (23) | UC-8, UC-5/6, UC-10 (fuel-card audit) | Aligned — a whole prior-art category previews the fleet-shaped UC-8 scope. |
+| Executive / Leadership (22) | UC-7 | Aligned — the exec surface. |
+| Procurement / Supply Chain (22) | UC-18, UC-24 (buy-side), UC-6 | Aligned. |
+| Quality Assurance (21) | UC-22 | Aligned at the tabular shape; vision leg refused (AP-8). |
+| Marketing (20) | UC-9, UC-23 | Aligned; MMM/content absences argued (AP-4/AP-5). |
+| Cross-Functional / Special (17) | UC-7, UC-17 | The anomaly/driver + document-pack shapes are exactly these apps. |
+| Clinical and Lab Services (16) | UC-19, C-6, C-10 | Healthcare-conditional entries — pool exists inside the vertical. |
+| Data and Analytics (15) | UC-7 + the platform itself | Zetta *is* this category's product (Model Accuracy Tracker and Entity Resolution Audit are platform surfaces, not modules). |
+| Risk and Insurance (12) | UC-12, UC-10, UC-13 | Aligned. |
+
+Breadth check: the 24 banded use cases + 10 Band-C entries touch **17 of 17**
+prior-art categories; the two under-covered relative to demand weight (HR,
+IT/Engineering) are under-covered **on argument**, recorded above. Demand breadth is
+not this portfolio's constraint; risk-adjusted ROI concentration is — by design.
+
+---
+
+## 8. Demand-evidence table
+
+The banded catalog × the external evidence. Columns: evidence 01 tier (16 use cases,
+3 tiers) · evidence 02 rank of 13 (weighted score) · evidence 03 tier · evidence 04
+accelerator presence among the 93 · evidence 14 value rank of 124 (score) · evidence
+11 value tier (rank). "—" = not tiered/ranked standalone in that source.
+
+| UC | Use case | 01 | 02 | 03 | 04 | 14 | 11 |
+|---|---|---|---|---|---|---|---|
+| UC-1 | Churn & retention | T2 #9 | #2 (4.44) | **T1 #1** | **5** (#33/#60/#77/#87/#88) | #13 (4.8) | T1 #6 |
+| UC-2 | Lead & opp. scoring | T2 | #3 (4.25) | — (industry rows) | 1 (#66) | #51 (4.45) | T3 [C] |
+| UC-4 | Collections | T3 (family) | #6 (3.94) | banking row | **0 — whitespace** | **#2 (5.0)** | T2 #20 [T/V] |
+| UC-5 | Demand forecasting | **T1 #2** | #7 (3.87) | **T1 #4** | 3 (#21/#91/#93) | #4 (5.0) | T1 #3 |
+| UC-6 | Inventory optimization | **T1 #2** (bundled) | #7 (3.87) | **T1 #4** | 4 (#56/#57/#79/#86) | #5 (5.0) | T1 #3 (joint) |
+| UC-7 | KPI anomaly + drivers | — | — | T3 warning | 0 (#58 cousin) | #55 (4.45) / #112 | T3 [T] |
+| UC-8 | Predictive maintenance | T2 | #11 (3.65) | T2 | **0 — whitespace** | #7 (5.0) | T1 #8 |
+| UC-9 | Automated outbound | components | components | components | components (#18/#66/#78) | components (#69/#76) | components T4 |
+| UC-10 | Fraud & fin-crime decisioning | **T1 #5** | #5 (4.19) + #9 (3.78) | **T1 #5** | 3 (#3/#30/#38) | **#3 (5.0)** / AML #82 | **T1 #1** / AML #14 |
+| UC-11 | Next-best-action | **T1 #1** | #2 (4.44) | **T1 #1–2** | 1 (#55) | #36 (4.6) | T3 [V] |
+| UC-12 | Claims triage | later-tier note | #12 (3.43) | insurance row | 3 (#11/#35/#84) | **#11 (5.0)** | T2 #25 |
+| UC-13 | Credit-risk decisioning | T1 #5 (family) | #5 leg | **T1 #5** | 2 (#14/#52) | #14 (4.8) | **T1 #5** [M] |
+| UC-3 | Customer lifetime value | — | — | inside churn | 3 (#17/#78/#87) | #19 (4.75) | T4 |
+| UC-14 | Pricing optimization | T2 | #3 leg | **T1 #3** | 1 (#73) | #58 (4.35) | **T1 #2** |
+| UC-15 | Employee attrition | T3 | #13 (3.14) | T2 | 0 | #103 (3.8) | T3 |
+| UC-16 | Ticket triage | **T1 #3** (family) | #1 leg (4.62) | T2 (family) | 3 (#44/#46/#47) | #21 (4.65) | T2 #19 |
+| UC-17 | Document/AP automation | T2 | #6 leg | T2 (finance) | 4 (#6/#42/#47/#52) | #24 (4.65) | T2 #13 |
+| UC-18 | Supplier risk | T3 (procurement) | #10 (3.72) | — | 0 (#27 adj.) | #98 (3.9) | T3 |
+| UC-19 | Healthcare denials/no-show | — | #8 (3.83) | T2 | 3+ (#35/#36/#51 + HLS block) | **#9 (5.0)** / #33 | T2 #11 |
+| UC-20 | Cash-flow forecasting | T3 (finance close) | #6 leg | T2 (finance) | 0 | #41 (4.55) | T3 |
+| UC-21 | AIOps | T3 (cyber family) | #4 leg (4.24) | **T1 #6** | 0 | #16 (4.8) | T3 |
+| UC-22 | Quality/yield drivers | T3 (yield) | — | industry row | 2 (#58/#65) | #28/#60 | T2 #15/#17 |
+| UC-23 | Campaign optimization | T1 #1 (family leg) | #3 leg | T1 #2 (family) | 3 (#50/#54/#74) | #76 (4.2) | T3 [T] |
+| UC-24 | Contract intelligence | T2 (doc intel) | — | T3 (unless wired) | 1 (#52 adj.) | #18 (4.8) | T3 (J1) |
+
+**Convergence read.** Externally unanimous: UC-5, UC-6, UC-10, UC-13 (top tier in
+essentially every source). Unanimous-with-one-dissent: UC-1 (01's demotion is a
+composition argument UC-11 absorbs), UC-12, UC-19. External-mid/portfolio-strategic:
+UC-2 (reuse economics), UC-4 (mechanism+feasibility unanimous; published-proof
+density is the only dissent — closed by holdout-first delivery), UC-7 (product
+identity + self-liftable prerequisite). Strategic with recorded tension: UC-9 (no
+external composite ranking — T-5), UC-11 (external T1 as a *family*, T3 as a
+standalone program — resolved by attach-only design). The portfolio is
+**evidence-led at its core and strategy-led at its edges, with every strategic
+override written down and priced** — which is what D1 discipline means.
+
+**Competitive-packaging note (evidence 04).** Databricks packages five accelerators
+against UC-1 and seven against UC-5/UC-6 — validating demand where we are deepest —
+while **UC-4 (collections), UC-7 (business-KPI anomaly), and UC-8 (PdM proper) have
+no dedicated accelerator among the 93**: the three whitespace slots where a deployed,
+governed, agent-operated module with an ROI contract faces the least packaged
+competition. Snowflake's nine industry solutions (evidence 05) frame verticals, not
+use-case modules — orthogonal packaging, not a collision.
 
 ---
 
 ## Appendix A — Tensions for kernel review
 
-Genuine tensions between this elaboration's evidence and the kernel's decisions, per
-the kernel's own protocol ("recorded in that doc's Tensions appendix and resolved
-*here* first"). None are contradictions acted upon — the kernel text stands throughout
-this document; these are flagged for the next kernel edit cycle.
+Per kernel protocol: elaborations never contradict; genuine tensions are recorded
+here and resolve in the kernel first. The kernel text stands throughout this document.
 
-**T-1 · None — D3's structure survived elaboration intact.** The tier lists, the
-selection criteria, and the anti-portfolio all reproduced under full-evidence scrutiny
-without needing reinterpretation. Recorded to make the absence explicit.
+**T-1 · UC-6 (inventory & replenishment optimization) added to Band A.** Kernel D4's
+named likely set omits it, but it is the single most unanimous entry in the external
+evidence (01 T1 #2 bundled, 03 T1 #4, 14 #5 at 5.0/5.0, 11 T1 #3 joint, four
+Databricks accelerators) and shares UC-5's pool and data plan — the forecast's action
+half. *Ask:* add UC-6 to the D4 Band-A list.
 
-**T-2 · UC-2's external demand rank is mid-tier.** Item 14 ranks lead scoring #51;
-item 11 places it value T3 [C] ("more deployed than validated"). The kernel's T1
-rationale (same pipeline shape as churn, CRM wiring, high frequency) is a **reuse**
-argument, which the external rankings do not score. *Ask:* kernel confirm that reuse
-economics is an admissible T1 criterion in its own right (it is implied by D9.1
-"reuse-led" but not stated in the D3 criteria list) — or add "methodology reuse" to
-the D3 criteria, which §6.3 already operationalizes as dimension 8.
+**T-2 · UC-13 (credit-risk decisioning) added to Band A.** Not in the kernel's named
+set. The case: the best-measured return delta in the evidence base (Upstart/CFPB
+[M]), the most measurement-mature domain (champion/challenger native — the D8 pricing
+instrument pre-exists), and a D3 argument that regulated-decision governance is where
+our primitives are differentiating. *Ask:* ratify the addition and confirm the AUT-4
+boundary (recommendations and envelope-approvals in scope; autonomous adverse
+decisions never — AP-3).
 
-**T-3 · UC-3 (CLV) has the weakest standalone case in T1.** Item 11: value Tier 4,
-prevalence "computed often, decisioned on rarely" (§S6); item 14: #19, prioritize-now.
-The kernel's own rationale ("composes with UC-1/UC-2 into revenue intelligence")
-already points at the resolution. *Ask:* kernel bless the scoping decision this doc
-makes — **S-3 ships as the composition/value-weighting layer of S-1/S-2** (possibly as
-an upgrade SKU rather than a standalone module) — or affirm standalone-module status,
-in which case the CFO pricing doc should treat S-3 attach as UC-1-dependent.
+**T-3 · UC-3 (CLV) demoted to Band B as a composition layer.** v1 carried CLV in its
+top tier; the prevalence evidence is unambiguous ("computed often, decisioned on
+rarely" — 11 §S6) and standalone it scores below every band (p ≈ 0.26 on
+actionability/measurability). As the value-weighting layer inside UC-1/UC-2/UC-11 it
+earns Band B honestly. *Ask:* bless the composition scoping — S-3 ships as the
+value-weighting layer (possibly an upgrade SKU), and D8 prices it as attach.
 
-**T-4 · UC-7's admission rests on a self-liftable prerequisite.** Item 11 gates K1/K2
-behind semantic-layer maturity (feasibility F3; "wait" quadrant with the explicit note
-that a trustworthy semantic layer moves them top-left). This doc resolves the gate by
-making metric-layer codification the first S-7 deliverable on Zetta-materialized views —
-which quietly assumes **R4-lite materialization** is available to a W1-labeled module.
-*Ask:* kernel confirm UC-7's engine dependency is effectively W1(M-1) for driver
-analysis but **W2(R4-lite + M-5)** for continuous anomaly detection, and that S-7 may
-ship in two stages accordingly. (D2's table already permits this reading; making it
-explicit avoids roadmap surprise.)
+**T-4 · The AP-3 boundary needs kernel language for UC-10/UC-12/UC-13.** Kernel D4's
+anti-portfolio excludes "autonomous high-stakes decisions without human gates" while
+naming fraud & financial-crime *decisioning* and claims *triage* in Band A. This
+document resolves the apparent tension with the autonomy classes (§1.4):
+reversible/capped decisions autonomous-under-audit (AUT-2), committing actions
+approval-gated (AUT-3), adverse decisions never autonomous (AUT-4). *Ask:* adopt the
+AUT-1…AUT-4 classes into the kernel as the D4/D6 boundary vocabulary (also answers
+kernel open question 5's "which action classes default where").
 
-**T-5 · UC-8 is T1 against all three external tierings.** Items 01/02/03 place PdM
-Tier 2 / wave 3 / Tier 2; item 11 rates feasibility F3 (label scarcity, fleet
-heterogeneity, sensor economics). The kernel admits it on evidence-08 grounds (the
-low-liability operational proof) — a strategy admission this doc supports **with the
-fleet-first mitigation** (the fleet variant has the domain's best label situation,
-evidence 11 §G1.11, and Motive-adjacent data). *Ask:* kernel record the mitigation as
-binding — S-8's reference implementation is the fleet variant, and plant-asset PdM
-deployments require a per-account feasibility screen (instrumentation + label history)
-at intake — so the strategy admission doesn't silently become a plant-floor promise.
+**T-5 · UC-9 (automated outbound) scores below the Band-A line.** RA× ≈ 2.2 vs the
+3× line; its admission ticket is internal (One Orama catalog #2 — evidence 07), and
+no external source ranks the composite. *Ask:* either (a) hold Band A and commission
+the evidence: one full internally-measured cycle (Orama operating Orama's outbound
+with suppressed-control holdouts), captured as a new evidence item and re-scored —
+the portfolio's only evidence-free admission becomes evidence-generating at near-zero
+cost; or (b) re-band to B with "measured internal cycle ≥3× RA" as the A-condition.
+CPO recommendation: (a), with success-linked pricing as the default either way.
 
-**T-6 · UC-9 has no external demand evidence as a composite.** Its admission ticket is
-One Orama catalog #2 (evidence 07) — internal. Kernel open question 2 (internal-first
-vs customer-facing) is still open. *Ask:* resolve Q2 as **internal-first**: run
-Orama's own outbound on the module for one full measured cycle (holdout-proven
-pipeline contribution), capture the result as a new evidence item, then re-score UC-9
-through §6.3 with real demand evidence before customer-facing GTM spend. This converts
-the portfolio's only evidence-free admission into an evidence-generating one at
-near-zero cost.
+**T-6 · UC-11's ROI attribution crosses module boundaries.** NBA's return is measured
+through control cells that sit *inside* UC-1/UC-9/UC-23 treatment flows; when the
+arbitration layer lifts the whole book, which module's ROI contract books the lift?
+This is a D8 mechanics question (attach pricing on a shared measurement substrate).
+*Ask:* CFO to specify in 06 — proposed default: the arbitration layer books only the
+incremental lift over the constituent modules' own control readouts.
 
-**T-7 · Ticket triage's tier is wave-discipline-driven, not demand-driven.** Both
-compendia rate T2-5 among the most feasible, provable use cases anywhere (11: F1; 14:
-feasibility #3); items 01/02 put service automation in their first tier/wave. It sits
-in T2 solely because text classification lives in M-9/W3 and because
-commoditization lowers differentiation. *Ask:* kernel decide whether an **M-9-lite**
-(LLM-API classification without the retrieval/generation stack) may be admitted to W2
-— if yes, T2-5's gate collapses to a demand trigger and it becomes the natural
-fourth-module attach in service-heavy accounts; if no, the current gate stands. (This
-interacts with kernel open question 5's LLM-readmission condition.)
+**T-7 · The §1.3 rubric constants are proposals.** The f-table (3→0.95, 2→0.80,
+1→0.60, 0→0.30), the multiplicative form, the ≥80%-of-modeled-return success
+definition, and the band thresholds (A ≥ 3×, B ≥ 1.5×) answer kernel open question 3
+but are uncalibrated priors. *Ask:* kernel adopt them explicitly as v0 constants with
+the §1.3.3 calibration loop (CDO ledger / CPO f-table / kernel-visible edits) as the
+standing revision mechanism, so pricing (D8) and portfolio metrics (D9) consume one
+authoritative table.
 
-**T-8 · The D3 criteria list omits two dimensions this doc needed.** Elaboration
-required "methodology reuse" (T-2) and "demand-evidence breadth" (used to justify
-UC-7/UC-9 flags) beyond the kernel's seven criteria. §6.3 includes both as dimensions
-8–9. *Ask:* kernel adopt the nine-dimension scorecard as the D3 criteria's operational
-form (small edit; no tiering consequence — recalibration in §6.4 was set so the current
-catalog reproduces itself).
+**T-8 · UC-19's band is a portfolio-mix artifact.** Healthcare denials scores A-grade
+at any health-system account (RA× ≈ 2.7 at the portfolio median only because the
+median target account isn't a health system). Whether the *portfolio* median should
+carry more healthcare weight is a D3 industry-mix question with large ROI pools on
+the table ($19.7B denials-fighting spend [M]). *Ask:* CMO/CRO to re-score the D3
+industry map with UC-19/C-6/C-10 pools explicit; this document's banding follows
+whatever mix D3 fixes.
 
 ---
 
-*End of use-case portfolio. Kernel D3/D1 elaborated; tensions T-2…T-8 await kernel
-review. Sibling elaborations: methodologies in
-[`03-methodology-portfolio.md`](03-methodology-portfolio.md), module specifications in
-[`04-solutions-catalog.md`](04-solutions-catalog.md), vertical playbooks in
-[`05-industries-and-gtm.md`](05-industries-and-gtm.md).*
+*End of use-case portfolio v2. Kernel D4/D1 elaborated; the p(success) rubric +
+calibration proposal (§1.3) answers kernel open question 3; the autonomy classes
+(§1.4) propose the kernel-Q5 defaults; tensions T-1…T-8 await kernel review. Sibling
+elaborations: methodology toolbox in
+[`03-methodology-portfolio.md`](03-methodology-portfolio.md), module specifications
+with ROI contracts in [`04-solutions-catalog.md`](04-solutions-catalog.md), customers
+and industry pools in [`05-industries-and-gtm.md`](05-industries-and-gtm.md),
+ROI-based pricing mechanics in [`06-financial-plan.md`](06-financial-plan.md), the
+p(success) factor model at portfolio scale in
+[`07-roi-risk-and-operating-model.md`](07-roi-risk-and-operating-model.md), and the
+data supply chains that train every module's agent in
+[`08-data-strategy.md`](08-data-strategy.md).*

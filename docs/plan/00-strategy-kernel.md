@@ -1,241 +1,274 @@
-# Strategy kernel — the binding decisions
+# Strategy kernel — the binding decisions (future state)
 
-> **Status:** Draft v1 — 2026-07-15. Authored by the combined executive team (Claude
-> acting as CEO/CPO/CTO/CMO/CFO/COO at Steve's direction). **⚠️ Internal-confidential**
-> — inherits pricing and partner detail from evidence 07/08.
+> **Status:** v2 — 2026-07-15. Authored by the combined executive team (CEO/CPO/CTO/
+> CDO/CMO/CRO/CFO/COO, Claude acting at Steve's direction). **⚠️ Internal-confidential.**
 >
-> **This document is the spine of the plan.** It records the *decisions* — the
-> portfolio we pursue (use cases, solutions, methodologies, industries), the order, and
-> the gates. The sibling documents (`01`–`07`) elaborate each domain **and must not
-> contradict this kernel**; where an elaboration surfaces a genuine tension, it is
-> recorded in that doc's "Tensions" appendix and resolved *here* first. Every decision
-> cites its evidence (items in [`../evidence/`](../evidence/)).
+> **v2 supersedes v1 entirely.** What changed, per Steve's direction: (1) **all
+> sequencing is removed** — no waves, no releases, no phases, no engine-dependency
+> gating; (2) the analysis is **future-state only** — every decision answers *"is this
+> a good decision for us in the future?"*, never *"where are we today?"*; (3) **Auto-RL
+> is central** — the agent trained on the customer's data is the core of the product,
+> not a late-stage bet; (4) the **Chief Data Officer perspective is added** — every
+> solution and methodology carries a data collection + refinement plan that feeds
+> Auto-RL training; (5) **ROI is the central metric** — customer return on investment,
+> risk-adjusted by probability of success — and **pricing is based on it**. Intelligence
+> Velocity remains a metric but is no longer the central one.
+>
+> **This document is the spine.** The sibling documents (`01`–`08`) elaborate it and
+> must not contradict it; tensions go to each doc's appendix and resolve here first.
+> Every decision cites its evidence ([`../evidence/`](../evidence/), items 01–15).
 
 ---
 
-## 1. The thesis
+## 1. The future state
 
-**Orama Zetta sells deployed, correct, governed intelligence on the customer's own
-infrastructure — and the business is a solution factory.** The factory's economics rest
-on one structural fact, evidenced independently by our internal and external compendia
-(items 10–15): **many use cases ≈ many solutions ≫ few methodologies.** A handful of
-methodology components — extract, entity-resolve, feature-engineer, train, explain,
-evaluate, serve, monitor — compose into solutions for a very large catalog of business
-problems. The tabular supervised methodology alone (extract → features → GBM → SHAP →
-report) underpins the plurality of enterprise decision workloads (items 10 §S3, 13),
-and **correct application** (point-in-time discipline, leakage prevention, entity
-resolution) plus **business wiring** (actions, owners, measurement) — not modeling — is
-where value is won or lost (items 03, 12 §S6, 15).
+**Enterprises buy outcomes, not models.** In the future state, Orama Zetta is the
+factory that delivers those outcomes: an enterprise states a problem, and a **deployed,
+correct, governed solution runs on their own infrastructure — built, operated, and
+continuously improved by Auto-RL agents trained on that customer's own data.** The
+customer's data never leaves their walls; their agents get sharper with every run; and
+every solution carries a **measured ROI** the customer can see.
 
-Zetta's product promise ("intent → deployed, governed intelligence in minutes, trained
-on your data, correct by construction" — item 06) *is* the industrialization of that
-factory. Competitors sell accelerators-as-notebooks (Databricks's 93, item 04) or
-industry framing (Snowflake's 9, item 05); **we sell the deployed, correct, governed
-solution itself, as a priced module.**
+The factory's economics rest on the evidenced structural fact (items 10–15): **many use
+cases ≈ many solutions ≫ few methodologies.** A compact toolbox of methodology
+components composes into solutions for a very large catalog of business problems — and
+in the future state, **the composer is the agent**: Auto-RL agents select, arrange, and
+operate methodologies against use cases, personalized to each customer (evidence 06
+"Auto-Suggest / Auto-RL / Personalized MCP"; evidence 07 — the agentic RL base model
+anchors every other use case; evidence 08 personalized-intelligence).
 
-**The strategic equation:** every new methodology wave unlocks an order of magnitude
-more solutions than it costs, because components are reused. We grow the catalog
-use-case-first (demand-led), build methodologies wave-by-wave (reuse-led), and ship
-solutions as the sellable unit (revenue-led).
+The business consequence: revenue scales with **customer ROI delivered**, not with
+hours, seats, or compute. We find the problems where the return is largest and most
+probable, deliver them as priced modules, prove the return, and let the agents compound
+it.
 
 ## 2. Vocabulary and IDs (fixed)
 
 Per [`../vocabulary.md`](../vocabulary.md): **use case** = the problem · **methodology**
 = the arranged AI methods · **solution** = the methodology applied correctly + wired to
-the business action. IDs: `UC-n` (use cases — aligned with the wtm ORAMA-ZETTA
-blueprint, where **UC-1 = churn** already exists), `M-n` (methodologies), `S-n`
-(solutions; `S-n` pairs ~1:1 with `UC-n`). Solutions are marketed as **modules**
-(One Orama: "revenue by module", item 07).
+the business action. v2 adds: **agent** = the Auto-RL-trained operator that composes
+methodologies into solutions and runs them for a specific customer. IDs: `UC-n` (UC-1 =
+churn, aligned with the wtm ORAMA-ZETTA blueprint), `M-n`, `S-n` (~1:1 with `UC-n`).
+Solutions are marketed as **modules**.
 
-## 3. D1 — Portfolio architecture
+**Extended Band-A IDs, ratified 2026-07-15** (docs 02/04 aligned): UC-10/S-10 fraud &
+financial-crime decisioning · UC-11/S-11 next-best-action · UC-12/S-12 claims triage ·
+UC-13 credit-risk decisioning (argued addition in 02, pending review). Band-B/C IDs
+(UC-14…UC-24+) are assigned in doc 02.
 
-Three catalogs, maintained in this repo, projected into the wtm blueprint via the
-`add-use-case` runbook:
+## 3. D1 — The decision calculus: risk-adjusted customer ROI
 
-1. **Use-case catalog** (`02-use-case-portfolio.md`) — the demand map. Tiered T1/T2/T3
-   + explicit anti-portfolio.
-2. **Methodology portfolio** (`03-methodology-portfolio.md`) — the engineering assets.
-   Built in **waves**; a new methodology is admitted only when **≥3 tiered use cases**
-   demand it (reuse rule).
-3. **Solutions catalog** (`04-solutions-catalog.md`) — the SKUs. A solution =
-   methodology + correctness adaptations + business wiring, with a definition-of-done
-   (§8) and a module price.
+**Every portfolio decision — use case, solution, methodology, industry, customer — is
+scored on risk-adjusted customer ROI:**
 
-## 4. D2 — Methodology build order (waves)
+```
+score = E[ROI] × p(success)
 
-Principle: **maximize component reuse per wave; tabular spine first.** (Evidence: 10
-§S1/S3, 13 reuse matrix, 02's shared-primitives list.)
+E[ROI]     = expected customer return ÷ customer investment
+             return: revenue lift, cost reduction, loss avoidance, working-capital
+             release, risk reduction — measured, not projected
+customer investment = module price + integration effort + data work + change cost
+p(success) = probability the solution actually delivers that return in production
+```
 
-| Wave | Methodologies | Why now | Engine dependency (item 08 roadmap) |
-|---|---|---|---|
-| **W1 — now** | **M-1 Tabular supervised** (GBM + SHAP; the churn pipeline — exists as UC-1 work) · **M-2 Entity resolution** (thin v1 — the correctness gate needs it) · **M-3 Segmentation/clustering** (cheap adjacency on M-1 features) | The dominant methodology; Motive wedge is live; correctness gate is the differentiation | R1 (local run) + R2 (correctness gate) — runnable on today's engine |
-| **W2 — next** | **M-4 Time-series forecasting** (classical + GBM-global first; deep later) · **M-5 Anomaly detection** · **M-6 Survival/time-to-event** (churn-timing upgrade) | Unlocks forecast-to-action + ops/finance families; heavy reuse of M-1 components | R3 (one-button deploy) + R4-lite (materialization) |
-| **W3** | **M-7 Causal/uplift** (upgrades every "score" solution into an action policy) · **M-8 Recommendation/NBA-lite** (propensity composition first) · **M-9 Embeddings + retrieval / document intelligence** (MCP-native) | The action layer (evidence 02/03: closed loop beats score); document family opens finance/legal/insurance ops | R4 (tiered storage/indexing) + R6 (governance) |
-| **W4** | **M-10 Agentic** (tool-calling agents; **Auto-RL base model** — One Orama catalog #3, strategic + continuous) · **M-11 Optimization/OR pairing** (predict-then-optimize) · graph ML, vision — opportunistic/partner-led | The compounding moat (learning loop, R8); only after governance + eval harness maturity | R5 (compute-near-data) + R8 (learning loop) |
+**p(success) drivers** (from the failure evidence — items 03, 11 §S7, 12 §S6, 14, 15:
+enterprise AI fails at the problem-and-plumbing layer, rarely the model layer):
+data availability & label quality · actionability (a real action path exists) ·
+measurability (the return is provable) · organizational adoption (an owner acts on it)
+· governance fit. **p(failure) is a first-class quantity** — we estimate it, price it,
+and manage the portfolio against it.
 
-**Not building** (default): bespoke deep-learning research, speech stacks, vision-first
-inspection, federated learning — until a paying tiered use case demands them (reuse rule).
+Corollaries: (a) **the analysis is future-state only** — feasibility means "will this
+be a good business", never "can we build it this quarter"; (b) **ROI must be measured,
+not asserted** — every deployed solution carries a measurement loop (holdout, uplift,
+or hard operating metric) whose output is the ROI number itself; (c) the same calculus
+governs **what we build, who we sell to, and what we charge** (D8).
 
-## 5. D3 — Use-case tiers (the demand we pursue)
+## 4. D2 — Auto-RL at the center
 
-Selection criteria (from evidence 01–03, 11, 14): economic pool × decision frequency ×
-closed-loop actionability × data availability (tabular-first) × measurability ×
-**governance fit** (low-liability first — item 08 design-partner research) × engine
-feasibility today.
+**The product's core is the agent.** Zetta studies the customer and their data
+(Auto-Suggest), **auto-trains a long-horizon, tool-calling agent on that customer's
+data with reinforcement learning** (Auto-RL), and personalizes every interface to how
+they work (Personalized MCP) — evidence 06/08. Decisions:
 
-**Tier 1 (launch portfolio — pursue now):**
+1. **Every solution is agent-operated.** A solution module = the use case + the
+   methodology composition + the agent that builds, runs, monitors, explains, and
+   improves it inside the customer's environment.
+2. **Methodologies are the agent's tools; the use-case catalog is its action space.**
+   The methodology portfolio (D5) exists to give the agent a complete, correct toolbox.
+3. **The Zetta agentic RL base model** (evidence 07, catalog item #3) is the anchor
+   asset: a base agent, post-trained per customer on their data. Customer-specific
+   weights belong to the customer; the base model and generalized learnings are ours
+   (the IP split, evidence 08).
+4. **Data is the fuel** — which is why the CDO function exists (D7): no solution enters
+   the catalog without a defined data collection + refinement path that trains and
+   improves its agent.
+5. **Correct by construction applies to agents too:** agent actions pass the same
+   correctness gate and governance (identity-scoped, audited, approval-gated) as any
+   graph — the gate is a product property of the future state, not a rollout step.
 
-| UC | Use case | Why T1 | Methodology |
-|---|---|---|---|
-| UC-1 | **Churn prediction & retention** *(anchor — Motive)* | Live design partner; archetype of the whole factory (items 01–03, 07) | M-1 (+M-6, +M-7 later) |
-| UC-2 | Lead & opportunity scoring | Same pipeline shape as churn; CRM wiring; high frequency | M-1 |
-| UC-3 | Customer lifetime value | Composes with UC-1/UC-2 into revenue intelligence | M-1 |
-| UC-4 | Collections prioritization | Finance family beachhead; measurable (DSO); banking-relevant | M-1 |
-| UC-5 | **Demand forecasting** | Tier-1 in all three DR reports; opens supply-chain family | M-4 |
-| UC-6 | Inventory / replenishment support (assistive) | Forecast-to-action, human-reviewed first | M-4 (+M-11 later) |
-| UC-7 | KPI anomaly detection & driver analysis | The "report" solution generalized; exec surface; every vertical | M-1/M-5 |
-| UC-8 | **Predictive maintenance (assistive)** | The **low-liability operational proof** the partner research prescribes (item 08) | M-1/M-5 (+M-6) |
-| UC-9 | Automated email outbound | One Orama catalog **#2** (item 07) — scoring + segmentation powering outbound | M-1+M-3 |
+## 5. D3 — The customer (who our customers will be)
 
-**Tier 2 (year 1–2, gated on governance/engine maturity):** fraud & AML **triage**
-(assistive, not real-time decisioning), credit-risk-adjacent scoring (SR 11-7 discipline
-required), insurance claims triage & lapse/retention, employee attrition (heightened HR
-governance), customer-service ticket triage, supplier risk, healthcare ops (no-show,
-denials — partner-led), forecast-to-action automation upgrades of UC-5/6.
+The future-state customer is any enterprise where **recurring, high-value decisions**
+meet **owned data exhaust** and **a governance requirement** — the three conditions
+under which risk-adjusted ROI is largest (evidence 01–03, 08, 11, 14):
 
-**Tier 3 (later):** next-best-action/personalization engines, real-time fraud
-decisioning, pricing optimization, RAG knowledge assistants, agentic workflow
-automation, AIOps — each demands W3/W4 methodologies + mature governance.
+- **Profile:** organizations with systems of record producing decision-grade data
+  (CRM/ERP/billing/telemetry/tickets/claims/sensors), a named owner for the outcome,
+  and infrastructure they control (cloud VPC, K8s, on-prem). They buy **own-data
+  training** and **in-environment deployment** — not rented inference (evidence 06/08).
+- **Industry map, scored by future ROI fit** (not by entry order): **financial
+  services/banking** and **insurance** (regulated, data-rich, loss-avoidance pools;
+  governance maps 1:1 to our primitives) · **healthcare/life-sciences** (huge
+  administrative-ROI pools) · **manufacturing/industrial + logistics/fleet**
+  (asset & operations ROI; sensor exhaust) · **telecom** (churn/network scale) ·
+  **retail/CPG** (forecasting/pricing/personalization pools) · **energy/utilities**
+  (load + asset ROI) · **B2B SaaS/tech** (churn/expansion-native, data-ready). All are
+  in-scope in the future state; account selection *within* any industry follows D1
+  scoring.
+- **Anti-customer** (poor future ROI-risk, from evidence 08 anti-ICP): buyers wanting a
+  copilot/RAG toy rather than a trained system; anyone requiring us to hold their raw
+  data in our cloud; organizations with no outcome owner (no adoption ⇒ p(success)→0).
 
-**Anti-portfolio (explicit, from item 08 anti-ICP + 01–03):** generic
-chatbots/copilots, LLM-copilot/RAG-only engagements (disqualifier, not a wedge),
-autonomous high-stakes decisioning, vision-first industrial inspection (initially),
-federal/classified as early deals.
+## 6. D4 — The use-case portfolio (the complete demand map)
 
-## 6. D4 — Solutions: the sellable unit
+The catalog is the **full set of enterprise problems where risk-adjusted ROI is
+strong** — organized by business function, scored by D1, with no time dimension.
+`02-use-case-portfolio.md` holds the complete scored catalog; the kernel fixes the
+frame:
 
-A solution ships as a **priced module** with the full anatomy (items 12 §S1, 15):
-methodology + **correctness adaptations** (point-in-time snapshots, temporal
-validation, leakage checks, entity resolution — enforced by the product's correctness
-gate, item 06) + **business wiring** (named actions, systems of action, owners,
-cadence) + **measurement loop** (holdout/uplift discipline; "shadow production" first —
-item 08) + governance (identity-scoped access, audit, approval gates). Definition of
-done for every S-n: *deployed in the customer environment · passed the correctness gate
-· wired to at least one named business action · measured against a holdout or baseline
-· zero governance violations.* S-1 (churn & retention program) is the reference
-implementation; the catalog grows S-2…S-9 across T1 in `04-solutions-catalog.md`.
+- **ROI bands, not launch tiers:** Band A (highest risk-adjusted ROI — e.g. churn &
+  retention UC-1, collections, demand forecasting, fraud & financial-crime decisioning,
+  predictive maintenance, lead/opportunity scoring, next-best-action, claims triage,
+  KPI driver analysis, automated outbound) · Band B (strong ROI, higher variance —
+  e.g. pricing optimization, attrition, ticket triage, document/claims automation,
+  supplier risk, healthcare ops) · Band C (real but selective ROI — pursued
+  account-by-account when D1 scores well). Band assignments live in doc 02 with the
+  ROI model for each.
+- **Every use case carries an ROI dossier:** the value pool, the customer-investment
+  shape, the p(success)/p(failure) drivers, and the measurement design that will prove
+  the return (evidence 11/14 supply the pools; 12/15 the measurement patterns).
+- **Anti-portfolio** (ROI/risk grounds only): problems with unmeasurable returns,
+  no action path, or adverse governance exposure that caps p(success) — e.g. generic
+  chatbots (unmeasurable), autonomous high-stakes decisions without human gates
+  (p(failure) and liability dominate), vanity analytics.
 
-## 7. D5 — Industries (order and beachheads)
+## 7. D5 — The methodology portfolio (the complete toolbox)
 
-From the 3-model design-partner council (item 08, unanimous) + catalog evidence (04/05):
+The future-state toolbox is **complete, not staged**: tabular supervised (M-1, the
+workhorse — evidence 10/13 prevalence), entity resolution, segmentation, time-series
+forecasting, survival, causal/uplift, anomaly detection, recommendation/NBA,
+learning-to-rank, NLP/embeddings/RAG/fine-tuning, document intelligence, graph,
+vision, speech, bandits/RL, optimization/OR, Bayesian/UQ, ensembling,
+label-efficiency, privacy/synthetic, streaming — **with Auto-RL agents as the
+composer of all of them** (D2). Admission rule: a methodology belongs in the toolbox
+iff it raises the portfolio's risk-adjusted ROI (it unlocks Band-A/B use cases or
+raises p(success) of existing ones). `03-methodology-portfolio.md` specifies each as a
+productized component set with its correctness profile; **every methodology also
+declares its data requirements for agent training (D7).**
 
-| Tier | Industry | Beachhead solutions | Why |
-|---|---|---|---|
-| **1a** | **Financial services / banking** (regional/mid, ~$30B+ assets) | UC-4 collections · UC-1 deposit/customer attrition · UC-7 KPI drivers | #1 unanimous; SR 11-7/GLBA map 1:1 onto our governance primitives |
-| **1b** | **Insurance** (specialty/MGA) | claims triage (T2) · UC-1 lapse/retention · UC-7 | #2 unanimous; NAIC AI bulletin |
-| **1c** | **One operational account** (logistics/fleet or manufacturing) | UC-8 PdM · UC-5/6 · UC-1 (Motive **is** this) | The low-liability first technical proof |
-| **2** | Healthcare/life-sciences (close #3, longer cycles) · manufacturing · logistics/fleet · **telecom** (TELUS warm path) · B2B SaaS/tech | no-show/denials · PdM/yield · UC-1/UC-2 | Second wave — pick by warmest intro |
-| **3** | Retail/CPG · energy/utilities | UC-5/6 · pricing (T3) · load forecasting | After reference architectures repeat |
-| Deferred | Public sector/federal, classified | — | Anti-ICP as first deals |
+## 8. D6 — Solutions: the sellable unit, with an ROI contract
 
-Firmographics: ~1,000–25,000 employees, ~$500M–$10B revenue. Champion: the
-**prototype-to-production owner** + business sponsor. **One reference architecture per
-environment class** (regulated cloud VPC · K8s private cloud · bare-metal/on-prem GPU)
-before widening.
+A solution ships as a **priced module with an ROI contract**: the anatomy (methodology
++ correctness adaptations + business wiring + measurement loop — evidence 12 §S1, 15)
+**plus**: (a) an **ROI model** agreed up front (what return, from which lever, measured
+how); (b) a **p(success) assessment** with the risk drivers named; (c) an **agent
+operating definition** (what the customer's agent does autonomously vs with approval);
+(d) a **data plan** (D7). **Definition of done:** *deployed in the customer environment
+· passed the correctness gate · wired to at least one named business action · operated
+by the customer's agent under governance · **ROI measured against the agreed model** ·
+zero governance violations.* `04-solutions-catalog.md` holds the full catalog S-n ~1:1
+with the scored use cases.
 
-## 8. D6 — Commercial anchors (⚠️ confidential; item 07/08)
+## 9. D7 — The data strategy (CDO): data → agents → ROI
 
-- **Orama Cloud v3 — Enterprise (Orama Zetta): $500k/yr+** (on-prem / dedicated /
-  dedicated-cloud). **Pro: $200/mo** + 4h onboarding @ $125/hr (light agentic search —
-  not this plan's focus). **Solutions are separately priced modules** on Enterprise.
-- **Design partners: 3–6, PAID at ~10–25% of expected ACV**, credited to year-one
-  conversion; 12–16-week scope (one use case · one environment · one KPI); the 120-day
-  program (qualify → secure env → build+govern → shadow production → convert); no broad
-  exclusivity; IP split (customer owns data + weights; we own engine/connectors/
-  templates/generalized learnings).
-- Revenue expansion = **module attach** on the Enterprise base (land with one solution,
-  expand along the reuse frontier).
+**New in v2.** For each pathway — every methodology and every solution — we must
+**collect and refine the data that trains the Auto-RL agents.** Decisions:
 
-## 9. D7 — Sequencing gates (hard)
+1. **Every solution defines its data supply chain:** the sources to connect, the
+   entities to resolve, the labels/outcomes to capture (including the *action taken*
+   and the *result observed* — the RL reward signal), the refinement steps, and the
+   feedback loop that turns operations into training data.
+2. **The reward is ROI:** agent training optimizes toward the solution's measured ROI
+   signal wherever the measurement loop can express it — the metric the customer pays
+   for is the metric the agent learns on.
+3. **Data assets compound:** per-customer data + weights stay the customer's;
+   cross-customer **generalized** patterns (schemas, playbooks, priors, benchmarks,
+   synthetic corpora) are ours and raise every future agent's starting point — this is
+   the moat's second layer alongside own-data training (evidence 06).
+4. **Refinement is a first-class function:** labeling, outcome attribution, drift
+   surveillance, data-quality contracts — owned by the CDO function, specified per
+   solution in `08-data-strategy.md`.
+5. **Governance is intrinsic:** collection and refinement operate under the same
+   identity-scoped, audited, consent-aware regime as everything else.
 
-1. **Security gate:** no production enterprise deployment while the 11 auth gaps
-   (zetta#759–#769, item 07) are open. `--require-auth` is necessary, not sufficient.
-2. **Correctness gate floor:** ≥90% on the evaluated task set before self-service
-   deploy ships to non-engineers (item 08 success-metrics).
-3. **Engine co-sequencing:** W1→R1/R2 · W2→R3/R4-lite · W3→R4/R6 · W4→R5/R8. No wave
-   starts before its engine dependency is credibly scheduled.
-4. **Reference-architecture rule:** one per environment class before widening (item 08).
-5. **Shadow production before automation:** every solution runs human-reviewed
-   alongside the existing process before any automated action.
+## 10. D8 — Pricing: ROI-based
 
-## 10. D8 — Success metrics (from item 08, adopted)
+**Price is set from the customer's return, not from our cost** (evidence 07 anchors
+retained: Enterprise platform $500k/yr+; solutions priced as modules):
 
-Primary: **Intelligence Velocity** (median intent → deployed, correct, running;
-target minutes vs weeks–quarters). Supporting: correctness-gate pass rate (≥90% floor),
-self-service rate, module attach rate, partner→customer conversion, NRR, time-to-value
-per solution (≤16 weeks), **governance violations = 0** (guardrail), generated-graph
-incident rate, deploy reliability.
+- **Each module is priced against its ROI model** — an anchor share of the expected
+  annual return, risk-adjusted: higher-p(success), well-evidenced solutions carry
+  premium pricing; higher-variance solutions carry lower entry pricing with
+  **success-linked components** tied to the measured ROI readout.
+- **The measurement loop is the billing instrument:** the same holdout/uplift/operating
+  metric that proves ROI to the customer justifies (and trues-up) the price.
+- **Portfolio effect:** module attach compounds customer ROI on a shared data + agent
+  foundation, and pricing recognizes that the marginal module's customer investment
+  falls while its return holds — expansion is priced to be obvious.
+- `06-financial-plan.md` specifies the mechanics (anchor shares, bands, success-linked
+  structures, true-up cadence).
 
-## 11. D9 — Operating principles
+## 11. D9 — Metrics: ROI first
 
-1. **Use-case-first, reuse-led, solution-priced** (the factory).
-2. **Correct by construction is the brand** — never trade the gate for velocity (item 06).
-3. **Low-liability first; shadow production; assistive before automated.**
-4. **Lead every conversation with one named use case** — never a generic AI-platform demo.
-5. **Evidence-based catalog growth** — new use cases enter via the `add-use-case`
-   research runbook and this kernel's criteria; the catalogs and the wtm blueprint stay
-   in sync.
-6. **Own-data training is the moat** ("learning, not inference" — item 06); the
-   Auto-RL base model compounds it (item 07 catalog #3).
+- **Central metric: customer ROI** — measured return ÷ customer investment, per
+  solution, per customer, and portfolio-wide.
+- **Companions to the central metric:** **p(success) calibration** (do our ex-ante
+  success probabilities match ex-post outcomes?) and **portfolio risk-adjusted ROI**
+  (the D1 score, tracked against realized results).
+- **Supporting metrics:** module attach rate · NRR · correctness-gate pass rate ·
+  agent autonomy share (actions taken under governance without human intervention) ·
+  data-flywheel health (outcome-capture coverage per solution) · **Intelligence
+  Velocity** (intent → deployed — still tracked, explicitly *not* central).
+- **Guardrail:** governance violations = 0.
 
-## 12. Evidence base (what grounds what)
+## 12. D10 — Operating principles
+
+1. **Future-state analysis only.** Every debate resolves on "is this a good decision
+   for us in the future?" — current state is out of scope in strategy documents.
+2. **No sequencing in strategy.** No waves, phases, releases, or launch tiers; the
+   portfolio is scored (D1), not scheduled.
+3. **ROI before everything** — selection, pricing, measurement, and agent reward all
+   run on the same quantity.
+4. **Agents at the center** — every solution is agent-operated; every methodology is
+   agent-composable; every data plan feeds agent training.
+5. **Correct by construction and governed by default are product properties** — never
+   traded, never staged (evidence 06).
+6. **Measured, not asserted** — a solution without an ROI readout is not done.
+7. **Data is a supply chain, not exhaust** — collection and refinement are designed
+   per solution (D7).
+
+## 13. Evidence base
 
 | Decision | Primary evidence |
 |---|---|
-| Thesis / factory economics | 10 §S1–S3 · 13 · 02 (shared primitives) · vocabulary cardinality |
-| Use-case tiers | 01–03 (tiering + traits) · 11/14 (dossiers) · 09 (demand breadth) · 07 (catalog priorities) |
-| Solution anatomy + DoD | 12 §S1–S6 · 15 · 03 (closed loop) |
-| Methodology waves | 10/13 (reuse + prevalence) · 08 roadmap (engine gaps) |
-| Industries + partner program | 08 ideal-design-partners (3-model council) · 04/05 (market catalogs) |
-| Pricing | 07 (One Orama, confidential) |
-| Gates + metrics | 07 (security issues) · 08 success-metrics + roadmap |
+| Future state & thesis | 06 (promises) · 07 (One Orama end-state, catalog #3) · 08 (personalized intelligence) · 10–15 (factory cardinality) |
+| D1 ROI calculus | 01–03 (value traits/closed loop) · 11/14 (pools + failure patterns) · 12 §S5–S6/15 (measurement + failure evidence) |
+| D2 Auto-RL centrality | 07 (base model anchors the catalog) · 08 (Auto-Suggest/Auto-RL/Personalized MCP) · 06 (learning, not inference) |
+| D3 customers | 08 (ICP/anti-ICP, vertical fit) · 04/05 (market catalogs) · 11/14 (industry pools) |
+| D4/D5/D6 portfolios | 10/13 (methodology toolbox) · 11/14 (use-case pools) · 12/15 (solution anatomy + ROI measurement) · 09 (demand breadth) |
+| D7 data strategy | 06 (learning loop) · 08 (Auto-RL) · 12/15 (outcome-capture patterns) |
+| D8 pricing anchors | 07 (⚠️ confidential) + D1 |
 
-## 13. Open questions (kernel-level)
+## 14. Open questions (kernel-level)
 
-1. Which vertical signs the **first** design partner — FS, insurance, or the
-   operational account — given actual warm-intro availability? (Motive is in hand;
-   is it formally partner #1?)
-2. UC-9 (automated email outbound) — internal-first (Orama automating Orama) or
-   customer-facing module first? *(→ proposed resolution in §14, row 1.)*
-3. Timing of M-7 (uplift): before or after 3 deployed M-1 solutions?
-4. Module pricing mechanics: per-module flat vs value-indexed — **answered**: the CFO
-   doc (06 §2.2) recommends per-module flat with value-anchored bands
-   ($75–100k / $125–175k / $200–300k) + renewal value-review; adopted pending review.
-5. When does the catalog re-admit LLM-era solutions (T3) given the anti-ICP filter on
-   RAG-only buyers — what's the qualifying condition?
-
-## 14. Tension inventory from the v1 elaborations (consolidated 2026-07-15)
-
-The seven elaboration docs flagged ~35 tensions in their appendices. Consolidated here
-by theme with the **proposed** resolution where the executive docs converge. **Status:
-all proposed — pending Steve's adjudication; the kernel body above remains v1 and
-unchanged.** Full detail in each doc's "Tensions" appendix.
-
-| # | Tension (raised by) | Proposed resolution |
-|---|---|---|
-| 1 | **UC-9 sequencing** — outbound email vs assistive-first optics (01, 02, 04, 05, 07) | **Internal-first**: run UC-9 on Orama's own outbound (stage-8 flywheel proof) before selling it as a module. Strongest cross-doc convergence. |
-| 2 | **"Minutes" promise vs 12–16-week engagements** (01, 05) | Two clocks, stated everywhere: *intent → deployed graph* = minutes (product velocity, D8 primary); *solution → proven value* = 12–16 weeks (program). Never blur them in messaging. |
-| 3 | **Label-window physics vs the 16-week window** (04) | DoD's "measured" reads as: shadow readout + initial holdout readout inside the window; label-complete measurement continues contractually post-window. |
-| 4 | **Partner fee base ambiguity** ("10–25% of expected ACV") (01, 06) | Base = expected **year-one total contract value** (platform + first module). CFO's model already computes on this. |
-| 5 | **Security gate vs the 120-day calendar** (05, 07) | Discovery/qualification/env-setup/build may proceed; **shadow on customer data requires network-isolated deployment + explicit customer risk acknowledgment; conversion/production hard-gated** on zetta#759–#769. No partner converts before the gate closes. |
-| 6 | **"Correct by construction" vs the ≥90% floor** (01, 03) | Two denominators: the brand claim is absolute **at deploy time** (nothing deploys without passing the gate); the ≥90% floor measures **generation** quality (graphs passing without human fix), tracked per-template (CTO). |
-| 7 | **MCP ask-first rule vs MCP-native features** (03) | Ask-first stays absolute (item 07 convention): every MCP surface addition is an explicit per-item ask. |
-| 8 | **Healthcare's cohort slot** (05) | Keep kernel: close-#3 by fit, second-wave by default; admit into cohort 1 only on an exceptional warm intro. |
-| 9 | **M-6 pull-forward** (02, 03) | Permitted: M-6 (survival) may pull into late W1 at ~zero engine cost if a partner needs timing-aware retention. |
-| 10 | **S-7 v1 before M-5** (02, 04) | Confirmed reading of D3: S-7 v1 ships on M-1 drivers + rules; M-5 is the upgrade. |
-| 11 | **$500k anchor vs mid-market ICP band** (05, 06) | Pricing ladder: module bands allow sub-$500k entry during the partner phase; $500k+ is the full-platform Enterprise anchor, not the entry gate. |
-| 12 | **Intake scorecard** (02) | Adopt the CPO's 9-dimension 0–3 scorecard as the operational D3 rubric. |
-| 13 | **Auto-RL vs the ≥3-use-case reuse rule** (03) | Auto-RL is explicitly exempt — a strategic bet (already "strategic + continuous" in D2), not a demand-admitted methodology. |
-| 14 | **"Credibly scheduled" undefined** (07) | Define: an engine dependency is credibly scheduled when it has an owner, a design doc, and a dated milestone on the engine roadmap. |
-| 15 | **R4-lite undefined** (03) | Define: R4-lite = materialization of source extracts into the Zetta store (snapshot + refresh), without full tiered storage. |
-| 16 | Minor/doc-local items (UC-2 reuse criterion, UC-3 composition scoping, ticket-triage M-9-lite, fleet-first UC-8 framing, Auto-RL pricing, reuse-ratio metric → D8) | See the respective appendices (02, 03, 06); adopt at v1.1 unless objected. |
+1. The ROI-share anchor: what fraction of expected annual return does a module price
+   target (and how does it vary with p(success))? — CFO to propose in 06.
+2. Success-linked pricing: which component is fixed vs contingent on the measured ROI
+   readout, and who bears measurement-design risk?
+3. p(success) estimation: what rubric produces the ex-ante probability (and how do we
+   calibrate it against realized outcomes)? — 02/07 to propose jointly.
+4. The generalized-learning boundary: precisely what crosses from customer-specific
+   data/weights (theirs) into generalized assets (ours)? — CDO to define in 08.
+5. Agent autonomy defaults: which action classes default to autonomous-under-audit vs
+   approval-gated, per solution family? — 03/04 to propose.

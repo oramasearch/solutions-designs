@@ -1,480 +1,694 @@
 # 06 — Financial plan
 
-> **Status:** Draft v1 — 2026-07-15 · **Author:** CFO (combined executive team) ·
-> **⚠️ Internal-confidential** — inherits pricing and partner detail from evidence 07/08.
+> **Status:** v2 — 2026-07-15 · **Author:** CFO (combined executive team) ·
+> **⚠️ Internal-confidential** · Elaborates kernel v2 (**future state · no sequencing ·
+> ROI-central · Auto-RL-central**).
 >
-> **Kernel-binding.** This document elaborates the [strategy kernel](00-strategy-kernel.md)
-> — specifically **D6 (commercial anchors)**, **D4 (the solution as the sellable unit)**,
-> **D7 (gates, as they constrain revenue recognition-worthy milestones)**, and **D8
-> (metrics)** — and answers kernel **open question #4** (module pricing mechanics). It
-> must not contradict the kernel; genuine tensions are recorded in
-> [Appendix A](#appendix-a--tensions-for-kernel-review) and resolved in the kernel first.
+> **v2 supersedes v1 entirely.** v1 modeled the business as a launch calendar:
+> design-partner cohort economics, year-1/year-2 ARR ladders, engine-investment waves,
+> and security-gate revenue timing. All of that is sequencing, and sequencing is out of
+> scope for strategy (kernel D10.1–D10.2). v2 models **the business at its future
+> operating state**: what the revenue machine is, how price is derived from customer
+> ROI, what the unit economics are when agents — not humans — operate the solutions,
+> and how the portfolio is financially controlled. Scale scenarios (§5) vary **customer
+> count and module attach only** — never calendar stages.
 >
-> **⚠️ Every number in this document is a planning assumption, not a forecast.** The
-> business is pre-revenue on the Zetta line (one design partner in hand — Motive). All
-> scenario outputs exist to size decisions and set gate thresholds, not to promise
-> outcomes. Assumptions are tabled explicitly so they can be falsified one at a time.
+> **This document is the mechanics of kernel D8 (ROI-based pricing)** and it **answers
+> kernel open questions 1 and 2** (the ROI-share anchor, §2.2–§2.3; the
+> fixed-vs-contingent structure and measurement-design risk, §2.4–§2.6). It elaborates
+> D1 (the ROI calculus is the pricing calculus), D9 (the financial metric set), and the
+> retained commercial anchors from evidence 07 (Enterprise platform **$500k/yr+**;
+> solutions priced as separate modules — ⚠️ confidential). It must not contradict the
+> kernel; genuine tensions are recorded in
+> [Appendix A](#appendix-a--tensions-for-kernel-review) and resolve in the kernel first.
+>
+> **⚠️ Every number in this document is a planning assumption, not a forecast.** Each
+> is tabled so it can be falsified independently. Evidence citations `(evidence NN)`
+> refer to [`../evidence/`](../evidence/).
 
 ---
 
-## 1. Revenue architecture
+## 1. The revenue architecture v2
 
-### 1.1 The shape: Enterprise base + module attach
+### 1.1 The two-layer architecture: platform base + ROI-priced modules
 
-The kernel (D6, evidence 07) fixes the commercial anchors:
+The future-state revenue machine has exactly two layers, both anchored in the kernel
+and evidence 07:
 
-| Line | What it is | Price anchor | Role in this plan |
+| Layer | What the customer buys | Price basis | Kernel/evidence anchor |
 |---|---|---|---|
-| **Orama Cloud v3 — Enterprise (Orama Zetta)** | The full platform, deployed on-prem / dedicated / dedicated-cloud in the **customer's** environment | **$500k/yr+** | **The base contract.** Every solutions-revenue dollar in this plan sits on top of an Enterprise base |
-| **Solution modules (S-1…S-9, then T2)** | Separately priced modules on the Enterprise base — a solution per kernel D4 (methodology + correctness adaptations + business wiring + measurement + governance) | Proposed in §2 | **The expansion engine.** Land with one module, expand along the reuse frontier (kernel D6) |
-| **Design-partner fees** | Paid pilots, ~10–25% of expected ACV, credited to year-one conversion (evidence 08) | ~$50k–$125k per partner (derived, §3.1) | **Pre-revenue.** Cash-flow support + commitment signal, *not* recognized as durable ARR |
-| **Orama Cloud v3 — Pro** | Light agentic search, $200/mo + 4h onboarding @ $125/hr (evidence 07) | Out of scope | **Funnel only.** Pro is not solutions revenue; it may surface Enterprise leads. No Pro economics are modeled here |
+| **Platform base — Orama Cloud v3 Enterprise (Orama Zetta)** | The deployed factory in the **customer's** environment: the engine, the governance regime (identity-scoped, audited, approval-gated), the correctness gate, the data supply chain, and the customer's own **Auto-RL agent** — trained on their data, owned weights theirs (kernel D2/D7) | **$500k/yr+** flat (evidence 07, retained anchor). Priced for the foundation's *option value*: every module the customer will ever attach runs on it | Kernel D8; evidence 07 ⚠️ |
+| **Solution modules (S-n)** | A use case solved: methodology composition + correctness adaptations + business wiring + **measurement loop** + the agent operating it (kernel D6). Marketed as modules, ~1:1 with UC-n | **A share of the module's expected annual return, risk-adjusted by p(success)** — the full mechanics in §2 | Kernel D1/D6/D8; evidence 11/12/14/15 |
 
-Three structural consequences follow:
+Deliberately **not** in this architecture: usage meters (wrong meter — the customer's
+infrastructure runs the compute, so usage tracks *their* cost, not ours, and metering
+inside their VPC strains the data-sovereignty promise, evidence 06/08); seat pricing
+(the operator is the agent, not a seat count); services revenue as a line of business
+(§3.2 — the agent is the services layer); and the Pro tier (a different business at a
+different order of magnitude; funnel only, zero revenue attribution here).
 
-1. **Revenue = (# Enterprise bases) × ($500k+ base + Σ attached module fees).** The
-   two levers are base count (GTM-constrained: 3–6 design partners, warm-intro
-   verticals per kernel D5) and attach rate (product-constrained: the wave build order
-   D2 determines which modules *exist* to attach).
-2. **The factory economics (kernel §1) show up financially as attach-rate leverage.**
-   Because methodologies are reused (many solutions ≫ few methodologies), the marginal
-   engineering cost of the Nth module on an existing methodology wave is low, while its
-   price is set by solution value. Gross margin on attach expands with catalog maturity.
-3. **Design-partner fees are deliberately *not* the business.** They exist to qualify
-   commitment (evidence 08: "paid pilots fit mission-critical software"), defray
-   founder-time cost, and create the conversion gate. Treat them as contra-CAC, not ARR.
+### 1.2 The revenue identity: revenue scales with measured ROI delivered
 
-### 1.2 What we recognize when (gate-linked milestones)
+Kernel §1 fixes the business consequence — *revenue scales with customer ROI
+delivered, not hours, seats, or compute*. Written as the identity this plan manages:
 
-The kernel's hard gates (D7) bound what we may *sell into production*, and therefore
-what revenue quality we can claim. This plan adopts the following recognition-quality
-ladder (management-accounting discipline, not GAAP language):
+```
+ARR = Σ over customers c of:
+        Base_c                                   (platform, flat)
+      + Σ over attached modules m of:
+          s(p_m) × E[R_m] × realization_m        (module take)
 
-| Milestone | Gate condition (kernel D7/D8) | Revenue treatment |
-|---|---|---|
-| Design-partner fee invoiced | Partner signed, 120-day program started | Pilot revenue (one-time; credit accrues against conversion) |
-| Shadow production running | Correctness gate passing on the partner's workload; **zero governance violations** | Still pilot revenue — no ARR claimed |
-| **Conversion** | Security gate closed (zetta#759–#769) **for any production deployment**; solution meets DoD (D4): deployed · gate-passed · action-wired · measured · zero violations | **Enterprise base ARR starts**; pilot fee credited to year one |
-| Module attach (post-conversion) | Attached solution meets the same DoD | **Module ARR** added |
-| Renewal | D8 guardrails held (violations = 0, incident rate within bound); measured value (holdout/uplift) presented at renewal | NRR event |
+where  E[R_m]        = expected annual measured return of module m for customer c
+                       (the module's contractual ROI model, kernel D6a)
+       p_m           = ex-ante p(success) for that module at that customer (kernel D1)
+       s(p_m)        = the ROI-share schedule (§2.3) — the fraction of expected
+                       annual return the price targets
+       realization_m = measured return ÷ expected return, produced by the module's
+                       own measurement loop (the billing instrument, kernel D8)
+```
 
-**CFO position:** no ARR is booked, forecast externally, or celebrated internally for a
-deployment that has not passed the security gate. This is the financial restatement of
-kernel D7.1 — the 11 open auth gaps (zetta#759–#769, evidence 07) make any earlier
-"production" claim a liability, not revenue.
+Every term is a managed quantity: `E[R]` is agreed in the ROI model at sale; `p` comes
+from the p(success) rubric (kernel open question 3 — owned by docs 02/07; this plan
+*consumes* it); `s(p)` is this document's schedule; `realization` is what the
+measurement loop reads out. **There is no revenue line in this business that is not a
+function of customer return.** The base is the one flat element, and even it is
+justified by the return architecture: it prices the foundation that makes every
+module's `p` higher and every module's customer investment lower.
 
-### 1.3 The Pro tier boundary (explicit)
+### 1.3 The expansion economics: the shared foundation makes attach compounding
 
-Pro ($200/mo) is **out of scope** for this plan except as funnel. Rationale: (a) its
-unit economics are a different business (self-serve, low-touch, ~3 orders of magnitude
-smaller ACV); (b) the anti-ICP filter (kernel D5) explicitly disqualifies LLM-copilot /
-RAG-only buyers — many Pro users will look like that; (c) mixing Pro MRR into solutions
-ARR would flatter the metrics this plan gates on. The single financial hook we keep:
-**track Pro→Enterprise qualified-lead count** as a funnel metric, reported quarterly,
-zero revenue attribution until a conversion occurs.
+The structural fact (kernel §1): many use cases ≈ many solutions ≫ few methodologies,
+and the composer is the agent. Financially this appears as **marginal-module
+economics that improve for both sides simultaneously** — the rare pricing situation
+where the seller's take and the buyer's net ROI rise together:
+
+| Quantity | First module at a customer | Marginal module (shared foundation) | Why |
+|---|---|---|---|
+| Customer's integration + data investment | High: connectors, entity resolution, label reconstruction, governance wiring — the documented long pole (evidence 12 §S6 failure cause 7: integration and data readiness, not modeling, dominate cost) | **Collapses**: sources connected, entities resolved, governance live, the agent already trained on the environment | The foundation is shared; the agent reuses everything it learned |
+| `E[ROI]` (kernel D1: return ÷ **customer investment**) | Good (Band-A screen) | **Higher** — same return class, smaller denominator | Denominator falls |
+| `p(success)` | Rubric-scored | **Higher** — data plumbing proven, an outcome owner exists, adoption path demonstrated, the agent has operating history here | The p-drivers (data availability, actionability, adoption — kernel D1) are already evidenced in-house |
+| Module price under §2 | `s(p₁) × E[R]` | `s(p₂) × E[R]` with `p₂ > p₁` → **higher share** | The s(p) schedule prices confidence |
+| Customer's net ROI on the module | ≥ ~3:1 target (§2.6) | **Still improves** despite the higher share, because the investment denominator fell more than the share rose | Both sides win — expansion is arithmetically obvious |
+
+Planning assumption for the scenario model (§5): the customer-side integration
+investment on a marginal module is **~15–25% of the first module's** (evidence 12 §S6
+identifies integration as the majority of first-deployment cost; the shared agent+data
+foundation is precisely what removes it). This is the quantitative form of the
+kernel's D8 portfolio effect: *expansion is priced to be obvious*.
+
+### 1.4 Revenue quality rules (future-state discipline)
+
+Three standing rules keep the identity honest:
+
+1. **No module revenue without a measurement loop live.** The kernel's definition of
+   done (D6) includes "ROI measured against the agreed model"; financially, a module
+   whose readout is not producing numbers is not yet earning its contingent component
+   and its fixed component is at risk at true-up (§2.5). An unmeasured solution is
+   indistinguishable from a failed one (evidence 12 §S5).
+2. **The base and the modules never cross-subsidize silently.** The base covers the
+   foundation; module fees cover module value. Discounting policy (§4.4) operates on
+   the fixed components only — the contingent share is never discounted, because it
+   *is* the meter.
+3. **Correctness, governance, and audit are never priced as add-ons** (carried forward
+   from v1, still true in v2): unbundling them would sell "fast wrong answers" — the
+   failure the product exists to prevent. They live inside the base.
 
 ---
 
-## 2. Module pricing proposal (answers kernel open question #4)
+## 2. ROI-based pricing mechanics (answers kernel open questions 1 + 2)
 
-### 2.1 The three candidate mechanics
+### 2.1 The pricing quantity: pool → expected return → p(success)
 
-| Mechanic | How it works | Pros | Cons | Evidence fit |
+Every module sale starts from the module's **ROI model** (kernel D6a), built in three
+steps that mirror the D1 calculus. All three are contract artifacts, not sales collateral:
+
+| Step | Quantity | How it is produced | Evidence base |
+|---|---|---|---|
+| 1 | **Value pool** `V` | The customer-specific size of the problem: churn revenue at risk, DSO-days × daily cash, inventory distortion cost. Computed from the customer's own operating data during scoping — the use-case dossiers supply the pool arithmetic per use case (evidence 11/14: e.g. each DSO day on $1B revenue ≈ $2.7M cash; retail inventory distortion $1.77T globally, IHL 2023 via evidence 11 F1) | evidence 11/14 (pool math per UC) |
+| 2 | **Expected annual return** `E[R]` | The intervention effect applied to the pool, at documented-magnitude effect sizes, net of action costs (offer costs, treatment costs): `E[R] = V × effect size × margin − action cost`. Effect sizes come from the documented-results fields of the dossiers (evidence 11/12/14/15), always using the conservative end of vendor-reported ranges | evidence 12 dossiers 1/10/17 etc. |
+| 3 | **p(success)** `p` | The ex-ante probability the deployed solution delivers `E[R]` in production, scored on the D1 driver rubric (data availability & label quality · actionability · measurability · adoption · governance fit). The rubric itself is kernel open question 3 (docs 02/07); this plan consumes its output and **calibrates it financially** (§4.3) | kernel D1; evidence 03, 11 §S7, 12 §S6, 14, 15 |
+
+The price is then a function of `(E[R], p)` and nothing else — not our cost, not
+competitor list prices, not deal-size ambition. Cost enters only as a **floor** (§2.6).
+
+### 2.2 The anchor (kernel Q1): price targets **10–20% of expected annual return, centered at 15%**
+
+**Proposal.** A module's target annual take is **s(p) × E[R]** where the share
+schedule `s(p)` spans **10–20%** of expected annual return, centered at **15%**
+(planning assumption — the anchor this document exists to propose; kernel ratification
+required per Appendix A).
+
+**The argument for the 10–20% band, from four directions:**
+
+1. **Value-based-pricing practice.** The working norm across enterprise software and
+   outcome-priced services is that the vendor captures on the order of 10–30% of the
+   value created and the customer keeps the rest; gainsharing structures in the
+   domains closest to ours — collections recovery, procurement savings,
+   revenue-management — conventionally take 10–30% of measured incremental value
+   (industry practice; planning assumption). We anchor at the lower-middle of that
+   range because our value claim is *measured, recurring, and audited* — we can afford
+   a moderate share of a number nobody disputes, which beats a high share of a number
+   everyone disputes.
+2. **The customer's alternative costs.** The realistic alternatives are: (a) build
+   in-house — a 5–8 FTE data team ≈ $1.5–2.5M/yr fully loaded (planning assumption)
+   carrying the documented base rate of failure (≈95% of enterprise AI pilots show no
+   measurable P&L impact, MIT NANDA 2025; only ~39% of AI-using organizations
+   attribute any EBIT impact, McKinsey 2025 — both via evidence 12 §S6); (b) an SI
+   engagement — $1–5M one-time plus ongoing, with the same wiring risk and no
+   continuing improvement loop; (c) a point-solution subscription unlinked to outcome.
+   At a 15% share of a *measured* return, we are cheaper than (a) on cash alone for
+   most Band-A pools, and categorically de-risked relative to all three: the customer
+   pays mostly when the return is proven (§2.4).
+3. **The customer's net-ROI arithmetic must stay obvious.** At a 15% share, the
+   customer keeps 85% of the measured return — a ~5.7:1 return on the module price
+   alone. After adding their own integration and change costs (the D1 denominator),
+   the target is **net customer ROI ≥ 3:1 on the first module** and rising on every
+   marginal module (§1.3). A share above ~20–25% starts pushing first-module net ROI
+   below 3:1 for mid-size pools once customer-side costs are counted — which erodes
+   exactly the "expansion is obvious" property the kernel mandates (D8).
+4. **The measurement loop caps credible take.** Our price is justified by a readout
+   the customer's own team can audit (§2.5). A share that looks like rent-seeking
+   invites gaming of the very instrument we bill on (Goodhart pressure on holdout
+   integrity — evidence 12 §S5 pitfalls). 10–20% of a number the customer watched us
+   measure is a share that survives procurement, renewal, and audit.
+
+**Why not lower than 10%:** below ~10% the fixed component can no longer clear the
+cost floor (§2.6) on smaller Band-A pools while leaving a contingent component large
+enough to matter, and the price stops signaling the product's category (a measured-ROI
+system, not a tool subscription).
+
+### 2.3 The share schedule s(p): confidence prices at a premium; variance shifts weight into success-linkage
+
+**Proposal (kernel Q1, second half).** The share is an *increasing* function of
+p(success), and the fixed/contingent composition of the price moves the opposite way:
+
+| p(success) band | Posture (evidence) | Target share s(p) of E[R] | Fixed share of the price | Contingent share |
 |---|---|---|---|---|
-| **A. Per-module flat** | Each S-n has a list price (e.g. $X/yr flat), tiered only by deployment size band | Simple to quote, simple to buy, predictable for the customer's budget cycle; matches "solutions as SKUs" (kernel D1/D4); easy for a 2-person GTM motion to run | Leaves value on the table for high-value deployments; invites per-seat/per-volume haggling anyway at Enterprise procurement | Matches evidence 07's "each module is separately priced"; matches how Databricks/Snowflake package accelerators as fixed-scope attachments (evidence 04/05) |
-| **B. Value-indexed** | Price set per-customer as a % of measured or modeled value (e.g. 10–20% of retained revenue for S-1 churn) | Maximal value capture; the measurement loop (D4) provides the meter; aligns us with customer outcome | Requires trustworthy uplift attribution *before* pricing can settle → long negotiation; puts our revenue at the mercy of holdout erosion (evidence 12 §S6 failure cause 2); procurement teams resist open-ended %-of-value contracts; audit burden per deal | The measurement discipline exists in the DoD, but evidence 12 §S6 shows measurement is exactly where programs are weakest — pricing on the weakest link is fragile |
-| **C. Usage-tiered** | Price per scored entity / prediction volume / node-hours | Familiar cloud mechanic; scales with adoption | **Wrong meter for this product**: we deploy in the *customer's* environment (their compute, their COGS), so usage doesn't track our cost; usage-metering inside a customer VPC creates a telemetry/governance tension with the "data never leaves" promise (evidence 06/08); penalizes exactly the deep adoption we want | Poor. Compute-near-data + customer-infra deployment (evidence 08 R4/R5) means customer usage costs *them*, not us |
+| **p ≥ 0.75 — high confidence** | Generalized assets exist for this module family; measurement design proven at multiple deployments; adoption pattern known (evidence 12 §S7 "routine/established" tiers) | **17–20%** | ~70% | ~30% |
+| **0.60 ≤ p < 0.75 — standard Band-A** | Strong dossier evidence, customer-specific unknowns remain | **14–17%** | ~55–65% | ~35–45% |
+| **0.45 ≤ p < 0.60 — higher variance** | Real pool, thinner measurement precedent (e.g. attribution noisier, phased rollout instead of clean holdout) | **11–14%** | ~35–50% | ~50–65% |
+| **p < 0.45** | — | **Not sold as a priced module.** The D1 screen fails; pursue only as an explicitly experimental engagement or decline (kernel D4 anti-portfolio logic) | — | — |
 
-### 2.2 Recommendation: **per-module flat, value-anchored bands, with a value-review escalator**
+**Why the share *rises* with confidence (and not the reverse):** the customer's
+certainty-equivalent value of the module is `≈ p × E[R]`; a high-p module is simply
+worth more to a risk-averse buyer, and the evidence that makes p high (deployed
+precedents, generalized assets, proven measurement) is *our* accumulated asset — the
+data flywheel's pricing power (kernel D7.3, §3.4 below). Premium share on
+high-confidence modules is how the flywheel monetizes.
 
-**Mechanic A as the contract structure, with B used as the price-setting input, C rejected.**
+**Why the *contingent weight* rises as p falls:** for a high-p module, heavy
+success-linkage adds true-up variance and contracting cost without information value —
+both sides already believe the number. For a higher-variance module, the customer
+should not bear the variance: we shift the price into the success-linked component and
+underwrite the risk ourselves, because **we are the natural risk-bearer** — we hold a
+diversified portfolio of ROI streams (§4.2) and we own the calibration data (§4.3);
+the single customer holds one draw. This is insurance economics applied to pricing,
+and it is what makes a 0.50-p module sellable at all without discounting the category.
 
-Concretely:
+**Blended headline check** (planning assumption): across a Band-A-weighted attach mix,
+the blended target share lands at **~15%** of expected annual return, with a blended
+fixed/contingent revenue mix near **60/40** (§6 tracks both).
 
-1. **Each S-n carries a flat annual module fee**, quoted in one of three bands
-   (Standard / Extended / Strategic — defined below) chosen at sale by deployment
-   scope (one business unit vs. enterprise-wide; one geography vs. global; entity
-   volume band as a *band selector*, not a meter).
-2. **The band placement is value-anchored:** the sales motion uses the solution's
-   measured-value math (the same holdout/uplift discipline the DoD already requires)
-   to justify the band — "S-1 at Motive protects $Y of revenue; the Strategic band at
-   $Z is <10% of that." Value evidence *justifies* the flat price; it does not *meter* it.
-3. **A value-review escalator at renewal:** each renewal may move a module one band up
-   (never mid-term) when the measured value from the module's own measurement loop
-   supports it. This captures value growth without open-ended %-of-value exposure.
-4. **No usage meter.** The only quantity that appears in the contract is the band
-   selector (entity-volume range), fixed at signature and revisited at renewal.
+### 2.4 The fixed-vs-contingent structure (kernel Q2, first half)
 
-**Why this wins:** it keeps quoting simple enough for a founder-led motion (we have no
-pricing ops team); it is congruent with the customer-infra deployment model (their
-compute, their cost); it makes the measurement loop *commercially load-bearing* (the
-same artifact that proves the solution works justifies the renewal band — one
-discipline, two payoffs); and it preserves the module-attach expansion story the kernel
-mandates (D6) with clean per-SKU ARR accounting.
+**Proposal.** Every module contract carries the same two-part structure; only the
+proportions move (per the §2.3 schedule):
 
-### 2.3 Illustrative price bands (planning assumptions — anchored on the $500k/yr+ base)
+```
+Annual module price  =  F  +  C(realized)
 
-Design logic: the Enterprise base ($500k/yr+) buys the platform — deploy surface,
-governance, correctness gate, the engine. Modules price the *applied, wired solution*.
-A module should be (a) small enough relative to the base that attach is an easy
-expansion decision, (b) large enough to matter — target **15–30% of base per module**,
-so that 2–3 attached modules roughly double the account.
+F  (fixed component)      =  max( cost floor,  fixed-weight × s(p) × E[R] )
+                             invoiced flat, quarterly in advance
 
-| Band | Illustrative fee (per module per year) | When | Example placements |
-|---|---|---|---|
-| **Standard** | **$75k–$100k** | One business unit, one geography, entity volume in the module's base band | S-2 lead scoring for one sales org; S-7 KPI anomaly for one exec team |
-| **Extended** | **$125k–$175k** | Multi-BU or enterprise-wide within one region; higher entity band | S-1 churn across all consumer lines; S-5 demand forecast across a full DC network |
-| **Strategic** | **$200k–$300k** | Enterprise-wide, mission-embedded, regulator-facing (SR 11-7 / NAIC documentation posture included) | S-4 collections at a $30B+ bank; S-8 PdM across a national fleet |
+C  (contingent component) =  contingent-weight × s(p) × R_measured / E[R] × E[R]
+                          =  contingent-weight × s(p) × R_measured
+                             accrued quarterly from the measurement readout,
+                             settled annually at true-up, subject to cap (§2.6)
+```
 
-Worked illustration (assumption, not forecast): a converted FS account = $500k base +
-S-4 Strategic ($250k) + S-1 Extended ($150k) + S-7 Standard ($90k) ≈ **$990k ACV** at
-three-module attach. This is the "land ~$600k, expand toward ~$1M" account shape the
-scenario model in §4 uses.
+- **What the fixed component is *for*:** it covers the cost of the deployed foundation
+  slice this module occupies — agent operation, measurement-loop upkeep, audit
+  operations, support — plus a margin floor (§2.6). It is the price of the module
+  *existing and operating correctly*; it is never zero, because a module that runs,
+  passes the correctness gate, and operates under governance has delivered a real
+  thing even before the return lands.
+- **What the contingent component is *for*:** it is the ROI share proper — the price
+  of the *return*, paid against the measured readout. `R_measured` is the output of
+  the module's own measurement loop (holdout / uplift / hard operating metric —
+  evidence 12 §S5 patterns), which the contract designates as the **billing
+  instrument** (kernel D8: "the measurement loop is the billing instrument").
+- **True-up mechanics:** the readout accrues quarterly; annual settlement trues the
+  contingent component to measured return. Over-performance above the cap (§2.6) is
+  not billed mid-term — it carries into **renewal repricing** (the share band and
+  `E[R]` reset at renewal on measured history; never mid-term). Under-performance
+  settles down automatically; persistent under-performance (two consecutive true-ups
+  below 50% realization) triggers the remediation path: the agent's improvement loop
+  gets a named joint review, and if realization does not recover, either party may
+  exit the module at renewal without penalty — a clean walk-away that protects the
+  category's credibility.
 
-### 2.4 Pricing the upgrade path (M-6/M-7 upgrades)
+### 2.5 Measurement-design risk and dispute resolution (kernel Q2, second half)
 
-The kernel's wave plan (D2) makes some methodologies *upgrades to existing solutions*
-rather than new SKUs: M-6 (survival/time-to-event) upgrades S-1's churn *scoring* into
-churn *timing*; M-7 (causal/uplift) upgrades any "score" solution into an *action
-policy* (kernel D2 W3; evidence 02/03 "closed loop beats score").
+The contingent component is only as good as the instrument, so v2 makes the
+instrument a **contract schedule agreed before deployment**, not an afterthought.
+Allocation of measurement-design risk:
 
-**Proposal: upgrades are priced as band moves, not new modules.**
-
-| Upgrade | What the customer gets | Pricing treatment |
+| Risk | Borne by | Mechanism |
 |---|---|---|
-| S-1 + M-6 (churn timing) | *When* each customer will churn, not just who — enables intervention scheduling | S-1 moves up one band (e.g. Standard→Extended, +$50k–75k/yr) |
-| S-n + M-7 (uplift/action policy) | Targeting by *persuadability*, not risk — measurable incremental lift | One band up on the affected module, **plus** eligibility for the value-review escalator at next renewal (uplift is precisely where measured value becomes demonstrable) |
-| S-5/S-6 + M-11 (predict-then-optimize) | Forecast→decision automation | One band up; requires shadow-production sign-off first (kernel D7.5) |
+| **Instrument validity** (holdout sized for significance, uplift design correct, as-of reconstruction honest — the documented pitfalls, evidence 12 §S5) | **Us (seller).** We design the instrument and warrant its statistical validity | The **measurement schedule** in the contract fixes, up front: the design (permanent randomized holdout, uplift A/B, champion/challenger, phased comparison, or hard operating metric — chosen per module family from the evidence 12 §S5 pattern table), holdout size and refresh policy, the metric definition, the accrual formula, and the fallback hierarchy |
+| **Readout failure not attributable to customer breach** (design turns out underpowered; confounds emerge) | **Us.** Contingent settles at the conservative fallback | Fallback hierarchy, pre-agreed: (1) primary instrument → (2) named secondary operating metric → (3) modeled ROI at a **conservative percentile (P25) with a further 20% haircut** (planning assumption). We eat the haircut — that is what "seller bears measurement-design risk" means in cash |
+| **Holdout/experiment integrity** (exceptions eroding the holdout, treatment leakage, ops overrides contaminating cells — evidence 12 §S5 pitfalls) | **Customer**, via adoption covenants | The contract names the outcome owner (kernel D1: no owner → p(success)→0), commits the action wiring, and commits holdout integrity. **Customer breach converts the contingent component to its p-weighted expected value** (`contingent-weight × s(p) × p × E[R]`) for the affected period — the customer cannot reduce the bill by breaking the meter |
+| **Disagreement over the readout** | Shared, resolved by escalation ladder | (1) Joint measurement committee (quarterly, standing); (2) independent audit of the readout via below-the-line sampling — the same regulator-grade assurance pattern the solutions already use internally (evidence 12 §S5); (3) binding expert determination on the pre-agreed schedule. Because the instrument runs **in the customer's environment under the platform's governance** (identity-scoped, audited — kernel D2.5), both sides can inspect the full audit trail; there is no "trust our dashboard" asymmetry |
 
-Rationale: keeping upgrades inside the module's SKU (rather than minting S-1a, S-1b…)
-keeps the catalog legible (one S-n per UC-n, per kernel D1), concentrates NRR into a
-clean per-module band-migration metric, and mirrors how the engineering actually works
-— the upgrade *is* the same solution with a deeper methodology, so the price should be
-the same SKU with a deeper band.
+Two design notes worth making explicit:
 
-### 2.5 What is deliberately not priced
+1. **The conflict-of-interest is engineered out, not waved away.** A seller-operated
+   meter that determines the seller's bill is a governance problem. Our answer: the
+   meter's definition is contractual, its execution is audited under the customer's
+   own governance regime, its raw trail is customer-inspectable, and the audit-sampling
+   provision gives the customer a standing right to re-derive the number.
+   (Flagged for kernel review as a governance-level property — Appendix A.3.)
+2. **The measurement schedule is a reusable asset.** Per module family, the schedule
+   template (design, power calculation, fallbacks) is a generalized asset (kernel
+   D7.3): it is written once per family, hardened across deployments, and raises
+   p(success) — and therefore the share — for every subsequent sale (§3.4).
 
-- **Correctness gate, governance, audit** — never priced as add-ons. They are the brand
-  (kernel D9.2) and the Enterprise base's justification. Unbundling them would invite
-  customers to buy "fast wrong answers" — the exact failure the product exists to prevent.
-- **Reference architectures** — the per-environment-class architecture work (kernel
-  D7.4) is our IP and our cost (see §5); customers pay for it through the base, never
-  as NRE line items (NRE pricing is the bespoke-SI trap, evidence 08 IP split).
-- **The Auto-RL base model (One Orama catalog #3, evidence 07)** — strategic and
-  continuous; it anchors every module's quality. Priced *into* the base and the module
-  bands, not as its own SKU, until W4 maturity forces a rethink (flagged in Appendix A).
+### 2.6 Floors and ceilings
+
+| Bound | Rule (planning assumption) | Rationale |
+|---|---|---|
+| **Fixed-component floor** | `F ≥ 2 × module cost-to-serve` (§3.3) | No module is ever operated below margin; protects against pool-size optimism at small customers |
+| **Platform-base floor** | Base never discounted below **$500k/yr** (evidence 07 anchor ⚠️) | The foundation's price is the category signal; eroding it re-opens the "tool subscription" comparison we refuse |
+| **Total-price ceiling (customer-protection)** | Annual module price ≤ **25% of measured annual return** — the customer always keeps ≥ 75% | Keeps net customer ROI ≥ 3:1 even after customer-side costs; keeps renewal a formality; keeps the meter unthreatening |
+| **Contingent cap (budgetability)** | Contingent settles at ≤ **1.5× its target value** in any year; overage carries to renewal repricing | Enterprise budgets cannot absorb unbounded true-ups; blow-out years monetize at renewal instead, where they also reset `E[R]` upward |
+| **Module-price floor vs base** | A module whose §2.2 arithmetic yields < **$150k/yr** total take is packaged into a bundle or not sold stand-alone | Below this, measurement + audit + true-up overhead consumes the margin (cost-to-serve, §3.3); small pools are served by attach bundles, not bespoke small contracts |
+
+### 2.7 Worked examples — three Band-A modules, end-to-end
+
+All three follow the same arithmetic: **pool → expected return → p(success) → share →
+price → both sides' ROI check.** Every input is a planning assumption; pool math and
+effect sizes cite the dossiers.
+
+#### 2.7.1 S-1 Churn & retention (UC-1) — telecom
+
+| Step | Quantity | Value | Basis |
+|---|---|---|---|
+| Customer | Mid-size telco | 1.8M subscribers, ARPU $55/mo, gross churn 22%/yr | Scoping data (assumed); churn benchmarks 15–25% telecom (evidence 11 A1) |
+| Pool `V` | Revenue at risk | 396k churners/yr × $660/yr ≈ **$261M/yr** | Arithmetic |
+| Effect | Relative churn reduction from targeted, uplift-designed retention | **10%** of churners retained (conservative end: documented telecom programs report ~15% churn reduction, Deloitte-derived benchmarks; UK insurer £16M/yr from 2pp reduction — evidence 11 A1.14, evidence 12 §1) | evidence 11/12 |
+| `E[R]` | 39.6k subs retained × $660 × 60% contribution margin − offer costs (~30% of gross) | **≈ $11M/yr** measured via permanent randomized holdout | evidence 12 §S5 (holdout mandatory for churn) |
+| `p(success)` | High: natural labels, existing KPIs, provable via holdout, mature deployment pattern (evidence 12 §S7 "established"); adoption owner named | **0.70** | rubric (docs 02/07) |
+| Share `s(0.70)` | Standard-Band-A upper end | **16%** | §2.3 schedule |
+| **Target annual take** | 16% × $11M | **≈ $1.76M/yr** | |
+| Structure | 60% fixed / 40% contingent | **F ≈ $1.06M · C ≈ $0.70M at full realization** | §2.3 band |
+| Ceiling check | $1.76M ÷ $11M = 16% ≤ 25% ✓ | Customer keeps ~$9.2M/yr | §2.6 |
+| Customer net ROI | ($11M − $1.76M) ÷ ($1.76M + ~$0.6M integration) ≈ **3.9 : 1** | ✓ ≥ 3:1 target | §2.2 |
+
+#### 2.7.2 S-4-class Collections prioritization — B2B manufacturer
+
+| Step | Quantity | Value | Basis |
+|---|---|---|---|
+| Customer | Manufacturer, $1.2B revenue, DSO 58 days | Daily sales ≈ $3.3M → each DSO day ≈ $3.3M cash (evidence 11 D2.4: $2.7M per DSO day at $1B revenue — same arithmetic) | evidence 11 |
+| Pool `V` | Working capital tied in receivables + bad debt + collector cost | ~$190M AR balance; bad debt ~0.3% of revenue | Scoping data (assumed) |
+| Effect | −5 DSO days (vendor-reported range 10–20% DSO reduction; we assume ~9% — below range floor, since evidence quality is flagged thin, evidence 11 D2.14) | $16.4M working capital released | evidence 11 |
+| `E[R]` | Carrying value of released cash at 8% + bad-debt reduction 0.1% of revenue + collector productivity | $1.3M + $1.2M + $0.4M ≈ **$2.9M/yr** measured via champion/challenger strategy cells (collections' native experiment culture — evidence 12 §17) | evidence 12 |
+| `p(success)` | Moderate: tabular, well-labeled, hard KPI, mature vendor category — but independent evidence thin relative to plausibility (evidence 11 D2.14) and treatment-path adoption is the known stall | **0.60** | rubric |
+| Share `s(0.60)` | Standard band, lower end | **14%** | §2.3 |
+| **Target annual take** | 14% × $2.9M | **≈ $406k/yr** | |
+| Structure | 55% fixed / 45% contingent | **F ≈ $223k · C ≈ $183k at full realization** | §2.3 band |
+| Floor check | F ≥ 2 × cost-to-serve (~$85k) ✓ · total ≥ $150k module floor ✓ | | §2.6 |
+| Customer net ROI | ($2.9M − $406k) ÷ ($406k + ~$200k integration) ≈ **4.1 : 1** | ✓ | |
+
+#### 2.7.3 S-5-class Demand forecasting → replenishment — retail
+
+| Step | Quantity | Value | Basis |
+|---|---|---|---|
+| Customer | Retailer, $2B revenue, $300M average inventory | Inventory distortion (stockouts + overstocks) is the pool; the global pool is $1.77T (IHL 2023, evidence 11 F1.4) | evidence 11 |
+| Pool `V` | Lost sales ~2% of revenue ($40M) + carrying cost of excess inventory + markdown/waste | | Scoping data (assumed) |
+| Effect | Forecast error −25% (documented range 20–50%, McKinsey 2024 via evidence 11 F1); lost-sales recapture 15% of the lost-sales pool; inventory −10% | | evidence 11/12 (Danone −30% lost sales; Otto ~20% surplus-stock reduction — evidence 12 §10) |
+| `E[R]` | $6M recaptured sales × 30% margin + $30M inventory reduction × 12% carrying + $1.5M markdown/waste avoided | $1.8M + $3.6M + $1.5M ≈ **$6.9M/yr**, measured via phased rollout by category/region + FVA baselines (the family's standard instrument — evidence 12 §S5) | evidence 12 |
+| `p(success)` | Higher variance: measurement is phased-comparison (noisier than a holdout), replenishment-action adoption is the documented long pole (ERP change management — evidence 12 §S6 cause 7), seasonal confounds | **0.55** | rubric |
+| Share `s(0.55)` | Higher-variance band | **12%** | §2.3 |
+| **Target annual take** | 12% × $6.9M | **≈ $828k/yr** | |
+| Structure | 45% fixed / 55% contingent — the variance sits mostly with us | **F ≈ $373k · C ≈ $455k at full realization** | §2.3 band |
+| Fallback note | If the phased design is confounded (season/region mix), settlement falls to the secondary metric (stockout-rate delta at matched service level), then to P25 modeled ROI − 20% | We bear the haircut | §2.5 |
+| Customer net ROI | ($6.9M − $828k) ÷ ($828k + ~$350k integration) ≈ **5.2 : 1** | ✓ | |
+
+**Reading the three together:** the account shape at three attached modules is
+**$500k base + ~$3.0M module take ≈ $3.5M ACV** at full realization (planning
+assumption), of which ~$1.2M is success-linked. The customer's aggregate measured
+return across the three modules is ~$20.8M/yr — the account pays ~17% of it including
+the base. That is the future-state account: **priced entirely off its own measured
+return, auditable line by line.**
+
+### 2.8 Pricing the marginal module (the expansion mechanics, quantified)
+
+Apply §1.3 to the worked examples. Suppose the telco (§2.7.1) attaches collections
+(consumer-collections variant) as its second module:
+
+| Quantity | If sold stand-alone | As marginal module on the shared foundation |
+|---|---|---|
+| Customer integration investment | ~$200k | **~$40k** (connectors, entity resolution, governance, agent context already live — §1.3 assumption: 15–25% of first-module cost) |
+| `p(success)` | 0.60 | **0.70** (data plumbing proven at this customer; owner and action culture demonstrated; agent has local operating history) |
+| Share `s(p)` | 14% | **16%** |
+| Take on the same `E[R]` | 14% × E[R] | 16% × E[R] — **we earn more** |
+| Customer net ROI | ~4.1 : 1 | **~4.8 : 1 — they earn more too** (denominator collapsed faster than the share rose) |
+
+This table is the kernel's D8 portfolio effect as arithmetic, and it is the single
+most important commercial property of the architecture: **attach raises our take rate
+and the customer's net ROI simultaneously.** Expansion needs no discounting, no
+bundling gymnastics — the shared agent+data foundation does the selling.
 
 ---
 
-## 3. Unit economics
+## 3. Unit economics in the future state
 
-### 3.1 Per design partner (the 120-day engagement)
+### 3.1 The gross-margin shape of an agent-operated, customer-infra module
 
-**Revenue side (evidence 08, adopted verbatim as anchors):** pilot fee ≈ **10–25% of
-expected ACV**, credited to year-one conversion. Using the §2.3 account shape
-(land ≈ $500k base + one Standard module ≈ $600k expected ACV):
+Two structural choices set the margin shape before any optimization: **the customer's
+infrastructure runs the workload** (their compute, storage, network — kernel D3;
+evidence 06/08), and **the agent operates the solution** (builds, runs, monitors,
+explains, improves — kernel D2.1). Marginal COGS per module approaches the cost of
+oversight, not the cost of operation:
 
-| Assumption | Low | Mid | High |
-|---|---|---|---|
-| Expected ACV at conversion | $575k | $625k | $750k |
-| Pilot fee % | 10% | 15% | 25% |
-| **Pilot fee (one-time)** | **~$58k** | **~$94k** | **~$188k** |
-
-Planning anchor: **~$75k–$125k per partner**, invoiced against 120-day program phase
-exits (suggested: 30% at qualification/kickoff, 40% at build+govern exit, 30% at
-shadow-production exit — keeps cash aligned to delivered phases and gives both sides a
-clean walk-away point).
-
-**Cost side.** The evidence-fixed inputs: 12–16-week scope; ~10–15 founder/senior-eng
-hours per week per partner (evidence 08); plus non-founder engineering, and a share of
-platform/infra.
-
-| Cost line | Assumption | Per-partner cost (mid) |
+| COGS line (per customer per year, at 3-module attach) | Planning assumption | What it is |
 |---|---|---|
-| Founder/senior hours | 12.5 hrs/wk × 14 wks = ~175 hrs @ $250/hr loaded-opportunity rate | ~$44k |
-| Supporting engineering | ~0.5 FTE for the engagement window (~7 wk-FTE) @ $4.5k/wk loaded | ~$32k |
-| Solutions/correctness work (feature specs, gate evals, business wiring workshops) | ~100 hrs @ $150/hr blended | ~$15k |
-| Infra share (build box amortization, AKS sandbox, CI) — see §5.3 | flat allocation | ~$5k |
-| Travel/misc (regulated-vertical onsite expectations) | 2 onsites | ~$6k |
-| **Total engagement cost (mid)** | | **~$102k** |
+| Agent-operation oversight + support pool (allocated) | ~$60k–$90k | Human review of agent escalations, approval-gated actions, engine/agent upgrades, incident response |
+| Measurement & audit operations | ~$30k–$50k | Readout upkeep, below-the-line audit sampling, true-up preparation, joint measurement committee |
+| Base-model training + generalized-asset upkeep (allocated) | ~$30k–$60k | Amortized share of the Zetta agentic RL base model's continuous post-training and the generalized-asset library (schemas, playbooks, priors, measurement schedules — kernel D7.3) |
+| Our own infra (build/eval/e2e — never customer workloads) | ~$10k–$20k | Eval harness, correctness-gate infrastructure, CI |
+| **Total cost-to-serve** | **~$130k–$220k/yr** | |
 
-**Read:** at the mid pilot fee (~$94k) a partner engagement is roughly **cash-neutral
-(-$8k)**; at the low fee it's a ~$45k investment; at 25% it's modestly cash-positive.
-**This is by design** — the partner program is a customer-acquisition and
-reference-architecture-acquisition program, not a services P&L. The valuable outputs
-are (a) a convertible account, (b) one reference architecture per environment class
-(kernel D7.4 — an asset reused across every later deal in that class), (c) generalized
-learnings we own outright (evidence 08 IP split). Finance treats partner engagement
-cost net of pilot fees as **CAC**, target < 0.5× first-year converted ACV.
+Against the §2.7 account shape (~$3.5M ACV at 3-module attach, full realization), that
+is a **~94% gross margin**; against a smaller single-module account (~$900k ACV), still
+**~85%+**. The margin is a *consequence of the architecture*, not a pricing ambition:
+near-zero marginal COGS is what "agent-operated on customer infrastructure" means in
+accounting terms.
 
-**Founder-hours are the binding constraint, not cash.** 3 concurrent partners ×
-10–15 hrs/wk = 30–45 founder hrs/wk — at the top of what two founders can give while
-the engine ships W1/W2. This is why the kernel caps the cohort at 3–6 and why the
-scenario model (§4) treats cohort size, not marketing spend, as the growth throttle.
+### 3.2 The services trap — and its structural elimination
 
-### 3.2 Per converted customer (steady state)
+The trap (evidence 08 "bespoke-SI trap"; evidence 12 §S6 failure cause 7): every
+enterprise AI account quietly consumes unbounded custom integration and operations
+labor, converting a ~90% software margin into a ~30% SI margin without anyone deciding
+to. v1 answered this with services-hours budgets — a *policing* control. v2's answer
+is structural: **the two inputs the trap consumes are exactly the two the architecture
+automates.**
 
-**Gross-margin shape.** Deployment is in the *customer's* environment (kernel D6;
-evidence 06/08): the customer pays for compute, storage, and network. Our COGS per
-account is therefore unusually low for the price point:
+| What the trap consumes | The v1-era answer (policing) | The future-state answer (structural) |
+|---|---|---|
+| Integration labor (connectors, entity resolution, schema work, wiring) | Hours budgets, reuse mandates | **Generalized assets** (kernel D7.3): connector patterns, schema priors, playbooks, measurement schedules are catalog assets, written once per family and reused by the agent at each deployment. The Nth deployment is asset instantiation, not engineering |
+| Operations labor (monitoring, retraining, explaining, tuning, reporting) | Support contracts, success teams | **The agent operates the solution** (kernel D2.1): monitoring, drift response, retraining, explanation, and improvement are agent actions under governance. Human labor appears only at approval gates and audits |
+| The customer's "just one more customization" | Change-order friction | **Personalization is the product, not a service** (evidence 08 personalized intelligence): the agent personalizes to the customer as part of what it is — the request that used to be a change order is now the product working |
 
-| COGS line | Assumption (per account per year) |
-|---|---|
-| Support + maintenance engineering (patches, engine upgrades, gate re-evals) | ~$40k–$60k (shared pool, allocated) |
-| Success/solution engineering (quarterly value reviews, measurement-loop upkeep, band-review prep) | ~$25k–$40k |
-| Telemetry/eval infra share (in *our* environment: eval harness, e2e-as-CRD suites) | ~$5k–$10k |
-| **Total COGS** | **~$70k–$110k** |
+The residual human budget per account (planning assumption): **≤150 hours/yr**,
+essentially all reviews, audits, and true-up committees — and every one of those hours
+is either priced (inside the fixed components) or produces a generalized asset. The
+financial control that remains is a *tripwire, not a budget*: *unpriced,
+non-asset-producing hours per account* is tracked (§6), and any account trending above
+the assumption gets a structural review — the question is never "who overspent" but
+"which asset or agent capability is missing such that humans are doing this."
 
-Against a $600k–$1M account, that is an **~85–90% gross margin at maturity** — *if and
-only if* the services trap is avoided.
+### 3.3 Cost-to-serve discipline and the module floor
 
-**The services trap (named, and countered structurally).** The known failure mode
-(evidence 08 "bespoke-SI trap"; evidence 12 §S6 failure cause 7 — integration, not
-modeling, is the long pole) is that every account quietly consumes unbounded custom
-integration work, converting a software gross margin into an SI gross margin (~30%)
-without anyone deciding to. Counters, all already kernel-mandated, restated here as
-financial controls:
+The §2.6 module floor ($150k/yr minimum take) comes directly from §3.1: a module
+carries ~$40k–$70k/yr of attributable serve cost (its slice of measurement, audit,
+true-up, and oversight). At the floor, the worst-case module still clears a 2× cost
+cover on its fixed component. Modules with genuinely small pools are packaged as
+attach bundles (several small modules sharing one measurement committee and one
+true-up) rather than sold stand-alone — the overhead is per-contract, so bundling
+restores the margin without distorting the per-module ROI math.
 
-1. **The IP split is the margin defense** (evidence 08): customer owns data + weights;
-   *we own engine, connectors, templates, generalized learnings.* Every hour spent in
-   an account must either be (a) priced, or (b) produce a reusable asset. Hours that
-   are neither are margin leakage — tracked per account (see §6).
-2. **One reference architecture per environment class before widening** (D7.4): the
-   first account in a class bears architecture cost (accepted, it's CAC); the second
-   account in the same class must *reuse* it. If account #2 in a class needs >20%
-   novel integration effort, that is a red flag reviewed at the monthly finance/ops sync.
-3. **Connector/template work is capitalized as catalog assets**, not expensed as
-   account service — the accounting mirrors the strategy (the factory reuses components).
-4. **A services-hours budget per account** (suggested: ≤300 hrs/yr post-conversion
-   included; beyond that, paid professional services at $250/hr or a Clustera-run
-   engagement per evidence 07's pro-services model). Clustera (One Orama, evidence 07)
-   is the designated absorber of onboarding services — Zetta engineering is not a
-   services bench.
+### 3.4 The data-flywheel economics: p(success) compounds into pricing power
 
-**Payback (planning assumption):** with CAC ≈ net partner cost + sales effort
-(~$50k–$150k) and first-year gross profit ≈ $500k–$800k on a converted account,
-payback is **< 6 months** in every scenario where conversion happens at all. The
-economics of this business fail at the *conversion* step, not the payback step — which
-is why the risk register (doc 07) weights partner-conversion risk so heavily.
+Kernel D7.3: per-customer data and weights are the customer's; cross-customer
+**generalized** patterns are ours and raise every future agent's starting point. The
+financial statement of that moat:
+
+```
+More deployments in a module family
+  → more generalized assets (schemas, playbooks, priors, benchmarks,
+    measurement schedules, calibration history)
+  → higher ex-ante p(success) for the next customer in that family
+  → (a) higher share s(p) on the next sale          [§2.3 — pricing power]
+    (b) higher win rate at unchanged price           [risk-averse buyers]
+    (c) lower deployment cost                        [asset reuse, §3.2]
+    (d) tighter calibration → smaller reserves       [§4.3–4.4 — more revenue
+                                                      recognized per dollar billed]
+```
+
+Planning assumption for scenario purposes: **each doubling of deployed module
+instances within a family raises that family's baseline p(success) by ~0.05, capped
+at 0.85.** The cap matters: p never reaches 1 because adoption and governance are
+customer-side risks no asset library removes (kernel D1 drivers). Worked consequence:
+a family that matures from p=0.60 to p=0.75 moves from the 14–17% share band to the
+17–20% band — **a ~20% revenue increase per unit of E[R], with zero change in list
+architecture,** plus the win-rate and cost effects. This is the moat expressed as a
+take-rate curve rather than a slogan: the flywheel's output is measured in share
+points and reserve releases (§6 tracks both).
+
+The same flywheel disciplines the *portfolio*: families where deployments do **not**
+move calibration (realized success stays flat while assets accumulate) are flagged —
+that pattern means the family's p-drivers are customer-side and unpurchasable, and
+the family's share schedule should stop climbing (a D1 portfolio signal produced by
+finance).
 
 ---
 
-## 4. Scenario model (explicitly illustrative)
+## 4. Portfolio finance
 
-### 4.1 Ground rules
+### 4.1 The company as a portfolio of ROI streams
 
-- **All values are planning assumptions.** No line here is a forecast, commitment, or
-  external statement. The model exists to (a) size the revenue consequence of the
-  gates, (b) find which assumption the outcome is most sensitive to, (c) set the
-  thresholds at which we would change plan.
-- **Clock:** Year 1 = first 12 months from cohort start (assume 2026-Q4 cohort start,
-  gated on the security work); Year 2 = the following 12.
-- **Structure:** partners → conversions → base ARR → module attach → Year-1/2 ARR.
-- Motive is counted inside the cohort (kernel open question #1 notes it is in hand).
+Under the §1.2 identity, the company's revenue is a **portfolio of per-module ROI
+streams**, each with an expected value (`s(p) × E[R]`), a variance (realization risk
+on the contingent component), and pairwise correlations (industry cycles, use-case
+family commonalities, shared-methodology risks). Finance's job in the future state is
+portfolio management of these streams — the same D1 calculus the product portfolio
+runs on, applied to the revenue book:
 
-### 4.2 Assumption table
+| Portfolio quantity | Definition | Management use |
+|---|---|---|
+| Expected book | Σ fixed + Σ p-weighted contingent | The planning ARR number (§4.4 recognition) |
+| Book variance | Var(Σ contingent realizations) | Sizes reserves (§4.4); sets the success-linked mix appetite (§6) |
+| Concentration | Share of contingent book per industry / use-case family / methodology | Diversification limits below |
+| Calibration | Ex-ante p vs realized success, by band | The control in §4.3 |
 
-| # | Assumption | Conservative | Base | Upside | Source/rationale |
+### 4.2 Diversification: why the risk-bearing pricing model is safe *for us*
+
+§2.3 deliberately shifts variance from the customer onto us for higher-variance
+modules. That is only sound if the book diversifies. With K quasi-independent
+contingent streams of similar scale, the book's coefficient of variation shrinks
+~1/√K — at 30+ attached modules across customers the contingent book's variance is
+already dominated by *correlated* risk, not idiosyncratic risk. So the limits target
+correlation (all planning assumptions, reviewed as the book grows):
+
+| Concentration limit | Rule | Rationale |
+|---|---|---|
+| Industry | No industry > **30%** of the contingent book | Macro shocks correlate returns within an industry (a downturn simultaneously inflates churn pools and deflates collections recovery rates) |
+| Use-case family | No family > **25%** of the contingent book | Family-level measurement designs share failure modes (e.g. all phased-rollout families are exposed to the same confounding classes — evidence 12 §S5) |
+| Methodology | Monitored, no hard cap | Many solutions ≫ few methodologies (kernel §1) makes methodology concentration structural; the correctness gate is the control, not diversification |
+| Single customer | No customer > **10%** of total ARR | Standard concentration hygiene; also protects the measurement relationship from too-big-to-dispute dynamics |
+| Counter-cyclical pairing (positive screen) | Prefer attach mixes pairing pro-cyclical return pools (demand forecasting, lead scoring) with counter-cyclical ones (collections, fraud, retention) | The same recession that shrinks one pool grows the other — at the account level this stabilizes the customer's total measured return, and at the book level it stabilizes our contingent revenue |
+
+### 4.3 p(success) calibration as a financial control
+
+Kernel D9 names p(success) calibration a companion metric; this plan makes it a
+**financial control with teeth**, because in an ROI-priced business **mispriced risk
+is margin erosion in both directions:**
+
+- **Overstated p** (we believed 0.70, realized success behaves like 0.55): modules
+  were sold in too-high a share band with too-fixed a structure → true-downs, credits,
+  remediation reviews, and renewal churn. The loss shows up *after* the revenue was
+  celebrated — the worst kind.
+- **Understated p** (we believed 0.55, realized 0.70): we under-priced the share and
+  over-weighted contingency → revenue left on the table and a book that looks riskier
+  than it is, inflating reserves (§4.4) and depressing recognized revenue.
+
+The control loop (owned by finance, fed by the measurement loops):
+
+1. **Measure:** per band, per family — realized success rate (true-ups meeting the
+   agreed ROI model) vs the ex-ante p assigned at sale; Brier score on the p estimates;
+   realization distribution (not just the mean — the tails price the reserves).
+2. **Compare:** calibration error = mean(ex-ante p − realized success frequency) by
+   band. Target: |error| ≤ **0.05** per band (planning assumption); alert at 0.10.
+3. **Correct:** the s(p) schedule and the fixed/contingent weights are **repriced from
+   calibration data** on a standing cadence — the rubric (docs 02/07) assigns p; finance
+   verifies that p *means what it says* in realized frequency, and adjusts the money
+   attached to each band when it doesn't. New sales inherit the corrected schedule;
+   existing contracts correct at renewal.
+4. **Attribute:** calibration failures decompose along the D1 drivers (data, action,
+   measurement, adoption, governance) using the remediation reviews — so the fix lands
+   in the right place: rubric weights (docs 02/07), measurement schedules (§2.5
+   assets), or the anti-portfolio (kernel D4).
+
+This is the financial meaning of kernel D9's "p(success) calibration": **the pricing
+schedule is a promise about frequencies, and finance audits the promise.**
+
+### 4.4 Recognition, reserves, and discount policy for success-linked revenue
+
+| Policy | Rule (planning assumption) | Rationale |
+|---|---|---|
+| **Recognition** | Fixed components recognized ratably. Contingent components accrued quarterly at **p-weighted expected realization** per the module's band, trued to the measured readout at settlement | Accruing contingent revenue at face value would book the risk as if it were resolved; p-weighting makes the book's stated revenue mean what it says |
+| **Reserve** | Hold a true-down reserve = **z × σ(contingent book)** sized for 90% adequacy (z ≈ 1.3 under normal approximation; recomputed from the realization distribution as calibration data accumulates) | The reserve is the balance-sheet mirror of the §2.3 decision to bear variance; §3.4(d): as calibration tightens, σ falls and reserve releases become a recurring earnings tailwind — the flywheel visible in the P&L |
+| **Discounting** | Discounts apply to **fixed components only**, capped at **15%**, approval-laddered. The contingent share `s_c` and the share schedule are **never discounted** | The contingent share *is* the meter; discounting it debases the unit of account and teaches the market that the ROI share is an opening bid. Price flexibility lives in the fixed layer, where it is a margin decision, not a category decision |
+| **Base integrity** | The $500k+ platform base is never discounted below floor (§2.6); concessions there are term/structure (multi-year, payment timing), not price | evidence 07 anchor discipline |
+| **Credits** | True-downs settle as credits against the next fixed invoice, never cash-out mid-term | Cash-flow hygiene; keeps remediation inside the relationship |
+
+---
+
+## 5. Scale scenarios (calendar-free)
+
+### 5.1 Ground rules
+
+- **No calendar.** The scenarios are **operating states**, not years: they differ in
+  **customer count** and **adoption depth** (modules attached per customer), never in
+  launch stages, cohort waves, or gate timing (kernel D10.1–D10.2). Any of these
+  states is a valid description of the business at some scale; the model asks what
+  each state's economics are, not when it arrives.
+- **All values are planning assumptions**, tabled below so each can be falsified
+  independently. Outputs are arithmetic on the assumptions — corridors for sizing
+  decisions, never forecasts.
+- **Structure:** ARR(state) = N × [Base + attach × (avg module take × realization)],
+  per the §1.2 identity, with the flywheel adjustment of §3.4 applied to depth.
+
+### 5.2 Assumption table
+
+| # | Assumption | Value (planning assumption) | Source/rationale |
+|---|---|---|---|
+| B1 | Platform base per customer | $500k/yr | evidence 07 anchor ⚠️; floor per §2.6 |
+| B2 | Avg `E[R]` per attached Band-A module | $4.0M/yr | §2.7 worked examples span $2.9M–$11M; assumes a mid-market-weighted mix (large-enterprise-heavy books run higher) |
+| B3 | Blended target share s(p) | 14% shallow · 15% mid · 16% deep | §2.3 schedule + §3.4 flywheel: deeper books have more marginal modules and more matured families, so blended p — and share — rises with depth |
+| B4 | Realization (measured ÷ expected, book-wide) | 0.85 | Conservative: assumes calibration within the §4.3 target band but persistent partial shortfalls; 1.0 is not assumed anywhere |
+| B5 | Avg module take (annualized, realized) | B2 × B3 × B4 ≈ **$476k** shallow · **$510k** mid · **$544k** deep | Derived |
+| B6 | Modules per customer (attach) | **1.5** shallow · **3.0** established · **5.0** embedded | The three adoption depths; kernel D8 expansion economics (§1.3/§2.8) are what move a book rightward |
+| B7 | Customer counts modeled | **25 · 75 · 200** | Three scale points; D3 says the addressable population (recurring high-value decisions + data exhaust + governance need) is far larger — these are operating states, not TAM claims |
+| B8 | Cost-to-serve per customer | $130k shallow · $180k mid · $220k deep (§3.1) | Rises with attach (more measurement committees), sub-linearly (shared foundation) |
+| B9 | Success-linked (contingent) share of module revenue | ~40% shallow · ~38% mid · ~33% deep | §2.3: deeper books skew to higher-p bands, which carry lower contingent weight |
+
+### 5.3 Outputs: the ARR grid (derived, rounded)
+
+**ARR per customer at each depth** (B1 + B6 × B5):
+
+| Depth | Modules | ARR / customer | Of which success-linked |
+|---|---|---|---|
+| Shallow (land) | 1.5 | $500k + 1.5 × $476k ≈ **$1.21M** | ~$290k |
+| Established | 3.0 | $500k + 3.0 × $510k ≈ **$2.03M** | ~$580k |
+| Embedded | 5.0 | $500k + 5.0 × $544k ≈ **$3.22M** | ~$900k |
+
+**The grid** (N customers × depth; total ARR, rounded):
+
+| | **Shallow (1.5)** | **Established (3.0)** | **Embedded (5.0)** |
+|---|---|---|---|
+| **25 customers** | ~$30M | ~$51M | ~$81M |
+| **75 customers** | ~$91M | ~$152M | ~$242M |
+| **200 customers** | ~$243M | ~$406M | ~$645M |
+
+**Gross margin at each state** (revenue − N × B8): ~89% at (25, shallow) rising to
+**~93%** at (200, embedded) — margin *improves* with scale and depth because
+cost-to-serve grows sub-linearly (B8) while the flywheel raises take (B3). Customer
+aggregate measured return at (75, established): 75 × 3.0 × $4.0M × 0.85 ≈ **$765M/yr
+of measured customer value**, of which the ~$152M ARR is ~20% including the base —
+the whole book stays inside the §2.6 customer-protection ceiling with room to spare.
+
+**How to read the grid:** movement **rightward** (depth) is product- and
+flywheel-driven — it is the D8 expansion mechanics compounding, and it is the cheaper
+direction (§1.3: marginal modules carry collapsed acquisition and integration cost).
+Movement **downward** (count) is go-to-market-driven and carries full first-module
+economics. A business at (75, embedded ≈ $242M) is financially superior to one at
+(200, shallow ≈ $243M) at identical ARR: higher margin (fewer bases to serve), higher
+NRR mechanics, tighter calibration (more instances per family), and a stronger moat
+(§3.4). **Depth beats breadth at equal revenue — the plan's standing bias.**
+
+### 5.4 Sensitivity (what actually moves the number)
+
+Single-variable sensitivity on the **(75, established) state (~$152M ARR)**:
+
+| Variable | −1 step | Base | +1 step | Swing | Note |
 |---|---|---|---|---|---|
-| A1 | Design partners signed (cohort 1) | 3 | 4 | 6 | Kernel D6: 3–6; founder-hours cap (§3.1) |
-| A2 | Pilot fee per partner (one-time) | $60k | $95k | $150k | §3.1 band |
-| A3 | Partner→customer conversion rate | 33% | 50% | 67% | No internal history; enterprise design-partner conversions commonly land 30–70%; gate-quality scorecard (evidence 08) should push toward the upper half |
-| A4 | Conversions in Year 1 (rounded) | 1 | 2 | 4 | A1 × A3 |
-| A5 | Enterprise base ACV at conversion | $500k | $525k | $600k | Kernel D6 floor $500k+; upside assumes Strategic-band-heavy regulated accounts |
-| A6 | Modules attached at conversion (incl. the pilot module) | 1 | 1.5 | 2 | Land-with-one (kernel D9.4); base assumes half the accounts take a second module at signing |
-| A7 | Avg module fee | $90k | $120k | $175k | §2.3 bands (Standard→Extended mix) |
-| A8 | Year-2 new partners (cohort 2) | 3 | 5 | 8 | Expansion to 8–12 only after patterns repeat (evidence 08); upside assumes reference architectures landed |
-| A9 | Year-2 conversion rate (both cohorts' pending) | 33% | 50% | 60% | As A3 |
-| A10 | Year-2 additional module attach per live customer | +0.5 | +1 | +1.5 | The reuse frontier: W2 modules (S-5/S-7/S-8) become attachable; upgrade band-moves (M-6) count as +0.5 |
-| A11 | Gross churn of converted accounts | 0% Y1–Y2 | 0% | 0% | Multi-year enterprise contracts; churn risk is real but appears post-Y2 — see doc 07 risk register |
-| A12 | Security gate closes (production unlock) | 2026-Q4 late | 2026-Q4 | 2026-Q3 late | zetta#759–#769 all open as of 2026-07-11 (evidence 07); conservative assumes slippage compresses Y1 |
+| **Attach (B6)** 2.5 ↔ 3.0 ↔ 3.5 | ~$133M | $152M | ~$171M | **±13%** | The product-controlled lever; every marginal module also raises margin |
+| **Realization (B4)** 0.75 ↔ 0.85 ↔ 0.95 | ~$139M | $152M | ~$165M | ±9% | Realization is a *delivery* quantity — the agents' improvement loop and the D6 definition of done are what defend it |
+| **Blended share (B3)** 13% ↔ 15% ↔ 17% | ~$137M | $152M | ~$167M | ±10% | Moves with flywheel maturity (§3.4) and calibration honesty — not with negotiation |
+| **Avg E[R] (B2)** $3M ↔ $4M ↔ $5M | ~$124M | $152M | ~$181M | **±19%** | The largest single lever: *account selection within Band A* (kernel D1/D3 — sell where the pools are big) |
+| **Calibration error (§4.3)** at 0.10 overstatement | ~$140M effective | $152M | — | −8% + reserve drag | Modeled as realization slipping to ~0.78 on the affected bands plus reserve growth; the silent eroder — it also poisons renewal and reference value, which the ARR line understates |
+| **Customer count (B7)** ±15 | ~$122M | $152M | ~$182M | ±20% | Full first-module economics; the GTM lever |
 
-### 4.3 Outputs (derived, rounded)
-
-| Line | Conservative | Base | Upside |
-|---|---|---|---|
-| Pilot fees (Y1, one-time) | ~$180k | ~$380k | ~$900k |
-| Converted customers, end Y1 | 1 | 2 | 4 |
-| Base ARR, end Y1 | $500k | $1.05M | $2.4M |
-| Module ARR, end Y1 | ~$90k | ~$360k | ~$1.4M |
-| **Total ARR, end Y1** | **~$0.6M** | **~$1.4M** | **~$3.8M** |
-| Converted customers, end Y2 (cumulative) | 2 | 4–5 | 8–9 |
-| Base ARR, end Y2 | $1.0M | ~$2.4M | ~$5.1M |
-| Module ARR, end Y2 (attach + upgrades) | ~$270k | ~$1.1M | ~$3.4M |
-| **Total ARR, end Y2** | **~$1.3M** | **~$3.5M** | **~$8.5M** |
-| Implied NRR on Y1 cohort (Y2/Y1, existing accounts only) | ~110% | ~125–135% | ~140%+ |
-
-**How to read this:** the conservative case is survivable but slow — it funds
-continued engine work only alongside other capital; the base case validates the
-factory (module ARR becomes ~⅓ of total by Y2 — the attach engine visibly working);
-the upside case is what "reference architectures repeating + warm-intro verticals
-converting" looks like, and is the case in which cohort-2 expansion to 8+ partners is
-justified.
-
-### 4.4 Sensitivity (what actually moves the number)
-
-Single-variable sensitivity on **Year-2 total ARR, base case** (~$3.5M):
-
-| Variable | -1 step | Base | +1 step | Swing |
-|---|---|---|---|---|
-| **Conversion rate (A3/A9)** 33%↔50%↔67% | ~$2.3M | $3.5M | ~$4.7M | **±~35%** — dominant lever |
-| **Module attach (A6/A10)** -0.5 ↔ base ↔ +0.5/acct | ~$3.0M | $3.5M | ~$4.0M | ±~15% |
-| Avg module fee (A7) ±$30k | ~$3.2M | $3.5M | ~$3.8M | ±~9% |
-| Cohort size (A1/A8) ±1 partner | ~$3.0M | $3.5M | ~$4.1M | ±~15% |
-| Security-gate slip (A12) +1 quarter | ~$2.7M | $3.5M | — | -~22% (compresses Y1→Y2 conversions) |
-
-**Implications, in order:**
-
-1. **Conversion rate dominates.** Every dollar of program design should optimize for
-   conversion quality: the scorecard gate ("no disqualifier + strong budget-adjacent
-   champion", evidence 08), the 120-day exit artifacts, and shadow-production proof.
-   A marketing dollar that adds a weak partner is worth less than an engineering
-   dollar that converts a strong one.
-2. **A one-quarter security slip costs more than a whole partner.** The security gate
-   (D7.1) is not just an engineering gate — it is the single largest financial risk in
-   the Year-1 plan. Finance co-owns tracking it (§6).
-3. **Attach is the compounding lever** — smaller per-step than conversion but it
-   compounds through NRR and is fully under product control (wave sequencing D2).
+**Implications, in rank order:** (1) **sell into big pools** — E[R] selection
+dominates, which is the D1 calculus doing the CFO's work; (2) **depth is the cheap
+lever** — attach moves the number at collapsed marginal cost; (3) **calibration is
+the silent lever** — it compounds through realization, reserves, share credibility,
+and renewals, which is why §4.3 is a standing control and not a dashboard curiosity.
 
 ---
 
-## 5. Cost structure & investment gates
+## 6. Financial metrics (kernel D9)
 
-### 5.1 Engineering investment by wave (relative sizing)
+### 6.1 The metric set
 
-The engine roadmap prices in relative units (evidence 08 R1–R8 cost tags). We adopt
-those tags as the investment currency — converting to dollars prematurely would imply
-precision we don't have. For planning: **medium ≈ 1 unit, high ≈ 2, very high ≈ 4**
-(one "unit" ≈ one senior engineer-quarter of focused work, order-of-magnitude).
+The kernel fixes ROI as the central metric with p(success) calibration and portfolio
+risk-adjusted ROI as companions (D9). The financial layer reports:
 
-| Wave (kernel D2) | Engine dependencies | Cost tags (evidence 08) | Relative units | Revenue it unlocks |
-|---|---|---|---|---|
-| **W1** (M-1/M-2/M-3) | R1 local run (medium) + R2 correctness gate (high) | medium + high | ~3 | S-1…S-4, S-7, S-9 pilots; the entire cohort-1 program |
-| **W2** (M-4/M-5/M-6) | R3 one-button deploy (high) + R4-lite materialization (part of very-high R4) | high + partial very-high | ~4 | Production conversions (deploy-to-customer-cloud is the enterprise unlock); S-5/S-6/S-8 attach |
-| **W3** (M-7/M-8/M-9) | R4 tiered storage/indexing (very high) + R6 governance (high) | very high + high | ~6 | Upgrade revenue (M-7 band-moves), document family, regulated-vertical depth (R6 gates every enterprise deal) |
-| **W4** (M-10/M-11) | R5 compute-near-data (very high) + R8 learning loop (very high) | 2 × very high | ~8 | The moat (Auto-RL, agentic); pricing power rather than near-term ARR |
-| Cross-cutting | R7 GUI (medium–high) + security gate (zetta#759–#769) + e2e/eval harness | — | ~3 | R7: self-service rate; security: **all** production revenue |
-
-**Total through W4: ~24 relative units** — front-loaded ~7 units (W1 + security +
-harness) before the first conversion dollar. The shape is normal for
-infrastructure-led products; the discipline that matters is *gating* (below).
-
-### 5.2 The two big engine bets (R4, R5) as gated investments
-
-R4 (tiered storage/indexing) and R5 (compute-near-data) are tagged **very high** and
-are the deepest moat *and* the largest write-off risk (evidence 08 sequencing notes:
-"the biggest Orama Zetta engine bets"). CFO treatment — **stage-gate them like
-internal venture investments:**
-
-| Bet | Tranche 1 (committed) | Gate to Tranche 2 | Tranche 2 (full build) | Kill/park criterion |
-|---|---|---|---|---|
-| **R4** | R4-lite materialization only (what W2 needs: pull → materialize → serve one source, Snowflake first) | ≥2 converted customers whose measured query-cost / locality pain is documented in the account's value review; W3 use cases (M-9 document family) with signed demand | Full tiered hot→cold→re-warm + indexing | If by W2-exit no customer's measurement loop shows material warehouse-cost/locality value, R4-full parks; the ~60% cost-reduction figure stays an unvalidated hypothesis (evidence 08 success-metrics: do not quote externally) |
-| **R5** | Design + sandbox prototype only (embedded Lua/DDF API spike) | A converted customer workload that *cannot* meet latency/locality needs via R4 materialization; W4 entry criteria met (governance + eval maturity per kernel D2) | Full sandboxed compute-near-data | If W3 solutions ship fine on remote orchestration, R5 defers — "execution graph as remote orchestration" is acceptable until the moat claim is revenue-tested |
-
-This staging keeps the kernel's co-sequencing rule (D7.3) intact — no wave starts
-before its dependency is *credibly scheduled* — while refusing to spend 8 units of
-very-high engineering ahead of demand evidence.
-
-### 5.3 Infrastructure & other operating costs
-
-Customer-env-first economics keep our infra bill structurally small — we run
-build/test/eval, not customer workloads:
-
-| Line | What | Planning assumption (annual) |
+| Metric | Definition | Target / guardrail (planning assumption) |
 |---|---|---|
-| Build box (native amd64, `192.168.123.175`) | All engine/image builds; owned hardware | ~$5k–$10k (power, upkeep, refresh reserve) |
-| AKS sandbox (`orama-production-cluster-01`) | CR validation, e2e-as-CRD suites, multi-node bring-up | ~$25k–$50k (scale with e2e coverage; watch elastic-capacity/Karpenter experiments — cap with budget alerts) |
-| CI + Docker Hub private repos + misc SaaS | Pipelines, registries, telemetry | ~$15k–$25k |
-| **Total infra** | | **~$50k–$85k/yr** — a rounding error vs. engineering payroll; the customer pays for production compute, always |
-| Design-partner program (net, §3.1) | 3–6 engagements | ~$0–$150k net of pilot fees |
-| GTM (events, travel: MLOps Community, KubeCon, Money20/20, ITC per evidence 08 channels) | practitioner-first sourcing | ~$40k–$80k |
+| **ARR** (base / module / contingent split) | Per §4.4 recognition: fixed ratable, contingent at p-weighted accrual | Grid corridor (§5.3); the split itself is a health metric |
+| **NRR** | Net revenue retention across the customer book | > **125%** at established depth — driven by attach (§1.3), share-band migration (§3.4), and renewal repricing on measured returns (§2.4) |
+| **Module attach** | Avg modules per customer; distribution, not just mean | Book migrating rightward on the §5.3 grid; stalled-at-1 accounts flagged |
+| **Realized-ROI-share** | Billed module revenue ÷ measured customer return, per account and book-wide | **10–20%** band (§2.2), book-wide ≈ 15%; breaching 25% on any account triggers the ceiling (§2.6) |
+| **Calibration error** | Ex-ante p vs realized success frequency, by band + Brier score (§4.3) | \|error\| ≤ **0.05** per band; alert at 0.10 |
+| **Success-linked revenue mix** | Contingent ÷ total module revenue | Corridor **30–45%**: below it, pricing isn't credibly ROI-linked (category claim erodes); above it, revenue volatility outruns the reserve policy |
+| **Realization** | Measured ÷ expected return, book-wide (B4 actual) | ≥ **0.85**; per-module < 0.5 for two true-ups → remediation path (§2.4) |
+| **Gross margin / cost-to-serve** | §3.1 lines, per account | GM ≥ **85%** at any depth; cost-to-serve within B8 corridor |
+| **Unpriced non-asset hours** | The services-trap tripwire (§3.2) | ≤ **150 hrs/yr/account**; breach → structural review (missing asset or agent capability), never a billing scramble |
+| **Reserve adequacy** | True-down reserve vs realized true-downs | 90% adequacy (§4.4); releases tracked as the flywheel's P&L signature |
+| **Concentration** | Contingent book by industry / family / customer | §4.2 limits (30% / 25% / 10%) |
+| **Customer aggregate ROI** | Measured return ÷ (price + customer investment), per account | ≥ **3:1** net on first module, rising with attach — the kernel's central metric, reported in the finance pack because it *is* the pricing base |
 
-**The dominant cost is engineering payroll + founder time.** Everything above is noise
-by comparison; the CFO's cost job in 2026–27 is sequencing engineering units (§5.1–5.2)
-and defending founder hours (§3.1), not trimming infra.
+### 6.2 Cadence
 
-### 5.4 Investment gates tied to kernel D7 (financial restatement)
-
-| Kernel gate | Financial rule |
-|---|---|
-| D7.1 security | No revenue recognized as production ARR before gate closure; security work is priority-0 in every engineering allocation until zetta#759–#769 land |
-| D7.2 correctness ≥90% | Self-service packaging (and any pricing predicated on it) blocked until the floor holds on the evaluated task set |
-| D7.3 co-sequencing | No wave's engineering units released until its engine dependency is credibly scheduled; R4/R5 tranche gates per §5.2 |
-| D7.4 reference architectures | Cohort-2 expansion spend (A8 upside) blocked until ≥1 architecture per targeted environment class is landed and reused once |
-| D7.5 shadow production | No automation-tier upsell (M-11 band-moves, agentic W4 SKUs) sold before the account has completed shadow production on the assisted tier |
-
----
-
-## 6. Financial metrics & reporting cadence
-
-### 6.1 Metric set
-
-Two layers: **financial metrics** (this doc's additions) and the **kernel D8
-operational metrics** that gate whether milestones are revenue-recognition-worthy.
-The point of running them together: a revenue number that outruns its operational
-gates is a mistake being amortized, not growth.
-
-| Metric | Definition | Target/guardrail | Layer |
-|---|---|---|---|
-| **ARR (base / module split)** | Recognized per §1.2 ladder only | Scenario table §4.3 as planning corridor | Financial |
-| **Module attach rate** | Avg modules per converted account; band-mix | ≥1.5 by end Y1 accounts' first renewal | Financial (kernel D8 names it) |
-| **NRR** | Net revenue retention, converted accounts | >120% (attach + band escalators) | Financial (kernel D8) |
-| **Partner→customer conversion** | Cohort conversions / cohort size | ≥50% (base case A3) | Financial (kernel D8) |
-| **CAC & payback** | Net partner cost + sales effort vs. first-year gross profit | Payback <6 months (§3.2) | Financial |
-| **Services-hours per account** | Unpriced, non-reusable hours | ≤300/yr post-conversion; overage → paid services or Clustera | Financial (margin defense §3.2) |
-| **Pilot-fee cash** | One-time, phase-linked | Cash-neutral program (§3.1) | Financial |
-| **Pro→Enterprise funnel** | Qualified leads originating in Pro | Tracked only, no attribution | Financial (boundary §1.3) |
-| **Intelligence Velocity** | Median intent → deployed correct running (kernel D8 primary) | Minutes vs. weeks–quarters | Operational gate |
-| **Correctness-gate pass rate** | ≥90% floor (D7.2) | Release- and packaging-blocking | Operational gate |
-| **Governance violations** | Data egress / RBAC / audit breaches | **= 0, always** — a single violation freezes recognition of new milestones in that account | Operational gate |
-| **Generated-graph incident rate** | Passed gate, failed in production | Trending ↓; if velocity ↑ while this ↑, the gate is too loose (evidence 08) | Operational gate |
-| **Deploy reliability** | One-button deploys succeeding + self-healing | Trending ↑; gate for R3-dependent selling | Operational gate |
-| **Time-to-value per solution** | Contract → DoD met | ≤16 weeks (kernel D8) | Operational gate |
-
-### 6.2 Reporting cadence
-
-| Cadence | Review | Contents | Owner |
-|---|---|---|---|
-| **Weekly** | Solution/engineering review (shared with COO, doc 07) | Security-gate burndown (until closed), correctness pass rate, partner-phase status | COO runs; CFO attends for gate items |
-| **Monthly** | Finance/ops sync | ARR ladder movements, pilot-fee invoicing vs. phase exits, services-hours per account, infra spend vs. budget alerts, CAC accrual | CFO |
-| **Quarterly** | Scenario re-base | Re-run §4 with actuals replacing assumptions (A-table updated in-place, versioned); sensitivity re-ranked; tranche-gate reviews for R4/R5 | CFO + CTO |
-| **Per event** | Conversion / attach / renewal | DoD checklist verified (all five D4 conditions) before ARR is booked; band placement justified with measurement-loop artifact | CFO countersigns |
-| **Annual** | Pricing review | Band levels vs. measured value across accounts; escalator outcomes; open question #5 (LLM-era T3 re-admission) revisited with CPO | CFO + CPO |
-
-### 6.3 What finance escalates to the kernel
-
-Only three things warrant proposing a kernel edit from this document's domain:
-(1) evidence that the $500k+ base or the module-band structure blocks conversions
-(pricing is D6 — kernel-level); (2) a partner cohort outcome outside the A3
-conservative bound in either direction (changes D6 cohort mechanics); (3) an R4/R5
-tranche-gate decision (changes D2/D7.3 sequencing). Everything else is elaboration.
+| Cadence | Review | Contents |
+|---|---|---|
+| Quarterly | True-up + accrual review | Readout accruals, realization by module, remediation-path candidates, reserve movement |
+| Quarterly | Calibration review (§4.3) | Band-level calibration, Brier trend, s(p) schedule repricing for new sales |
+| Per event | Sale / attach / renewal | ROI model + measurement schedule countersigned by finance before contract; renewal repricing on measured history |
+| Annual | Pricing-architecture review | Share anchor and schedule vs realized book (Q1 answer re-audited); ceiling/floor levels; concentration limits; success-linked mix corridor |
 
 ---
 
 ## Appendix A — Tensions for kernel review
 
-1. **Pilot-fee % vs. the $500k+ base.** Evidence 08 prices pilots at 10–25% of
-   expected ACV. At the kernel's $500k+ Enterprise base, 25% = $125k+ — potentially
-   heavy for a 12–16-week scoped pilot in the lower firmographic band ($500M revenue
-   companies), and possibly a conversion-friction source. This plan assumes the % is
-   computed on *expected first-year ACV including modules* and invoiced phase-linked
-   (§3.1). If real negotiations force pilot fees materially below 10% ($60k), the
-   kernel's "PAID at ~10–25%" anchor should be revisited rather than silently eroded.
-   **Ask:** confirm the computation base (base-only vs. base+modules) in D6.
-2. **The Auto-RL base model as an unpriced anchor.** Evidence 07 lists it as catalog
-   item #3 — a use case in its own right — while kernel D2 places M-10 in W4 and this
-   plan prices it *into* the base/bands rather than as a SKU (§2.5). If W4 delivers a
-   distinctly sellable Auto-RL capability, D6 will need an explicit pricing decision;
-   parking it inside the base forever forfeits a module. **Ask:** none now; flag for
-   the W4-entry kernel review.
-3. **Module fees vs. "solutions are separately priced" for the pilot module.** During
-   the 120-day program the partner effectively receives S-1 (or equivalent) before any
-   module fee exists; at conversion, §2.3 prices it. A partner may argue the pilot fee
-   *was* the module fee. This plan treats the pilot fee as credited to the *base*
-   year-one only. **Ask:** confirm in D6 that the credit applies to the base, with the
-   module separately priced at conversion — or accept crediting against total ACV
-   (base case in §4 assumed total-ACV credit; the difference is ~$90k per account).
-4. **No contradiction found** between this plan and D1–D9 otherwise. The scenario
-   corridor (§4.3) is consistent with D6's cohort size and D7's gate timing; the
-   pricing recommendation (§2.2) resolves open question #4 without touching any
-   binding decision.
+1. **The flat platform base vs ROI-purity (kernel D8).** The $500k+ base (evidence 07)
+   is a flat, non-ROI-linked element in an otherwise ROI-derived architecture. This
+   plan defends it as pricing the foundation's *option value* (§1.1) — but a purist
+   reading of D8 ("price is set from the customer's return") could demand the base
+   itself become a function of the customer's aggregate expected return (e.g. a % of
+   total addressable pool). **Ask:** kernel to confirm the hybrid — flat base +
+   ROI-shared modules — as the intended reading of D8.
+2. **Ceiling vs premium-pricing at high p.** D8 says high-p solutions "carry premium
+   pricing"; §2.6 caps any module at 25% of measured return. At p→0.85 and s→20%, a
+   module under-realizing slightly can brush the ceiling, and the ceiling then
+   overrides the premium. This plan makes the customer-protection ceiling dominant
+   (the 3:1 customer-ROI floor is what keeps expansion obvious). **Ask:** confirm the
+   ceiling dominates the premium when they conflict.
+3. **The billing instrument's independence (kernel D2.5/D8).** The measurement loop is
+   simultaneously the product's proof, the agent's reward signal (D7.2), and the bill.
+   §2.5 engineers auditability in (contractual schedule, customer-inspectable trail,
+   audit sampling, expert determination), but the three roles create a structural
+   incentive question — the same instrument that trains our agents also sets our
+   revenue. **Ask:** kernel to elevate readout-integrity (instrument governance,
+   independence provisions) to an explicit product property under D2.5, not just a
+   contract term in this plan.
+4. **Success-linked mix vs revenue quality.** The §2.3 schedule pushes higher-variance
+   modules toward majority-contingent pricing; capital markets discount contingent
+   revenue relative to committed ARR. The §6.1 corridor (30–45% contingent mix) trades
+   category credibility ("we price on your return" must be visibly true) against
+   revenue-quality optics. This is an appetite decision above finance. **Ask:** kernel
+   ratification of the corridor, or an explicit revision.
+5. **Dependency on kernel Q3 (the p rubric).** The entire pricing architecture consumes
+   p(success) as an input; §4.3 calibrates it *ex post* but cannot generate it. Until
+   docs 02/07 land the ex-ante rubric (kernel open question 3), the §2.3 schedule
+   rests on band definitions without an agreed scoring instrument. **Ask:** none —
+   flagged as a hard dependency; the calibration control here is the enforcement half
+   of whatever rubric 02/07 propose.
+6. **No other contradiction found.** The anchor (Q1: 10–20% centered at 15%, share
+   rising with p) and the structure (Q2: fixed covers deployment + floor, contingent
+   trued to the readout, seller bears measurement-design risk, customer bears
+   integrity covenants) are proposed here as answers *to* the kernel's open questions
+   and become binding only when the kernel adopts them.
