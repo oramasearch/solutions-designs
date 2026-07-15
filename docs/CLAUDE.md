@@ -13,9 +13,9 @@ substance is one level down.
   `CLAUDE.md`; read it before adding evidence.
 - [`prompts/`](prompts/) → [`prompts/README.md`](prompts/README.md) — the research
   prompts (Perplexity Deep Research) used to gather evidence. Each file is prompt-text
-  only, copy-paste ready; the returned reports are captured under `evidence/`.
-  Current: the **methodologies** compendium prompt; use-cases and solutions prompts
-  are planned next.
+  only, copy-paste ready; the returned reports are captured under `evidence/`. All
+  three vocabulary layers are covered: **methodologies**, **use-cases**, and
+  **solutions** compendium prompts.
 
 _Analysis and design areas get their own subfolders here when we reach those phases;
 add them to this list and to [`README.md`](README.md) when created._
