@@ -11,6 +11,8 @@ each subfolder's own `README.md` (progressive disclosure).
 - [`evidence/`](evidence/) — the **verbatim** evidence, one subfolder per source/topic.
   This is the active area during the evidence-collection phase.
   → [`evidence/README.md`](evidence/README.md)
+- [`prompts/`](prompts/) — the research prompts (Perplexity Deep Research) used to
+  gather evidence; results land in `evidence/`. → [`prompts/README.md`](prompts/README.md)
 
 _Analysis and design areas will be added here as their own subfolders when we reach
 those phases._
