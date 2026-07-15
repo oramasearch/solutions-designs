@@ -31,7 +31,10 @@ Three distinct terms govern this exercise (full detail + worked example in
   business action** that realizes the value (e.g. use the report to reduce churn).
 
 A use case is answered by a solution, which is a methodology arranged and correctly
-applied.
+applied. The layers don't map 1:1: expect **use case → solution ≈ 1:1** but **far fewer
+methodologies** (their components are reused across many use cases) — *many use cases ≈
+many solutions ≫ few methodologies*. The tabular methodology above is the most common,
+since tabular data is the majority of business data.
 
 ## Current phase — evidence collection
 

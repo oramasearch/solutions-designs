@@ -41,3 +41,21 @@ business action that realizes the value.
   data leakage**, then **use the report to change the business to mitigate or reduce
   churn**. *(The methodology made correct for real time-ordered data, plus the business
   action that turns the report into reduced churn.)*
+
+## Cardinality & reuse
+
+The three layers do **not** map one-to-one, and that asymmetry is the point:
+
+- **Methodologies are the reusable layer.** The same methodology — and especially its
+  individual **components** (extract, feature-engineering, model training, explanation,
+  reporting) — is reused across many different use cases to formulate many different
+  solutions. We compose solutions largely out of methodology parts we already have.
+- **Expected ratios:** use case → solution is roughly **1:1** (each use case tends to get
+  its own tailored solution), but there are **far fewer methodologies** than use cases or
+  solutions. So across the catalog: **many use cases ≈ many solutions ≫ few
+  methodologies.**
+- **The tabular methodology dominates.** The worked example above (extract tabular data →
+  feature-engineering → XGBoost → SHAP → report) is the **single most common
+  methodology**, because it is essentially *the* standard approach for **tabular data** —
+  and **tabular data constitutes the majority of business data**. Expect this methodology,
+  or its components, to underpin a large share of the solutions in this exercise.

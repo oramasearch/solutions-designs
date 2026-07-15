@@ -25,6 +25,11 @@ correctly applied. Example: churn (use case); extract → features → XGBoost �
 report (methodology); that pipeline made leakage-free on time-ordered data + using the
 report to change the business to reduce churn (solution).
 
+**Cardinality:** the layers aren't 1:1 — expect **use case → solution ≈ 1:1** but **far
+fewer methodologies** (their components are reused across use cases): *many use cases ≈
+many solutions ≫ few methodologies*. The tabular methodology above is the most common,
+because tabular data is the majority of business data.
+
 ## Current phase — evidence collection
 
 We are collecting evidence and stay in this phase **until explicitly told otherwise.**
