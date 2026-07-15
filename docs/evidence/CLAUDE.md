@@ -82,3 +82,21 @@ for the capture convention — read it before adding any evidence.**
   is **not** (preserved at commit `2622133` in `oramasearch/example-data-apps`). Plus
   `use-cases.md` — all 400 grouped by category. See its
   [`README.md`](09-amaro-desktop-example-data-apps/README.md).
+- [`10-claude-methodologies-compendium/`](10-claude-methodologies-compendium/) —
+  **Claude's internal answer** to the methodologies prompt (authored 2026-07-14, before
+  external Deep Research results; Perplexity-assisted). 35 methodology dossiers across
+  families A–V + the 5 syntheses (reuse matrix, selection guide, prevalence ranking,
+  maturity, correctness discipline). Generated evidence — treat citations as leads. See
+  its [`README.md`](10-claude-methodologies-compendium/README.md).
+- [`11-claude-use-cases-compendium/`](11-claude-use-cases-compendium/) — **Claude's
+  internal answer** to the use-cases prompt (same provenance). 124 use cases across the
+  12 function families (33 full dossiers incl. churn anchor + 91 compact) + the 7
+  syntheses (master taxonomy, value/feasibility rankings, 2×2 grid, data-exhaust map,
+  prevalence reality-check, failure patterns). See its
+  [`README.md`](11-claude-use-cases-compendium/README.md).
+- [`12-claude-solutions-compendium/`](12-claude-solutions-compendium/) — **Claude's
+  internal answer** to the solutions prompt (same provenance). 34 solution dossiers
+  across families A–J (churn solution anchor; correctness adaptations deepest) + the 7
+  syntheses (anatomy, adaptation catalog, methodology→solutions fan-out,
+  action-integration, measurement loops, why-solutions-fail, maturity). See its
+  [`README.md`](12-claude-solutions-compendium/README.md).

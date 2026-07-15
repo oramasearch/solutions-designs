@@ -46,7 +46,7 @@ All evidence lives under [`docs/evidence/`](docs/evidence/), one subfolder per
 source/topic. See [`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md) for the exact
 capture + naming convention.
 
-**Collected so far — 9 items** (authoritative live index:
+**Collected so far — 12 items** (authoritative live index:
 [`docs/evidence/CLAUDE.md`](docs/evidence/CLAUDE.md)):
 
 - `01`–`03` — three Deep Research reports on the most valuable enterprise AI pipeline
@@ -58,6 +58,10 @@ capture + naming convention.
   Platform 2 / Zetta project folder.
 - `09` — the retired amaro-desktop's 400 example-data-app use-case catalog (17
   categories).
+- `10`–`12` — **Claude's internal compendia**: Claude's own answers to the three
+  `docs/prompts/` research prompts (methodologies 35 dossiers · use cases 124 entries ·
+  solutions 34 dossiers), authored 2026-07-14 before the external Deep Research results,
+  Perplexity-assisted, for later comparison. Generated evidence — citations are leads.
 
 Keep this snapshot and the `docs/evidence/` index in sync as items are added.
 

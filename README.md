@@ -47,7 +47,7 @@ Later phases (analysis, design) get their own homes under `docs/` when we reach 
 
 ### Evidence collected so far
 
-**9 items** (the full, always-current index is
+**12 items** (the full, always-current index is
 [`docs/evidence/README.md`](docs/evidence/README.md) — that's authoritative; this is a
 snapshot):
 
@@ -61,6 +61,10 @@ snapshot):
   Platform 2 / Zetta project folder — vision, personas, roadmap, briefs, research (`08`).
 - **Prior-art use-case catalog:** the retired amaro-desktop's 400 example data apps
   across 17 categories (`09`).
+- **Claude's internal compendia** — Claude's own answers to the three
+  [`docs/prompts/`](docs/prompts/) research prompts, authored before the external Deep
+  Research results for later comparison: methodologies (35 dossiers, `10`), use cases
+  (124 entries, `11`), solutions (34 dossiers, `12`).
 
 ## Navigation (progressive disclosure)
 
