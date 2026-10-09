@@ -86,7 +86,8 @@ without reading everything above or below it.
   - [`docs/evidence/`](docs/evidence/) — the verbatim evidence, one subfolder per
     source/topic. → [`docs/evidence/README.md`](docs/evidence/README.md)
   - [`docs/plan/`](docs/plan/) — the portfolio plan & strategy (kernel + 8 executive
-    docs; v2: future-state only, ROI-central, Auto-RL-central).
+    docs + the 09 new-solution research; v2: future-state only, ROI-central,
+    Auto-RL-central).
     → [`docs/plan/README.md`](docs/plan/README.md)
   - [`docs/prompts/`](docs/prompts/) — the Deep Research prompts feeding evidence.
     → [`docs/prompts/README.md`](docs/prompts/README.md)

@@ -40,14 +40,18 @@ review" appendix and resolve in the kernel first.
 | [`01-executive-strategy.md`](01-executive-strategy.md) | CEO | The future state narrated, the ROI-organized thesis, customers & catalog at CEO altitude, competitive positioning, the ROI+data flywheel, decision log |
 | [`02-use-case-portfolio.md`](02-use-case-portfolio.md) | CPO | The complete scored demand map: ROI dossiers by band (A/B/C), the p(success) rubric, anti-portfolio, coverage vs evidence |
 | [`03-methodology-portfolio.md`](03-methodology-portfolio.md) | CTO | The Auto-RL core in engineering depth, the component inventory as agent tools, the complete methodology toolbox, the correctness gate, build-vs-integrate |
-| [`04-solutions-catalog.md`](04-solutions-catalog.md) | CPO+CTO | The sellable modules with **ROI contracts**: full specs for Band-A solutions (correctness adaptations, business wiring, agent operation, data plans, capability levels) |
+| [`04-solutions-catalog.md`](04-solutions-catalog.md) | CPO+CTO | The sellable modules with **ROI contracts**: full specs for S-1…S-23 — the twelve Band-A modules plus the eleven added 2026-10-09 (correctness adaptations, business wiring, agent operation, data plans, capability levels) |
 | [`05-industries-and-gtm.md`](05-industries-and-gtm.md) | CMO+CRO | Who our customers will be: the customer thesis, the industry map by ROI fit, positioning ("priced on your return"), the commercial motion |
 | [`06-financial-plan.md`](06-financial-plan.md) | CFO | ROI-based pricing mechanics (anchor share, success-linked components, true-up), unit economics of agent-operated modules, portfolio finance, scale scenarios |
 | [`07-roi-risk-and-operating-model.md`](07-roi-risk-and-operating-model.md) | COO | The ROI-risk framework (p(success) factor model, calibration), the failure-mode catalog as priced risk factors, the operating model of the agent-run factory |
 | [`08-data-strategy.md`](08-data-strategy.md) | CDO | The data supply chain per solution/methodology, reward engineering (ROI as the training signal), the generalized-learning boundary, data governance & the flywheel |
+| [`09-new-solution-research.md`](09-new-solution-research.md) | CPO | Analysis of evidence 16 (2026-10-09 web research): the candidates admitted as S-14…S-23 and why, the combined synthesis, and the four per-angle findings tables (appendices) |
 
 ## Status
 
 v2 — 2026-07-15 (supersedes v1 entirely; v1 is preserved in git history). Grounded in
-evidence items 01–15; decisions cite their evidence inline. Evidence collection
+evidence items 01–15; decisions cite their evidence inline. **Amended 2026-10-09:**
+eleven modules S-13…S-23 added to 04 (two Band A, nine Band B), their use cases
+UC-25…UC-34 scored in 02 (UC-22 widened for S-19), the research behind them in 09
+(evidence 16). Tensions raised: 02 T-9…T-12, 04 T-8…T-10. Evidence collection
 continues in [`../evidence/`](../evidence/).

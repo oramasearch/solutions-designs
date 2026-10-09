@@ -44,10 +44,19 @@ kernel first. Additionally, all plan work obeys the **v2 philosophy**:
 - [`08-data-strategy.md`](08-data-strategy.md) — CDO: the data supply chain, reward
   engineering (ROI as training signal), the generalized-learning boundary, data
   governance.
+- [`09-new-solution-research.md`](09-new-solution-research.md) — CPO: the analysis of
+  evidence 16 (2026-10-09 web research) — which candidates became S-14…S-23, the
+  combined synthesis, and the four per-angle findings tables as appendices. Research
+  input, not a strategy decision; names companies (the specs in 04 do not).
 
 ## Conventions
 
-- IDs fixed: `UC-n` (UC-1 = churn), `M-n`, `S-n` (~1:1 with UC-n); **agent** = the
-  Auto-RL-trained operator. Solutions are marketed as **modules**.
+- IDs fixed: `UC-n` (UC-1 = churn), `M-n`, `S-n` (~1:1 with a use case; the numbers
+  coincide only for S-1…S-12 — S-13…S-23 pair with UC-25…UC-34 and UC-22, recorded in
+  04 §3); **agent** = the Auto-RL-trained operator. Solutions are marketed as
+  **modules**. The highest ids are `S-23` and `UC-34`.
+- **Zetta's catalogue builder** (`modules/zetta/scripts/build_catalog.py` in
+  zetta-bridge) parses 02's §2 table rows (`| UC-n | name | … | Band |`) and 04's
+  `## N. S-n — Name (UC-n)` headers; keep those shapes when adding entries.
 - Cite evidence inline as `(evidence NN)` → [`../evidence/`](../evidence/).
 - Update this file + `README.md` when documents are added or renumbered.
