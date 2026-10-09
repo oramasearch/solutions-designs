@@ -1,0 +1,332 @@
+# 03 — perplexity_research — AI solutions small local businesses buy
+
+- **Tool:** `mcp__perplexity__perplexity_research`
+- **Query:** "What AI solutions are small local businesses (HVAC, plumbing, electrical, roofing, home services, dental and medical clinics, car dealerships, small law firms, accounting firms) buying in 2025-2026? Cover AI receptionists and call answering, quoting and estimating, scheduling and dispatch, intake, review management, and other products. Give vendor names, pricing ranges per month, adoption figures, and the problems owners say they most want solved."
+- **Timestamp (UTC):** 2026-10-09T20:17:30Z (response received; query issued minutes earlier, in parallel with 01 and 02)
+
+## Response
+
+````markdown
+**In 2025–2026, small local businesses are buying AI chiefly to answer leads faster, produce quotes and paperwork, fill calendars, and reduce front-desk work—not to replace the skilled work itself.** In Jobber’s survey of 1,050 U.S. home-service owners, the biggest operational time drains were jobsite management (48%), customer communication (40%), and quoting (37%). Dental owners most often cited declining reimbursements (56%), rising overhead (55%), and difficulty hiring clinical staff (53%).[web:67][web:41]
+
+Prices below are **USD per month** unless stated otherwise; an annual-billed price is the monthly equivalent of an annual commitment. **Adoption figures describe surveyed businesses or professionals, not the market share or verified sales of the named vendors.** The surveys measure different populations and kinds of AI use, so their percentages should not be compared as one league table.[web:67][web:17][web:83][web:105]
+
+| AI solution | Vendor names | Pricing range per month | Adoption figures | Problems owners most want solved |
+|---|---|---|---|---|
+| **General-purpose AI receptionist and call answering** for local businesses | RingCentral AI Receptionist; Goodcall; Smith.ai AI Receptionist | RingCentral **$49 standalone** or **$39 add-on**, each with 100 minutes, then $0.50/minute; Goodcall **$79–$249 per agent**, with caller allowances and overages; Smith.ai **$0–$500+**, with bundled calls and per-call overages.[web:3][web:4][web:1] | In Housecall Pro’s 2026 survey, **48%** of 248 home-service pros actively used AI; among AI users, **52%** used it for customer communication and follow-up. That does **not** mean 52% bought an AI receptionist.[web:17] | Missed and after-hours calls, slow lead response, repetitive questions, lead qualification, transfers, and booking. **40%** of surveyed AI-using home-service pros said AI helped them respond faster and lose fewer leads.[web:17] |
+| **All-in-one home-service software with embedded AI** for HVAC, plumbing, electrical and other trades | Jobber AI and Receptionist; Housecall Pro AI Team and CSR AI; ServiceTitan Contact Center Pro and AI Voice Agents | Jobber **$29–$529** on annual-billed plans, depending on users and tier; Receptionist **$29 add-on** or included in Plus. Housecall Pro **$59–$299** on annual-billed base plans; **CSR AI costs extra**, with no public add-on price. ServiceTitan: **quote-based**.[web:199][web:65][web:80] | Jobber’s December 2025 owner survey found day-to-day AI use at **52% overall**: **81.5% HVAC, 65% plumbing, and 64% electrical**. These are *any-AI* figures, not subscriptions to these platforms.[web:67] | One system for incoming calls, customer records, quotes, scheduling, invoices and follow-up. Jobber found **60%** replied to leads the same day but only **20%** within an hour; owners want to close that gap without adding office staff.[web:67] |
+| **Quoting, estimating and sales follow-up** in the trades | Jobber AI and Pipeline; Housecall Pro estimate and Marketing AI tools; ServiceTitan estimating and follow-up tools | Jobber AI is included with its **$29–$529** annual-billed plans; Pipeline is a **$49 add-on**. Housecall Pro base plans run **$59–$299**, annual-billed; some AI functions are included and others require an add-on.[web:199][web:65] | **54%** of AI-using owners in Jobber’s survey used it for quoting; **51%** of AI users in Housecall Pro’s separate 2026 survey used it for estimates, quoting and pricing.[web:67][web:17] | Get accurate proposals out before a competitor, protect margins, offer options, and follow up on estimates that otherwise go cold. **37%** of Jobber respondents named quoting a major time drain.[web:67] |
+| **Roof measurements and instant estimates** | Roofr Measurements, Proposals and Instant Estimator | Roofr **$0–$349** for its main monthly plans; Instant Estimator **$125 add-on**. Measurement reports cost **$19 each** on the free plan or **$13 each** on paid plans. These are automated estimating tools, not necessarily generative AI.[web:46] | **67%** of roofing owners in Jobber’s December 2025 survey reported using AI in day-to-day operations; the survey does not establish Roofr uptake.[web:67] | Measure without a site visit, calculate materials, quote promptly and coordinate crews. Jobber found roofers especially burdened by jobsite coordination, schedules and subcontractors.[web:67][web:45] |
+| **AI-assisted scheduling and dispatch** | ServiceTitan Dispatch Pro; Jobber scheduling and Receptionist; Housecall Pro scheduling, dispatch and CSR AI | ServiceTitan Dispatch Pro **$138 per managed technician monthly**, or **$120** on an annual plan for teams of 1–14, in addition to its underlying platform. Jobber and Housecall Pro base plans start at **$29** and **$59** respectively when billed annually; their receptionist/CSR terms differ.[web:230][web:199][web:65] | Jobber measured **52%** overall day-to-day AI use among home-service owners, **not** AI-dispatch adoption. In its survey, higher-revenue businesses particularly identified scheduling and coordination as challenges.[web:67] | Assign the right technician by skill, location and availability; reduce drive time, scheduling gaps and dispatcher workload. Dispatch Pro makes AI-assisted job recommendations while allowing a dispatcher to override them.[web:230] |
+| **Review requests, AI review replies and repeat-customer marketing** | NiceJob; Birdeye; Podium; Jobber Marketing Suite; Housecall Pro Marketing AI | NiceJob **$75** for review collection or **$125** for Pro with AI replies and repeat/referral campaigns. Birdeye and Podium use **custom pricing** for relevant AI packages; Jobber Marketing Suite is a **$99 add-on**.[web:117][web:114][web:115][web:199] | This is **demand evidence, not vendor adoption**: BrightLocal’s 2026 U.S. consumer survey found **97%** read local-business reviews and **89%** expect owners to respond. In Jobber’s owner survey, **51%** said customers consider reviews when selecting a provider.[web:141][web:67] | Generate a steady supply of recent reviews, answer them promptly, turn good jobs into referrals, and bring customers back without manually running every campaign.[web:141][web:117] |
+| **Dental AI receptionist, appointment booking and recalls** | Dentina; Arini; Weave/TrueLark AI Receptionist | Dentina inbound plans start at **$299–$399 per location**, billed annually, for up to three providers; outbound recall/reactivation campaigns are **custom-priced**. Arini and Weave/TrueLark require quotes.[web:203][web:156][web:205] | In the 2025 Dental Economics–Levin Group practice survey, **43%** reported using AI *clinically or administratively*; it does not isolate receptionists. **22%** cited difficulty hiring office/administrative staff.[web:41] | Answer overflow and after-hours calls, book directly into the practice calendar, fill cancellations and recalls, and ease front-desk staffing pressure. Dental owners also reported rising overhead (**55%**) and insufficient new patients (**31%**).[web:203][web:41] |
+| **Dental clinical imaging and treatment-opportunity support** | Pearl Second Opinion and Practice Intelligence; Overjet | Pearl Practice Intelligence lists **$250/month per office** for Lite and **$595/month per office** for Standard, plus a **$3,500 Standard setup fee**; Overjet pricing is quote-based.[web:166] | The dental survey’s **43%** using AI combines clinical and administrative use; it supplies no imaging-only rate.[web:41] | Help dentists review radiographs, explain findings to patients, check clinical work and identify treatment opportunities—while the clinician reviews AI detections.[web:166] |
+| **Medical-office phones, scheduling and patient intake** | NexHealth scheduling and forms; Tebra practice tools; RingCentral AI Receptionist; healow Genie | NexHealth is **quote-based**. RingCentral starts at **$49 standalone** or **$39 add-on**, with usage charges beyond 100 minutes. Pricing for a clinically integrated phone/intake deployment depends on the vendor and contract.[web:198][web:3] | Among **105 providers in small U.S. practices** in Tebra’s 2025 survey, **63% had not used AI**; **65%** were open to AI scheduling/reminders and **46%** to intake/registration. Separately, **68%** of 351 medical groups polled by MGMA said they *added or expanded* AI in 2025—different measures and populations.[web:39][web:35] | Reduce phone queues, no-shows, registration work and staff interruptions, while fitting the existing EHR and protecting patient information. Small-practice respondents particularly wanted HIPAA-compliant security (**80%**) and EHR integration (**66%**).[web:39] |
+| **Medical AI scribes and documentation** | Freed; Heidi Health; EHR-integrated ambient-scribe products | Freed **$39/month** for a 40-note Starter plan billed annually, **$79** Core and **$104 annually billed–$119 monthly** Premier, per clinician. Heidi offers a **free tier** and paid clinician tools from about **$110/user/month**; larger deployments are quoted.[web:245][web:185] | MGMA said ambient documentation, scribing and charting were medical groups’ **leading 2025 AI expansion area**, without publishing a scribe-specific purchase percentage. In Tebra’s small-practice survey, **88%** called repetitive documentation their biggest time-waster.[web:35][web:39] | Finish notes sooner, spend more attention on patients and reduce after-hours charting and burnout. Owners and clinicians still want control to review and edit the output.[web:39] |
+| **Dealership AI business-development centers: lead response, service booking and chat** | Spyne Vini AI; Impel Sales AI, Service AI and Chat AI; Toma | Spyne’s guide describes a **typical $1,000–$2,500/month AI-BDC cost for small dealerships**, but Vini itself is **custom-quoted**. Impel is also **custom-quoted**; its CEO said a fully connected sales/service/marketing/voice deployment can exceed **$5,000/month**.[web:275][web:271] | In a survey of **500-plus dealership employees** conducted in late 2025, **57%** reported using AI in some capacity; **70%** of executives/dealer principals did. A separate dealer-executive survey found **74%** prioritized voice agents for AI investment, which is an *investment priority*, not a purchase rate.[web:130][web:127] | Respond instantly to internet leads and inbound calls, maintain follow-up, book showroom and service appointments, and reduce BDC staffing pressure; dealers also target inventory merchandising and pricing analysis.[web:130][web:127] |
+| **Small-law-firm reception and client intake** | Smith.ai; Clio Grow AI; Lawmatics Merlin; CasePeer Pro | Smith.ai AI Receptionist **$0–$500+** with call allowances and overages; CasePeer Pro **$130/user/month** includes intake and legal AI. Clio Grow AI charges **when its agent helps turn a lead into a hired client**, rather than publishing a fixed monthly agent price; Lawmatics is quote-based.[web:1][web:219][web:93][web:222] | Clio’s 2025 solo/small-firm report found **72% of solo** and **67% of small-firm** legal professionals used AI *in some capacity*, but only **8%** and **4%**, respectively, used it widely or universally. Among AI users, **27% of solos** and **16% of small-firm respondents** reported virtual-receptionist tools.[web:83] | Capture inquiries when lawyers are unavailable, qualify prospective matters, book consultations, collect forms and signatures, and follow up on referrals. **59%** of solo and small firms named referrals their leading source of leads.[web:83] |
+| **Legal drafting, research and case-work assistance** | CasePeer 8am IQ; MyCase Legal AI; Clio Manage AI | CasePeer Pro **$130/user/month** includes its AI writing assistant. MyCase Pro lists **$100/user/month annually billed** or **$120 monthly**, with Legal AI and intake; Clio AI pricing depends on the plan and firm.[web:219][web:226][web:228] | The same Clio survey found general AI tools and legal-research platforms more common among AI-using solo/small firms than broad AI deployment; **25% of solo** and **30% of small-firm AI users** reported drafting or document-automation tools.[web:83] | Save time on first drafts, research, summaries and routine communications without sacrificing lawyer review. Time and efficiency were the leading reported AI benefits for **61% of solos** and **63% of small firms**.[web:83] |
+| **Accounting workflow, document collection and bookkeeping assistance** | Financial Cents AI; QuickBooks/Intuit Intelligence | Financial Cents **$19/month solo** or **$49–$69/user/month** on annual-billed team plans; QuickBooks includes limited Intuit Intelligence chat in eligible plans and offers an additional-prompt **$10/month add-on**.[web:176][web:285] | Intuit’s May 2026 survey of **725 U.S. accounting/bookkeeping professionals** found **88%** had used AI for at least one client service and **86%** for a firm operation in the preceding year; only **30%** said AI was embedded as their default way of working. The sample includes, but is not limited to, small firms.[web:105] | Chase missing client documents, clean up and process data, draft communications, manage deadlines and reconnect fragmented software. **30%** named manual data cleanup their leading barrier to more advisory work; respondents reported losing about **five hours weekly** moving or reconciling data between tools.[web:105][web:100] |
+| **AI tax research and source-backed drafting** | Blue J; tax-research tools with AI features | Blue J Individual **$1,498/user/year**, equivalent to approximately **$125/month paid annually**; team pricing is custom.[web:293] | In a 2026 survey of **more than 1,000 U.S. tax professionals**, **60%** said they used AI-powered tax research at least weekly, up from **33% in 2025**. This is category use, not Blue J penetration.[web:102] | Get to supportable tax answers and draft advice faster while checking sources. Accuracy, client confidentiality and data security remain prominent reasons to require professional review.[web:98][web:293] |
+
+Citations:
+[16] https://www.housecallpro.com/wp-content/uploads/2026/06/062026-HCP-The-AI-Advantage-report.pdf
+[17] https://www.housecallpro.com/resources/ai-in-the-trades/
+[18] https://www.contractorcorner.net/post/how-the-top-residential-home-service-contractors-are-putting-ai-to-work
+[19] https://tradevulcan.com/dispatch/q4-2026-home-services-trends-forecast
+[20] https://www.cogworklabs.com/blog/ai-home-service-call-scheduling
+[21] https://www.linkedin.com/posts/codequery_74-of-contractors-say-ai-is-key-to-growth-activity-7496903056274472960-aKhz
+[22] https://www.housecallpro.com/wp-content/uploads/2026/05/HousecallProStateOfHomeSpendingReport05_2026.pdf
+[23] https://www.prentis.co/blog/ai-adoption-trades-2026
+[24] https://relayfi.com/blog/ai-for-home-services-practical-automation-guide/
+[25] https://schedulingkit.com/statistics/ai-in-service-businesses
+[26] https://www.housecallpro.com/resources/field-home-service-industry-trends/
+[27] https://iticollege.edu/blog/starting-a-trade-business-solo-with-ai/
+[28] https://www.prnewswire.com/news-releases/revenued-releases-new-2025-survey-on-ai-usage-among-small-businesses-302561996.html
+[29] https://www.getjobber.com/wp-content/uploads/2025/02/Jobber-HomeServiceEconomicReport-Feb2025.pdf
+[30] https://finance.yahoo.com/news/small-business-ai-adoption-declines-113403563.html
+[1] https://smith.ai/pricing/ai-receptionist
+[2] https://smith.ai/pricing/receptionists
+[3] https://www.ringcentral.com/pricing/ai-receptionist.html
+[4] https://www.goodcall.com/pricing
+[5] https://www.goodcall.com/answering-services/ai-answering-service-cost
+[6] https://www.ringcentral.com/us/en/blog/ai-receptionist-for-small-business/
+[7] https://www.g2.com/products/smith-ai-virtual-receptionists/reviews
+[8] https://smith.ai/ai-receptionist-service-comparison/smith-ai-vs-ringcentral-ai-receptionist
+[9] https://smith.ai/virtual-receptionist-service-comparison/smith-ai-vs-ruby-receptionists
+[10] https://www.getmacha.com/blog/goodcall-complete-guide
+[11] https://www.getmacha.com/blog/smith-ai-pricing-explained
+[12] https://www.g2.com/products/smith-ai-virtual-receptionists/pricing
+[13] https://resources.rework.com/tools/business-phone/ringcentral-vs-nextiva
+[14] https://schedulingkit.com/reviews/goodcall-review
+[15] https://www.cloudtalk.io/blog/smith-ai-review/
+[31] https://pmc.ncbi.nlm.nih.gov/articles/PMC12743527/
+[32] https://pubmed.ncbi.nlm.nih.gov/41312147/
+[33] https://www.ama-assn.org/practice-management/digital-health/physicians-greatest-use-ai-cutting-administrative-burdens
+[34] https://pmc.ncbi.nlm.nih.gov/articles/PMC13537275/
+[35] https://www.mgma.com/mgma-stat/document-schedule-communicate-ai-tools
+[36] https://pubmed.ncbi.nlm.nih.gov/41459571/?fc=20220523101529&ff=20251229085143&v=2.18.0.post22+67771e2
+[37] https://www.medicaleconomics.com/view/ai-adoption-accelerates-across-medical-practices-survey-shows
+[38] https://www.mgma.com/mgma-stat/ai-tools-supplant-ehr-usability-as-top-tech-priority-of-2025
+[39] https://www.tebra.com/theintake/practice-operations/what-medical-practices-need-before-trusting-ai
+[40] https://www.texmed.org/Template.aspx?id=67635
+[41] https://www.dentaleconomics.com/practice/article/55368689/findings-from-the-2025-dental-economics-levin-group-annual-practice-survey
+[42] https://practicesignal.com/dental/reviews/weave
+[43] https://gethelpdesk.ai/blog/which-ai-receptionist-is-best-for-your-practice/
+[44] https://www.keragon.com/blog/ai-receptionist-dental
+[67] https://www.getjobber.com/home-service-trends-report/
+[68] https://community.getjobber.com/discussions/operations-forum/ai-for-contractors-how-home-service-pros-are-using-ai-in-2026/9398
+[69] https://www.housecallpro.com/wp-content/uploads/2026/06/062026-HCP-The-AI-Advantage-report.pdf
+[70] https://www.getjobber.com/academy/hvac/hvac-industry-trends/
+[71] https://www.servicetitan.com/press/residential-industry-report-2025
+[72] https://www.servicetitan.com/press/servicetitan-consumer-trends-report-homeowners
+[73] https://www.servicetitan.com/blog/webinar-recap-strategies-for-winning-the-new-year
+[74] https://www.servicetitan.com/toolbox/state-of-the-trades
+[75] https://community.getjobber.com/discussions/announcements/home-service-pros-this-is-your-era-but-are-you-taking-advantage-of-it/9736
+[76] https://www.getjobber.com/home-service-reports/
+[77] https://www.servicetitan.com/blog/webinar-recap-strategies-to-guarantee-winning-2026
+[78] https://www.servicetitan.com/features/pro/contact-center
+[79] https://www.servicetitan.com/press/ai-in-the-skilled-trades-report-2025
+[80] https://www.servicetitan.com/blog/summer-2025-release-guide
+[81] https://www.servicetitan.com/guides
+[55] https://www.getjobber.com/comparison/jobber-vs-fieldedge/
+[56] https://www.getjobber.com/comparison/jobber-vs-kickserv/
+[57] https://www.getjobber.com/comparison/jobber-vs-housecall-pro/
+[58] https://www.getjobber.com/comparison/jobber-vs-quoteiq/
+[59] https://www.getjobber.com/comparison/jobber-vs-dripjobs/
+[60] https://www.getjobber.com/features/
+[61] https://www.getjobber.com/comparison/jobber-vs-pestpac/
+[62] https://www.getjobber.com/llm-info/
+[63] https://www.getjobber.com/comparison/jobber-vs-fieldpulse/
+[64] https://www.getjobber.com/comparison/jobber-vs-joist/
+[65] https://www.housecallpro.com/field-service-management-software/
+[66] https://www.housecallpro.com/resources/best-ai-answering-services-contractors/
+[45] https://roofr.com/products
+[46] https://roofr.com/pricing
+[47] https://roofr.com/compare/roofr-vs-jobnimbus
+[48] https://roofr.com/partnerships/abc-supply/measurements
+[49] https://roofr.com/decra
+[50] https://roofr.com/compare/roofr-vs-acculynx
+[51] https://roofr.com/blog/all-in-one-roofing-software
+[52] https://roofr.com/blog/satellite-roof-measurements-for-roofing-businesses
+[53] https://roofr.com/comparison
+[54] https://roofr.com/faqs
+[82] https://www.clio.com/about/press/legal-trends-solo-small-law-firms-2025/
+[83] https://www.clio.com/blog/solo-small-law-firms-highlights-2025-legal-trends/
+[84] https://www.clio.com/resources/legal-trends/2025-solo-small-firm-report/
+[85] https://www.clio.com/au/guides/2025-solo-small-firm-report/
+[86] https://www.wisbar.org/NewsPublications/WisconsinLawyer/WisconsinLawyerPDFs/99/01/9.pdf
+[87] https://www.lawtimesnews.com/news/general/ai-adoption-in-mid-size-law-firms-surges-fivefold-integration-still-lags-clio-report/391893
+[88] https://www.canadianlawyermag.com/news/general/solos-and-small-firms-lag-with-ai-adoption-clio-report/392441
+[89] https://www.nycbar.org/wp-content/uploads/2025/07/Clio-Article-July-2025-SLFeNews.pdf
+[90] https://www.linkedin.com/posts/paul-wolf-6b4b6011_%3F%3F%3F%3F%3F%3F%3F%3F%3F-%3F%3F%3F%3F%3F-%3F%3F%3F%3F-%3F%3F%3F-activity-7340339890087190530-jcMI
+[91] https://www.2civility.org/2025-clio-legal-trends-report/
+[92] https://www.clio.com/features/case-management/
+[93] https://www.clio.com/about/press/grow-ai/
+[94] https://www.clio.com/app-directory/clerx-ai/
+[95] https://www.clio.com/resources/ai-for-lawyers/ai-paralegal-software/
+[96] https://www.clio.com/pricing/
+[97] https://quickbooks.intuit.com/online/?priorityCode=3969702399
+[98] https://tax.thomsonreuters.com/blog/the-impact-of-ai-on-the-tax-and-accounting-profession/
+[99] https://www.cpapracticeadvisor.com/2026/07/02/the-2026-accountant-technology-survey-turning-data-revelations-into-a-firm-of-the-future/185807/
+[100] https://financial-cents.com/resources/articles/2025-report-state-of-accounting-workflow-and-automation/
+[101] https://www.journalofaccountancy.com/issues/2026/sep/2026-tax-software-survey/
+[102] https://www.cpa.com/news/blue-j-and-cpacom-survey-finds-ai-adoption-among-tax-firms-has-nearly-doubled-one-year
+[103] https://quickbooks.intuit.com/experts/assisted-bookkeeping/
+[104] https://go.mangopractice.com/hubfs/Mango/MG%20-%202026%20Accounting%20Industry%20Report%20-%20The%20AI%20Adoption%20Challenge.pdf?hsLang=en
+[105] https://www.firmofthefuture.com/news/accountant-tech-survey-2026/
+[106] https://quickbooks.intuit.com/learn-support/en-us/help-article/intuit-assist/introducing-intuit-intelligence/L189976Da_US_en_US
+[107] https://www.journalofaccountancy.com/issues/2026/aug/real-life-ways-small-firms-use-ai/
+[108] https://www.wolterskluwer.com/en/expert-insights/ai-transformation-in-accounting-firms
+[109] https://tax.thomsonreuters.com/blog/challenges-of-adopting-ai-in-accounting-firms-tri/
+[110] https://quickbooks.intuit.com/accounting/bookkeeping/
+[111] https://quickbooks.intuit.com/accounting-agent/
+[127] https://www.autoremarketing.com/ar/analysis/spyne-report-says-2026-will-be-first-true-ai-operations-year/
+[128] https://news.dealershipguy.com/p/76-of-u-s-dealers-plan-to-increase-ai-spending-in-the-coming-year-survey-2025-12-08
+[129] https://digitaldealer.com/news/2026-could-be-the-first-ai-operations-year-as-dealerships-focus-on-tech-overhaul/168666/
+[130] https://canadianautodealer.ca/2026/01/dealership-ai-use-hits-57-report-says/
+[131] https://www.spyne.ai/blogs/best-ai-dealership-inbound-calls
+[132] https://www.linkedin.com/posts/christian-bolivar-716a9431_is-2026-the-ai-operations-year-for-car-activity-7441989662707183616-7-T9
+[133] https://impel.ai/blog/what-2025-holds-the-future-of-ai-in-the-automotive-industry/
+[134] https://www.demandlocal.com/blog/ai-voice-agent-bdc-statistics-dealerships/
+[135] https://www.ringlead.ca/blog/dealership-ai/state-of-ai-automotive-2026/
+[136] https://www.linkedin.com/pulse/76-us-car-dealers-spending-more-ai-2026-spyne-ai-kyizf
+[137] https://auto.economictimes.indiatimes.com/news/auto-technology/spyne-ais-new-sales-tool-deployed-at-115-us-dealerships/134587382
+[138] https://impel.ai/news/the-case-for-dealership-communities-in-an-ai-driven-market/
+[139] https://impel.ai/wp-content/uploads/2025/04/FordDirect_RateCard_and_OnePager_Feb2025-FINAL.pdf
+[140] https://impel.ai/wp-content/uploads/2025/09/FordDirect_RateCard_and_OnePager_Feb2025-FINAL-1.pdf
+[112] https://birdeye.com/alternatives/broadly-alternatives/
+[113] https://birdeye.com/uk/alternatives/reputation-alternatives/
+[114] https://birdeye.com/alternatives/yext-alternatives/
+[115] https://www.podium.com/pricing
+[116] https://birdeye.com/alternatives/podium-alternatives/
+[117] https://get.nicejob.com/nicejob-llm-info
+[118] https://get.nicejob.com/resources/reputation-management-for-small-businesses-a-practical-guide
+[119] https://birdeye.com/blog/google-my-business-tools/
+[120] https://birdeye.com/blog/healthcare-reputation-management-software/
+[121] https://birdeye.com/blog/business-reputation-management-strategies/
+[122] https://get.nicejob.com/resources/nicejob-vs.-podium-which-is-right-for-your-service-business
+[123] https://birdeye.com/alternatives/brightlocal-alternatives/
+[124] https://get.nicejob.com/resources/the-best-review-software-for-small-home-service-businesses-in-2026
+[125] https://get.nicejob.com/free-tools
+[126] https://get.nicejob.com/resources/nicejob-vs.-birdeye-which-is-right-for-your-small-service-business
+[156] https://www.arini.ai/blog/ai-receptionist-dental-practices-texas
+[157] https://www.arini.ai/blog/ai-receptionist-dental-practices-seattle
+[158] https://www.arini.ai/blog/ai-receptionist-dental-practices-nashville
+[159] https://www.arini.ai/blog/ai-receptionist-dental-practices-jacksonville
+[160] https://www.arini.ai/blog/ai-receptionist-pennsylvania-dental-practices
+[161] https://www.arini.ai/blog/ai-receptionist-dental-practices-ohio
+[162] https://www.arini.ai/blog/ai-receptionist-illinois-dental-practices
+[163] https://www.arini.ai/blog/ai-receptionist-dental-practices-charlotte
+[164] https://www.arini.ai/blog/ai-receptionist-dental-practices-north-carolina
+[165] https://www.arini.ai/blog/ai-virtual-receptionist
+[166] https://dot-com.hellopearl.com/products/practice-intelligence
+[167] https://www.weavehelp.com/weavehelp/article/weave-plus-bundles
+[168] https://hellopearl.com/products/practice-intelligence
+[169] https://hellopearl.com/case-studies/second-opinion-spellcheck-for-dentists-august-de-oliveira
+[185] https://www.heidihealth.com/en-us/blog/best-ai-medical-scribe
+[186] https://www.heidihealth.com/blog/medical-scribes-solutions
+[187] https://www.heidihealth.com/en-us/blog/deepscribe-ai-alternative
+[188] https://www.heidihealth.com/blog/best-ai-tool-medical-note-taking
+[189] https://www.heidihealth.com/en-us/blog/best-ai-documentation-tools
+[190] https://www.heidihealth.com/en-us/ai-instructions
+[191] https://www.heidihealth.com/en-gb/pricing
+[192] https://www.heidihealth.com/en-us/blog/virtual-medical-scribe
+[193] https://www.heidihealth.com/blog/ai-medical-scribe-cost
+[194] https://help.nexhealth.com/en/
+[195] https://www.nexhealth.com/features/forms
+[196] https://www.nexhealth.com/resources/ehr-appointment-scheduling?topics
+[197] https://www.nexhealth.com/features/scheduling
+[198] https://www.nexhealth.com/pricing
+[199] https://www.nexhealth.com/old-home-2
+[170] https://financial-cents.com/resources/articles/accounting-workflow-software-5-best-accountants-accounting-firms/
+[171] https://financial-cents.com/financial-cents-vs-jetpack-workflow/
+[172] https://financial-cents.com/financial-cents-vs-uncat/
+[173] https://financial-cents.com/resources/articles/best-ai-accounting-software/
+[174] https://financial-cents.com/financial-cents-vs-taxdome/
+[175] https://financial-cents.com/resources/articles/bookkeeping-practice-management-software/
+[176] https://financial-cents.com/pricing/
+[177] https://help.clio.com/hc/en-us/articles/29657814904475-Get-Started-With-Clio-Duo
+[178] https://www.clio.com/pricing/
+[179] https://financial-cents.com/resources/articles/best-canopy-alternatives/
+[180] https://financial-cents.com/resources/articles/jetpack-workflow-vs-karbon/
+[181] https://financial-cents.com/
+[182] https://www.clio.com/uk/compare/clio-vs-soslegal/
+[183] https://www.clio.com/practice-types/personal-injury-law-software/
+[184] https://help.clio.com/hc/en-us/sections/29657344188187-Clio-Duo
+[141] https://www.brightlocal.com/research/local-consumer-review-survey/
+[142] https://www.getjobber.com/home-service-trends-report/
+[143] https://community.getjobber.com/discussions/announcements/home-service-pros-this-is-your-era-but-are-you-taking-advantage-of-it/9736
+[144] https://www.getjobber.com/academy/plumbing/marketing-strategies-for-plumbers/
+[145] https://www.brightlocal.com/reputation-manager/
+[146] https://www.brightlocal.com/research/lcrs-ai-trust/
+[147] https://www.brightlocal.com/blog/5-review-management-tactics-for-agency-success-in-2026/
+[148] https://www.brightlocal.com/resources/local-seo-statistics/
+[149] https://www.brightlocal.com/entitymap.html
+[150] https://www.getjobber.com/podcast/s5e7-daniel-dixon/
+[151] https://www.getjobber.com/podcast/s6e12-ryaan-tuttle-rob-soper/
+[152] https://www.getjobber.com/academy/cleaning/cleaning-industry-trends/
+[153] https://www.brightlocal.com/tag/reviews/
+[154] https://www.brightlocal.com/author/rosie/
+[155] https://www.getjobber.com/about/media/
+[230] https://plg.servicetitan.com/dsp
+[231] https://www.housecallpro.com/field-service-management-software/
+[232] https://help.servicetitan.com/roofing/docs/dispatch-pro-home
+[233] https://help.servicetitan.com/docs/dispatch-pro
+[234] https://www.housecallpro.com/resources/best-ai-answering-services-contractors/
+[235] https://www.workiz.com/blog/housecall-pro-competitors/
+[236] https://www.servicetitan.com/features/pro
+[237] https://www.servicetitan.com/features/pro/dispatch-neighborly
+[238] https://help.servicetitan.com/commercial/docs/dispatch-pro-home
+[239] https://www.workiz.com/blog/compare/housecall-pro-vs-service-fusion/
+[240] https://fp-pricing.fieldpulse.com/
+[241] https://www.housecallpro.com/resources/ai-for-home-service-business/
+[242] https://www.workiz.com/blog/tips-tricks/best-appliance-repair-software-comparison/
+[243] https://www.servicetitan.com/products
+[244] https://help.servicetitan.com/docs/dispatch-pro-overview
+[215] https://help.clio.com/hc/en-us/articles/29657814904475-Get-Started-With-Clio-Duo
+[216] https://www.clio.com/tos/
+[217] https://www.clio.com/pricing/
+[218] https://www.clio.com/uk/compare/clio-vs-soslegal/
+[219] https://www.casepeer.com/pricing/
+[220] https://www.clio.com/blog/ai-for-immigration-law-firms/?amp
+[221] https://www.clio.com/draft/pricing/
+[222] https://www.lawmatics.com/blog/best-ai-receptionists-for-law-firms
+[223] https://www.lawmatics.com/practice-areas/general-practice-software
+[224] https://www.casepeer.com/llm-info/
+[225] https://www.clio.com/uk/blog/clio-duo/
+[226] https://supportcenter.mycase.com/en/articles/14471568-mycase-pro-tier
+[227] https://www.clio.com/features/legal-ai-software/
+[228] https://www.clio.com/blog/ai-for-small-law-firms/
+[229] https://www.lawmatics.com/practice-areas/employment-law-software
+[200] https://www.weavehelp.com/weavehelp/article/weave-plus-bundles
+[201] https://dentina.ai/articles/how-to-get-more-new-patients-dental-practice/
+[202] https://dentina.ai/articles/cost-of-missed-calls-dental-office/
+[203] https://dentina.ai/
+[204] https://dentina.ai/articles/dental-office-phone-system-best-practices/
+[205] https://www.weavehelp.com/weavehelp/article/weave-truelark-overview
+[206] https://www.weavehelp.com/weavehelp/categories/WeaveTrueLark
+[207] https://dentina.ai/articles/after-hours-dental-appointments-booking-patients/
+[208] https://www.weavehelp.com/weavehelp/article/identify-your-product-bundle
+[209] https://www.weavehelp.com/weavehelp/article/weave-onboarding-ai-receptionist
+[210] https://dentina.ai/articles/missed-dental-patient-calls-cost/
+[211] https://dentina.ai/articles/scalable-dental-front-desk/
+[212] https://dentina.ai/articles/dental-front-desk-burnout/
+[213] https://www.weavehelp.com/weavehelp/article/how-to-use-the-weave-ai-receptionist
+[214] https://www.weavehelp.com/weavehelp/article/activate-and-view-your-weave-subscriptions-in-the-weave-app
+[245] https://www.getfreed.ai/resources/cost-of-ai-scribes
+[246] https://www.getfreed.ai/pricing
+[247] https://www.getfreed.ai/resources/best-ai-scribes
+[248] https://www.getfreed.ai/specialty/functional-integrative-medicine
+[249] https://www.getfreed.ai/landing/ai-medical-scribe
+[250] https://www.getfreed.ai/specialty/nurse-practitioners
+[251] https://www.getfreed.ai/resources/freed-vs-abridge
+[252] https://www.getfreed.ai/specialty/clinicians
+[253] https://pabau.com/blog/7-best-ai-medical-scribe/
+[254] https://www.commure.com/blog-scribe/best-ai-medical-scribes
+[255] https://voiceboxmd.com/ai-medical-scribe/pricing/
+[256] https://scribeable.ai/compare/freed
+[257] https://www.itechguides.com/freed-ai-review-is-it-the-best-ai-medical-scribe-in-2026/
+[258] https://www.getfreed.ai/resources/deepscribe-alternatives-competitors
+[259] https://www.commure.com/blog-scribe/freed-ai-review
+[260] https://impel.ai/wp-content/uploads/2025/09/FordDirect_RateCard_and_OnePager_Feb2025-FINAL-1.pdf
+[261] https://impel.ai/wp-content/uploads/2025/04/FordDirect_RateCard_and_OnePager_Feb2025-FINAL.pdf
+[262] https://nobi.ai/blog/best-ai-assistants-for-car-dealerships
+[263] https://en.ai-pedias.com/blog/ai-automotive-car-dealers-2026
+[264] https://www.leadfriendly.com/vs/impel
+[265] https://www.dealflo.tech/alternatives/impel
+[266] https://www.toma.com/analysis/automotive/impel
+[267] https://www.dealflo.tech/guides/best-ai-for-car-dealerships
+[268] https://www.ringlead.ca/blog/dealership-ai/impel-review-2026/
+[269] https://owini.ai/post/best-ai-tools-for-car-dealerships-that-actually-work-2026
+[270] https://www.stork.ai/en/impel
+[271] https://impel.ai/news/the-case-for-dealership-communities-in-an-ai-driven-market/
+[272] https://www.vendormotive.com/vendors/impel
+[273] https://messageagent.ai/automotive-chatbot
+[274] https://impel.ai/resource/shift-your-data-out-of-neutral-the-playbook-for-ford-and-lincoln-retailers/
+[275] https://www.spyne.ai/blogs/roi-of-ai-bdc-software
+[276] https://www.spyne.ai/blogs/best-automotive-chatbot-for-dealership-website
+[277] https://www.spyne.ai/blogs/how-to-compare-dealership-ai-platforms
+[278] https://www.spyne.ai/blogs/best-bdc-companies-for-car-dealerships
+[279] https://www.spyne.ai/blogs/live-chat-software-car-dealer-website
+[280] https://www.spyne.ai/blogs/dealership-ai-buyers-guide
+[281] https://www.spyne.ai/blogs/best-ai-dealership-inbound-calls
+[282] https://www.spyne.ai/blogs/best-dealership-management-software-comparisons
+[283] https://www.spyne.ai/blogs/best-ai-receptionist-software
+[284] https://www.spyne.ai/blogs/call-center-software-pricing
+[285] https://quickbooks.intuit.com/learn-support/en-us/help-article/intuit-assist/introducing-intuit-intelligence/L189976Da_US_en_US
+[286] https://quickbooks.intuit.com/learn-support/en-au/help-article/intuit-assist/introducing-intuit-intelligence/L189976Da_AU_en_AU
+[287] https://quickbooks.intuit.com/accountants/pricing/
+[288] https://quickbooks.intuit.com/intuit-intelligence/
+[289] https://www.bluej.com/blog/bloomberg-tax-alternative
+[290] https://www.bluej.com/blog/checkpoint-tax-alternatives
+[291] https://quickbooks.intuit.com/uk/accountants/plans/
+[292] https://quickbooks.intuit.com/global/ai-agents/
+[293] https://www.bluej.com/pricing
+[294] https://www.bluej.com/blog/tax-research-software-comparison
+[295] https://www.bluej.com/blog/tax-research-software-alternatives
+[296] https://quickbooks.intuit.com/uk/ai-accounting/
+[297] https://quickbooks.intuit.com/learn-support/en-us/help-article/intuit-assist/introducing-intuit-intelligence/L189976Da_US_en_US
+[298] https://quickbooks.intuit.com/uk/accounting-agent/
+[299] https://quickbooks.intuit.com/ph/resources/product-update/intuit-intelligence-ph/
+````

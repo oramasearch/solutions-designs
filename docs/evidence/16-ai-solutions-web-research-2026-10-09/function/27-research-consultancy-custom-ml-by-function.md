@@ -1,0 +1,405 @@
+# 27 — perplexity_research — custom ML projects consultancies build for mid-market, by function
+
+- **Tool:** `mcp__perplexity__perplexity_research`
+- **Query:** Which custom machine learning projects do data science consultancies and AI engineering firms most often build for mid-market companies (roughly $50M to $1B revenue) outside the technology sector, organized by business function (finance, sales, marketing, operations, HR, procurement, customer service, legal)? Use published consultancy case studies (e.g. from firms like Tredence, Fractal, Mu Sigma, Sigmoid, Polestar, Slalom, Thoughtworks, Quantiphi, Cognizant, boutique ML consultancies, Databricks/Snowflake partner case studies). For each project type, give examples with named clients if available and the measured business result, and indicate which ones keep recurring across firms.
+- **Timestamp (UTC):** 2026-10-09T20:47:31Z
+
+```
+**The projects that recur most clearly across published consultancy cases are demand forecasting, customer targeting and retention, pricing and promotion optimization, document processing, and customer-service assistants.** “Recurring” below means that at least two firms publish a comparable project—not that a reliable market-wide ranking exists. Client revenue is often undisclosed; the clearest disclosed example within the requested range is a roughly **$400 million-revenue dairy distributor**.[web:325]
+
+| Business function | Custom ML project type | Consultancy case study (client if named) | Measured business result | Recurs across firms? |
+|---|---|---|---|---|
+| Finance | Predict margins and explain deviations from plan | Fractal; unnamed CPG manufacturer | **85% margin-prediction accuracy** and **80% less manual reporting effort**.[web:362] | Yes—custom forecasting and predictive planning also appear in Tredence and Deloitte cases.[web:349][web:15] |
+| Finance | Automate invoice extraction, matching, and AP exceptions | Deloitte; unnamed retailer. Quantiphi also built an ML invoice parser and AP workbench for **Sanmina**—a manufacturing example, though its sector may fall outside the requested boundary. | Deloitte reports **50–75% faster invoice processing** and **50% fewer invoice-processing FTEs**; Quantiphi reports **84% overall extraction accuracy** for Sanmina.[web:1][web:226] | Yes—Deloitte and Quantiphi.[web:1][web:225] |
+| Finance | Detect anomalous or fraudulent insurance claims | Blindspot; **ČSOB**, a Czech insurer | **60% fewer false positives** in claims-fraud detection.[web:8] | Yes—Munich Re also reports a custom rules-and-ML claims model that **doubled positive fraud detection** at the same investigation rate.[web:3] |
+| Finance | Classify loan documents for exception-sensitive processing | Slalom and AWS; **Celink**, a mortgage servicer | Default-referral document classifier reached **97% accuracy in a partially deployed proof of concept**. Its **121% three-year ROI was projected**, not realized.[web:210] | Yes—document classification and extraction recur in Quantiphi’s lending and check-processing cases.[web:228][web:233] |
+| Sales | Score customers for cross-sell and next-best-product offers | TAZI; **PEMCO Insurance** | Identified roughly **6,000 potential leads**; nearly **one-third converted to sales**.[web:50] | Yes—Decision Tree reports **23% higher cross-sell conversion** than random targeting for an unnamed life insurer.[web:57] |
+| Sales | Model price elasticity and optimize prices or promotions | Mu Sigma; unnamed US food manufacturer | Price-response models informed trade promotions associated with an **8% sales increase**.[web:265] | Yes—Mu Sigma reports a separate insurer pricing engagement with **7% higher revenue and 5% higher profit**; Fractal also publishes pricing-model cases.[web:268][web:266] |
+| Sales | Recommend products or bundles from a large catalog | Sigmoid; unnamed B2B cocoa manufacturer | AI recommendations cut customer-response time **from 10 days to 10 minutes** and were associated with a **5% sales increase**.[web:179] | Yes—Mu Sigma reports approximately **12% sales uplift in top-performing bundles** from cross-sell merchandising models.[web:278] |
+| Sales | Forecast account- or segment-level sales for targets and capacity | Tredence; unnamed business-travel management company | Forecast model achieved approximately **90% accuracy**; forecast preparation fell **from about a month to a few days**.[web:349] | Yes—Quantiphi publishes insurance-product sales forecasting models.[web:363] |
+| Marketing | Build marketing-mix models to reallocate media spending | WNS; unnamed CPG company | Reported **more than 3% higher sales** and **more than 5% higher profits**, without increased marketing spend.[web:177] | Yes—Gain Theory reports **2.4× media ROI** and **$19 million additional annual net sales**; Quantzig also publishes an MMM engagement.[web:171][web:165] |
+| Marketing | Predict churn and trigger retention campaigns | Sigmoid; unnamed subscription business | Reports a **70% improvement in customer retention** following segment-specific churn modeling and targeted campaigns.[web:29] | Yes—Launch Consulting describes building churn and renewal prototypes for a supplements retailer, though it publishes no measured retention gain.[web:161] |
+| Marketing | Predict lifetime value, acquisition propensity, and responsive segments | Sigmoid; unnamed lawn-and-garden products manufacturer | Built separate acquisition and lifetime-value models; reports **fewer redundant campaigns**, but no numerical conversion lift.[web:26] | Yes—Databricks describes Lovelytics customer-data activation with a reported **5–10% conversion uplift** for **Locality**.[web:179] |
+| Operations | Forecast SKU demand and optimize replenishment, safety stock, or production | Tredence; unnamed automotive-parts manufacturer | Forecast accuracy exceeded **90% for parts accounting for 80% of sales** and beat the previous forecast by **10% on average** for at least 75% of materials.[web:21] | Yes—Polestar reports **95% demand-forecast accuracy** for a pharma manufacturer; Snowflake reports an **8–15% accuracy improvement** in an Etam pilot.[web:37][web:288] |
+| Operations | Predict equipment failures from sensor data | Quantiphi; unnamed diesel-engine and generator manufacturer | Its maintenance model warned of failures at least **10 hours ahead**; the case reports a **30% reduction in machine downtime**.[web:31] | Yes—Quantiphi publishes a separate oil-and-gas deployment; this is a repeatable industrial project type, though the published examples skew large.[web:32] |
+| Operations | Inspect products or packaging with computer vision | Quantiphi; unnamed beverage manufacturer | Barcode and packaging inspection model reported **99.4% model accuracy** and **100% inspection coverage**.[web:134] | Yes—Quantiphi’s separate engine-inspection case reports accuracy rising **from 50% to 95%**; boutique manufacturer cases describe similar bespoke inspection systems.[web:135][web:137] |
+| Operations | Optimize delivery routes with ML-assisted forecasting and mathematical optimization | Flatworld Solutions; unnamed Middle Eastern dairy supplier with approximately **$400 million annual turnover** | **27% less distance traveled** and **16% fewer routes**.[web:325] | Yes—Omdena reports a separate delivery-routing build demonstrating **10% shorter delivery times** and **5% lower delivery costs**.[web:329] |
+| Operations | Optimize production schedules and material allocation | Mu Sigma; unnamed medical-products manufacturer | Its supplier-scheduling tool reduced backorders **50% in three months**—more than **$2.5 million**—and eliminated **$2 million** in production delays.[web:252] | Yes—Databricks describes a MathCo beverage-production scheduling project saving **more than 24,000 planner hours annually**.[web:179] |
+| HR | Predict employee departures and identify actionable retention drivers | KPMG; unnamed online grocery retailer | Reports a **17% reduction in staff turnover** following a broader retention program informed by its ML model; the result is **not attributable to the model alone**.[web:295] | Yes—LTPlabs built a voluntary-churn model for food retailer **MC** as part of workforce planning.[web:304] |
+| HR | Forecast staffing needs and optimize hiring or shift plans | LTPlabs; food retailer **MC** | Predictive churn and optimization cut workforce-planning cycles **from weeks to minutes**; no realized labor-cost saving is stated.[web:304] | Yes—Mosaic reports hospital patient-volume forecasts **within 10% of actual volume up to 12 weeks ahead** to support staffing decisions.[web:109] |
+| Procurement | Extract and reconcile supplier purchase-order acknowledgments | Sigmoid; unnamed personal- and home-care manufacturer | Approximately **80% of confirmations processed autonomously**, **65% shorter confirmation cycles**, and roughly **$200,000 annual operating savings** across 90-plus plants.[web:250] | Yes—Mu Sigma’s supplier-scheduling engagement also automated purchase-order generation, though its reported outcome concerns backorders.[web:252] |
+| Procurement | Optimize order quantities, purchase frequency, and inventory trade-offs | Fractal; unnamed packaging-material buyer | Reports **$1 million saved per material per purchase cycle** through optimized buying decisions.[web:251] | Yes—Polestar reports **12% cost savings** in a pharma supply-chain engagement combining forecasting, inventory, and procurement decisions.[web:34] |
+| Procurement | Classify spend to identify sourcing opportunities | IBM; **Coca-Cola Europacific Partners**—an **above-range** example rather than a mid-market one | AI-supported analysis classified **more than 98% of spend**; the broader procurement transformation reports **$5 million in annual cost and avoidance savings**.[web:42] | Yes as a *project offering*: Sigmoid independently describes AI spend classification, but comparable published **mid-market realized outcomes are thin**.[web:73] |
+| Customer service | Answer routine questions with a company-knowledge-grounded assistant | Slalom; **Jaja Finance**, a lender | Responses fell **90%**, from around three minutes to under 15 seconds; the assistant independently resolved **more than 25% of general enquiries**.[web:195] | Yes—Quantiphi reports an insurance-service assistant containing approximately **35–40% of complex-product queries** without a human agent.[web:232] |
+| Customer service | Classify interactions and surface information for service agents | Fractal; unnamed consumer-facing Fortune 500 company | AI interaction tagging saved **20 person-days per month**.[web:263] | Yes—Slalom’s **Avetta** case reports **25% lower representative handle time**, though Avetta is a technology-business example rather than a clean nontechnology match.[web:80] |
+| Legal | Extract clauses, obligations, and risks from contracts for human review | Advancing Analytics and Databricks; unnamed diagnostic-products manufacturer | Contract analysis became **95% faster**, with approximately **90% expert-validated extraction accuracy**.[web:133] | Yes—Cognizant reports **40–60% faster contracting** and **50–70% less manual effort** in a separate life-sciences CLM engagement.[web:121] |
+| Legal | Review a legacy contract portfolio and build a searchable obligations library | Axiom; unnamed food manufacturer | Reviewed **more than 16,000 agreements in five weeks**, versus a project timeline previously estimated at **one year**.[web:87][web:313] | Yes—contract-portfolio extraction and review recur in Advancing Analytics’ and Cognizant’s cases, although many engagements combine custom AI with existing CLM software.[web:133][web:121] |
+
+Citations:
+[1] https://www.deloitte.com/us/en/what-we-do/case-studies/hands-off-the-task-eyes-on-the-outcome.html
+[2] https://automationconsultancy.ai/case-studies/invoice-processing-automation
+[3] https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/Case-Study_Fraud-Detection-Solutions.pdf
+[4] https://vmsoftwarehouse.com/case-studies/no-technology/ml-detecting-fraud
+[5] https://galent.com/insights/case-studies/innovating-insurance-streamlining-operations-with-ai-and-predictive-analytics/
+[6] https://www.uipath.com/resources/automation-case-studies/major-retailer-rpa
+[7] https://www.expeed.com/case-studies/fraud-detection-and-claims-%20optimization-system/
+[8] https://blindspot.ai/case-studies/csob-fraud-detection
+[9] https://datascienceconsultingpro.com/data-science-for-finance/
+[10] https://www.rolandberger.com/en/Expertise/Case-Studies/Boosting-efficiency-in-accounts-payable.html
+[11] https://smartcs.sg/fraud-detection
+[12] https://kortical.com/case-studies/assets-under-management
+[13] https://checkpluris.com/case-study/ai-powered-fpa-intelligence-for-mid-market-finance-teams
+[14] https://www.linkedin.com/posts/telicdigital_case-study-ai-powered-ap-automation-activity-7374374720898777088-I_sz
+[15] https://www2.deloitte.com/content/dam/Deloitte/ar/Documents/financial-services/CrunchTime6_Forecasting.pdf
+[16] https://www.tredence.com/case-studies/optimizing-inventory-and-enhancing-personalization-a-global-retailers-datadriven-journey
+[17] https://fractal.ai/casestudies/determine-the-contributions-of-media-and-the-drivers-of-sales/
+[18] https://fractal.ai/resource-hub/case-studies/
+[19] https://fractal.ai/casestudies/customer-growth-with-unified-intelligence/
+[20] https://www.tredence.com/case-studies/cpg-business-analytics-for-fortune-500-company
+[21] https://www.tredence.com/case-studies/demand-forecasting-for-automotive-parts-allowing-for-revenue-gain-and-rationalized-inventory
+[22] https://www.tredence.com/assets/case-studies/developing-an-isop-solutions.pdf
+[23] https://fractal.ai/functions/
+[24] https://www.tredence.com/assets/case-studies/improving_demand_forecast_accuracy.pdf
+[25] https://www.casestudies.com/company/tredence
+[26] https://www.sigmoid.com/case-studies/ml-based-consumer-profiling-and-segmentation/
+[27] https://www.tredence.com/services/supply-chain-management
+[28] https://alumni.tredence.com/newsroom/news/Tredence-How-This-Company-Solves-The-Last-Mile-Problem-In-AI
+[29] https://www.sigmoid.com/case-studies/churn-analytics-for-customer-retention/
+[30] https://fractal.ai/casestudies/boosting-retail-sales-with-fractal-s-trial-run/
+[31] https://quantiphi.com/case-studies/predictive-maintenance-for-a-manufacturing-company/
+[32] https://quantiphi.com/blog/predictive-maintenance/
+[33] https://quantiphi.com/blog/expedite-your-ai-adoption-with-packaged-solution-accelerators/
+[34] https://www.polestarllp.com/assets/docs/reinventing-supply-chain-analytics-for-a-global-pharma-giant.pdf
+[35] https://quantiphi.com/case-studies/predictive-maintenance-in-oil-rigs/
+[36] https://www.spendedge.com/procurement-case-studies/procurement-consulting
+[37] https://www.polestarllp.com/assets/docs/supply-chain-management-planning-for-pharma-manufacturer.pdf
+[38] https://quantiphi.com/blog/generative-ai/
+[39] https://ai.quantiphi.com/hubfs/Whitepapers/Car%20Repair%20Notification.pdf
+[40] https://www.restack.io/p/quantiphi-ai-business-models-answer-cat-ai
+[41] https://www.polestarllp.com/docs/s&op-capabilities-appliance-company.pdf
+[42] https://www.ibm.com/case-studies/coca-cola-europacific-partners
+[43] https://mail.polestarllp.com/assets/docs/workforce-planning-with-anaplan.pdf
+[44] https://www.scribd.com/document/412924185/AI-Playbook-for-the-Enterprise-Quantiphi-FINAL
+[45] https://www.accenture.com/en/services/supply-chain/sourcing-and-procurement-consulting
+[76] https://peoplemanagingpeople.com/career/carla-catelan/
+[77] https://www.linkedin.com/posts/benjaminsesser_stoked-to-share-an-amazing-story-from-our-activity-7473361784943497216-_oQ1
+[78] https://www.linkedin.com/posts/maribelruizgomez_talentoperations-hiringtransformation-activity-7473378111548694528-l7Kw
+[79] https://www.linkedin.com/posts/shifa-samrin_thoughtworks-campushiring-careerreadiness-activity-7471963286427586560-gTNN
+[80] https://stage.slalom.com/gb/en/customer-stories/avetta-agentforce-ai-customer-service-operations
+[81] https://legal.thomsonreuters.com/blog/buyers-guide-artificial-intelligence-in-contract-review-software/
+[82] https://www.casestudies.com/customer/thoughtworks
+[83] https://www.thoughtworks.com/en-gb/clients/bolt-works
+[84] https://www.gsdcouncil.org/case-study/ai-consulting-for-legal-firms
+[85] https://appexchange.salesforce.com/image_host/3aa0a6ef-588a-4033-8b78-d1aa824a534c.pdf
+[86] https://www.slalom.com/us/en/services/artificial-intelligence/ai-transformation
+[87] https://www.axiomlaw.com/resources/case-studies/ai-lawyer-bulk-contract-review
+[88] https://www.scribd.com/document/974557708/Thoughtworks-Case-Study-MBA
+[89] https://www.rec-hub.com/case-studies/
+[90] https://ai.ademero.com/resources/case-studies/legal-document-analysis-ai
+[46] https://www.bacancytechnology.com/case-study/data-analytics/vantwell-insurance
+[47] https://www.casestudies.com/company/7learnings
+[48] https://www.bain.com/client-results/insuranceco-harnesses-the-power-of-ai-to-boost-cross-selling/
+[49] https://www.mosaicdatascience.com/wp-content/uploads/2020/04/Price-Optimization-for-Major-Clearance-Sales-cs.pdf
+[50] https://tazi.ai/wp-content/uploads/2023/07/tazi-ai-pemco-usecase_pdf.pdf
+[51] https://wisecortransformations.com/case-studies/how-ai-optimized-dynamic-pricing-strategies/
+[52] https://www.datatobiz.com/case-studies/retail-analytics-with-mlops-and-ai/
+[53] https://gabrielsales.com/category/case-studies/
+[54] https://7learnings.com/use-cases-dynamic-pricing/
+[55] https://xovity.com/case-studies/dynamic-pricing
+[56] https://www.bcg.com/publications/2023/how-ai-is-bringing-a-revolution-to-insurance-distrubtion
+[57] https://www.decision-tree.com/case-studies/cross-sell-up-sell-and-sales-intelligence-for-a-leading-life-insurer
+[58] https://www.quantzig.com/case-studies/retail-pricing-promotions
+[59] https://gabrielsales.com/lead-scoring-for-building-materials-manufacturer/
+[60] https://mosaicdatascience.com/wp-content/uploads/2021/07/mds-price-optimization-for-major-clearance-sales-case-study.pdf
+[61] https://www.sigmoid.com/industries/cpg-analytics/
+[62] https://www.sigmoid.com/case-studies/
+[63] https://www.cognizant.com/en_us/services/documents/avasant-gcc-setup-scale-services-2026-radarview.pdf
+[64] https://digidai.github.io/2026/08/12/cognizant-graduate-hiring-ai-apprenticeship/
+[65] https://sigmoid.com/
+[66] https://www.coursehero.com/file/178140390/Case-study-2-cognizant-technology-solutionsdocx/
+[67] https://www.sigmoid.com/case-studies/ai-powered-demand-forecasting-improved-order-planning-efficiency-by-30/
+[68] https://www.sigmoid.com/ebooks-whitepapers/unlocking-procurement-transformation-with-ai-and-advanced-analytics/
+[69] https://www.coursehero.com/file/128270904/case-analysis-1-HRdocx/
+[70] https://www.studocu.com/in/document/jain-university/financial-markets/strategy-on-derivatives/45915611?origin=related-document
+[71] https://www.cognizant.com/us/en/case-studies/contact-center-platform-upgrade
+[72] https://www.linkedin.com/posts/sigmoid-analytics_optimizing-supply-chain-demand-forecasting-activity-7212418639830925312--04d
+[73] https://www.sigmoid.com/accelerators/sigmoid-procurementiq/
+[74] https://yourstory.com/2024/06/data-ai-forging-resilient-supply-chains
+[75] https://www.sigmoid.com/blogs/building-a-resilient-supply-chain-with-ai-lessons-from-sigmoid-pepsico-and-isg/
+[106] https://quantiphi.com/case-studies/marketing-data-warehouse-for-a-leading-us-based-recruiting-agency/
+[107] https://www.ibm.com/case-studies/optacare
+[108] https://www.mosaicdatascience.com/wp-content/uploads/2019/08/Workforce-Planning-Prediction-Whitepaper.pdf
+[109] https://mosaicdatascience.com/2019/07/17/workforce-planning-prediction-wp/
+[110] https://consciousengines.com/blog/textile-manufacturer-workforce-operational-efficiency-case-study
+[111] https://www.aleaitsolutions.com/case-study/manufacturing-ai-hiring-agent/
+[112] https://www.linkedin.com/pulse/ai-analytics-new-frontier-employee-retention-dheeraj-shastri-18f3e
+[113] https://ijcrt.org/papers/IJCRT2108515.pdf
+[114] https://www.rws.com/media/images/technology-services-perioperative-analytics-solution-case-study-rws-pdf-A4-en_tcm228-219958.pdf
+[115] https://www.vantagecircle.com/case-study/
+[116] https://arxiv.org/html/2508.20953v1
+[117] https://www.myamericannurse.com/category/advisor-series/patient-centered-staffing/
+[118] https://www.ijrrjournal.com/IJRR_Vol.11_Issue.9_Sep2024/IJRR06.pdf
+[119] https://wjaets.com/sites/default/files/fulltext_pdf/WJAETS-2025-1145.pdf
+[120] https://ailabsinc.com/success-story/d978253c-601a-11ec-8d7e-847beb04/employee-retention
+[121] https://www.cognizant.com/en_us/about/documents/avasant-life-sciences-digital-services-2026-radarview.pdf
+[122] https://www.cognizant.com/us/en/about-cognizant/ai-builder/client-zero
+[123] https://www.cognizant.com/en_us/services/documents/accelerate-business-growth-and-outcomes-with-ai-codex3743.pdf
+[124] https://www.stocktitan.net/news/CTSH/cognizant-accelerates-enterprise-ai-adoption-with-snowflake-s-cortex-956mbwmq62wf.html
+[125] https://www.cognizant.com/us/en/case-studies/manufacturing-transformed-procurement-enables-benefits
+[126] https://www.digitalapplied.com/blog/cognizant-anthropic-30k-certified-enterprise
+[127] https://www.slalom.com/us/en/customer-stories/udemy-contract-lifecycle-management
+[128] https://www.slalom.com/ie/en/customer-stories/udemy-contract-lifecycle-management?wtime=%7Bseek_to_second_number%7D&utm_cta[0]=website-nav-solutions-industry-office-hours?wtime&utm_cta[1]=website-nav-solutions-industry-office-hours?wtime
+[129] https://www.cognizant.com/en_us/case-studies/documents/3501071_Global-bank-processes-documents-98-percent-faster-with-generative-AI_Singlepage.pdf
+[130] https://www.cognizant.com/us/en/case-studies/technology-giants-app-engine-gets-ai-boost
+[131] https://www.cognizant.com/en_us/general/documents/avasant-multisourcing-service-integration-2025-radarview-report-excerpt.pdf
+[132] https://www.icertis.com/globalassets/4.-files--code-blocks/pdf-files/customer-stories/icertis-customer-case-study-cognizant.pdf
+[133] https://www.databricks.com/blog/cracking-complex-contracts-genai-azure-databricks
+[91] https://assets-global.website-files.com/611d58d8066333958e639247/64e854c1ff7569e887c640c3_MuSigma%20-%20Case%20Study.pdf
+[92] https://www.mu-sigma.com/case-study?sf_paged=6
+[93] https://go.slalom.com/amazon-finserve?did=pa_card&trk=pa_card
+[94] https://fractal.ai/resource-hub/case-studies/
+[95] https://www.mu-sigma.com/case-study?sf_paged=2
+[96] https://www.slalom.com/us/en/services/artificial-intelligence
+[97] https://fractal.ai/functions/finance-analytics/
+[98] https://plindia.com/ResReport/FRACTAL-16-2-26-PL.pdf
+[99] https://cdn2.hubspot.net/hubfs/1736059/Case%20Studies/Case%20Study%20-%20Inventory%20Management_Final.pdf
+[100] https://www.slalom.com/us/en/industries/financial-services
+[101] https://www.mu-sigma.com/case-study/reinventing-forecasting-and-smart-scaling/
+[102] https://fractal.ai/wp-content/uploads/2022/11/Putting-the-spark-in-your-client-relationships.pdf
+[103] https://go.slalom.com/aivalueassessment
+[104] https://www.mu-sigma.com/case-study/
+[105] https://www.slalom.com/us/en/services/artificial-intelligence/ai-transformation
+[149] https://answers.databricks.com/game-day-at-global-scale-pepsico-foods-uses-ai-feed-world-cup-AFFgWW-oAI0
+[150] https://www.snowflake.com/en/customers/all-customers/case-study/optimove/
+[151] https://www.zenml.io/llmops-database/scaling-demand-forecasting-at-global-scale-with-agentic-ai
+[152] https://www.databricks.com/customers/dongwon
+[153] https://www.slalom.com/us/en/industries/manufacturing
+[154] https://www.slalom.com/ie/en/customer-stories/daikin-comfort-sales-and-operations-planning
+[155] https://answers.databricks.com/retail-cpg-collaborating-data-drives-growth-at-scale-EK5pPyrf9sk
+[156] https://www.snowflake.com/en/customers/all-customers/case-study/la-rinascente/
+[157] https://www.beyondkey.com/casestudy/databricks-real-time-manufacturing-iot-erp
+[158] https://www.databricks.com/customers/barilla
+[159] https://www.snowflake.com/en/blog/retail-cpg-data-fragmentation-personalization/
+[160] https://www.itransition.com/portfolio/digital-transformation-food-manufacturer-distributor
+[161] https://www.launchconsulting.com/case-studies/preparing-for-the-ai-revolution-through-informed-data-decisions
+[162] https://www.linkedin.com/posts/hitachi-solutions-america_microsoftazure-powerbi-ai-activity-7479942361620459521-v0H0
+[163] https://www.syniti.com/customer-stories/harnessing-real-time-data-with-databricks-reduces-waste-and-enhances-forecasting/
+[164] https://fractal.ai/casestudies/determine-the-contributions-of-media-and-the-drivers-of-sales/
+[165] https://www.quantzig.com/case-studies/cpg-marketing-mix-modeling
+[166] https://www.casestudies.com/company/mu-sigma
+[167] https://www.casestudies.com/company/mu-sigma/case-study/collaborative-problem-solving-journey-with-one-of-the-largest-drug-retailers
+[168] https://www.mu-sigma.com/case-study?sf_paged=6
+[169] https://insights.axtria.com/hubfs/Case-Studies/Axtria-Insights-CS-Maximizing-Marketing-ROI-and-Channel-Spend-for-a-Global-Pharma-Company-.pdf
+[170] https://www.mu-sigma.com/case-study?sf_paged=3
+[171] https://gaintheory.com/case-study/using-mmm-to-unlock-over-19m-incremental-sales/
+[172] https://www.kdnuggets.com/news/2008/n14/6i.html
+[173] https://cassandra.app/learn/how-to-use-mmm-to-increase-your-marketing-roi
+[174] https://www.mu-sigma.com/industries/retail/
+[175] https://fractal.ai/resource-hub/case-studies/
+[176] https://xtagelabs.com/case_study/?cpg_marketing_mix_optimization
+[177] https://s3.wns.com/S3_5/Documents/CaseStudy/PDFFiles/7066/135/Co-creating-an%20AI-led-Marketing-Mix-Modeling-Solution-to-Maximize-ROI_Case-Study_2023.pdf
+[178] https://www.quantzig.com/case-studies/marketing-mix-modeling-in-pharma
+[134] https://quantiphi.com/case-studies/visual-quality-inspection/
+[135] https://quantiphi.com/case-studies/engine-defect-detection/
+[136] https://scg-scmr.s3.amazonaws.com/pdfs/quantiphi_wp_visual_quality_inspection_casestudy_112921.pdf
+[137] https://thinkwerksystems.de/en/case-studies/computer-vision-defect-detection-manufacturing
+[138] https://cdn.quantiphi.com/2020/10/AI-and-ML-solutions.pdf
+[139] https://d1.awsstatic.com/case-studies/partner-case-studies/Avis%20PDF.pdf
+[140] https://cdn.quantiphi.com/2020/06/Manufacturing-Brochure-1.pdf
+[141] https://quantiphi.com/case-studies/fully-automated-ml-ops-pipelines/
+[142] https://www.slalom.com/gb/en/industries/manufacturing
+[143] https://www.linkedin.com/in/ltcrane4
+[144] https://www.slalom.com/us/en/customer-stories/jrcs-waterfalls-high-seas-turning-tides
+[145] https://cogniphi.com/case-study/transforming-manufacturing-with-intelligent-product-inspection/
+[146] https://quantiphi.com/case-studies/click-detection/
+[147] https://quantiphi.com/ai-application/visual-quality-assurance/
+[148] https://ai.quantiphi.com/nvidia-partner-series-on-demand-2022
+[194] https://www.casestudies.com/company/slalom/case-study/responding-faster-to-customers-with-genai
+[195] https://www.slalom.com/us/en/customer-stories/jaja-responding-faster-with-genai
+[196] https://www.slalom.com/de/en/insights/ai-agents-from-experimentation-to-value-creation
+[197] https://www.linkedin.com/posts/lucy-price-_slalomproud-awspartner-activity-7267935740058087425-biFg
+[198] https://stage.slalom.com/au/en/industries/financial-services?wtime=%7Bseek_to_second_number%7D
+[199] https://www.linkedin.com/posts/aj-noel-mba-b65a112_responding-faster-to-customers-with-genai-activity-7300118591788515328-27hz
+[200] https://aiexpert.network/slalom/
+[201] https://stage.slalom.com/sg/en/industries/financial-services
+[202] https://ai.quantiphi.com/hubfs/Brochures/Marketing%20Analytics%20Brochure.pdf
+[203] https://quantiphi.com/case-studies/omnichannel-cloud-contact-center-service/
+[204] https://www.casestudies.com/company/slalom
+[205] https://www.slalom.com/nz/en/customer-stories/fairstone-financial--moving-deeper-into-the-cloud
+[206] https://ai.quantiphi.com/hubfs/Generative%20AI%20in%20Insurance.pdf?hsLang=en
+[207] https://www.thoughtworks.com/en-us/clients/retail-ecommerce
+[208] https://www.frost.com/wp-content/uploads/2022/07/Quantiphi-Award-Write-Up.pdf
+[209] https://www.sigmoid.com/case-studies/
+[210] https://www.slalom.com/us/en/customer-stories/celink-loan-servicing
+[211] https://www.slalom.com/mx/es/customer-stories/celink-loan-servicing
+[212] https://stage.slalom.com/content/slalom/ca/en/services/artificial-intelligence/ai-to-roi.html?wtime=%7Bseek_to_second_number%7D
+[213] https://www.bain.com/consulting-services/operations/procurement/
+[214] https://www.sigmoid.com/ebooks-whitepapers/unlocking-procurement-transformation-with-ai-and-advanced-analytics/
+[215] https://hiveadvisorygroup.com/ai-in-procurement
+[216] https://www.sigmoid.com/industries/cpg-analytics/
+[217] https://trytrusted.com/article/spend-analytics-consulting-ai-procurement-intelligence-savings
+[218] https://www.spendcraft.com/growth/
+[219] https://www.linkedin.com/posts/tamarinai_procurement-spendanalytics-costsavings-activity-7445507262384709633-fxET
+[220] https://feeds.colab91.com/blog/artificial-intelligence-spend-management
+[221] https://kanopylabs.com/blog/ai-for-procurement-spend-analytics
+[222] https://www.varisource.com/blog/procurement-strategy-for-mid-market-companies
+[223] https://www.daitrix.com/spendai
+[179] https://www.databricks.com/blog/driving-industry-outcomes-partner-ai-solutions
+[180] https://www.linkedin.com/posts/activity-7448029435863121920-Kolz
+[181] https://www.hcltech.com/en-us/case-study/personalized-marketing-unified-customer-data
+[182] https://www.mavlers.com/databricks-consulting-services/
+[183] https://www.kpipartners.com/partner-databricks
+[184] https://www.databricks.com/company/partners/consulting-and-si/partner-solutions/Latentview-AURA
+[185] https://www.thoughtworks.com/en-es/clients/a-transformational-data-journey-of-a-leading-insurer
+[186] https://www.databricks.com/blog/transforming-industries-conversational-ai-partner-solutions-built-databricks-genie
+[187] https://www.slalom.com/us/en/customer-stories/dsw
+[188] https://www.thoughtworks.com/en-us/insights/articles/using-data-to-reduce-costs-and-increase-revenue
+[189] https://www.linkedin.com/posts/thoughtworks_insurance-privacy-activity-7267141474759176192-gCSa
+[190] https://www.databricks.com/customers/aditya-birla-fashion-and-retail-ltd
+[191] https://stage.slalom.com/jp/en/industries/retail-consumer
+[192] https://www.itransition.com/predictive-analytics/retail
+[193] https://www.slalom.com/us/en/who-we-are/partners/salesforce
+[250] https://www.sigmoid.com/case-studies/agentic-ai-transforms-procurement-operations-with-80-autonomous-purchase-order-processing/
+[251] https://fractal.ai/casestudies/supply-chain-management-optimize-order-volume-and-frequency-to-cut-costs/
+[252] https://www.mu-sigma.com/case-study/a-data-driven-cure-for-production-bottleneck/
+[253] https://www.mu-sigma.com/case-study/
+[254] https://www.mu-sigma.com/case-study/ai-driven-sop-digital-transformation-for-a-global-petrochemical-leader/
+[255] https://www.mu-sigma.com/case-study/optimizing-inventory-management/
+[256] https://www.mu-sigma.com/case-study/mu-sigma-empowered-a-leading-personal-computing-brand-with-a-unified-actionable-view-of-customers/
+[257] https://www.mu-sigma.com/case-study/boosting-marketing-roi-with-genai/
+[258] https://www.mu-sigma.com/case-study/reducing-genai-monitoring-by-70-with-aws/
+[259] https://www.mu-sigma.com/case-study/reinventing-forecasting-and-smart-scaling/
+[260] https://www.mu-sigma.com/case-study/pharma-giant-slashes-tech-costs-by-66-with-scalable-data-warehouse-solution/
+[261] https://www.mu-sigma.com/case-study/in-house-pricing-innovation-transforms-food-manufacturing/
+[262] https://fractal.ai/casestudies/sharper-supply-chains-with-smart-ai-modeling/
+[263] https://fractal.ai/casestudies/how-ai-enabled-a-fortune-500-company-to-improve-its-customer-care-interactions-and-operational-performance-up-to-20/
+[264] https://fractal.ai/casestudies/global-cpg-manufacturer-value-mindset-us-market-success/
+[224] https://www.mu-sigma.com/case-study/an-aws-powered-forecasting-variance-analysis-transformation/
+[225] https://quantiphi.com/case-studies/automated-invoice-processing/
+[226] https://quantiphi.com/case-studies/sanmina-corporation-automating-invoices-with-ml-based-accounts-payable-solution/
+[227] https://quantiphi.com/case-studies/ltc-claims-processing-automation/
+[228] https://quantiphi.com/case-studies/enhancing-lending-operational-efficiency-with-99-classification-accuracy/
+[229] https://qstage.quantiphi.com/case-studies/how-the-state-of-idaho-controllers-office-automated-budget-and-audit-reporting-using-qdox-and-aws/
+[230] https://quantiphi.com/case-studies/banking-on-efficiency-how-quantiphi-simplified-mortgage-processing-for-a-leading-mortgage-lender/
+[231] https://www.mu-sigma.com/case-study/an-aws-powered-retail-dqm-transformation/
+[232] https://quantiphi.com/case-studies/transformed-customer-experience-with-conversational-ai-for-a-leading-financial-services-provider-and-helping-them-reduce-average-handle-time/
+[233] https://quantiphi.com/case-studies/automated-check-image-processing/
+[234] https://quantiphi.com/case-studies/policy-review-automation-for-a-leading-broker/
+[235] https://quantiphi.com/case-studies/automating-medical-claims-processing-for-a-leading-broker/
+[236] https://fractal.ai/casestudies/optimizing-invoice-to-cash-model-leads-improvement-in-cash-flow/
+[237] https://fractal.ai/casestudies/invoice-to-cash-opportunity-with-advanced-analytics/
+[238] https://fractal.ai/casestudies/putting-the-spark-in-your-client-relationships-1/
+[239] https://www.polestarllp.com/services/workforce-planning
+[240] https://www.polestarllp.com/blog/polestar-solutions-covid19-human-resources
+[241] https://www.polestarllp.com/assets/docs/performance-optimization-data-standardization-ecommerce-catalog-tool.pdf
+[242] https://www.polestarllp.com/assets/docs/optimizing-hr-function-with-workforce-analytics.pdf
+[243] https://www.polestarllp.com/industry/senior-housing
+[244] https://www.polestarllp.com/assets/docs/microsoft-azure-and-power-bi-stack-for-global-alcoholic-beverages-firm.pdf
+[245] https://www.polestarllp.com/solutions/workforce-analytics
+[246] https://www.polestarllp.com/case-study/data-analytics-transformation-it-services-firm
+[247] https://www.polestarllp.com/services/coe-center-of-excellence
+[248] https://www.polestarllp.com/docs/Anaplan-Audit-Polestar-Solutions.pdf
+[249] https://www.mu-sigma.com/case-study/a-financial-planning-transformation/
+[265] https://www.mu-sigma.com/case-study/in-house-pricing-innovation-transforms-food-manufacturing/
+[266] https://fractal.ai/casestudies/global-cpg-manufacturer-transforms-revenue-growth-management-in-europe/
+[267] https://fractal.ai/casestudies/targeted-retail-offers/
+[268] https://www.mu-sigma.com/case-study/top-pc-insurer-earns-higher-profit-revenue-with-mu-sigma-collab/
+[269] https://www.tredence.com/case-studies/enabled-a-global-retailer-build-a-marketing-analytics-platform-to-maximize-marketing-roi
+[270] https://www.mu-sigma.com/case-study/ai-driven-sop-digital-transformation-for-a-global-petrochemical-leader/
+[271] https://fractal.ai/casestudies/global-cpg-manufacturer-value-mindset-us-market-success/
+[272] https://www.tredence.com/case-studies/rebate-analytics-solution
+[273] https://www.tredence.com/case-studies/ai-ml-customer-solution-to-improve-trade-promotion-roi-through-optimized-promotion-spend
+[274] https://www.tredence.com/case-studies/pharma-campaign-analytics
+[275] https://fractal.ai/casestudies/boosting-retail-sales-with-fractal-s-trial-run/
+[276] https://www.tredence.com/case-studies/tredence-helped-a-large-format-retailer-to-enhance-its-customer-shopping-experience
+[277] https://www.tredence.com/case-studies/comprehensive-analytical-solution-to-identify-underperforming-inventory
+[278] https://www.mu-sigma.com/case-study/optimizing-cross-sell-merchandising-decisions-with-aws-sagemaker/
+[279] https://www.mu-sigma.com/case-study/transforming-cpg-growth-with-strategic-analytics/
+[280] https://www.snowflake.com/en/why-snowflake/partners/all-partners/returnalyze/
+[281] https://www.databricks.com/customers/in-the-memory
+[282] https://app.snowflake.com/marketplace/providers/GZ2FQZL3B5S/Alloy.ai
+[283] https://www.snowflake.com/wp-content/uploads/2022/07/deliver-exceptional-personalized-experiences-with-the-snowflake-partner-ecosystem.pdf
+[284] https://www.databricks.com/customers/grupo-casas-bahia/genie
+[285] https://www.snowflake.com/en/artificial-intelligence/industries/ai-in-retail/
+[286] https://www.databricks.com/customers/aditya-birla-fashion-and-retail-ltd
+[287] https://app.snowflake.com/marketplace/listing/GZ2FQZL3B5W?businessNeed=2
+[288] https://www.snowflake.com/en/customers/all-customers/case-study/etam/
+[289] https://www.snowflake.com/webinar/product-demo/introduction-to-snowflake-for-retail-and-consumer-goods-emea-23-may/
+[290] https://www.snowflake.com/en/solutions/industries/retail-consumer-goods/
+[291] https://www.snowflake.com/en/solutions/use-cases/powering-supply-chain-optimization-with-snowflake/
+[292] https://www.databricks.com/customers/prada-group
+[293] https://www.databricks.com/customers/al-futtaim
+[294] https://www.snowflake.com/accelerate/apac/retail/
+[295] https://www.mca.org.uk/consulting-case-studies/kpmg-with-large-online-retailer
+[296] https://4spotconsulting.com/4spot-consulting-revolutionizing-retail-staffing-with-predictive-analytics/
+[297] https://www.fourth.com/case-study/chilis-grill-and-bar
+[298] https://axialshift.com/case-study/california-pizza-kitchen-axial-shift-case-study/
+[299] https://mapleaiconsultants.com/case-studies/case-study-5.php
+[300] https://ltplabs.com/case-studies/tackling-employee-turnover-at-brick-and-mortar-retailers
+[301] https://www.tigeranalytics.com/perspectives/case-study/ai-ml-forecasting-delivers-20-savings-for-top-us-restaurant-chain/
+[302] https://dataart-consulting.com/insights/engagements/healthcare-workforce-retention
+[303] https://www.datainfer.net/predictive-analytics-employee-retention
+[304] https://ltplabs.com/case-studies/transforming-workforce-planning-through-optimization-in-food-retail
+[305] https://www.consultancy.eu/news/13207/argon-co-helps-food-company-enhance-logistics-forecasting-with-new-ai-tool
+[306] https://www.linkedin.com/pulse/case-study-transforming-workforce-resilience-apex-city-maleri-attul-nvfcc
+[307] https://dsm.promo/case-study-restaurant
+[308] https://hr.university/analytics/predictive-analytics-hr/
+[309] https://4spotconsulting.com/ai-powered-flight-risk-prediction-for-proactive-employee-retention/
+[310] https://www.slalom.com/ie/en/customer-stories/udemy-contract-lifecycle-management?wtime=%7Bseek_to_second_number%7D&utm_cta[0]=website-nav-solutions-industry-office-hours?wtime&utm_cta[1]=website-nav-solutions-industry-office-hours?wtime
+[311] https://www.slalom.com/us/en/customer-stories/udemy-contract-lifecycle-management
+[312] https://www.govinfo.gov/content/pkg/USCOURTS-cand-3_24-cv-01451/pdf/USCOURTS-cand-3_24-cv-01451-0.pdf
+[313] https://www.axiomlaw.com/resources/case-studies
+[314] https://ironcladapp.com/why/partners/region/north-america
+[315] https://docs.justia.com/cases/federal/district-courts/california/candce/3:2024cv01451/426188/150
+[316] https://ironcladapp.com/why/partners/implementation-partner
+[317] https://ironcladapp.com/why/partners/team/legal
+[318] https://www.govinfo.gov/content/pkg/USCOURTS-cand-3_24-cv-01451/pdf/USCOURTS-cand-3_24-cv-01451-7.pdf
+[319] https://chatgptiseatingtheworld.com/wp-content/uploads/2025/05/Discovery-Statement-re-DBRX-in-In-re-Mosaic-May-15-2025.pdf
+[320] https://www.slalom.com/us/en/legal/contract-vehicles-sled
+[321] https://parallellabs.app/how-manufacturing-consultants-are-using-ai-to-transform-operations-strategy-and-win-enterprise-contracts/
+[322] https://www.slalom.com/us/en/legal/contract-vehicles
+[323] https://aidolsgroup.com/en/blog/category/industry-insights/how-to-choose-ai-consulting-firm/
+[324] https://enterprisedna.co/resources/guides/consulting-reduce-contract-redline-time/
+[325] https://www.flatworldsolutions.com/data-science/case-studies/route-optimization-dynamic-routing.php
+[326] https://www.flatworldsolutions.com/data-science/case-studies/optimized-route-for-logistics-security-firm.php
+[327] https://celso.ch/blog/data-science/how-we-apply-data-science-to-optimize-delivery-routes-logistics/
+[328] https://www.adionatech.com/case-studies
+[329] https://www.omdena.com/blog/optimizing-delivery-routes-using-ml-and-graph-theory
+[330] https://www.data2decision.com/case-studies/route-optimization
+[331] https://sumatosoft.com/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service
+[332] https://www.chetu.com/case-study/ai-based-route-optimization-logistics-delivery.php
+[333] https://www.hyperlinkinfosystem.com/case-study/ml-route-optimization-logistics-platform
+[334] https://www.hyperlinkinfosystem.com/case-study/aws-logistics-real-time-cloud-delivery-optimization
+[335] https://fractal.ai/casestudies/ai-powered-freight-optimization/
+[336] https://www.mu-sigma.com/case-study/turning-forecasts-into-fortune-transforming-reverse-logistics-in-electronics/
+[337] https://revenueinstitute.com/ai-use-cases/ai-cash-flow-forecasting-for-manufacturing
+[338] https://www.linkedin.com/pulse/how-erp-systems-transforming-financial-part-3-victoria-henshaw-b3luc
+[339] https://azure.folio3.com/blog/ai-cash-flow-model-in-azure/
+[340] https://pinnaclepubs.com/index.php/JSISI/article/download/526/514/1562
+[341] https://jsaer.com/download/vol-8-iss-2-2021/JSAER2021-8-2-296-302.pdf
+[342] https://cruxdigits.nl/case-studies/demand-forecasting/
+[343] https://www.treasurers.org/festival-treasury-transformation-roundup-day-2
+[344] https://futurumgroup.com/insights/sap-bets-tabular-ai-is-the-core-of-the-autonomous-enterprise/
+[345] https://ceur-ws.org/Vol-3900/Paper17.pdf
+[346] http://arno.uvt.nl/show.cgi?fid=183364
+[347] https://www.tredence.com/case-studies/demand-forecasting-for-automotive-parts-allowing-for-revenue-gain-and-rationalized-inventory
+[348] https://www.etoday.co.kr/news/view/2629137
+[349] https://www.tredence.com/case-studies/planning-for-a-global-business-travel-management-company
+[350] https://www.tredence.com/case-studies/developed-a-machine-learning-based-solution-to-categorize-products
+[351] https://www.freshplaza.com/north-america/article/9809634/ai-helps-growers-predict-precisely-when-their-produce-will-be-ready-for-market/
+[352] https://www.fdcapital.co.uk/data-driven-decision-making-the-new-superpower-of-modern-cfos/
+[353] https://www.ey.com/en_us/insights/consulting/how-caterpillar-is-using-technology-on-its-journey-to-improve-financial-forecasting
+[354] https://dataiqueconsulting.com/case-studies/
+[355] https://www.linkedin.com/pulse/genai-enhancing-finance-function-ways-unimaginable-jones-mba-cpa-bhkde
+[356] https://ijsate.com/wp-content/uploads/2025/08/V2I8P19_IJSATE0725025A.pdf
+[357] https://www.growcfo.net/wp-content/uploads/2025/08/Q3-Innovation-Report-Planning-Budgeting.pdf
+[358] https://ducassecapital.com/case-studies
+[359] https://jsaer.com/download/vol-8-iss-2-2021/JSAER2021-8-2-296-302.pdf
+[360] https://alicelabs.ai/en/insights/ai-financial-forecasting
+[361] https://www.econstor.eu/bitstream/10419/287710/1/s42521-021-00046-2.pdf
+[362] https://fractal.ai/casestudies/better-decisions-with-margin-analytics/
+[363] https://quantiphi.com/case-studies/sales-forecasting-for-upcoming-years/
+[364] https://quantiphi.com/case-studies/enterprise-forecasting-engine/
+[365] https://quantiphi.com/case-studies/predicting-agent-churn/
+[366] https://quantiphi.com/case-studies/demand-forecasting/
+```

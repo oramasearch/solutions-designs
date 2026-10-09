@@ -117,3 +117,11 @@ for the capture convention — read it before adding any evidence.**
   syntheses. 366KB, verbatim + pasted summary (which notes two redraft rounds before
   fields were unique per dossier). Counterpart of item 12. See its
   [`README.md`](15-deep-research-solutions-compendium/README.md).
+- [`16-ai-solutions-web-research-2026-10-09/`](16-ai-solutions-web-research-2026-10-09/)
+  — **130 verbatim Perplexity responses** from four parallel web-research passes
+  (2026-10-09) looking for AI solutions beyond the catalogue: `demand/` (33),
+  `engineering/` (38), `industry/` (29), `function/` (30), each file headed with its
+  tool, exact query and timestamp; byte-identical, with `SHA256SUMS.txt`. Queries are
+  generic (no internal material). The findings tables and synthesis drawn from them are
+  analysis and live in `../plan/09-new-solution-research.md`. See its
+  [`README.md`](16-ai-solutions-web-research-2026-10-09/README.md).

@@ -51,7 +51,7 @@ in `docs/plan/`). The design phase (per-solution architecture on Zetta) comes la
 
 ### Evidence collected so far
 
-**15 items** (the full, always-current index is
+**16 items** (the full, always-current index is
 [`docs/evidence/README.md`](docs/evidence/README.md) — that's authoritative; this is a
 snapshot):
 
@@ -72,6 +72,9 @@ snapshot):
 - **External Deep Research compendia** — the external answers to the same three
   prompts: methodologies (~26 dossiers, `13`), use cases (~140 dossiers, `14`),
   solutions (43 dossiers, `15`). Each pairs with its internal counterpart above.
+- **New-solution web research (2026-10-09):** 130 verbatim Perplexity responses from
+  four parallel passes — buyer demand, AI-engineering practice, industry, and business
+  function — looking for solutions beyond the catalogue (`16`).
 
 ## Navigation (progressive disclosure)
 
